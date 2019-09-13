@@ -1,0 +1,6 @@
+{
+    "token": "[your Discord bot token here]",
+    "log_channel": "[read-onle log channel title here]",
+    "admin_roles": { [Moderator & Admin roles title here] },
+    "db_config": {"host":"localhost", "dbname":"[database title]", "dbuser":"[database username]", "dbpass":"[database user password]" }
+}
