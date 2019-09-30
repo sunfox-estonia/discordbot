@@ -6,7 +6,7 @@ Nodejs приложение для управления сообществами
 * по команде добавлять новые достижения в базу данных (доступно администраторам)
 * автоматически добавляет новоприбывших участников в базу данных
 * по команде фиксирует факт получения той или иной ачивки (доступно администраторам)
-* по команде показывает профиль участника, включая уровень и список полученных достижений (а также тех, которые требуется получить для достижениян ового уровня)
+* по команде показывает профиль участника, включая уровень и список полученных достижений (а также тех, которые требуется получить для достижения нового уровня)
 
 TODO:
 * научить бота обрабатывать стандартные языки разметки календарей
@@ -16,12 +16,13 @@ TODO:
 * Node.JS >= 10.16.3
 * MySQL >= 5.5
 
-Подключитесь к своему серверу по протоколу SSH, разверние репозиторий в рабочую директорию и инициализируйте Node.JS в ней же:
+Подключитесь к своему серверу по протоколу SSH, разверните репозиторий в рабочую директорию и инициализируйте Node.JS в ней же:
 ```bash
 git clone https://github.com/Viruviking/discordbot.git bot.discord
 cd bot.discord/
 npm init -y
 npm install --save discord.js
+npm install --save mysql.js
 ```
 Далее скорректируйте файл config.json по шаблону:
 ```json
@@ -51,9 +52,10 @@ CREATE TABLE `drd_achievements` (
 
 CREATE TABLE `drd_levels` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `code` smallint(6) NOT NULL,
   `level` smallint(6) NOT NULL,
   `title` varchar(55) NOT NULL,
-  `description` varchar(512) NOT NULL,
+  `description` varchar(512) DEFAULT NULL,
   `community` varchar(55) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -61,8 +63,9 @@ CREATE TABLE `drd_levels` (
 DROP TABLE IF EXISTS `drd_users`;
 CREATE TABLE `drd_users` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(55) NOT NULL,
   `level` smallint(6) NOT NULL,
-  `community` varchar(55) NOT NULL,
+  `community` varchar(55) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -70,7 +73,7 @@ DROP TABLE IF EXISTS `drd_usr_ach`;
 CREATE TABLE `drd_usr_ach` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `ach_id` smallint(6) NOT NULL,
+  `ach_id` varchar(55) NOT NULL,
   `user_id` smallint(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
