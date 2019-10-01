@@ -121,22 +121,20 @@ client.on("message", async message => {
             var usr = message.author;
         }
         var uid = usr.id; 
-        var sql = "SELECT drd_users.uid, drd_users.level, drd_users.community, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE drd_users.uid = ? LIMIT 1;";        
+        var sql = "SELECT drd_users.uid, drd_users.level, drd_users.community, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level AND drd_users.community = drd_levels.community WHERE drd_users.uid = ? LIMIT 1;";        
         database.query(sql, [uid], function(err, user_source, fields) {
             if(err){console.log(err)};             
             
             if (user_source.length == 1){                
-                var sql = "SELECT drd_achievements.code, drd_achievements.title, drd_achievements.description, drd_usr_ach.date FROM drd_achievements LEFT JOIN drd_usr_ach ON drd_achievements.code = drd_usr_ach.ach_id AND drd_usr_ach.user_id = ? WHERE drd_achievements.community = 'viruviking' AND drd_achievements.level = ?;"; 
-                database.query(sql, [user_source[0].uid, user_source[0].level], function(err, lvls_source, fields) {
+                var sql = "SELECT drd_achievements.code, drd_achievements.title, drd_achievements.description, drd_usr_ach.date FROM drd_achievements LEFT JOIN drd_usr_ach ON drd_achievements.code = drd_usr_ach.ach_id AND drd_usr_ach.user_id = ? WHERE drd_achievements.community = ? AND drd_achievements.level = ?;"; 
+                database.query(sql, [user_source[0].uid, user_source[0].community, user_source[0].level], function(err, lvls_source, fields) {
                     if(err){console.log(err)};                    
                     var profile = new Discord.RichEmbed()
-                        .setColor('#0099ff')
                         .setAuthor(usr.username)
                         .setTitle(String.fromCodePoint(user_source[0].symbol) +' '+ user_source[0].title)
                         .setDescription(user_source[0].level +' уровень')
                         .setThumbnail(usr.avatarURL)
-                        .addBlankField();
-                        
+                        .addBlankField();                        
                     if(lvls_source.length>0){
                         for (i=0; i<lvls_source.length; i++){
                             if(lvls_source[i].date === null ){
@@ -150,9 +148,15 @@ client.on("message", async message => {
                         profile.addField('На этом уровне отсуствуют доступные достижения', 'Вероятнее всего, со временем они будут добавлены.');
                     }
                     profile.addBlankField()
-                        .setTimestamp()
-                        .setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png');
-                        
+                        .setTimestamp();
+                    switch (user_source[0].community){
+                        case 'viruviking':
+                            profile.setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png').setColor('#F5A623');
+                            break;
+                        case 'einherjar':
+                            profile.setFooter('Einherjar', 'https://sunfox.ee/resources/img/discord_bot/er_sq_logo.jpg').setColor('#808000');
+                            break;
+                    }                        
                     message.channel.send(profile);
                     
                 });                
@@ -198,13 +202,19 @@ client.on("message", async message => {
                             if(err) console.log(err);
                         });                     
                         var report = new Discord.RichEmbed()
-                            .setColor('#F5A623')
                             .setTitle(message.mentions.users.first().username+' получил новую ачивку!')
                             .setThumbnail('https://sunfox.ee/resources/img/discord_bot/alert_scroll.png')
                             .addField(':ballot_box_with_check: - ' + level_data[0].title, level_data[0].description)
                             .addBlankField()
-                            .setTimestamp()
-                            .setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png');
+                            .setTimestamp();
+                        switch (user_data[0].community){
+                            case 'viruviking':
+                                report.setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png').setColor('#F5A623');
+                                break;
+                            case 'einherjar':
+                                report.setFooter('Einherjar', 'https://sunfox.ee/resources/img/discord_bot/er_sq_logo.jpg').setColor('#808000');
+                                break;
+                        }
                         let channel = message.guild.channels.find(channel => channel.name === "log");
                         if (!channel) return;
                         channel.send(report);                      
@@ -222,13 +232,20 @@ client.on("message", async message => {
                     database.query(sql, [new_lvl, user_data[0].uid], function (err, result) {
                         if(err) {console.log(err)};                        
                         var report = new Discord.RichEmbed()
-                            .setColor('#F5A623')
                             .setTitle(message.mentions.users.first().username+' получил новый уровень!')
                             .setThumbnail('https://sunfox.ee/resources/img/discord_bot/alert_announcement.png')
                             .addField(String.fromCodePoint(user_data[0].symbol) + ' ' + user_data[0].title, new_lvl + ' уровень.')
                             .addBlankField()
-                            .setTimestamp()
-                            .setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png');
+                            .setTimestamp();                        
+                        switch (user_data[0].community){
+                            case 'viruviking':
+                                report.setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png').setColor('#F5A623');
+                                break;
+                            case 'einherjar':
+                                report.setFooter('Einherjar', 'https://sunfox.ee/resources/img/discord_bot/er_sq_logo.jpg').setColor('#808000');
+                                break;
+                        }
+
                         let channel = message.guild.channels.find(channel => channel.name === "log");
                         if (!channel) return;
                         channel.send(report);
