@@ -40,17 +40,18 @@ SET NAMES utf8;
 CREATE DATABASE `sfx_drdbot` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `sfx_drdbot`;
 
-DROP TABLE IF EXISTS `drd_achievements`;
-CREATE TABLE `drd_achievements` (
+DROP TABLE IF EXISTS `drd_levels`;
+CREATE TABLE `drd_levels` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `level` smallint(6) NOT NULL,
   `title` varchar(55) NOT NULL,
-  `description` varchar(512) NOT NULL,
-  `level_id` smallint(6) NOT NULL,
+  `symbol` varchar(55) NOT NULL,
   `community` varchar(55) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-CREATE TABLE `drd_levels` (
+DROP TABLE IF EXISTS `drd_achievements`;
+CREATE TABLE `drd_achievements` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `code` smallint(6) NOT NULL,
   `level` smallint(6) NOT NULL,

@@ -70,6 +70,18 @@ client.on("message", async message => {
         })
     }
     
+    // SHOW AVAILABLE COMMANDS
+    if(command === "help") {
+        var msg = ' вот список доступных команд:\n';
+        msg = msg + `/events [число] - показать список предстоящих мероприятий;\n`;
+        if(message.member.roles.some(r=>JSON.stringify(config.admin_roles).includes(r.name))){
+            msg = msg + '/adduser [@пользователь] [viruviking|einherjar] - добавить нового пользователя в сообщество;\n';
+            msg = msg + '/levelup [@пользователь] [# ачивки] - добавить ачивку пользователю. Ачивки и их коды смотри: https://wiki.sunfox.ee/\n';
+        }
+        msg = msg + '/profile [@пользователь] - показать профиль пользователя и список его достижений.\n';
+        message.reply(msg);
+    }
+    
     // ADD NEW USER
     if(command === "adduser") {
         if(!message.member.roles.some(r=>JSON.stringify(config.admin_roles).includes(r.name)))
@@ -108,27 +120,46 @@ client.on("message", async message => {
         }else{
             var usr = message.author;
         }
-        var uid = usr.id;
-        var profile = new Discord.RichEmbed()
-            .setColor('#0099ff')
-            .setAuthor(usr.username)
-            .setTitle(':dagger: Ландскнехт - 2 уровень')
-            .setDescription('Координатор - Викинги Вирумаа')
-            .setThumbnail(usr.avatarURL)
-            .addBlankField()
-            .addField(':ballot_box_with_check: - Сенсей', 'Провести занятие по фехтованию одноручным мечом.')
-            .addField(':ballot_box_with_check: - Давид', 'Вооружившись топором, победить противника с двуручным мечом, не теряя хитов.')
-            .addField(':ballot_box_with_check: - Так нечестно!', 'Научиться использовать окружение в бою.')
-            .addField(':ballot_box_with_check: - Кукловод', 'Быть мастером настольной ролевой игры.')
-            .addField(':black_square_button: - Порхай, как бабочка', '100 приседаний.')
-            .addField(':black_square_button: - Готов в поход', '10 мин. на скакалке(количество допустимых зацепов - 5).')
-            .addField(':black_square_button: - Мясник', '15 подтягиваний.')
-            .addField(':ballot_box_with_check: - Чужие земли', 'Посетить тренировку в другом клубе.')
-            .addField(':black_square_button: - Хост', 'Не менее двух раз в течение месяца инициировать и провести совместную игру с другими участниками сообщества.')
-            .addBlankField()
-            .setTimestamp()
-            .setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png');
-        message.channel.send(profile);
+        var uid = usr.id; 
+        var sql = "SELECT drd_users.uid, drd_users.level, drd_users.community, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE drd_users.uid = ? LIMIT 1;";        
+        database.query(sql, [uid], function(err, user_source, fields) {
+            if(err){console.log(err)};             
+            
+            if (user_source.length == 1){                
+                var sql = "SELECT drd_achievements.code, drd_achievements.title, drd_achievements.description, drd_usr_ach.date FROM drd_achievements LEFT JOIN drd_usr_ach ON drd_achievements.code = drd_usr_ach.ach_id AND drd_usr_ach.user_id = ? WHERE drd_achievements.community = 'viruviking' AND drd_achievements.level = ?;"; 
+                database.query(sql, [user_source[0].uid, user_source[0].level], function(err, lvls_source, fields) {
+                    if(err){console.log(err)};                    
+                    var profile = new Discord.RichEmbed()
+                        .setColor('#0099ff')
+                        .setAuthor(usr.username)
+                        .setTitle(String.fromCodePoint(user_source[0].symbol) +' '+ user_source[0].title)
+                        .setDescription(user_source[0].level +' уровень')
+                        .setThumbnail(usr.avatarURL)
+                        .addBlankField();
+                        
+                    if(lvls_source.length>0){
+                        for (i=0; i<lvls_source.length; i++){
+                            if(lvls_source[i].date === null ){
+                                var chkbox = ':white_medium_square:';
+                            }else{
+                                var chkbox = ':ballot_box_with_check:';
+                            }
+                            profile.addField(chkbox +' - '+ lvls_source[i].title, lvls_source[i].description);
+                        }     
+                    }else{
+                        profile.addField('На этом уровне отсуствуют доступные достижения', 'Вероятнее всего, со временем они будут добавлены.');
+                    }
+                    profile.addBlankField()
+                        .setTimestamp()
+                        .setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png');
+                        
+                    message.channel.send(profile);
+                    
+                });                
+            } else {
+                return message.reply(" указанного пользователя не существует в базе!");
+            }
+        });
     }
     
     // ADD LEVEL TO USER
@@ -144,7 +175,7 @@ client.on("message", async message => {
         
         // Add achievemnt to user account
         
-        var sql = "SELECT * FROM drd_users WHERE uid = ?; SELECT * FROM drd_levels WHERE code = ?;";        
+        var sql = "SELECT drd_users.id, drd_users.uid, drd_users.level, drd_users.community, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE uid = ? LIMIT 1; SELECT * FROM drd_achievements WHERE code = ?;";        
         database.query(sql, [usr, lvl], function(err, results, fields) {
             if(err){console.log(err)};            
             if (results[0].length != 1 || results[1].length != 1){
@@ -172,7 +203,8 @@ client.on("message", async message => {
                             .setThumbnail('https://sunfox.ee/resources/img/discord_bot/alert_scroll.png')
                             .addField(':ballot_box_with_check: - ' + level_data[0].title, level_data[0].description)
                             .addBlankField()
-                            .setTimestamp();
+                            .setTimestamp()
+                            .setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png');
                         let channel = message.guild.channels.find(channel => channel.name === "log");
                         if (!channel) return;
                         channel.send(report);                      
@@ -180,11 +212,10 @@ client.on("message", async message => {
                 }); 
             }                
             
-            var sql = "SELECT count(*) AS allcount FROM drd_levels WHERE level = ? AND community = ?; SELECT count(*) AS lvlcount FROM drd_usr_ach LEFT JOIN drd_levels ON drd_usr_ach.ach_id = drd_levels.code WHERE drd_usr_ach.user_id = ? AND drd_levels.community = ?;";
-            database.query(sql, [user_data[0].level, user_data[0].community, user_data[0].uid, user_data[0].community], function (err, result, fields) {
+            var sql = "SELECT count(*) AS allcount FROM drd_achievements WHERE level = ? AND community = ?; SELECT count(*) AS lvlcount FROM drd_usr_ach LEFT JOIN drd_achievements ON drd_usr_ach.ach_id = drd_achievements.code AND drd_achievements.level = ? WHERE drd_usr_ach.user_id = ? AND drd_achievements.community = ?;";
+            database.query(sql, [user_data[0].level, user_data[0].community, user_data[0].level, user_data[0].uid, user_data[0].community], function (err, result, fields) {
                 if(err){console.log(err)}                
                 var stats_data = new Array(Object.values(result[0]), Object.values(result[1])); 
-                console.log(stats_data);
                 if(stats_data[0][0].allcount == stats_data[1][0].lvlcount){
                     let new_lvl = user_data[0].level + 1;
                     var sql = `UPDATE drd_users SET level = ? WHERE uid = ?;`;
@@ -192,10 +223,12 @@ client.on("message", async message => {
                         if(err) {console.log(err)};                        
                         var report = new Discord.RichEmbed()
                             .setColor('#F5A623')
-                            .setTitle(message.mentions.users.first().username+' получил '+ new_lvl +' уровень. Поздравляем!')
+                            .setTitle(message.mentions.users.first().username+' получил новый уровень!')
                             .setThumbnail('https://sunfox.ee/resources/img/discord_bot/alert_announcement.png')
+                            .addField(String.fromCodePoint(user_data[0].symbol) + ' ' + user_data[0].title, new_lvl + ' уровень.')
                             .addBlankField()
-                            .setTimestamp();
+                            .setTimestamp()
+                            .setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png');
                         let channel = message.guild.channels.find(channel => channel.name === "log");
                         if (!channel) return;
                         channel.send(report);
