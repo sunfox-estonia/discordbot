@@ -151,7 +151,7 @@ client.on("message", async message => {
                         .setTimestamp();
                     switch (user_source[0].community){
                         case 'viruviking':
-                            profile.setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png').setColor('#F5A623');
+                            profile.setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png').setColor('#0099ff');
                             break;
                         case 'einherjar':
                             profile.setFooter('Einherjar', 'https://sunfox.ee/resources/img/discord_bot/er_sq_logo.jpg').setColor('#808000');
@@ -209,7 +209,7 @@ client.on("message", async message => {
                             .setTimestamp();
                         switch (user_data[0].community){
                             case 'viruviking':
-                                report.setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png').setColor('#F5A623');
+                                report.setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png').setColor('#0099ff');
                                 break;
                             case 'einherjar':
                                 report.setFooter('Einherjar', 'https://sunfox.ee/resources/img/discord_bot/er_sq_logo.jpg').setColor('#808000');
@@ -239,7 +239,7 @@ client.on("message", async message => {
                             .setTimestamp();                        
                         switch (user_data[0].community){
                             case 'viruviking':
-                                report.setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png').setColor('#F5A623');
+                                report.setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png').setColor('#0099ff');
                                 break;
                             case 'einherjar':
                                 report.setFooter('Einherjar', 'https://sunfox.ee/resources/img/discord_bot/er_sq_logo.jpg').setColor('#808000');
