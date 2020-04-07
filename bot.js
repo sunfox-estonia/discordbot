@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const Roll20 = require('d20');
 const mysql = require('mysql');
 const client = new Discord.Client();
 const config = require('./config.json');
@@ -79,6 +80,7 @@ client.on("message", async message => {
             msg = msg + '/levelup [@пользователь] [# ачивки] - добавить ачивку пользователю. Ачивки и их коды смотри: https://wiki.sunfox.ee/\n';
         }
         msg = msg + '/profile [@пользователь] - показать профиль пользователя и список его достижений.\n';
+        msg = msg + '/roll [XdX] [XdX] [...] - бросить кубик и показать выпавшее значение. По умолчанию бросает 1d6.\n';
         message.reply(msg);
     }
     
@@ -88,7 +90,7 @@ client.on("message", async message => {
             return message.reply(" у вас нет права запускать эту команду!");
         if(args.length<2)
             return message.reply(" пожалуйста укажите тег пользователя и наименование сообщества!");
-        
+                
         var usr = message.mentions.users.first().id;
         var com = args.slice(1);            
         var sql = `SELECT * FROM drd_users WHERE uid = ?;`;        
@@ -255,6 +257,34 @@ client.on("message", async message => {
             }
         });
     }
+
+    // ROLL DICES
+    if(command === "roll") {
+        var result = [];
+        if(args.length > 0){
+            for (i = 0; i < args.length; i++) {
+                let p = args[i].match(/(\d{0,1})[d](\d{1,2})/g);
+                result.push(Roll20.verboseRoll(p[0]));  
+            }
+        }else{
+            result.push(Roll20.verboseRoll(6));
+        }
+        for (i = 0; i < result.length; i++) {
+            if(args.length > 0){
+                var dice = args[i].match(/[d](\d{1,2})/g); // dice[0]
+            }else{
+                var dice = ["d6"];
+            }
+            for (n = 0; n < result[i].length; n++) {
+                var img =  dice[0] + '-' + result[i][n] + '.png';
+                var full_uri = 'https://sunfox.ee/resources/img/discord_bot/dice/' + img;
+                const attachment = new MessageAttachment(full_uri);
+                message.channel.send(attachment);
+            }
+        }
+        
+    }
+
 });
 
 client.login(config.token);
