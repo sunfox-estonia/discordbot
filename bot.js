@@ -277,12 +277,10 @@ client.on("message", async message => {
             }
             for (n = 0; n < result[i].length; n++) {
                 var img =  dice[0] + '-' + result[i][n] + '.png';
-                var full_uri = 'https://sunfox.ee/resources/img/discord_bot/dice/' + img;
-                const attachment = new MessageAttachment(full_uri);
-                message.channel.send(attachment);
+                message.channel.send({file: 'https://sunfox.ee/resources/img/discord_bot/dice/' + img});
+
             }
-        }
-        
+        }        
     }
 
 });
