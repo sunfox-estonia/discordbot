@@ -51,30 +51,10 @@ client.on("message", async message => {
         // const m = await message.channel.send("Wait...");
         // m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
     //}
-    
-    // SHOW UPCOMING EVENTS
-    if(command === "calendar" || command === "events") {
-        var request = require('request');
-        var count = (args[0] > 0) ? args[0] : 4;
-        var url = `https://sunfox.ee/events/json/ru/${count}/0`;
-        request({
-            url: url,
-            json: true
-        }, function (error, response, data) {
-            if (!error && response.statusCode === 200) {
-                var msg = ' вот список мероприятий:\n';
-                for (event in data) {
-                    var msg = msg + `${data[event]['time_daymonth']} в ${data[event]['time_timeonly']} :small_orange_diamond: ${data[event]['title']['0']} (${data[event]['location']})\n`;
-                }
-            message.reply(msg);
-            }
-        })
-    }
-    
+        
     // SHOW AVAILABLE COMMANDS
     if(command === "help") {
         var msg = ' вот список доступных команд:\n';
-        msg = msg + `/events [число] - показать список предстоящих мероприятий;\n`;
         if(message.member.roles.some(r=>JSON.stringify(config.admin_roles).includes(r.name))){
             msg = msg + '/adduser [@пользователь] [viruviking|einherjar] - добавить нового пользователя в сообщество;\n';
             msg = msg + '/levelup [@пользователь] [# ачивки] - добавить ачивку пользователю. Ачивки и их коды смотри: https://wiki.sunfox.ee/\n';
@@ -282,7 +262,6 @@ client.on("message", async message => {
             }
         }        
     }
-
 });
 
 client.login(config.token);
