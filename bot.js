@@ -262,6 +262,15 @@ client.on("message", async message => {
             }
         }        
     }
+
+    // RND CARD
+    if(command === "card") {    
+        var crd = ['2','3','3','5','6','7','8','9','10','A','J','K','Q'];
+        var clr = ['C','D','H','S'];
+        var rndCrd = crd[Math.floor(Math.random()*crd.length)];
+        var rndClr = clr[Math.floor(Math.random()*clr.length)];
+        message.channel.send({file: 'https://sunfox.ee/resources/img/discord_bot/card/' + rndCrd + rndClr + '.png'});
+    }
 });
 
 client.login(config.token);
