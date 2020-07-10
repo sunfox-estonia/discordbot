@@ -61,6 +61,7 @@ CREATE TABLE `drd_achievements` (
   `title` varchar(55) NOT NULL,
   `description` varchar(512) DEFAULT NULL,
   `community` varchar(55) NOT NULL,
+  `coins` smallint(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -70,6 +71,7 @@ CREATE TABLE `drd_users` (
   `uid` varchar(55) NOT NULL,
   `level` smallint(6) NOT NULL,
   `community` varchar(55) DEFAULT NULL,
+  `coins` smallint(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

@@ -61,6 +61,7 @@ client.on("message", async message => {
         }
         msg = msg + '/profile [@пользователь] - показать профиль пользователя и список его достижений.\n';
         msg = msg + '/roll [XdX] [XdX] [...] - бросить кубы и показать выпавшие значения. По умолчанию бросает 1d6.\n';
+        msg = msg + '/card - вытягивает случайную карту из колоды в 54 карты.\n';
         message.reply(msg);
     }
     
@@ -103,7 +104,7 @@ client.on("message", async message => {
             var usr = message.author;
         }
         var uid = usr.id; 
-        var sql = "SELECT drd_users.uid, drd_users.level, drd_users.community, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level AND drd_users.community = drd_levels.community WHERE drd_users.uid = ? LIMIT 1;";        
+        var sql = "SELECT drd_users.uid, drd_users.level, drd_users.community,  drd_users.coins, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level AND drd_users.community = drd_levels.community WHERE drd_users.uid = ? LIMIT 1;";        
         database.query(sql, [uid], function(err, user_source, fields) {
             if(err){console.log(err)};             
             
@@ -114,7 +115,7 @@ client.on("message", async message => {
                     var profile = new Discord.RichEmbed()
                         .setAuthor(usr.username)
                         .setTitle(String.fromCodePoint(user_source[0].symbol) +' '+ user_source[0].title)
-                        .setDescription(user_source[0].level +' уровень')
+                        .setDescription(user_source[0].level +' уровень | ' + user_source[0].coins + ' золотых')
                         .setThumbnail(usr.avatarURL)
                         .addBlankField();                        
                     if(lvls_source.length>0){
@@ -161,7 +162,7 @@ client.on("message", async message => {
         
         // Add achievemnt to user account
         
-        var sql = "SELECT drd_users.id, drd_users.uid, drd_users.level, drd_users.community, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE uid = ? LIMIT 1; SELECT * FROM drd_achievements WHERE code = ?;";        
+        var sql = "SELECT drd_users.id, drd_users.uid, drd_users.level, drd_users.community, drd_users.coins, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE uid = ? LIMIT 1; SELECT * FROM drd_achievements WHERE code = ?;";        
         database.query(sql, [usr, lvl], function(err, results, fields) {
             if(err){console.log(err)};            
             if (results[0].length != 1 || results[1].length != 1){
@@ -182,11 +183,16 @@ client.on("message", async message => {
                         var sql = `INSERT INTO drd_usr_ach (ach_id, user_id) VALUES (?, ?);`;
                         database.query(sql, [level_data[0].code, user_data[0].uid], function (err, pingback) {
                             if(err) console.log(err);
-                        });                     
+                        });         
+                        let coins_sum = user_data[0].coins + level_data[0].coins;
+                        var sql = `UPDATE drd_users SET coins = ? WHERE uid = ?;`;
+                        database.query(sql, [coins_sum, user_data[0].uid], function (err, pingback) {
+                            if(err) console.log(err);
+                        });
                         var report = new Discord.RichEmbed()
                             .setTitle(message.mentions.users.first().username+' получил новую ачивку!')
                             .setThumbnail('https://sunfox.ee/resources/img/discord_bot/alert_scroll.png')
-                            .addField(':ballot_box_with_check: - ' + level_data[0].title, level_data[0].description)
+                            .addField(':ballot_box_with_check: - ' + level_data[0].title + ' (' +  level_data[0].coins + ' золотых)', level_data[0].description)
                             .addBlankField()
                             .setTimestamp();
                         switch (user_data[0].community){
@@ -239,7 +245,7 @@ client.on("message", async message => {
     }
 
     // ROLL DICES
-    if(command === "roll") {
+    if(command === "roll" || command === "r") {
         var result = [];
         if(args.length > 0){
             for (i = 0; i < args.length; i++) {
@@ -264,7 +270,7 @@ client.on("message", async message => {
     }
 
     // RND CARD
-    if(command === "card") {    
+    if(command === "card" || command === "c") {    
         var crd = ['2','3','3','5','6','7','8','9','10','A','J','K','Q'];
         var clr = ['C','D','H','S'];
         var rndCrd = crd[Math.floor(Math.random()*crd.length)];
