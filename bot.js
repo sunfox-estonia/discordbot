@@ -38,6 +38,9 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on("message", async message => {
+	
+	console.log(message.member.roles);
+	
     if(message.author.bot) return;
 
     if(message.content.indexOf(prefix) !== 0) return;
@@ -58,6 +61,7 @@ client.on("message", async message => {
         if(message.member.roles.some(r=>JSON.stringify(config.admin_roles).includes(r.name))){
             msg = msg + '/adduser [@пользователь] [viruviking|einherjar] - добавить нового пользователя в сообщество;\n';
             msg = msg + '/levelup [@пользователь] [# ачивки] - добавить ачивку пользователю. Ачивки и их коды смотри: https://wiki.sunfox.ee/\n';
+            msg = msg + '/addcoins [@пользователь] [количество монет] - добавить монеты на аккаунт пользователю.\n';
         }
         msg = msg + '/profile [@пользователь] - показать профиль пользователя и список его достижений.\n';
         msg = msg + '/roll [XdX] [XdX] [...] - бросить кубы и показать выпавшие значения. По умолчанию бросает 1d6.\n';
@@ -240,6 +244,50 @@ client.on("message", async message => {
                     });                    
                 }
             });
+            }
+        });
+    }
+
+    // ADD COINS TO USER
+    if(command === "addcoins") {      
+        if(!message.member.roles.some(r=>JSON.stringify(config.admin_roles).includes(r.name)))
+            return message.reply(" у вас нет права запускать эту команду!");
+
+        if(args.length<2)
+            return message.reply(" пожалуйста укажите тег пользователя и количество монет, добавляемых на счет!");
+                
+        let add_coins = parseInt(args.slice(1));
+        let usr = message.mentions.users.first().id;
+        
+        var sql = "SELECT id, uid, community, coins FROM drd_users WHERE uid = ? LIMIT 1;";
+        database.query(sql, [usr], function(err, result, fields) {
+            if(err){console.log(err)};      
+            if (result.length != 1){                
+                return message.reply(" указанных данных не существует в базе!");
+            } else {
+                var user_data = Object.values(result);
+                let coins_sum = user_data[0].coins + add_coins;
+                var sql = `UPDATE drd_users SET coins = ? WHERE uid = ?;`;
+                database.query(sql, [coins_sum, user_data[0].uid], function (err, pingback) {
+                    if(err) console.log(err);
+                });
+                var report = new Discord.RichEmbed()
+                .setTitle(message.mentions.users.first().username+' получил монеты!')
+                .setThumbnail('https://sunfox.ee/resources/img/discord_bot/alert_coins.png')
+                .setDescription('На аккаунт пользователя добавлено ' + add_coins + ' золотых.')
+                .addBlankField()
+                .setTimestamp();
+                switch (user_data[0].community){
+                    case 'viruviking':
+                        report.setFooter('Викинги Вирумаа', 'https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png').setColor('#0099ff');
+                        break;
+                    case 'einherjar':
+                        report.setFooter('Einherjar', 'https://sunfox.ee/resources/img/discord_bot/er_sq_logo.jpg').setColor('#808000');
+                        break;
+                }
+                let channel = message.guild.channels.find(channel => channel.name === "log");
+                if (!channel) return;
+                channel.send(report);        
             }
         });
     }
