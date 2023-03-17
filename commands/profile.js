@@ -9,7 +9,7 @@ const database = mysql.createConnection({
     debug: false,
     multipleStatements: true,
   });
-const guild = client.guilds.cache.get(config.guildId);
+
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -20,6 +20,8 @@ module.exports = {
 			.setDescription('Имя пользователя')),
 
 	async execute(interaction) {
+		const guild = Message.guild.members.cache.get();
+
 		// Check if member is admin, and recieve target user data.
 		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
 		if (hasAdminRole == true) {
