@@ -27,12 +27,12 @@ npm install --save mysql.js
 Далее скорректируйте файл config.json по шаблону:
 ```json
 {
-    	"token": "[your Discord bot token here]",
-	    "clientId": "[your Application ID here]",
-	    "guildId": "[your Discord Server ID here]",
-        "log_channel": "[read-only log channel ID here]",
-        "admin_roles": { [Moderator & Admin roles title here] },
-        "db_config": {"host":"localhost", "dbname":"[database title]", "dbuser":"[database username]", "dbpass":"[database user password]" }
+  "token": "[your Discord bot token here]",
+  "clientId": "[your Application ID here]",
+  "guildId": "[your Discord Server ID here]",
+  "log_channel": "[read-only log channel ID here]",
+  "admin_roles": { [Moderator & Admin roles title here] },
+  "db_config": {"host":"localhost", "dbname":"[database title]", "dbuser":"[database username]", "dbpass":"[database user password]" }
 }
 ```
 Выполните регистрацию команд бота. Для этого в директории бота выполните команду:
