@@ -25,12 +25,12 @@ module.exports = {
 
 		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
 		if (hasAdminRole == 'true') {
-			var data_user = interaction.options.getMember('target_user') ?? interaction.member ;
+			var data_user = interaction.options.getMember('target_user') ?? interaction.member.user.id ;
 		} else {
-			var data_user = interaction.member;
+			var data_user = interaction.member.user.id ;
 		}
 
-		console.log('Has admin role - '+ interaction.member.user.username + ' - ' + hasAdminRole + ", TARGET: " + interaction.options.getMember('target_user') );
+		console.log('Has admin role - '+ interaction.member.user.username + ' - ' + hasAdminRole + ", TARGET: " + data_user );
 
 		//console.log(interaction.member);
 
