@@ -20,58 +20,76 @@ module.exports = {
 			.setDescription('Имя пользователя')),
 
 	async execute(interaction) {
+		// Check if member is admin, and recieve target user data.
 		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
 		if (hasAdminRole == true) {
 			console.log('Ima Admin');
 			if (interaction.options.getMember('target_user') == false) {
-				var data_user = interaction.member.user.id;
+				var member_id = interaction.member.user.id;
 			} else {
-				var data_user = interaction.options.getMember('target_user');
+				var member_id = interaction.options.getMember('target_user');
 			}
 		} else {
-			var data_user = interaction.member.user.id ;
+			var member_id = interaction.member.user.id ;
 		}
+
+		let member_data = client.members.cache.get(member_id);
+
+		console.log(member_data);
+
+		// Prepare MySQL request to retrieve user data	
+		let sql1 = "SELECT drd_users.uid, drd_users.level, drd_users.coins, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE drd_users.uid = ? LIMIT 1;";   
+		database.query(sql1, [member_id], (error1, result_userdata, fields) => {
+			if (error1) {
+			  return console.log(error1.message);
+			}
+			if (result_userdata.length == 1){
+
+				// Prepare MySQL request to get user-specific achievements list
+				let sql2 = "SELECT drd_achievements.code, drd_achievements.title, drd_achievements.description, drd_usr_ach.date FROM drd_achievements LEFT JOIN drd_usr_ach ON drd_achievements.code = drd_usr_ach.ach_id AND drd_usr_ach.user_id = ? WHERE drd_achievements.level = ?;"; 
+				database.query(sql2, [result_userdata[0].uid, result_userdata[0].level], function(error2, result_levels, fields) {
+					if (error2) {
+						return console.log(error2.message);
+					} 
+				
+				var embed_profile = {
+					title: (String.fromCodePoint(result_levels[0].symbol) +' '+ result_levels[0].title),
+					description: user_source[0].level +' уровень | ' + user_source[0].coins + ' золотых',
+					color: 0x0099ff,
+					thumbnail: {
+						url: member_data.avatarURL
+					},
+					author: {
+						name: "Vitgor Sunfox"      
+					},
+					fields: [
+						{
+						name: "\u200b",
+						value:"\u200b"
+					},
+					{
+						name: ":white_medium_square: - Невидимый убийца",
+						value: "С возвышенности 10 м. бросить LARP-копьё (сулицу), попав не менее 3 раз из 5 в размеченную зону диаметром 3 метра."
+					},
+					{
+						name: "\u200b",
+						value:"\u200b"
+					}
+					],
+					timestamp: new Date().toISOString(),
+					footer: {
+						icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
+						text: "Викинги Вирумаа"
+					},
+				}
+
+
+
+			}			
+		});
+		  
 
 		
-
-		console.log('Has admin role - '+ interaction.member.user.username + "("+interaction.member.user.id+")" + ' - ' + hasAdminRole + ", PREP TARGET: "+interaction.options.getMember('target_user')+", FINAL TARGET: " + data_user );
-
-		//console.log(interaction.member);
-
-		var embed_profile = {
-			title: ":knife: Викинг",
-			description: "1 уровень | 30 золотых",
-			color: 0x0099ff,
-			thumbnail: {
-				url: "https://cdn.discordapp.com/avatars/363400912733208587/4bcbdac3afa52ce859dad372b1809796.png?size=2048"
-			},
-			author: {
-				name: "Vitgor Sunfox"      
-			},
-			fields: [
-				{
-				name: "\u200b",
-				value:"\u200b"
-			},
-			{
-				name: ":ballot_box_with_check: - Сельский фехтовальщик",
-				value: "Вооружившись топором, победить противника с аналогичным оружием."
-			},
-			{
-				name: ":white_medium_square: - Невидимый убийца",
-				value: "С возвышенности 10 м. бросить LARP-копьё (сулицу), попав не менее 3 раз из 5 в размеченную зону диаметром 3 метра."
-			},
-			{
-				name: "\u200b",
-				value:"\u200b"
-			}
-			],
-			timestamp: new Date().toISOString(),
-			footer: {
-				icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
-				text: "Викинги Вирумаа"
-			},
-		}
 		
 		await interaction.reply({embeds: [embed_profile]});
 	},
