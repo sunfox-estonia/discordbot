@@ -16,7 +16,7 @@ module.exports = {
 			const data_user = interaction.member;
 		}
 
-
+		console.log('user: '+data_user);
 
 		var embed_profile = {
 			title: ":knife: Викинг",
@@ -53,6 +53,6 @@ module.exports = {
 			},
 		}
 		
-		await interaction.reply(data_user);
+		await interaction.reply({embeds: [embed_profile]});
 	},
 };
