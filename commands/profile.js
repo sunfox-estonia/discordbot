@@ -27,7 +27,9 @@ module.exports = {
 			var data_user = interaction.member;
 		}
 
-		console.log(interaction.member);
+		console.log('Has admin role - '+ interaction.member.username + ' - ' + hasAdminRole);
+
+		//console.log(interaction.member);
 
 		var embed_profile = {
 			title: ":knife: Викинг",
