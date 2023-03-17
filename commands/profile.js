@@ -21,7 +21,7 @@ module.exports = {
 
 	async execute(interaction) {
 		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
-		if (hasAdminRole == true) {
+		if (hasAdminRole == 'true') {
 			var data_user = interaction.options.getUser('target_user') ?? interaction.member ;
 		} else {
 			var data_user = interaction.member;
