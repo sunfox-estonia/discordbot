@@ -12,7 +12,7 @@ NodeJS приложение для управления сообществами
 
 ## Установка
 Технические требования:
-* Node.JS >= 10.16.3
+* Node.JS >= 16.19.1
 * MySQL >= 5.5
 
 Подключитесь к своему серверу по протоколу SSH, разверните репозиторий в рабочую директорию и инициализируйте Node.JS в ней же:
@@ -20,9 +20,7 @@ NodeJS приложение для управления сообществами
 git clone https://github.com/Viruviking/discordbot.git bot.discord
 cd bot.discord/
 npm init -y
-npm install d20
-npm install --save discord.js
-npm install --save mysql.js
+npm install
 ```
 Далее скорректируйте файл config.json по шаблону:
 ```json
