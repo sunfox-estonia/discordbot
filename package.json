@@ -10,9 +10,10 @@
   "author": "Sunfox Team NGO",
   "license": "GNU",
   "dependencies": {
-    "d20": "^1.4.1",
-    "discord.js": "^11.6.4",
-    "mysql.js": "^1.0.2"
+    "d20": "*",
+    "discord.js": "*",
+    "mysql.js": "*",
+    "fs": "*"
   },
   "repository": {
     "type": "git",
