@@ -20,6 +20,6 @@ module.exports = {
             }
             console.log('Connected to the MySQL server database '+ config.db_config.dbname +'@'+ config.db_config.host +'.');
           });
-          console.log(`Logged in Discord as ${c.user.tag}!`);
+          console.log(`Logged in Discord as ${client.user.tag}!`);
 	},
 };
