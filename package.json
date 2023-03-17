@@ -13,7 +13,8 @@
     "d20": "*",
     "discord.js": "*",
     "mysql.js": "*",
-    "fs": "*"
+    "fs": "*",
+    "events": "*"
   },
   "repository": {
     "type": "git",
