@@ -21,15 +21,13 @@ module.exports = {
 
 	async execute(interaction) {
 		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
-		console.log('user = '+interaction.member);
-
 		if (hasAdminRole == true) {
-			const data_user = interaction.options.getUser('target_user') ?? interaction.member ;
+			var data_user = interaction.options.getUser('target_user') ?? interaction.member ;
 		} else {
-			const data_user = interaction.member;
+			var data_user = interaction.member;
 		}
 
-		console.log('user: '+data_user);
+		console.log(data_user);
 
 		var embed_profile = {
 			title: ":knife: Викинг",
