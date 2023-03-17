@@ -30,7 +30,7 @@ module.exports = {
 			var data_user = interaction.member.user.id ;
 		}
 
-		console.log('Has admin role - '+ interaction.member.user.username + ' - ' + hasAdminRole + ", TARGET: " + data_user );
+		console.log('Has admin role - '+ interaction.member.user.username + "("+interaction.member.user.id+")" + ' - ' + hasAdminRole + ", PREP TARGET: "+interaction.options.getMember('target_user')+", FINAL TARGET: " + data_user );
 
 		//console.log(interaction.member);
 
