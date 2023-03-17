@@ -10,6 +10,11 @@ const database = mysql.createConnection({
     multipleStatements: true,
   });
 
+const client = new Client({ intents: [
+	GatewayIntentBits.Guilds,
+	GatewayIntentBits.GuildMembers,
+] });
+
 
 module.exports = {
 	data: new SlashCommandBuilder()
