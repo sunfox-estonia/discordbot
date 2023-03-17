@@ -20,9 +20,6 @@ module.exports = {
 			.setDescription('Имя пользователя')),
 
 	async execute(interaction) {
-
-
-
 		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
 		if (hasAdminRole == true) {
 			console.log('Ima Admin');
@@ -32,9 +29,10 @@ module.exports = {
 				var data_user = interaction.options.getMember('target_user');
 			}
 		} else {
-			console.log('Ima User');
 			var data_user = interaction.member.user.id ;
 		}
+
+		
 
 		console.log('Has admin role - '+ interaction.member.user.username + "("+interaction.member.user.id+")" + ' - ' + hasAdminRole + ", PREP TARGET: "+interaction.options.getMember('target_user')+", FINAL TARGET: " + data_user );
 

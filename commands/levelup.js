@@ -16,7 +16,7 @@ module.exports = {
 
 	async execute(interaction) {
 		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
-		if (hasAdminRole === FALSE) {
+		if (hasAdminRole == false) {
 			const locales = {
 				en: 'You do not have permission to execute this command!',
 				et: 'Te ei saa sellist skripti käivitada!',
