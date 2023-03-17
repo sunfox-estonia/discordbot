@@ -27,7 +27,7 @@ module.exports = {
 			var data_user = interaction.member;
 		}
 
-		console.log(data_user);
+		console.log(interaction.member);
 
 		var embed_profile = {
 			title: ":knife: Викинг",
