@@ -9,7 +9,14 @@ module.exports = {
 			.setDescription('Имя пользователя')),
 
 	async execute(interaction) {
-		const data_user = interaction.options.getUser('target_user') ?? interaction.member ;
+		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
+		if (hasAdminRole === TRUE) {
+			const data_user = interaction.options.getUser('target_user') ?? interaction.member ;
+		} else {
+			const data_user = interaction.member;
+		}
+
+
 
 		var embed_profile = {
 			title: ":knife: Викинг",
@@ -33,6 +40,10 @@ module.exports = {
 			{
 				name: ":white_medium_square: - Невидимый убийца",
 				value: "С возвышенности 10 м. бросить LARP-копьё (сулицу), попав не менее 3 раз из 5 в размеченную зону диаметром 3 метра."
+			},
+			{
+				name: "\u200b",
+				value:"\u200b"
 			}
 			],
 			timestamp: new Date().toISOString(),
@@ -42,6 +53,6 @@ module.exports = {
 			},
 		}
 		
-		await interaction.reply({embeds: [embed_profile]});
+		await interaction.reply(data_user);
 	},
 };
