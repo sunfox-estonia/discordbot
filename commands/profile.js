@@ -20,7 +20,8 @@ module.exports = {
 			.setDescription('Имя пользователя')),
 
 	async execute(interaction) {
-		const guild = Message.guild.members.cache.get();
+		const guild = client.guilds.cache.get(config.guildId);
+
 
 		// Check if member is admin, and recieve target user data.
 		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
@@ -34,7 +35,7 @@ module.exports = {
 			var member_id = interaction.member.user.id ;
 		}
 
-		let member_data = guild.members.fetch(member_id);
+		let member_data = guild.members.cache.get(member_id);
 
 		console.log(member_data);
 
