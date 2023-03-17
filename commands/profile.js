@@ -33,7 +33,7 @@ module.exports = {
 			var member_id = interaction.member.user.id ;
 		}
 
-		let member_data = client.members.cache.get(member_id);
+		let member_data = interaction.members.cache.get(member_id);
 
 		console.log(member_data);
 
