@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const Roll20 = require('d20');
 
 module.exports = {
 	data: new SlashCommandBuilder()

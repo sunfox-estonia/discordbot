@@ -2,7 +2,6 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const config = require('./config.json');
-const Roll20 = require('d20');
 const mysql = require('mysql');
 const database = mysql.createConnection({
     host: config.db_config.host,
