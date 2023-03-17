@@ -21,9 +21,9 @@ module.exports = {
 		const data_dice = interaction.options.getString('dice_type') ?? 'd6';
 
 		let p = data_dice.match(/(\d{0,1})[d](\d{1,2})/g);
-		result = Roll20.verboseRoll(p);  
+		result = Roll20.verboseRoll(p[0]);  
 		var img =  data_dice + '-' + result + '.png';
-		console.log('p='+p);
+		console.log('p='+p[0]);
 		console.log('result='+result);
 
 		await interaction.reply(result);	
