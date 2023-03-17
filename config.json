@@ -1,6 +1,8 @@
 {
-    "token": "[your Discord bot token here]",
-    "log_channel": "[read-only log channel title here]",
-    "admin_roles": { [Moderator & Admin roles title here] },
-    "db_config": {"host":"localhost", "dbname":"[database title]", "dbuser":"[database username]", "dbpass":"[database user password]" }
+	"token": "NDMyODc5Mzk5OTk4NzE3OTUy.XhiX0A.EeYB6Sq4xxbKKpRkakgBDToyvng",
+	"clientId": "432879399998717952",
+	"guildId": "364866543701590040",
+	"log_channel_id": "621398274452094976",
+	"admin_roles": "Координаторы",
+	"db_config": { "host": "localhost", "dbname": "sfx_drdbot", "dbuser": "sfx_drdbot_usr", "dbpass":"WXdWY4bo6tZ8bFAG" }
 }

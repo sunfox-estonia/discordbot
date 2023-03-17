@@ -8,11 +8,7 @@ NodeJS приложение для управления сообществами
 * по команде показывает профиль участника, включая уровень и список полученных достижений (а также тех, которые требуется получить для достижения нового уровня)
 * бросает кубы для d4-d20 в неограниченном количестве, и показывает результат
 * выдает случайную игральную карту из колоды
-
-TODO:
-* научить бота добавлять достижения и уровни в базу из интерфейса
-* добавить возможность работы с произвольными сообществами (в данный момент для этого нужно вносить хардовые изменения)
-* добавить возможность получения "голды" за некоторые достижения (от включения возможности приобретать "достижения" мы отказались)
+* по запросу создает мероприятия и контролирует регистрацию участников на них
 
 ## Установка
 Технические требования:
@@ -31,11 +27,17 @@ npm install --save mysql.js
 Далее скорректируйте файл config.json по шаблону:
 ```json
 {
-        "token": "[your Discord bot token here]",
-        "log_channel": "[read-only log channel title here]",
+    	"token": "[your Discord bot token here]",
+	    "clientId": "[your Application ID here]",
+	    "guildId": "[your Discord Server ID here]",
+        "log_channel": "[read-only log channel ID here]",
         "admin_roles": { [Moderator & Admin roles title here] },
         "db_config": {"host":"localhost", "dbname":"[database title]", "dbuser":"[database username]", "dbpass":"[database user password]" }
 }
+```
+Выполните регистрацию команд бота. Для этого в директории бота выполните команду:
+```bash
+node deploy-commands.js
 ```
 Создайте базу данных в соответствии с данными подключения, указанными в файле конфигурации. Для развертывания БД выполните следующий код MySQL:
 ```mysql
@@ -50,7 +52,6 @@ CREATE TABLE `drd_levels` (
   `level` smallint(6) NOT NULL,
   `title` varchar(55) NOT NULL,
   `symbol` varchar(55) NOT NULL,
-  `community` varchar(55) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -61,7 +62,6 @@ CREATE TABLE `drd_achievements` (
   `level` smallint(6) NOT NULL,
   `title` varchar(55) NOT NULL,
   `description` varchar(512) DEFAULT NULL,
-  `community` varchar(55) NOT NULL,
   `coins` smallint(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -71,7 +71,6 @@ CREATE TABLE `drd_users` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `uid` varchar(55) NOT NULL,
   `level` smallint(6) NOT NULL,
-  `community` varchar(55) DEFAULT NULL,
   `coins` smallint(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -87,7 +86,16 @@ CREATE TABLE `drd_usr_ach` (
 ```
 Внимание! База данных не содержит материалов (ачивок и уровней системы достижений).
 
+## Запуск бота
 Для запуска бота выполните команду из рабочей директории:
 ```bash
-node bot.js
+node index.js
 ```
+Мы рекомендуем добавить CRON-задачу с интервалом запуска в 1 час:
+```bash
+killall -9 node; node /path/to/bot/index.js;
+```
+## Дополнительная инфомрация
+Чтобы получить ID Discord-сервера или его канала, включите "Режим разработчика" (смотри: "Настройки пользователя" -> "Расширенные").
+
+Вы можете добавить новые коменды и EMBED-объекты с нужными Вам данными в них. Для генерации EMBED-объектов в формате JSON рекомендуем использовать сервис: https://leovoel.github.io/embed-visualizer/
