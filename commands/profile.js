@@ -9,7 +9,7 @@ const database = mysql.createConnection({
     debug: false,
     multipleStatements: true,
   });
-
+const guild = client.guilds.cache.get(config.guildId);
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -23,7 +23,6 @@ module.exports = {
 		// Check if member is admin, and recieve target user data.
 		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
 		if (hasAdminRole == true) {
-			console.log('Ima Admin');
 			if (interaction.options.getMember('target_user') == false) {
 				var member_id = interaction.member.user.id;
 			} else {
