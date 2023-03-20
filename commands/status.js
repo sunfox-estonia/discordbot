@@ -24,6 +24,7 @@ module.exports = {
 			}
 
 			const channel = client.channels.cache.get(config.log_channel_id);
+			member.guild.defaultChannel.send('Server status - OK');
 			channel.send('Server status - OK');
 		},
 };
