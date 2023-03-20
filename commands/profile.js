@@ -1,4 +1,4 @@
-const { GatewayIntentBits, Client, SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
@@ -31,7 +31,7 @@ module.exports = {
 			var member_id = interaction.member.user.id ;
 		}
 
-		let members_array = interaction.client.members.fetch();
+		let members_array = interaction.guild.members.fetch()
 
 
 		console.log(members_array);
