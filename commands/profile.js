@@ -38,7 +38,7 @@ module.exports = {
 		}
 
 
-		const member_data = interaction.guild.members.fetch({ member_id, force: true }).then(console.log).catch(console.error);
+		const member_data = interaction.guild.members.fetch({ member_id, force: true }).catch(console.error);
 
 		console.log(member_data);
 		return 'end';
