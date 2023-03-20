@@ -24,6 +24,6 @@ module.exports = {
 			}
 
 			const channel = client.channels.cache.get(config.log_channel_id);
-			channel.send({ content: 'Secret content.', ephemeral: true });
+			channel.send('Server status - OK');
 		},
 };
