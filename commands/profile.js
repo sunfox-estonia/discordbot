@@ -38,7 +38,7 @@ module.exports = {
 		}
 
 
-		const member_data = interaction.guild;
+		const member_data = interaction.guild.members.list;
 
 		return member_data;
 		console.log(member_data.tag);
