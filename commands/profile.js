@@ -74,7 +74,7 @@ function prepareEmbed(user_data) {
 					description: result_userdata[0].level +' уровень | ' + result_userdata[0].coins + ' золотых',
 					color: 0x0099ff,
 					thumbnail: {
-						url: member_data.avatarURL
+						url: user_data.avatarURL
 					},
 					author: {
 						name: "Vitgor Sunfox"      
