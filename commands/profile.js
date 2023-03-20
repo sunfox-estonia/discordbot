@@ -1,4 +1,4 @@
-const {  Client, Collection, SlashCommandBuilder } = require('discord.js');
+const {  Client, GatewayIntentBits, SlashCommandBuilder } = require('discord.js');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
