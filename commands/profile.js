@@ -68,11 +68,10 @@ function prepareEmbed(user_data) {
                     return 'false';
                 }		
 
-				console.log("Data to filter "+result_userdata[0].uid+", "+result_userdata[0].level);
 
 				var embed_profile = {
-					title: (String.fromCodePoint(result_levels[0].symbol) +' '+ result_levels[0].title),
-					description: user_source[0].level +' уровень | ' + user_source[0].coins + ' золотых',
+					title: (String.fromCodePoint(result_userdata[0].symbol) +' '+ result_userdata[0].title),
+					description: result_userdata[0].level +' уровень | ' + result_userdata[0].coins + ' золотых',
 					color: 0x0099ff,
 					thumbnail: {
 						url: member_data.avatarURL
