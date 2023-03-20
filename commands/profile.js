@@ -34,7 +34,7 @@ module.exports = {
 		await interaction.guild.members.fetch(member_id).then(
 			fetchedUser => {
 				var embed_profile = prepareEmbed(fetchedUser.user);
-				console.log(embed_profile);
+
 				interaction.reply({embeds: [embed_profile]});
 			}
 
@@ -50,10 +50,12 @@ function prepareEmbed(user_data) {
 		if (error1) {
 			return 'false';
 		}
-		if (result_userdata.length == 0){
+		if (result_userdata.length == 0 || result_userdata.length > 1){
 			return 'false';
 		}
-		if (result_userdata.length == 1 || result_userdata.length > 1){
+		if (result_userdata.length == 1){
+
+			console.log("First SQL done");
 
 			let sql2 = "SELECT drd_achievements.code, drd_achievements.title, drd_achievements.description, drd_usr_ach.date FROM drd_achievements LEFT JOIN drd_usr_ach ON drd_achievements.code = drd_usr_ach.ach_id AND drd_usr_ach.user_id = ? WHERE drd_achievements.level = ?;"; 
 			database.query(sql2, [result_userdata[0].uid, result_userdata[0].level], function(error2, result_levels, fields) {
@@ -64,6 +66,8 @@ function prepareEmbed(user_data) {
                     return 'false';
                 }
 				if (result_levels.length == 1){
+
+					console.log("Second SQL done");
 
 					console.log("Data to filter "+result_userdata[0].uid+", "+result_userdata[0].level);
 
