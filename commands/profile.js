@@ -64,47 +64,44 @@ function prepareEmbed(user_data) {
 				if (error2) {
 					return 'false';
 				} 
-				if (result_levels.length == 0 || result_levels.length > 1){
+				if (result_levels.length == 0){
                     return 'false';
-                }
-				if (result_levels.length == 1){
+                }		
 
-					
+				console.log("Data to filter "+result_userdata[0].uid+", "+result_userdata[0].level);
 
-					console.log("Data to filter "+result_userdata[0].uid+", "+result_userdata[0].level);
-
-					var embed_profile = {
-						title: (String.fromCodePoint(result_levels[0].symbol) +' '+ result_levels[0].title),
-						description: user_source[0].level +' уровень | ' + user_source[0].coins + ' золотых',
-						color: 0x0099ff,
-						thumbnail: {
-							url: member_data.avatarURL
-						},
-						author: {
-							name: "Vitgor Sunfox"      
-						},
-						fields: [
-							{
-							name: "\u200b",
-							value:"\u200b"
-						},
+				var embed_profile = {
+					title: (String.fromCodePoint(result_levels[0].symbol) +' '+ result_levels[0].title),
+					description: user_source[0].level +' уровень | ' + user_source[0].coins + ' золотых',
+					color: 0x0099ff,
+					thumbnail: {
+						url: member_data.avatarURL
+					},
+					author: {
+						name: "Vitgor Sunfox"      
+					},
+					fields: [
 						{
-							name: ":white_medium_square: - Невидимый убийца",
-							value: "С возвышенности 10 м. бросить LARP-копьё (сулицу), попав не менее 3 раз из 5 в размеченную зону диаметром 3 метра."
-						},
-						{
-							name: "\u200b",
-							value:"\u200b"
-						}
-						],
-						timestamp: new Date().toISOString(),
-						footer: {
-							icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
-							text: "Викинги Вирумаа"
-						},
+						name: "\u200b",
+						value:"\u200b"
+					},
+					{
+						name: ":white_medium_square: - Невидимый убийца",
+						value: "С возвышенности 10 м. бросить LARP-копьё (сулицу), попав не менее 3 раз из 5 в размеченную зону диаметром 3 метра."
+					},
+					{
+						name: "\u200b",
+						value:"\u200b"
 					}
-					return embed_profile;					
-				}	
+					],
+					timestamp: new Date().toISOString(),
+					footer: {
+						icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
+						text: "Викинги Вирумаа"
+					},
+				}
+				return embed_profile;					
+				
 			});
 		}	
 	});	
