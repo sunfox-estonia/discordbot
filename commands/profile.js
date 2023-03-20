@@ -33,7 +33,7 @@ module.exports = {
 
 		await interaction.guild.members.fetch(member_id).then(
 			fetchedMember => {
-				console.log(fetchedMember);
+				console.log(fetchedMember.user.id);
 			}
 
 		).catch(console.error);
