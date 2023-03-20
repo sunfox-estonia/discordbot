@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const {  Client, Collection, SlashCommandBuilder } = require('discord.js');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
@@ -9,6 +9,12 @@ const database = mysql.createConnection({
     debug: false,
     multipleStatements: true,
   });
+const client = new Client({ intents: [
+	GatewayIntentBits.Guilds,
+	GatewayIntentBits.GuildMessages,
+	GatewayIntentBits.MessageContent,
+	GatewayIntentBits.GuildMembers,
+] });
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -32,8 +38,7 @@ module.exports = {
 		}
 
 
-
-		const guild = interaction.guild.cache.get();
+		const guild = client.guilds.cache.get(config.guild_id);
 		const members = await guild.members.fetch();
 		return members;
 
