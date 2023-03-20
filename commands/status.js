@@ -24,7 +24,7 @@ module.exports = {
 			}
 
 			//const channel = interaction.channels.cache.get(config.log_channel_id);
-			interaction.guild.defaultChannel.send('Server status - OK2');
+			interaction.guild.defaultChannel.reply('Server status - OK2');
 			//channel.send('Server status - OK1');
 		},
 };
