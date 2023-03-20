@@ -99,7 +99,9 @@ function prepareEmbed(user_data) {
 						text: "Викинги Вирумаа"
 					},
 				}
-				return embed_profile;					
+
+				console.log(embed_profile);
+				//return embed_profile;					
 				
 			});
 		}	
