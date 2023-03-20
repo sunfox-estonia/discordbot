@@ -40,7 +40,7 @@ module.exports = {
 
 		const member_data = interaction.guild.members.fetch({ member_id, cache: false });
 
-
+		return member_data;
 		console.log(member_data.tag);
 
 		// Prepare MySQL request to retrieve user data	
