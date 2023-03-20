@@ -31,11 +31,9 @@ module.exports = {
 			var member_id = interaction.member.user.id ;
 		}
 
-		const guild_members = interaction.guild.members.fetch({force: true, cache: false }).catch(console.error);
+		const guild_member = interaction.guild.members.cache.fetch(member_id).then(console.log).catch(console.error);
 
-		console.log(guild_members);
-		member_data = guild_members.find(member => member.id === member_id);
-		console.log(member_data);
+
 
 		return 'end';
 
