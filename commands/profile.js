@@ -40,7 +40,7 @@ module.exports = {
 
 		const member_data = await interaction.guild.members.fetch({ member_id, force: true }).catch(console.error);
 
-		console.log(member_data);
+		console.log(member_data.user.id);
 		return 'end';
 
 		// Prepare MySQL request to retrieve user data	
