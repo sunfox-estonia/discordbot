@@ -22,7 +22,7 @@ module.exports = {
 		// Check if member is admin, and recieve target user data.
 		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
 		if (hasAdminRole == true) {
-			if (interaction.options.getMember('target_user') == false) {
+			if (interaction.options.getMember('target_user') == 'null') {
 				var member_id = interaction.member.user.id;
 			} else {
 				var member_id = interaction.options.getMember('target_user');
@@ -31,7 +31,7 @@ module.exports = {
 			var member_id = interaction.member.user.id ;
 		}
 
-		console.log("Member ID = "+interaction.options.getMember('target_user'));
+		console.log("Member ID = "+member_id);
 
 		await interaction.guild.members.fetch(member_id).then(
 			fetchedMembers => {
