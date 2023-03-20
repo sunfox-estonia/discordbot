@@ -31,7 +31,7 @@ module.exports = {
 			var member_id = interaction.member.user.id ;
 		}
 
-		console.log("Member ID = "+interaction.member.user.id);
+		console.log("Member ID = "+interaction.options.getMember('target_user'));
 
 		await interaction.guild.members.fetch(member_id).then(
 			fetchedMembers => {
