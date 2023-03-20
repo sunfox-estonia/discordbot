@@ -1,4 +1,4 @@
-const {  Client, GatewayIntentBits, SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
@@ -9,12 +9,6 @@ const database = mysql.createConnection({
     debug: false,
     multipleStatements: true,
   });
-const client = new Client({ intents: [
-	GatewayIntentBits.Guilds,
-	GatewayIntentBits.GuildMessages,
-	GatewayIntentBits.MessageContent,
-	GatewayIntentBits.GuildMembers,
-] });
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -37,11 +31,15 @@ module.exports = {
 			var member_id = interaction.member.user.id ;
 		}
 
+		const guild_members = await interaction.guild.members.fetch({force: true, cache: false }).console.log().catch(console.error);
 
-		const member_data = await interaction.guild.members.fetch({ member_id, force: true }).catch(console.error);
-
-		console.log(member_data.user.id);
 		return 'end';
+
+		await interaction.guild.members.fetch();
+		//const member_data = interaction.guild.members.cache.find(member => member.id === member_id);
+
+
+		console.log(member_data);
 
 		// Prepare MySQL request to retrieve user data	
 		let sql1 = "SELECT drd_users.uid, drd_users.level, drd_users.coins, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE drd_users.uid = ? LIMIT 1;";   
