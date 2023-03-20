@@ -33,9 +33,9 @@ module.exports = {
 
 		await interaction.guild.members.fetch().then(
 			fetchedMembers => {
-				const member_data =  fetchedMembers.filter(member => member.id === member_id);
+				const member_data = fetchedMembers.filter(member => member.user.id === member_id);
 				// Now you have a collection with all online member objects in the totalOnline variable
-				console.log(fetchedMembers);
+				console.log(member_data);
 			}
 
 		).catch(console.error);
