@@ -65,7 +65,7 @@ function prepareEmbed(user_data) {
                 }
 				if (result_levels.length == 1){
 
-					console.log(result_levels);
+					console.log(result_levels[0]);
 
 					var embed_profile = {
 						title: (String.fromCodePoint(result_levels[0].symbol) +' '+ result_levels[0].title),
