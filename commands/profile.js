@@ -31,7 +31,14 @@ module.exports = {
 			var member_id = interaction.member.user.id ;
 		}
 
-		const guild_member = interaction.guild.members.cache.fetch(member_id).then(console.log).catch(console.error);
+		await interaction.guild.members.fetch({member_id, cache: false, force: true}).then(
+			fetchedMember => {
+				const member_data = fetchedMember;
+				// Now you have a collection with all online member objects in the totalOnline variable
+				console.log(member_data.id);
+			}
+
+		).catch(console.error);
 
 
 
