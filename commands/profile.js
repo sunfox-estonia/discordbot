@@ -38,7 +38,7 @@ module.exports = {
 		}
 
 
-		const member_data = interaction.guild.members.fetch({ member_id, cache: false });
+		const member_data = interaction.guild;
 
 		return member_data;
 		console.log(member_data.tag);
