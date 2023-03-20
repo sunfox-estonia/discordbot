@@ -34,8 +34,8 @@ module.exports = {
 		await interaction.guild.members.fetch(member_id).then(
 			fetchedUser => {
 				var embed_profile = prepareEmbed(fetchedUser.user);
-
-				interaction.reply({embeds: [embed_profile]});
+				console.log(embed_profile);
+				//interaction.reply({embeds: [embed_profile]});
 			}
 
 		).catch(console.error);	
@@ -99,9 +99,7 @@ function prepareEmbed(user_data) {
 						text: "Викинги Вирумаа"
 					},
 				}
-
-				console.log(embed_profile);
-				//return embed_profile;					
+				return embed_profile;					
 				
 			});
 		}	
