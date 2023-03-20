@@ -35,7 +35,7 @@ module.exports = {
 			fetchedMembers => {
 				const member_data =  fetchedMembers.filter(member => member.id === member_id);
 				// Now you have a collection with all online member objects in the totalOnline variable
-				console.log(member_data);
+				console.log(fetchedMembers);
 			}
 
 		).catch(console.error);
