@@ -40,8 +40,8 @@ module.exports = {
 
 		const member_data = interaction.guild.members.list;
 
-		return member_data;
-		console.log(member_data.tag);
+		console.log(member_data);
+		return 'end';
 
 		// Prepare MySQL request to retrieve user data	
 		let sql1 = "SELECT drd_users.uid, drd_users.level, drd_users.coins, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE drd_users.uid = ? LIMIT 1;";   
