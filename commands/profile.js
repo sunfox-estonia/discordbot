@@ -24,22 +24,16 @@ module.exports = {
 		if (hasAdminRole == true) {
 			if (interaction.options.getMember('target_user') == null) {
 				var member_id = interaction.member.user.id;
-				console.log("target_user is null");
 			} else {
 				var member_id = interaction.options.getMember('target_user');
-				console.log("target_user is not null");
 			}
 		} else {
 			var member_id = interaction.member.user.id ;
 		}
 
-		console.log("Member ID = "+member_id);
-
 		await interaction.guild.members.fetch(member_id).then(
-			fetchedMembers => {
-				//const member_data = fetchedMembers.filter(member => member.user.id === member_id);
-				// Now you have a collection with all online member objects in the totalOnline variable
-				//console.log(fetchedMembers);
+			fetchedMember => {
+				console.log(fetchedMember);
 			}
 
 		).catch(console.error);
