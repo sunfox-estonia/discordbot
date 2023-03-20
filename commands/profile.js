@@ -32,12 +32,10 @@ module.exports = {
 		}
 
 		await interaction.guild.members.fetch();
-		var member_data = interaction.guild.members.cache.find(member => member.id === member_id);
+		const member_data = interaction.guild.members.cache.find(member => member.id === member_id);
 
 
-
-
-		await console.log(member_data);
+		console.log(member_data);
 
 		// Prepare MySQL request to retrieve user data	
 		let sql1 = "SELECT drd_users.uid, drd_users.level, drd_users.coins, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE drd_users.uid = ? LIMIT 1;";   
