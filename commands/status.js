@@ -17,8 +17,10 @@ module.exports = {
 				await interaction.reply(locales[interaction.locale] ?? 'У вас недостаточно прав для выполнения этой команды!');
 			}
 
-			const channel = await interaction.client.channels.cache.get(config.log_channel_id);
-channel.send("Test");
+			
 
+			const channel = await interaction.client.channels.cache.get(config.log_channel_id);
+			await channel.send("Test");
+			await interaction.reply('Command has been successfully executed!');
 		},
 };
