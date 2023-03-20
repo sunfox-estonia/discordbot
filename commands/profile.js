@@ -59,6 +59,8 @@ function prepareEmbed(user_data) {
 
 			let sql2 = "SELECT drd_achievements.code, drd_achievements.title, drd_achievements.description, drd_usr_ach.date FROM drd_achievements LEFT JOIN drd_usr_ach ON drd_achievements.code = drd_usr_ach.ach_id AND drd_usr_ach.user_id = ? WHERE drd_achievements.level = ?;"; 
 			database.query(sql2, [result_userdata[0].uid, result_userdata[0].level], function(error2, result_levels, fields) {
+				console.log("Second SQL done = " + result_levels.length);
+
 				if (error2) {
 					return 'false';
 				} 
@@ -67,7 +69,7 @@ function prepareEmbed(user_data) {
                 }
 				if (result_levels.length == 1){
 
-					console.log("Second SQL done");
+					
 
 					console.log("Data to filter "+result_userdata[0].uid+", "+result_userdata[0].level);
 
