@@ -49,6 +49,6 @@ module.exports = {
 			},
 		}
 
-		await client.channels.cache.get(config.log_channel_id_id).send({embeds: [embed_addcoins]});
+		await client.channels.cache.get(config.log_channel_id).send({embeds: [embed_addcoins]});
 	},
 };
