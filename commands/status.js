@@ -1,4 +1,11 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits , Client } = require('discord.js');
+const config = require('../config.json');
+const client = new Client({ intents: [
+	GatewayIntentBits.Guilds,
+	GatewayIntentBits.GuildMessages,
+	GatewayIntentBits.MessageContent,
+	GatewayIntentBits.GuildMembers,
+] });
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -16,7 +23,7 @@ module.exports = {
 				await interaction.reply(locales[interaction.locale] ?? 'У вас недостаточно прав для выполнения этой команды!');
 			}
 
-
-			await interaction.reply({ content: 'Secret answer.', ephemeral: true });
+			const channel = client.channels.cache.get(config.log_channel_id);
+			channel.send({ content: 'Secret content.', ephemeral: true });
 		},
 };

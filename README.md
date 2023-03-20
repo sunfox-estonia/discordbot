@@ -26,9 +26,9 @@ npm install
 ```json
 {
   "token": "[your Discord bot token here]",
-  "clientId": "[your Application ID here]",
-  "guildId": "[your Discord Server ID here]",
-  "log_channel": "[read-only log channel ID here]",
+  "client_id": "[your Application ID here]",
+  "guild_id": "[your Discord Server ID here]",
+  "log_channel_id": "[read-only log channel ID here]",
   "admin_roles": { [Moderator & Admin roles title here] },
   "db_config": {"host":"localhost", "dbname":"[database title]", "dbuser":"[database username]", "dbpass":"[database user password]" }
 }
