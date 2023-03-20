@@ -22,10 +22,12 @@ module.exports = {
 		// Check if member is admin, and recieve target user data.
 		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
 		if (hasAdminRole == true) {
-			if (interaction.options.getMember('target_user') == 'null') {
+			if (interaction.options.getMember('target_user') == null) {
 				var member_id = interaction.member.user.id;
+				console.log("target_user is null");
 			} else {
 				var member_id = interaction.options.getMember('target_user');
+				console.log("target_user is not null");
 			}
 		} else {
 			var member_id = interaction.member.user.id ;
