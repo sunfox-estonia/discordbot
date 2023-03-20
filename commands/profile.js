@@ -38,11 +38,7 @@ module.exports = {
 		}
 
 
-		const guild = client.guilds.cache.get(config.guild_id);
-		const members = await guild.members.fetch();
-		return members;
-
-		const member_data = interaction.guild.members.cache.get(member_id);
+		const member_data = interaction.guild.members.fetch({ member_id, cache: false });
 
 
 		console.log(member_data.tag);
