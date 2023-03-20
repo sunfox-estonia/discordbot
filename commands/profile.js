@@ -32,18 +32,11 @@ module.exports = {
 		}
 
 		await interaction.guild.members.fetch(member_id).then(
-			fetchedMember => {
-				console.log(fetchedMember.user.id);
+			fetchedUser => {
+				const member_data = fetchedUser;
 			}
 
 		).catch(console.error);
-
-
-
-		return 'end';
-
-
-		//const member_data = interaction.guild.members.cache.find(member => member.id === member_id);
 
 
 		console.log(member_data);
