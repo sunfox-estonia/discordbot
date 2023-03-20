@@ -34,7 +34,7 @@ module.exports = {
 		await interaction.guild.members.fetch(member_id).then(
 			fetchedUser => {
 				var embed_profile = prepareEmbed(fetchedUser.user);
-				console.log(fetchedUser.user);
+				console.log(embed_profile);
 				interaction.reply({embeds: [embed_profile]});
 			}
 
