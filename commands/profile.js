@@ -36,13 +36,13 @@ module.exports = {
 				getProfile(fetchedUser.user.id,function(error,user_profile){
 					if (error != null) {
 						console.log(error);
-						interaction.reply({content: error});
+						interaction.reply(error);
 					} else {
 						console.log("Go ahead!");
 						getProgress(fetchedUser.user.id,user_profile.level,function(error,user_progress){
 							if (err !== null) {
 								console.log(error);
-								interaction.reply({content: error});
+								interaction.reply(error);
 							} else {	
 	
 								const embed_progress = [{name: "\u200b",value:"\u200b"}];
