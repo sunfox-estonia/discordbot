@@ -69,9 +69,9 @@ module.exports = {
 								},
 							}
 					
-							const channel = await interaction.client.channels.cache.get(config.log_channel_id);
-							await channel.send({embeds: [embed_addcoins]});
-							await interaction.reply('Command has been successfully executed!');
+							const channel = interaction.client.channels.cache.get(config.log_channel_id);
+							channel.send({embeds: [embed_addcoins]});
+							interaction.reply('Command has been successfully executed!');
 
 						}
 					// updateCoins closed
