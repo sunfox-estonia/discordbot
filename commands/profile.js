@@ -90,8 +90,8 @@ getProfile = function(user_id,callback) {
 		if (result_userdata.length == 0 || result_userdata.length > 1){
 			console.log("Profile Database Request - ERROR");
 		}
-		const user_profile = result_userdata[0];
 		console.log("Profile Database Request - OK");
+		callback(null,result_userdata[0]);
 	});
 }
 
