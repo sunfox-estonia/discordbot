@@ -36,6 +36,7 @@ module.exports = {
 				getProfile(fetchedUser.user.id,function(err,user_profile){
 					getProgress(fetchedUser.user.id,user_profile.level,function(err,user_progress){
 
+						console.log(fetchedUser.user.avatarURL);
 						const embed_progress = [{name: "\u200b",value:"\u200b"}];
 
 						for (i=0; i<user_progress.length; i++) {
