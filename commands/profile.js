@@ -90,12 +90,11 @@ getProfile = function(user_id, callback) {
 	let sql1 = "SELECT drd_users.uid, drd_users.level, drd_users.coins, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE drd_users.uid = ? LIMIT 1;";   
 	database.query(sql1, [user_id], (error1, result_userdata, fields) => {
 		if (error1) {
-			console.log("Profile Database First Request - ERROR");
+			interaction.reply('Ошибка получения профиля пользователя.');
 		}
 		if (result_userdata.length == 0 || result_userdata.length > 1){
-			console.log("Profile Database First Request - ERROR");
+			interaction.reply('Указанный пользователь не добавлен в Систему Достижений.');
 		}
-		console.log("Profile Database First Request - OK");
 		callback(null,result_userdata[0]);
 	});
 }
@@ -104,12 +103,11 @@ getProgress = function (user_id, user_level, callback) {
 	let sql2 = "SELECT drd_achievements.code, drd_achievements.title, drd_achievements.description, drd_usr_ach.date FROM drd_achievements LEFT JOIN drd_usr_ach ON drd_achievements.code = drd_usr_ach.ach_id AND drd_usr_ach.user_id = ? WHERE drd_achievements.level = ?;"; 
 	database.query(sql2, [user_id, user_level], function(error2, result_levels, fields) {
 		if (error2) {
-			console.log("Profile Database Second Request - ERROR");
+			interaction.reply('Ошибка получения достижений пользователя.');
 		} 
 		if (result_levels.length == 0){
-			console.log("Profile Database Second Request - ERROR");
+			interaction.reply('Ошибка получения достижений пользователя.');
 		}
-		console.log("Profile Database Second Request - OK");
 		callback(null,result_levels);
 	});
 }
