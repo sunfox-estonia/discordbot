@@ -37,22 +37,22 @@ module.exports = {
 				const user_progress = getProgress(fetchedUser.user.id,user_profile.level);
 				const embed_progress = [];
 
-				for (i=0; i<user_progress.length; i++) {
+				// for (i=0; i<user_progress.length; i++) {
 
-					if(user_progress[i].date === null ){
-						var item_checkbox = ':white_medium_square:';
-					}else{
-						var item_checkbox = ':ballot_box_with_check:';
-					}
-					item_name = item_checkbox + " - " +  user_progress[i].title;
+				// 	if(user_progress[i].date === null ){
+				// 		var item_checkbox = ':white_medium_square:';
+				// 	}else{
+				// 		var item_checkbox = ':ballot_box_with_check:';
+				// 	}
+				// 	item_name = item_checkbox + " - " +  user_progress[i].title;
 
-					var embed_progress_item = { name: item_name, value: user_progress[i].description };
-					embed_progress.push(embed_progress_item);
-				}
+				// 	var embed_progress_item = { name: item_name, value: user_progress[i].description };
+				// 	embed_progress.push(embed_progress_item);
+				// }
 
 				var embed_profile = {
 					title: (String.fromCodePoint(user_profile.symbol) +' '+ user_profile.title),
-					description: user_profile.level +' уровень | ' + user_profile.coins + ' золотых',
+					//description: user_profile.level +' уровень | ' + user_profile.coins + ' золотых',
 					color: 0x0099ff,
 					thumbnail: {
 						url: fetchedUser.user.avatarURL
