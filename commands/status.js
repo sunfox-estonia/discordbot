@@ -20,7 +20,7 @@ module.exports = {
 			
 
 			const channel = await interaction.client.channels.cache.get(config.log_channel_id);
-			await channel.send("Test");
+			await channel.send("");
 			await interaction.reply('Command has been successfully executed!');
 		},
 };
