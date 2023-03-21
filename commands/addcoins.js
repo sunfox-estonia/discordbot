@@ -62,7 +62,7 @@ module.exports = {
 							var embed_addcoins = {
 								title: fetchedUser.user.username + " получил монеты!",
 								description: "На аккаунт пользователя добавлено " + data_coins + " золотых.",
-								color: 2763454,			
+								color: 0x0099ff,			
 								thumbnail: {
 									url: "https://sunfox.ee/resources/img/discord_bot/alert_coins.png"
 								},
