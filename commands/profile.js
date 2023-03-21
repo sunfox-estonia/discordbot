@@ -34,6 +34,7 @@ module.exports = {
 		await interaction.guild.members.fetch(member_id).then(
 			fetchedUser => {
 				const user_profile = getProfile(fetchedUser.user.id);
+				console.log(user_profile);
 				const user_progress = getProgress(fetchedUser.user.id,user_profile.level);
 				const embed_progress = [];
 
