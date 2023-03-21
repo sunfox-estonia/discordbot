@@ -34,17 +34,13 @@ module.exports = {
 		await interaction.guild.members.fetch(member_id).then(
 			fetchedUser => {
 				getProfile(fetchedUser.user.id,function(err,user_profile){
-
 					if (err != null) {
-						console.log("Caught error: " + err);
-						return;
+						interaction.reply({content: err});
 					}
 
 					getProgress(fetchedUser.user.id,user_profile.level,function(err,user_progress){
-
 						if (err != null) {
-							console.log("Caught error: " + err);
-							return;
+							interaction.reply({content: err});
 						}
 
 						const embed_progress = [{name: "\u200b",value:"\u200b"}];
