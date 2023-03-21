@@ -36,7 +36,7 @@ module.exports = {
 				getProfile(fetchedUser.user.id,function(err,user_profile){
 					getProgress(fetchedUser.user.id,user_profile.level,function(err,user_progress){
 
-						const embed_progress = [];
+						const embed_progress = [{name: "\u200b",value:"\u200b"}];
 
 						for (i=0; i<user_progress.length; i++) {
 		
@@ -50,6 +50,8 @@ module.exports = {
 							var embed_progress_item = { name: item_name, value: user_progress[i].description };
 							embed_progress.push(embed_progress_item);
 						}
+
+						embed_progress.push({name: "\u200b",value:"\u200b"});
 		
 						var embed_profile = {
 							title: (String.fromCodePoint(user_profile.symbol) +' '+ user_profile.title),
