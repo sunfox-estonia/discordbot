@@ -33,15 +33,15 @@ module.exports = {
 
 		await interaction.guild.members.fetch(member_id).then(
 			fetchedUser => {
-				getProfile(fetchedUser.user.id,function(err,user_profile){
-					if (err !== null) {
-						error_message = "Произошла ошибка при получении профиля пользователя";
-						interaction.reply({content: error_message});
+				getProfile(fetchedUser.user.id,function(error,user_profile){
+					if (error != null) {
+						console.log(error);
+						interaction.reply({content: error});
 					} else {
-						getProgress(fetchedUser.user.id,user_profile.level,function(err,user_progress){
+						getProgress(fetchedUser.user.id,user_profile.level,function(error,user_progress){
 							if (err !== null) {
-								error_message = "Произошла ошибка при получении достижений пользователя";
-								interaction.reply({content: error_message});
+								console.log(error);
+								interaction.reply({content: error});
 							} else {	
 	
 								const embed_progress = [{name: "\u200b",value:"\u200b"}];
