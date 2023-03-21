@@ -33,8 +33,39 @@ module.exports = {
 
 		await interaction.guild.members.fetch(member_id).then(
 			fetchedUser => {
-				const embed_profile = prepareEmbed(fetchedUser.user);
+				//const embed_profile = prepareEmbed(fetchedUser.user);
 				//console.log(embed_profile);
+				var embed_profile = {
+					// title: (String.fromCodePoint(result_userdata[0].symbol) +' '+ result_userdata[0].title),
+					// description: result_userdata[0].level +' уровень | ' + result_userdata[0].coins + ' золотых',
+					// color: 0x0099ff,
+					// thumbnail: {
+					// 	url: user_data.avatarURL
+					// },
+					author: {
+						name: "Vitgor Sunfox"      
+					},
+					fields: [
+						{
+						name: "\u200b",
+						value:"\u200b"
+					},
+					{
+						name: ":white_medium_square: - Невидимый убийца",
+						value: "С возвышенности 10 м. бросить LARP-копьё (сулицу), попав не менее 3 раз из 5 в размеченную зону диаметром 3 метра."
+					},
+					{
+						name: "\u200b",
+						value:"\u200b"
+					}
+					],
+					timestamp: new Date().toISOString(),
+					footer: {
+						icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
+						text: "Викинги Вирумаа"
+					},
+				}
+
 				interaction.reply({embeds: [embed_profile]});
 			}
 
