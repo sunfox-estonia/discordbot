@@ -38,6 +38,7 @@ module.exports = {
 						console.log(error);
 						interaction.reply({content: error});
 					} else {
+						console.log("Go ahead!");
 						getProgress(fetchedUser.user.id,user_profile.level,function(error,user_progress){
 							if (err !== null) {
 								console.log(error);
