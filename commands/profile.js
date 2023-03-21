@@ -34,14 +34,11 @@ module.exports = {
 		await interaction.guild.members.fetch(member_id).then(
 			fetchedUser => {
 				getProfile(fetchedUser.user.id,function(error,user_profile){
-					if (error != null) {
-						console.log(error);
+					if (error) {
 						interaction.reply(error);
 					} else {
-						console.log("Go ahead!");
 						getProgress(fetchedUser.user.id,user_profile.level,function(error,user_progress){
-							if (err !== null) {
-								console.log(error);
+							if (error) {
 								interaction.reply(error);
 							} else {	
 	
@@ -103,9 +100,11 @@ getProfile = function(user_id, callback) {
 	database.query(sql1, [user_id], (error1, result_userdata, fields) => {
 		if (error1) {
 			callback("Ошибка получения профиля пользователя.",null);
+			return;
 		}
 		if (result_userdata.length == 0 || result_userdata.length > 1){
 			callback("Ошибка получения профиля пользователя.",null);
+			return;
 		}
 		callback(null,result_userdata[0]);
 	});
@@ -116,9 +115,11 @@ getProgress = function (user_id, user_level, callback) {
 	database.query(sql2, [user_id, user_level], function(error2, result_levels, fields) {
 		if (error2) {
 			callback('Ошибка получения достижений пользователя.',null);
+			return;
 		} 
 		if (result_levels.length == 0){
 			callback('Ошибка получения достижений пользователя.',null);
+			return;
 		}
 		callback(null,result_levels);
 	});
