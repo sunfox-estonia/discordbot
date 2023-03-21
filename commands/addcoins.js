@@ -79,14 +79,10 @@ module.exports = {
 				// else closed
 				}
 			// getProfile closed
-			});	
-		
+			});			
 		// await interaction.guild.members.fetch closed
-		}
-
-
-
-	},
+		});
+	}
 };
 
 getProfile = function(user_id, callback) {
