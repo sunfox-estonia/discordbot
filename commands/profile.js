@@ -34,53 +34,58 @@ module.exports = {
 		await interaction.guild.members.fetch(member_id).then(
 			fetchedUser => {
 				getProfile(fetchedUser.user.id,function(err,user_profile){
-					if (err)
-						interaction.reply({content: err});
-
-					getProgress(fetchedUser.user.id,user_profile.level,function(err,user_progress){
-						if (err)
-							interaction.reply({content: err});
-
-
-						const embed_progress = [{name: "\u200b",value:"\u200b"}];
-
-						for (i=0; i<user_progress.length; i++) {
+					if (err !== null) {
+						error_message = "Произошла ошибка при получении профиля пользователя";
+						interaction.reply({content: error_message});
+					} else {
+						getProgress(fetchedUser.user.id,user_profile.level,function(err,user_progress){
+							if (err !== null) {
+								error_message = "Произошла ошибка при получении достижений пользователя";
+								interaction.reply({content: error_message});
+							} else {	
+	
+								const embed_progress = [{name: "\u200b",value:"\u200b"}];
 		
-							if(user_progress[i].date === null ){
-								var item_checkbox = ':white_medium_square:';
-							}else{
-								var item_checkbox = ':ballot_box_with_check:';
+								for (i=0; i<user_progress.length; i++) {
+				
+									if(user_progress[i].date === null ){
+										var item_checkbox = ':white_medium_square:';
+									}else{
+										var item_checkbox = ':ballot_box_with_check:';
+									}
+									item_name = item_checkbox + " - " +  user_progress[i].title;
+				
+									var embed_progress_item = { name: item_name, value: user_progress[i].description };
+									embed_progress.push(embed_progress_item);
+								}
+		
+								embed_progress.push({name: "\u200b",value:"\u200b"});
+				
+								var embed_profile = {
+									title: (String.fromCodePoint(user_profile.symbol) +' '+ user_profile.title),
+									description: user_profile.level +' уровень | ' + user_profile.coins + ' золотых',
+									color: 0x0099ff,
+									thumbnail: {
+										url: "https://cdn.discordapp.com/avatars/" + fetchedUser.user.id + "/" + fetchedUser.user.avatar + ".png"
+									},
+									author: {
+										name: fetchedUser.user.username      
+									},
+									fields: embed_progress,
+									timestamp: new Date().toISOString(),
+									footer: {
+										icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
+										text: "Викинги Вирумаа"
+									},
+								}
+
+								interaction.reply({embeds: [embed_profile]});
+							// else closed
 							}
-							item_name = item_checkbox + " - " +  user_progress[i].title;
-		
-							var embed_progress_item = { name: item_name, value: user_progress[i].description };
-							embed_progress.push(embed_progress_item);
-						}
-
-						embed_progress.push({name: "\u200b",value:"\u200b"});
-		
-						var embed_profile = {
-							title: (String.fromCodePoint(user_profile.symbol) +' '+ user_profile.title),
-							description: user_profile.level +' уровень | ' + user_profile.coins + ' золотых',
-							color: 0x0099ff,
-							thumbnail: {
-								url: "https://cdn.discordapp.com/avatars/" + fetchedUser.user.id + "/" + fetchedUser.user.avatar + ".png"
-							},
-							author: {
-								name: fetchedUser.user.username      
-							},
-							fields: embed_progress,
-							timestamp: new Date().toISOString(),
-							footer: {
-								icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
-								text: "Викинги Вирумаа"
-							},
-						}
-		
-						interaction.reply({embeds: [embed_profile]});
-
-					// getProgress closed
-					});
+						// getProgress closed
+						});						
+					// else closed
+					}		
 				// getProfile closed
 				});
 			// fetchedUser closed
