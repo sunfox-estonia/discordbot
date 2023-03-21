@@ -33,9 +33,11 @@ module.exports = {
 
 		await interaction.guild.members.fetch(member_id).then(
 			fetchedUser => {
-				getProfile(fetchedUser.user.id);
+				get_user(fetchedUser.user.id,function(err,user_profile){
+					console.log(user_profile);
 
-				console.log(user_profile);
+				});
+
 				const user_progress = getProgress(fetchedUser.user.id,user_profile.level);
 				const embed_progress = [];
 
@@ -78,7 +80,7 @@ module.exports = {
 	},
 };
 
-function getProfile(user_id) {
+getProfile = function(user_id,callback) {
 	// Prepare MySQL request to retrieve user data	
 	let sql1 = "SELECT drd_users.uid, drd_users.level, drd_users.coins, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE drd_users.uid = ? LIMIT 1;";   
 	database.query(sql1, [user_id], (error1, result_userdata, fields) => {
