@@ -35,15 +35,15 @@ module.exports = {
 			fetchedUser => {
 				getProfile(fetchedUser.user.id,function(err,user_profile){
 
-					if (err !== null) {
-						console.log("Caught error: " + String(error));
+					if (err != null) {
+						console.log("Caught error: " + err);
 						return;
 					}
 
 					getProgress(fetchedUser.user.id,user_profile.level,function(err,user_progress){
 
-						if (err !== null) {
-							console.log("Caught error: " + String(error));
+						if (err != null) {
+							console.log("Caught error: " + err);
 							return;
 						}
 
@@ -101,10 +101,10 @@ getProfile = function(user_id, callback) {
 	let sql1 = "SELECT drd_users.uid, drd_users.level, drd_users.coins, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE drd_users.uid = ? LIMIT 1;";   
 	database.query(sql1, [user_id], (error1, result_userdata, fields) => {
 		if (error1) {
-			callback(new Error("Ошибка получения профиля пользователя."));
+			callback("Ошибка получения профиля пользователя.",null);
 		}
 		if (result_userdata.length == 0 || result_userdata.length > 1){
-			callback(new Error("Ошибка получения профиля пользователя."));
+			callback("Ошибка получения профиля пользователя.",null);
 		}
 		callback(null,result_userdata[0]);
 	});
@@ -114,10 +114,10 @@ getProgress = function (user_id, user_level, callback) {
 	let sql2 = "SELECT drd_achievements.code, drd_achievements.title, drd_achievements.description, drd_usr_ach.date FROM drd_achievements LEFT JOIN drd_usr_ach ON drd_achievements.code = drd_usr_ach.ach_id AND drd_usr_ach.user_id = ? WHERE drd_achievements.level = ?;"; 
 	database.query(sql2, [user_id, user_level], function(error2, result_levels, fields) {
 		if (error2) {
-			callback(new Error('Ошибка получения достижений пользователя.'));
+			callback('Ошибка получения достижений пользователя.',null);
 		} 
 		if (result_levels.length == 0){
-			callback(new Error('Ошибка получения достижений пользователя.'));
+			callback('Ошибка получения достижений пользователя.',null);
 		}
 		callback(null,result_levels);
 	});
