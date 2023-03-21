@@ -34,76 +34,80 @@ module.exports = {
 		await interaction.guild.members.fetch(member_id).then(
 			fetchedUser => {
 				getProfile(fetchedUser.user.id,function(err,user_profile){
-					console.log(user_profile);
+					getProgress(fetchedUser.user.id,user_profile.level,function(err,user_progress){
 
+						const embed_progress = [];
+
+						// for (i=0; i<user_progress.length; i++) {
+		
+						// 	if(user_progress[i].date === null ){
+						// 		var item_checkbox = ':white_medium_square:';
+						// 	}else{
+						// 		var item_checkbox = ':ballot_box_with_check:';
+						// 	}
+						// 	item_name = item_checkbox + " - " +  user_progress[i].title;
+		
+						// 	var embed_progress_item = { name: item_name, value: user_progress[i].description };
+						// 	embed_progress.push(embed_progress_item);
+						// }
+		
+						var embed_profile = {
+							title: (String.fromCodePoint(user_profile.symbol) +' '+ user_profile.title),
+							//description: user_profile.level +' уровень | ' + user_profile.coins + ' золотых',
+							color: 0x0099ff,
+							thumbnail: {
+								url: fetchedUser.user.avatarURL
+							},
+							author: {
+								name: fetchedUser.user.username      
+							},
+							fields: embed_progress,
+							timestamp: new Date().toISOString(),
+							footer: {
+								icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
+								text: "Викинги Вирумаа"
+							},
+						}
+		
+						interaction.reply({embeds: [embed_profile]});
+
+					// getProgress closed
+					});
+				// getProfile closed
 				});
-
-				const user_progress = getProgress(fetchedUser.user.id,user_profile.level);
-				const embed_progress = [];
-
-				// for (i=0; i<user_progress.length; i++) {
-
-				// 	if(user_progress[i].date === null ){
-				// 		var item_checkbox = ':white_medium_square:';
-				// 	}else{
-				// 		var item_checkbox = ':ballot_box_with_check:';
-				// 	}
-				// 	item_name = item_checkbox + " - " +  user_progress[i].title;
-
-				// 	var embed_progress_item = { name: item_name, value: user_progress[i].description };
-				// 	embed_progress.push(embed_progress_item);
-				// }
-
-				var embed_profile = {
-					title: (String.fromCodePoint(user_profile.symbol) +' '+ user_profile.title),
-					//description: user_profile.level +' уровень | ' + user_profile.coins + ' золотых',
-					color: 0x0099ff,
-					thumbnail: {
-						url: fetchedUser.user.avatarURL
-					},
-					author: {
-						name: fetchedUser.user.username      
-					},
-					fields: embed_progress,
-					timestamp: new Date().toISOString(),
-					footer: {
-						icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
-						text: "Викинги Вирумаа"
-					},
-				}
-
-				interaction.reply({embeds: [embed_profile]});
+			// fetchedUser closed
 			}
-
+		// await interaction.guild.members.fetch closed
 		).catch(console.error);	
 		
 	},
 };
 
-getProfile = function(user_id,callback) {
+getProfile = function(user_id, callback) {
 	// Prepare MySQL request to retrieve user data	
 	let sql1 = "SELECT drd_users.uid, drd_users.level, drd_users.coins, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE drd_users.uid = ? LIMIT 1;";   
 	database.query(sql1, [user_id], (error1, result_userdata, fields) => {
 		if (error1) {
-			console.log("Profile Database Request - ERROR");
+			console.log("Profile Database First Request - ERROR");
 		}
 		if (result_userdata.length == 0 || result_userdata.length > 1){
-			console.log("Profile Database Request - ERROR");
+			console.log("Profile Database First Request - ERROR");
 		}
-		console.log("Profile Database Request - OK");
+		console.log("Profile Database First Request - OK");
 		callback(null,result_userdata[0]);
 	});
 }
 
-function getProgress(user_id, user_level) {
+getProgress = function (user_id, user_level, callback) {
 	let sql2 = "SELECT drd_achievements.code, drd_achievements.title, drd_achievements.description, drd_usr_ach.date FROM drd_achievements LEFT JOIN drd_usr_ach ON drd_achievements.code = drd_usr_ach.ach_id AND drd_usr_ach.user_id = ? WHERE drd_achievements.level = ?;"; 
 	database.query(sql2, [user_id, user_level], function(error2, result_levels, fields) {
 		if (error2) {
-			return 'false';
+			console.log("Profile Database Second Request - ERROR");
 		} 
 		if (result_levels.length == 0){
-			return 'false';
+			console.log("Profile Database Second Request - ERROR");
 		}
-		return result_levels;
+		console.log("Profile Database Second Request - OK");
+		callback(null,result_levels);
 	});
 }
