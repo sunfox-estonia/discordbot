@@ -87,6 +87,8 @@ function getProfile(user_id) {
 		if (result_userdata.length == 0 || result_userdata.length > 1){
 			return 'false';
 		}
+
+		console.log(result_userdata[0]);
 		return result_userdata[0];
 	});
 }
