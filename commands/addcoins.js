@@ -100,7 +100,7 @@ getProfile = function(user_id, callback) {
 	let sql1 = "SELECT id, uid, community, coins FROM drd_users WHERE uid = ? LIMIT 1;";   
 	database.query(sql1, [user_id], (error1, result_userdata, fields) => {
 		if (error1) {
-			callback("Ошибка получения профиля пользователя.",null);
+			callback("Ошибка в работе базы данных.",null);
 			return;
 		}
 		if (result_userdata.length == 0 || result_userdata.length > 1){
@@ -112,7 +112,7 @@ getProfile = function(user_id, callback) {
 }
 
 updateCoins = function(user_id, coins, callback) {
-	// Prepare MySQL request to retrieve user data	
+	// Prepare MySQL request to update soins sum for selected user
 	let sql2 = "UPDATE drd_users SET coins = ? WHERE uid = ?;";   
 	database.query(sql2, [user_id, coins], (error2, pingback) => {
 		if (error2) {

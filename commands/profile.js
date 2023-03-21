@@ -97,8 +97,7 @@ module.exports = {
 			// fetchedUser closed
 			}
 		// await interaction.guild.members.fetch closed
-		).catch(console.error);	
-		
+		).catch(console.error);			
 	},
 };
 
@@ -107,7 +106,7 @@ getProfile = function(user_id, callback) {
 	let sql1 = "SELECT drd_users.uid, drd_users.level, drd_users.coins, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE drd_users.uid = ? LIMIT 1;";   
 	database.query(sql1, [user_id], (error1, result_userdata, fields) => {
 		if (error1) {
-			callback("Ошибка получения профиля пользователя.",null);
+			callback("Ошибка в работе базы данных.",null);
 			return;
 		}
 		if (result_userdata.length == 0 || result_userdata.length > 1){
