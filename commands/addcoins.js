@@ -45,7 +45,7 @@ module.exports = {
 						en: 'An error occurred while retrieving user profile.',
 						et: 'Kasutaja profiili otsimisel on tekkinud viga.',
 						};
-					interaction.reply(locales[interaction.locale] ?? error);
+					interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 				} else {	
 
 					let coins_sum = user_profile.coins + data_coins;
@@ -56,7 +56,7 @@ module.exports = {
 								en: 'An error occurred while updating user profile.',
 								et: 'Kasutaja profiili uuendamisel on tekkinud viga.',
 								};
-							interaction.reply(locales[interaction.locale] ?? error);
+							interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 						} else {
 
 							var embed_addcoins = {
@@ -80,8 +80,8 @@ module.exports = {
 							}
 					
 							const channel = interaction.client.channels.cache.get(config.log_channel_id);
-							channel.send({embeds: [embed_addcoins]});
-							interaction.reply('Command has been successfully executed!');
+							channel.send({embeds: [embed_addcoins]});							
+							interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
 
 						}
 					// updateCoins closed

@@ -39,7 +39,7 @@ module.exports = {
 							en: 'An error occurred while retrieving user profile.',
 							et: 'Kasutaja profiili otsimisel on tekkinud viga.',
 							};
-						interaction.reply(locales[interaction.locale] ?? error);
+						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 					} else {
 						getProgress(fetchedUser.user.id,user_profile.level,function(error,user_progress){
 							if (error) {
@@ -47,7 +47,7 @@ module.exports = {
 									en: 'An error occurred while retrieving user profile.',
 									et: 'Kasutaja profiili otsimisel on tekkinud viga.',
 									};
-								interaction.reply(locales[interaction.locale] ?? error);
+								interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 							} else {	
 	
 								const embed_progress = [{name: "\u200b",value:"\u200b"}];
