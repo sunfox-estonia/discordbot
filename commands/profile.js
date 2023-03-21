@@ -59,7 +59,7 @@ module.exports = {
 							description: user_profile.level +' уровень | ' + user_profile.coins + ' золотых',
 							color: 0x0099ff,
 							thumbnail: {
-								url: fetchedUser.user.avatarURL
+								url: "https://cdn.discordapp.com/avatars/" + fetchedUser.user.id + "/" + fetchedUser.user.avatar + ".png"
 							},
 							author: {
 								name: fetchedUser.user.username      
