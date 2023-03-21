@@ -33,7 +33,7 @@ module.exports = {
 
 		await interaction.guild.members.fetch(member_id).then(
 			fetchedUser => {
-				get_user(fetchedUser.user.id,function(err,user_profile){
+				getProfile(fetchedUser.user.id,function(err,user_profile){
 					console.log(user_profile);
 
 				});
