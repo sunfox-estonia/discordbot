@@ -88,8 +88,7 @@ function getProfile(user_id) {
 			return 'false';
 		}
 
-		console.log(result_userdata[0]);
-		return result_userdata[0];
+		return 'true';
 	});
 }
 
