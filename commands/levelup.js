@@ -201,8 +201,9 @@ addAchievement = function(user_data, achievement_data, callback) {
 				if (error5) {
 					callback("Ошибка обновления профиля пользователя.");
 					return;
-				}
-				callback(null);
+				} else {	
+					callback(null);
+				}				
 			});
 		}
     }); 
