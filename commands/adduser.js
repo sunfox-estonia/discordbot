@@ -99,6 +99,7 @@ checkProfileExists = function(user_id, callback) {
 	// Prepare MySQL request check if user with the same uid already exists	
 	let sql1 = "SELECT * FROM drd_users WHERE uid = ?;";   
 	database.query(sql1, [user_id], (error1, results, fields) => {
+		console.log(results);
 		if (error1) {
 			callback("Ошибка в работе базы данных.");
 			return;
