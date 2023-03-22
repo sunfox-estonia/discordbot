@@ -48,7 +48,6 @@ module.exports = {
 							};
 						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 					} else {
-						console.log("Achievement code: "+target_achievement);
 						checkAchievement(user_profile,target_achievement,function(error,achievement_data){
 							if (error) {
 								const locales = {
@@ -57,7 +56,6 @@ module.exports = {
 									};
 								interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 							} else {		
-								console.log("Achievement data: " + achievement_data);
 								addAchievement(user_profile, achievement_data,function(error){
 									if (error) {
 										const locales = {
@@ -186,7 +184,7 @@ checkAchievement = function(user_data, achievement_code, callback) {
 
 addAchievement = function(user_data, achievement_data, callback) {
 	// Add achivement for user
-
+	console.log(achievement_data);
 	let sql4 = "INSERT INTO drd_usr_ach (user_id, ach_id) VALUES (?,?);";
     database.query(sql4, [user_data.id,achievement_data.id], (error4, pingback) => {
         if (error4) {
