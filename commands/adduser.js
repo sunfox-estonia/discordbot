@@ -103,7 +103,7 @@ checkProfileExists = function(user_id, callback) {
 		if (error1) {
 			callback("Ошибка в работе базы данных.");
 			return;
-		} else if (results[0].length != 0){
+		} else if (results.length != 0){
 			callback("Данный профиль уже существует. Невозможно создать профиль.");
 			return;
 		} else {
