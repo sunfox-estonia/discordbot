@@ -169,7 +169,7 @@ checkAchievement = function(user_data, achievement_code, callback) {
 			}
 			// Check if achivement is already added for selected user
 			let sql3 = "SELECT count(*) AS rowscount FROM drd_usr_ach WHERE user_id = ? AND ach_id = ?;";
-			database.query(sql3, [user_data.id,achievement_fulldata.id], (error3, check_added, fields) => {
+			database.query(sql3, [user_data.uid,achievement_code], (error3, check_added, fields) => {
 				if (error3) {
 					callback("Ошибка в работе базы данных.",null);
 					return;
@@ -186,10 +186,10 @@ checkAchievement = function(user_data, achievement_code, callback) {
 
 addAchievement = function(user_data, achievement_data, callback) {
 	// Add achivement for user
-	console.log(user_data.id);
-	console.log(achievement_data.id);
+	console.log(user_data.uid);
+	console.log(achievement_data.code);
 	let sql4 = "INSERT INTO drd_usr_ach (user_id, ach_id) VALUES (?,?);";
-    database.query(sql4, [user_data.id,achievement_data.id], (error4, pingback) => {
+    database.query(sql4, [user_data.uid,achievement_data.code], (error4, pingback) => {
         if (error4) {
             callback("Ошибка добавления достижения в профиль пользователя.");
             return;
@@ -199,7 +199,7 @@ addAchievement = function(user_data, achievement_data, callback) {
 		let coins_sum = user_data.coins + achievement_data.coins;
 		// Prepare MySQL request to update soins sum for selected user
 		let sql5 = "UPDATE drd_users SET coins = ? WHERE uid = ?;";   
-		database.query(sql5, [user_data.id, coins_sum], (error5, pingback) => {
+		database.query(sql5, [user_data.uid, coins_sum], (error5, pingback) => {
 			if (error5) {
 				callback("Ошибка обновления профиля пользователя.");
 				return;
