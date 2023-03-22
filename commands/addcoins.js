@@ -60,7 +60,7 @@ module.exports = {
 						} else {
 
 							var embed_addcoins = {
-								title: `<@${fetchedUser.user.id}> получил монеты!`,
+								title: fetchedUser.user.username + "получил монеты!",
 								description: "На аккаунт пользователя добавлено " + data_coins + " золотых.",
 								color: 0x0099ff,			
 								thumbnail: {
@@ -80,7 +80,7 @@ module.exports = {
 							}
 					
 							const channel = interaction.client.channels.cache.get(config.log_channel_id);
-							channel.send({embeds: [embed_addcoins]});							
+							channel.send({content:`${fetchedUser.user}, для Вас весть от Хугинна:`, embeds: [embed_addcoins]});							
 							interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
 
 						}

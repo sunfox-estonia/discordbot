@@ -53,7 +53,7 @@ module.exports = {
 								interaction.reply({ content: 'Создан новый профиль пользователя для ' + fetchedUser.user.username , ephemeral: true });
 
 								var embed_adduser = {
-									title: `Ура! Профиль ${fetchedUser.user.toString()} добавлен в Систему достижений!`,
+									title: "Ура! Профиль " + fetchedUser.user.username + " добавлен в Систему достижений!",
 									description: "Участвуя в мероприятиях сообщества, Вы можете получать достижения и золотые монеты за них. Просмотреть список достижений можно, воспользовавшись командой /profile.",
 									color: 0x0099ff,			
 									thumbnail: {
@@ -84,7 +84,7 @@ module.exports = {
 									]
 								}
 								const channel = interaction.client.channels.cache.get(config.log_channel_id);
-								channel.send({embeds: [embed_adduser], components: [component_buttons]});
+								channel.send({content:`${fetchedUser.user}, для Вас весть от Хугинна:`, embeds: [embed_adduser], components: [component_buttons]});
 							}
 						});
 					}

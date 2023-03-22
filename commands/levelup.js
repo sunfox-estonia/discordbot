@@ -65,7 +65,7 @@ module.exports = {
 										interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 									} else {		
 										var embed_achievement = {
-											title: `<@${fetchedUser.user.id}> получил новую ачивку!`,
+											title: fetchedUser.user.username + " получил новую ачивку!",
 											color: 0x0099ff,			
 											thumbnail: {
 											url: "https://r.snfx.ee/img/discord_bot/alert_scroll.png"
@@ -86,7 +86,7 @@ module.exports = {
 												text: "Викинги Вирумаа"
 											},
 										}										
-										channel.send({embeds: [embed_achievement]});
+										channel.send({content:`${fetchedUser.user}, для Вас весть от Хугинна:`, embeds: [embed_achievement]});
 
 										updateLevel(user_profile, function(error,updated_profile){
 											if (error) {
@@ -97,7 +97,7 @@ module.exports = {
 												interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 											} else {
 												var embed_levelup = {
-													title: `<@${fetchedUser.user.id}> получил новый уровень!`,
+													title: fetchedUser.user.username + " получил новый уровень!",
 													color: 0x0099ff,			
 													thumbnail: {
 													url: "https://r.snfx.ee/img/discord_bot/alert_announcement.png"
