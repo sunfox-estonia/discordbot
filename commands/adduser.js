@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ComponentType } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits, ComponentType } = require('discord.js');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
