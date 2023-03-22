@@ -25,7 +25,10 @@ module.exports = {
             console.log(interaction.customId);  
             switch (interaction.customId) {
                 case 'run_profile':
-                    await interaction.reply({ content: '/profile', ephemeral: true });
+                    var command = 'profile';
+                    await command.execute(interaction);
+
+                    //await interaction.reply({ content: '/profile', ephemeral: true });
                     break;
             
                 default:
