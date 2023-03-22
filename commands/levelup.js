@@ -158,18 +158,18 @@ getProfile = function(user_id, callback) {
 checkAchievement = function(user_data, achievement_code, callback) {
 		// Check thе achievement exists and is available for user level
 		let sql2 = "SELECT * FROM drd_achievements WHERE code = ? AND level = ?;";
-		database.query(sql2, [achievement_code,user_data.level], (error2, achievement_data, fields) => {
+		database.query(sql2, [achievement_code,user_data.level], (error2, achievement_fulldata, fields) => {
 			if (error2) {
 				callback("Ошибка в работе базы данных.",null);
 				return;
 			}
-			if (result.length != 1){
+			if (achievement_fulldata.length != 1){
 				callback("Указанное достижение не существует или не доступно для выбранного пользователя.",null);
 				return;
 			}
 			// Check if achivement is already added for selected user
 			let sql3 = "SELECT count(*) AS rowscount FROM drd_usr_ach WHERE user_id = ? AND ach_id = ?;";
-			database.query(sql3, [user_data.id,achievement_data.id], (error3, check_added, fields) => {
+			database.query(sql3, [user_data.id,achievement_fulldata.id], (error3, check_added, fields) => {
 				if (error3) {
 					callback("Ошибка в работе базы данных.",null);
 					return;
@@ -179,7 +179,7 @@ checkAchievement = function(user_data, achievement_code, callback) {
 					return;
 				}
 			});	
-			callback(null,achievement_data);				
+			callback(null,achievement_fulldata);				
 		});		
 // checkAchievement ended
 }
