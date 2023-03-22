@@ -100,7 +100,7 @@ module.exports = {
 												interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 											} else {
 												var embed_levelup = {
-													title: fetchedUser.user.username + "получил новый уровень!",
+													title: fetchedUser.user.username + " получил новый уровень!",
 													color: 0x0099ff,			
 													thumbnail: {
 													url: "https://sunfox.ee/resources/img/discord_bot/alert_announcement.png"
