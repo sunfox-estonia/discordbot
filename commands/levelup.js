@@ -123,13 +123,18 @@ module.exports = {
 												channel.send({embeds: [embed_achievement, embed_levelup]});
 												interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
 											}
+										// updateLevel closed
 										});									
 									}	
+								// addAchievement closed
 								});								
 							}	
+						// checkAchievement closed
 						});
 					}
+				// getProfile closed
 				});
+			// fetchedUser closed
 			}
 		// await interaction.guild.members.fetch closed
 		).catch(console.error);	
@@ -150,6 +155,7 @@ getProfile = function(user_id, callback) {
 		}
 		callback(null,results[0]);
 	});
+// getProfile closed
 }
 
 checkAchievement = function(user_data, achievement_code, callback) {
@@ -207,19 +213,18 @@ addAchievement = function(user_data, achievement_data, callback) {
 
 updateLevel = function(user_data, callback) {
 	// Get available and done achievement count
-	let sql5 = "SELECT count(*) AS needed_count FROM drd_achievements WHERE level = ?; SELECT count(*) AS done_count FROM drd_usr_ach LEFT JOIN drd_achievements ON drd_usr_ach.ach_id = drd_achievements.code AND drd_achievements.level = ? WHERE drd_usr_ach.user_id = ?;"
-	database.query(sql5, [user_data.level,user_data.level,user_data.uid], (error5, results, fields) => {
-		if (error5) {
+	let sql6 = "SELECT count(*) AS needed_count FROM drd_achievements WHERE level = ?; SELECT count(*) AS done_count FROM drd_usr_ach LEFT JOIN drd_achievements ON drd_usr_ach.ach_id = drd_achievements.code AND drd_achievements.level = ? WHERE drd_usr_ach.user_id = ?;"
+	database.query(sql6, [user_data.level,user_data.level,user_data.uid], (error6, results6, fields) => {
+		if (error6) {
             callback("Ошибка в работе базы данных.",null);
             return;
     	}
-		console.log("Neede count: " + results[0][0].needed_count + ", Done count: " + results[1][0].done_count);
-		if (results[0][0].needed_count == results[1][0].done_count){
+		if (results6[0][0].needed_count == results6[1][0].done_count){
 			// Levelup in case of user has been done all available achievements
 			let lvl_sum = user_data.level + 1;
-			let sql6 = "UPDATE drd_users SET level =? WHERE uid =?;"; 
-			database.query(sql6, [lvl_sum,user_data.id], (error6, pingback) => {
-				if (error6) {
+			let sql7 = "UPDATE drd_users SET level =? WHERE uid =?;"; 
+			database.query(sql7, [lvl_sum,user_data.id], (error7, pingback) => {
+				if (error7) {
                     callback("Ошибка обновления профиля пользователя.",null);
                     return;
                 }				
@@ -232,8 +237,8 @@ updateLevel = function(user_data, callback) {
 					}
 				});
 			});            
-        } else if (results[0][0].needed_count < results[1][0].done_count) {
-			callback("Выбранный профиль пользователя не получит новый уровень.",null);
+        } else if (results6[0][0].needed_count < results6[1][0].done_count) {
+			callback("Выбранный профиль пользователя не получит новый уровень (" + results6[1][0].done_count + " достижений из " + results6[0][0].needed_count + ").",null);
 			return;
 		} else {
 			callback("Ошибка обновления уровня профиля пользователя.",null);
