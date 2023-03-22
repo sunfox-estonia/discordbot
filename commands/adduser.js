@@ -80,6 +80,12 @@ module.exports = {
 											"label": "Смотреть профиль",
 											"style": 1,
 											"custom_id": "user_profile"
+										},
+										{
+											"type": 2,
+											"label": "Подробнее о Системе достижений",
+											"style": 5,
+											"url": "https://vk.com/@viruviking-sistema-dostizhenii-vikingov-virumaa"
 										}
 									]
 								}
@@ -148,15 +154,15 @@ getProgress = function (user_id, user_level, callback) {
 
 createProfile = function(user_id, callback) {
 	// Prepare MySQL request to retrieve user data	
-	let sql4 = "INSERT INTO drd_users (uid, level, community) VALUES (?, 0, 'viruviking');"; 
+	//let sql4 = "INSERT INTO drd_users (uid, level, community) VALUES (?, 0, 'viruviking');"; 
 	// TODO: Remove community title when database migrates to SQLite  
-	database.query(sql4, [user_id], (error4, pingback) => {
-        if (error4) {
-            callback("Ошибка создания профиля пользователя.");
-            return;
-        } else {
+	// database.query(sql4, [user_id], (error4, pingback) => {
+    //     if (error4) {
+    //         callback("Ошибка создания профиля пользователя.");
+    //         return;
+    //     } else {
 			callback(null);
-        }
-	});
+    //     }
+	// });
 // createProfile closed
 }
