@@ -93,8 +93,7 @@ module.exports = {
 												const locales = {
 													en: 'An error occurred while user pofile updating.',
 													et: 'Kasutaja profiili uuendamisel on tekkinud viga.',
-													};												
-												channel.send({embeds: [embed_achievement]});
+													};											
 												interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 											} else {
 												var embed_levelup = {
@@ -119,9 +118,9 @@ module.exports = {
 														text: "Викинги Вирумаа"
 													},
 												}
-											//	channel.send({embeds: [embed_achievement, embed_levelup]});
 												interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
 											}
+											channel.send({embeds: [embed_achievement, embed_levelup]});
 										// updateLevel closed
 										});									
 									}	
