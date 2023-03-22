@@ -1,15 +1,11 @@
-const { Events, Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ intents: [
-	GatewayIntentBits.Guilds,
-	GatewayIntentBits.GuildMessages,
-	GatewayIntentBits.MessageContent,
-	GatewayIntentBits.GuildMembers,
-] });
+const { Events } = require('discord.js');
 
 module.exports = {
 	name: Events.InteractionCreate,
 	async execute(interaction) {
-        if (!interaction.isChatInputCommand()) return;
+        // if (!interaction.isChatInputCommand()) return;
+
+        console.log("Interaction: " + interaction);
 
         const command = interaction.client.commands.get(interaction.commandName);
     
@@ -30,8 +26,3 @@ module.exports = {
         }
 	},
 };
-
-client.on(Events.InteractionCreate, interaction => {
-	if (!interaction.isButton()) return;
-	console.log("Button: " + interaction);
-});
