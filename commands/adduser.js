@@ -90,7 +90,21 @@ module.exports = {
 									]
 								}
 								const channel = interaction.client.channels.cache.get(config.log_channel_id);
-								channel.send({content:`${fetchedUser.user}, для Вас весть от Хугинна:`, embeds: [embed_adduser], components: [component_buttons]});
+								let sent = channel.send({content:`${fetchedUser.user}, для Вас весть от Хугинна:`, embeds: [embed_adduser], components: [component_buttons]});
+
+								const collector = sent.createMessageComponentCollector({ componentType: ComponentType.Button, time: 15000 });
+
+								collector.on('collect', i => {
+									if (i.user.id === interaction.user.id) {
+										i.reply(`${i.user.id} clicked on the ${i.customId} button.`);
+									} else {
+										i.reply({ content: `These buttons aren't for you!`, ephemeral: true });
+									}
+								});
+								
+								collector.on('end', collected => {
+									console.log(`Collected ${collected.size} interactions.`);
+								});
 							}
 						});
 					}
