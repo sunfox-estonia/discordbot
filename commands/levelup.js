@@ -196,7 +196,7 @@ addAchievement = function(user_data, achievement_data, callback) {
         }
 		callback(null);
 
-		let coins_sum = user_data.coins + achievement_data.coins;
+		let coins_sum =  parseInt(user_data.coins) +  parseInt(achievement_data.coins);
 		// Prepare MySQL request to update soins sum for selected user
 		let sql5 = "UPDATE drd_users SET coins = ? WHERE uid = ?;";   
 		database.query(sql5, [user_data.uid, coins_sum], (error5, pingback) => {

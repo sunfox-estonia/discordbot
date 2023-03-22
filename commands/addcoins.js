@@ -48,7 +48,7 @@ module.exports = {
 					interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 				} else {	
 
-					let coins_sum = user_profile.coins + data_coins;
+					let coins_sum =  parseInt(user_profile.coins) +  parseInt(data_coins);
 
 					updateCoins(fetchedUser.user.id,coins_sum,function(error){	
 						if (error) {
