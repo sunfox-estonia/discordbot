@@ -219,7 +219,9 @@ updateLevel = function(user_data, callback) {
             callback("Ошибка в работе базы данных.",null);
             return;
     	}
-		if (results6[0][0].needed_count == results6[1][0].done_count){
+		var parsed_needed_count = parseInt(results6[1][0].done_count);
+		var parsed_done_count = parseInt(results6[0][0].needed_count);
+		if (parsed_done_count == parsed_needed_count){
 			// Levelup in case of user has been done all available achievements
 			let lvl_sum = user_data.level + 1;
 			let sql7 = "UPDATE drd_users SET level =? WHERE uid =?;"; 
@@ -237,8 +239,8 @@ updateLevel = function(user_data, callback) {
 					}
 				});
 			});            
-        } else if (results6[0][0].needed_count < results6[1][0].done_count) {
-			callback("Выбранный профиль пользователя не получит новый уровень (" + results6[1][0].done_count + " достижений из " + results6[0][0].needed_count + ").",null);
+        } else if (parsed_needed_count < parsed_done_count) {
+			callback("Выбранный профиль пользователя не получит новый уровень (" + parsed_done_count + " достижений из " + parsed_needed_count + ").",null);
 			return;
 		} else {
 			callback("Ошибка обновления уровня профиля пользователя.",null);
