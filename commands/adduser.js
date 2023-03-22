@@ -79,7 +79,7 @@ module.exports = {
 											"type": 2,
 											"label": "Смотреть профиль",
 											"style": 1,
-											"custom_id": "user_profile"
+											"custom_id": "run_profile"
 										},
 										{
 											"type": 2,

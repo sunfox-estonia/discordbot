@@ -22,7 +22,7 @@ module.exports = {
                 }
             }
         } else if (interaction.isButton()){
-            console.log(interaction);            
+            console.log(interaction.customId);            
         }
 	},
 };
