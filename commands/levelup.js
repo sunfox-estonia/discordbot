@@ -216,8 +216,8 @@ updateLevel = function(user_data, callback) {
             return;
     	}
 		console.log(results);
-		console.log("Needed count: " + results.needed_count + ", Done count: "+ results.done_count);
-		if (results[0].needed_count == results[1].done_count){
+		console.log("Needed count: " + results[0][0].needed_count + ", Done count: "+ results[0][1].done_count);
+		if (results[0][0].needed_count == results[0][1].done_count){
 			// Levelup in case of user has been done all available achievements
 			let lvl_sum = user_data.level + 1;
 			let sql6 = "UPDATE drd_users SET level =? WHERE uid =?;"; 
