@@ -179,6 +179,7 @@ checkAchievement = function(user_data, achievement_code, callback) {
 					return;
 				}
 			});	
+			console.log(achievement_fulldata);
 			callback(null,achievement_fulldata);				
 		});		
 // checkAchievement ended
