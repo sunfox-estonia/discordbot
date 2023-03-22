@@ -177,7 +177,8 @@ checkAchievement = function(user_data, achievement_code, callback) {
 				if (check_added.rowscount > 0){
 					callback("Указанное достижение уже добавлено для выбранного пользователя.",null);
 					return;
-				}				
+				}		
+				console.log(result[0]);		
 				callback(null,result[0]);		
 			});				
 		});		
@@ -186,6 +187,7 @@ checkAchievement = function(user_data, achievement_code, callback) {
 
 addAchievement = function(user_data, achievement_data, callback) {
 	// Add achivement for user
+
 	let sql4 = "INSERT INTO drd_usr_ach (user_id, ach_id) VALUES (?,?);";
     database.query(sql4, [user_data.id,achievement_data.id], (error4, pingback) => {
         if (error4) {
