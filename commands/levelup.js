@@ -217,33 +217,34 @@ updateLevel = function(user_data, callback) {
 		if (error6) {
             callback("Ошибка в работе базы данных.",null);
             return;
-    	}
-		var parsed_done_count = parseInt(results6[1][0].done_count);
-		var parsed_needed_count = parseInt(results6[0][0].needed_count);
-		if (parsed_done_count === parsed_needed_count){
-			// Levelup in case of user has been done all available achievements
-			let lvl_sum = user_data.level + 1;
-			let sql7 = "UPDATE drd_users SET level =? WHERE uid =?;"; 
-			database.query(sql7, [lvl_sum,user_data.uid], (error7, pingback) => {
-				if (error7) {
-                    callback("Ошибка обновления профиля пользователя.",null);
-                    return;
-                }				
-				getProfile(user_data.uid,function(error,user_profile_updated){
-					if (error) {
-						callback("Ошибка получения профиля пользователя.",null);
+    	} else {
+			var parsed_done_count = parseInt(results6[1][0].done_count);
+			var parsed_needed_count = parseInt(results6[0][0].needed_count);
+			if (parsed_done_count === parsed_needed_count){
+				// Levelup in case of user has been done all available achievements
+				let lvl_sum = user_data.level + 1;
+				let sql7 = "UPDATE drd_users SET level =? WHERE uid =?;"; 
+				database.query(sql7, [lvl_sum,user_data.uid], (error7, pingback) => {
+					if (error7) {
+						callback("Ошибка обновления профиля пользователя.",null);
 						return;
-					} else {
-						callback(null,user_profile_updated);
-					}
-				});
-			});            
-        } else if (parsed_done_count < parsed_needed_count) {
-			callback("Выбранный профиль пользователя не получит новый уровень (" + parsed_done_count + " достижений из " + parsed_needed_count + ").",null);
-			return;
-		} else {
-			callback("Ошибка обновления уровня профиля пользователя.",null);
-			return;
+					}				
+					getProfile(user_data.uid,function(error,user_profile_updated){
+						if (error) {
+							callback("Ошибка получения профиля пользователя.",null);
+							return;
+						} else {
+							callback(null,user_profile_updated);
+						}
+					});
+				});            
+			} else if (parsed_done_count < parsed_needed_count) {
+				callback("Выбранный профиль пользователя не получит новый уровень (" + parsed_done_count + " достижений из " + parsed_needed_count + ").",null);
+				return;
+			} else {
+				callback("Ошибка обновления уровня профиля пользователя.",null);
+				return;
+			}
 		}
 	});
 // updateLevel ended
