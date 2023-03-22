@@ -213,7 +213,7 @@ addAchievement = function(user_data, achievement_data, callback) {
 updateLevel = function(user_data, callback) {
 	// Get available and done achievement count
 	let sql5 = "SELECT count(*) AS needed_count FROM drd_achievements WHERE level = ?; SELECT count(*) AS done_count FROM drd_usr_ach LEFT JOIN drd_achievements ON drd_usr_ach.ach_id = drd_achievements.code AND drd_achievements.level = ? WHERE drd_usr_ach.user_id = ?;"
-	database.query(sql5, [user_data.level,user_data.level,user_data.id], (error5, results, fields) => {
+	database.query(sql5, [user_data.level,user_data.level,user_data.uid], (error5, results, fields) => {
 		if (error5) {
             callback("Ошибка в работе базы данных.",null);
             return;
@@ -227,7 +227,7 @@ updateLevel = function(user_data, callback) {
                     callback("Ошибка обновления профиля пользователя.",null);
                     return;
                 }				
-				getProfile(user_data.id,function(error,user_profile_updated){
+				getProfile(user_data.uid,function(error,user_profile_updated){
 					if (error) {
 						callback("Ошибка получения профиля пользователя.",null);
 						return;
