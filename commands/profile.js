@@ -130,4 +130,5 @@ getProgress = function (user_id, user_level, callback) {
 		}
 		callback(null,result_levels);
 	});
+// getProgress closed
 }

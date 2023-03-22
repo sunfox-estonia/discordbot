@@ -68,7 +68,7 @@ module.exports = {
 											title: fetchedUser.user.username + " получил новую ачивку!",
 											color: 0x0099ff,			
 											thumbnail: {
-											url: "https://sunfox.ee/resources/img/discord_bot/alert_scroll.png"
+											url: "https://r.snfx.ee/img/discord_bot/alert_scroll.png"
 											},
 											fields: [				
 												{
@@ -100,7 +100,7 @@ module.exports = {
 													title: fetchedUser.user.username + " получил новый уровень!",
 													color: 0x0099ff,			
 													thumbnail: {
-													url: "https://sunfox.ee/resources/img/discord_bot/alert_announcement.png"
+													url: "https://r.snfx.ee/img/discord_bot/alert_announcement.png"
 													},
 													fields: [				
 														{
