@@ -22,7 +22,15 @@ module.exports = {
                 }
             }
         } else if (interaction.isButton()){
-            console.log(interaction.customId);            
+            console.log(interaction.customId);  
+            switch (interaction.customId) {
+                case value:
+                    interaction.reply({ content: '/profile', ephemeral: true });
+                    break;
+            
+                default:
+                    break;
+            }          
         }
 	},
 };
