@@ -47,6 +47,7 @@ module.exports = {
 							et: 'Kasutaja profiili otsimisel on tekkinud viga.',
 							};
 						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
+						return;
 					} else {
 						console.log(user_profile);
 
@@ -57,6 +58,7 @@ module.exports = {
 									et: 'Saavutuse andmete otsimisel on tekkinud viga.',
 									};
 								interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
+								return;
 							} else {		
 								addAchievement(user_profile, achievement_data,function(error){
 									if (error) {
@@ -65,6 +67,7 @@ module.exports = {
 											et: 'Kasutaja profiili uuendamisel on tekkinud viga.',
 											};
 										interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
+										return;
 									} else {										
 										var embed_achievement = {
 											title: fetchedUser.user.username + " получил новую ачивку!",
@@ -98,6 +101,7 @@ module.exports = {
 												
 												channel.send({embeds: [embed_achievement]});
 												interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
+												return;
 											} else {
 												var embed_levelup = {
 													title: fetchedUser.user.username + " получил новый уровень!",
@@ -123,6 +127,7 @@ module.exports = {
 												}
 												channel.send({embeds: [embed_achievement, embed_levelup]});
 												interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
+												return;
 											}
 										});									
 									}	
