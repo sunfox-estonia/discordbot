@@ -93,7 +93,8 @@ module.exports = {
 												const locales = {
 													en: 'An error occurred while user pofile updating.',
 													et: 'Kasutaja profiili uuendamisel on tekkinud viga.',
-													};											
+													};												
+												channel.send({embeds: [embed_achievement]});
 												interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 											} else {
 												var embed_levelup = {
@@ -118,9 +119,9 @@ module.exports = {
 														text: "Викинги Вирумаа"
 													},
 												}
+												channel.send({embeds: [embed_achievement, embed_levelup]});
 												interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
 											}
-											channel.send({embeds: [embed_achievement, embed_levelup]});
 										// updateLevel closed
 										});									
 									}	
@@ -219,11 +220,11 @@ updateLevel = function(user_data, callback) {
     	}
 		var parsed_done_count = parseInt(results6[1][0].done_count);
 		var parsed_needed_count = parseInt(results6[0][0].needed_count);
-		if (parsed_done_count === parsed_needed_count){
+		if (parsed_done_count == parsed_needed_count){
 			// Levelup in case of user has been done all available achievements
 			let lvl_sum = user_data.level + 1;
 			let sql7 = "UPDATE drd_users SET level =? WHERE uid =?;"; 
-			database.query(sql7, [lvl_sum,user_data.id], (error7, pingback) => {
+			database.query(sql7, [lvl_sum,user_data.uid], (error7, pingback) => {
 				if (error7) {
                     callback("Ошибка обновления профиля пользователя.",null);
                     return;
