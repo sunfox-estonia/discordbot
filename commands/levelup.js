@@ -215,7 +215,7 @@ updateLevel = function(user_data, callback) {
             callback("Ошибка в работе базы данных.",null);
             return;
     	}
-		console.log(results[0][0].done_count);
+		console.log(results[1][0].done_count);
 		console.log("Needed count: " + results[0][0].needed_count + ", Done count: "+ results[0][1].done_count);
 		if (results[0][0].needed_count == results[0][1].done_count){
 			// Levelup in case of user has been done all available achievements
