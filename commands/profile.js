@@ -10,6 +10,8 @@ const database = mysql.createConnection({
     multipleStatements: true,
   });
 
+
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('profile')
@@ -132,8 +134,3 @@ getProgress = function (user_id, user_level, callback) {
 	});
 // getProgress closed
 }
-
-client.on(Events.InteractionCreate, interaction => {
-	if (!interaction.isButton()) return;
-	console.log(interaction);
-});

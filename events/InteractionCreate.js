@@ -24,3 +24,8 @@ module.exports = {
         }
 	},
 };
+
+client.on(Events.InteractionCreate, interaction => {
+	if (!interaction.isButton()) return;
+	console.log("Button: " + interaction);
+});
