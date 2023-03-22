@@ -95,7 +95,7 @@ module.exports = {
 													et: 'Kasutaja profiili uuendamisel on tekkinud viga.',
 													};
 												
-												channel.send({embeds: [embed_achievement]});
+												//channel.send({embeds: [embed_achievement]});
 												interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 												return;
 											} else {
@@ -121,7 +121,7 @@ module.exports = {
 														text: "Викинги Вирумаа"
 													},
 												}
-												channel.send({embeds: [embed_achievement, embed_levelup]});
+												//channel.send({embeds: [embed_achievement, embed_levelup]});
 												interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
 												return;
 											}
@@ -215,7 +215,7 @@ updateLevel = function(user_data, callback) {
             callback("Ошибка в работе базы данных.",null);
             return;
     	}
-		console.log(results[0].needed_count);
+		console.log(results[0][0].needed_count);
 		console.log("Needed count: " + results[0][0].needed_count + ", Done count: "+ results[0][1].done_count);
 		if (results[0][0].needed_count == results[0][1].done_count){
 			// Levelup in case of user has been done all available achievements
