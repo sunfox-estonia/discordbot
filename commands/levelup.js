@@ -174,11 +174,10 @@ checkAchievement = function(user_data, achievement_code, callback) {
 					callback("Ошибка в работе базы данных.",null);
 					return;
 				}
-				if (check_added.rowscount > 0){
+				if (check_added[0].rowscount > 0){
 					callback("Указанное достижение уже добавлено для выбранного пользователя.",null);
 					return;
 				}
-				console.log(check_added);
 			});	
 			callback(null,achievement_fulldata[0]);				
 		});		
