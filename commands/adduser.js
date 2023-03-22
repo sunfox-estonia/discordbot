@@ -42,6 +42,7 @@ module.exports = {
 							};
 						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });						
 					} else {
+						console.log(fetchedUser);
 						createProfile(fetchedUser.user.id,function(error){
 							if (error) {
 								const locales = {
@@ -53,7 +54,7 @@ module.exports = {
 								interaction.reply({ content: 'Создан новый профиль пользователя для ' + fetchedUser.user.username , ephemeral: true });
 
 								var embed_adduser = {
-									title: "Ура! Профиль " + fetchedUser.user.username + " добавлен в Систему достижений!",
+									title: "Профиль " + fetchedUser.user.username + " добавлен в Систему достижений!",
 									description: "Участвуя в мероприятиях сообщества, Вы можете получать достижения и золотые монеты за них. Просмотреть список достижений можно, воспользовавшись командой /profile.",
 									color: 0x0099ff,			
 									thumbnail: {
@@ -99,7 +100,6 @@ checkProfileExists = function(user_id, callback) {
 	// Prepare MySQL request check if user with the same uid already exists	
 	let sql1 = "SELECT * FROM drd_users WHERE uid = ?;";   
 	database.query(sql1, [user_id], (error1, results, fields) => {
-		console.log(results);
 		if (error1) {
 			callback("Ошибка в работе базы данных.");
 			return;
