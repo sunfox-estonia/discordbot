@@ -96,6 +96,7 @@ module.exports = {
 													};
 												
 												channel.send({embeds: [embed_achievement]});
+												var embed_achievement = null;
 												interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 											} else {
 												var embed_levelup = {
@@ -121,6 +122,8 @@ module.exports = {
 													},
 												}
 												channel.send({embeds: [embed_achievement, embed_levelup]});
+												var embed_achievement = null; 
+												var embed_levelup = null;
 												interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
 											}
 										// updateLevel closed
@@ -239,7 +242,7 @@ updateLevel = function(user_data, callback) {
 					}
 				});
 			});            
-        } else if (parsed_needed_count < parsed_done_count) {
+        } else if (parsed_done_count < parsed_needed_count) {
 			callback("Выбранный профиль пользователя не получит новый уровень (" + parsed_done_count + " достижений из " + parsed_needed_count + ").",null);
 			return;
 		} else {
