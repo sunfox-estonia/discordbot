@@ -24,7 +24,7 @@ module.exports = {
         } else if (interaction.isButton()){
             console.log(interaction.customId);  
             switch (interaction.customId) {
-                case value:
+                case 'run_profile':
                     await interaction.reply({ content: '/profile', ephemeral: true });
                     break;
             
