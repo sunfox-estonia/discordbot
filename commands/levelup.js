@@ -194,8 +194,7 @@ addAchievement = function(user_data, achievement_data, callback) {
             callback("Ошибка добавления достижения в профиль пользователя.");
             return;
         }
-		callback(null);
-
+		
 		let coins_sum =  parseInt(user_data.coins) +  parseInt(achievement_data.coins);
 		// Prepare MySQL request to update soins sum for selected user
 		let sql5 = "UPDATE drd_users SET coins = ? WHERE uid = ?;";   
