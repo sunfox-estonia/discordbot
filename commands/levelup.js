@@ -63,8 +63,7 @@ module.exports = {
 											et: 'Kasutaja profiili uuendamisel on tekkinud viga.',
 											};
 										interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
-									} else {			
-										
+									} else {		
 										var embed_achievement = {
 											title: fetchedUser.user.username + " получил новую ачивку!",
 											color: 0x0099ff,			
@@ -86,16 +85,15 @@ module.exports = {
 												icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
 												text: "Викинги Вирумаа"
 											},
-										}
-										
+										}										
 										updateLevel(user_profile, function(error,updated_profile){
 											if (error) {
 												const locales = {
 													en: 'An error occurred while user pofile updating.',
 													et: 'Kasutaja profiili uuendamisel on tekkinud viga.',
 													};												
+											//	interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 												channel.send({embeds: [embed_achievement]});
-												interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 											} else {
 												var embed_levelup = {
 													title: fetchedUser.user.username + " получил новый уровень!",
@@ -119,8 +117,8 @@ module.exports = {
 														text: "Викинги Вирумаа"
 													},
 												}
+												//interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
 												channel.send({embeds: [embed_achievement, embed_levelup]});
-												interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
 											}
 										// updateLevel closed
 										});									

@@ -97,7 +97,7 @@ module.exports = {
 
 getProfile = function(user_id, callback) {
 	// Prepare MySQL request to retrieve user data	
-	let sql1 = "SELECT id, uid, community, coins FROM drd_users WHERE uid = ? LIMIT 1;";   
+	let sql1 = "SELECT id, uid, coins FROM drd_users WHERE uid = ? LIMIT 1;";   
 	database.query(sql1, [user_id], (error1, result_userdata, fields) => {
 		if (error1) {
 			callback("Ошибка в работе базы данных.",null);
