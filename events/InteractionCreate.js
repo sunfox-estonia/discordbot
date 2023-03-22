@@ -25,7 +25,7 @@ module.exports = {
             console.log(interaction.customId);  
             switch (interaction.customId) {
                 case value:
-                    interaction.reply({ content: '/profile', ephemeral: true });
+                    await interaction.reply({ content: '/profile', ephemeral: true });
                     break;
             
                 default:
