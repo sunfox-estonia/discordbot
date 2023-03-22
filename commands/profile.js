@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, Events } = require('discord.js');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
@@ -132,3 +132,8 @@ getProgress = function (user_id, user_level, callback) {
 	});
 // getProgress closed
 }
+
+client.on(Events.InteractionCreate, interaction => {
+	if (!interaction.isButton()) return;
+	console.log(interaction);
+});
