@@ -114,7 +114,7 @@ getProfile = function(user_id, callback) {
 updateCoins = function(user_id, coins, callback) {
 	// Prepare MySQL request to update soins sum for selected user
 	let sql2 = "UPDATE drd_users SET coins = ? WHERE uid = ?;";   
-	database.query(sql2, [user_id, coins], (error2, pingback) => {
+	database.query(sql2, [coins, user_id], (error2, pingback) => {
 		if (error2) {
 			callback("Ошибка обновления профиля пользователя.");
 			return;
