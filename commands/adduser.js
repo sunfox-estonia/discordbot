@@ -53,7 +53,7 @@ module.exports = {
 								interaction.reply({ content: 'Создан новый профиль пользователя для ' + fetchedUser.user.username , ephemeral: true });
 
 								var embed_adduser = {
-									title: "Профиль " + fetchedUser.nickname + " добавлен в Систему достижений!",
+									title: "Ваш профиль добавлен в Систему достижений!",
 									description: "Участвуя в мероприятиях сообщества, Вы можете получать достижения и золотые монеты за них. Просмотреть список достижений можно, воспользовавшись командой /profile.",
 									color: 0x0099ff,			
 									thumbnail: {
