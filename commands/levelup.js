@@ -95,9 +95,8 @@ module.exports = {
 													et: 'Kasutaja profiili uuendamisel on tekkinud viga.',
 													};
 												
-												//channel.send({embeds: [embed_achievement]});
+												channel.send({embeds: [embed_achievement]});
 												interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
-												return;
 											} else {
 												var embed_levelup = {
 													title: fetchedUser.user.username + " получил новый уровень!",
@@ -121,9 +120,8 @@ module.exports = {
 														text: "Викинги Вирумаа"
 													},
 												}
-												//channel.send({embeds: [embed_achievement, embed_levelup]});
+												channel.send({embeds: [embed_achievement, embed_levelup]});
 												interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
-												return;
 											}
 										});									
 									}	
@@ -233,9 +231,12 @@ updateLevel = function(user_data, callback) {
 					}
 				});
 			});            
-        } else {
-			callback("Выбранный пользователь не получит новый уровень.",null);
-            return;
+        } else if (results[0][0].needed_count < results[1][0].done_count) {
+			callback("Выбранный профиль пользователя не получит новый уровень.",null);
+			return;
+		} else {
+			callback("Ошибка обновления уровня профиля пользователя.",null);
+			return;
 		}
 	});
 // updateLevel ended
