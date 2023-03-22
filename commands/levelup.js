@@ -178,6 +178,7 @@ checkAchievement = function(user_data, achievement_code, callback) {
 					callback("Указанное достижение уже добавлено для выбранного пользователя.",null);
 					return;
 				}
+				console.log(check_added);
 			});	
 			callback(null,achievement_fulldata[0]);				
 		});		
