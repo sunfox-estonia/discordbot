@@ -74,7 +74,7 @@ module.exports = {
 											},
 											fields: [				
 												{
-													name: ":ballot_box_with_check: - " + achievement_data.title + "(" + achievement_data.coins + " золотых)",
+													name: ":ballot_box_with_check: - " + achievement_data.title + " (" + achievement_data.coins + " золотых)",
 													value: achievement_data.description
 												},
 												{
