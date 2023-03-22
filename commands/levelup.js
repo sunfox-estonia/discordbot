@@ -65,7 +65,7 @@ module.exports = {
 										interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 									} else {		
 										var embed_achievement = {
-											title: fetchedUser.user.username + " получил новую ачивку!",
+											title: fetchedUser.nickname + " получил новую ачивку!",
 											color: 0x0099ff,			
 											thumbnail: {
 											url: "https://r.snfx.ee/img/discord_bot/alert_scroll.png"
@@ -97,7 +97,7 @@ module.exports = {
 												interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 											} else {
 												var embed_levelup = {
-													title: fetchedUser.user.username + " получил новый уровень!",
+													title: fetchedUser.nickname + " получил новый уровень!",
 													color: 0x0099ff,			
 													thumbnail: {
 													url: "https://r.snfx.ee/img/discord_bot/alert_announcement.png"
