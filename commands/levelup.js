@@ -48,7 +48,7 @@ module.exports = {
 							};
 						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 					} else {
-						console.log(achievement_data);
+						console.log("Achievement code: "+target_achievement);
 						checkAchievement(user_profile,target_achievement,function(error,achievement_data){
 							if (error) {
 								const locales = {
@@ -57,7 +57,7 @@ module.exports = {
 									};
 								interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 							} else {		
-
+								console.log("Achievement data: " + achievement_data);
 								addAchievement(user_profile, achievement_data,function(error){
 									if (error) {
 										const locales = {
