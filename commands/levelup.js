@@ -222,8 +222,8 @@ updateLevel = function(user_data, callback) {
             callback("Ошибка в работе базы данных.",null);
             return;
     	}
-		var parsed_needed_count = parseInt(results6[1][0].done_count);
-		var parsed_done_count = parseInt(results6[0][0].needed_count);
+		var parsed_done_count = parseInt(results6[1][0].done_count);
+		var parsed_needed_count = parseInt(results6[0][0].needed_count);
 		if (parsed_done_count === parsed_needed_count){
 			// Levelup in case of user has been done all available achievements
 			let lvl_sum = user_data.level + 1;
