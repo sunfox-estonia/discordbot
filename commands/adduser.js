@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, PermissionFlagsBits, ComponentType } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
@@ -90,21 +90,7 @@ module.exports = {
 									]
 								}
 								const channel = interaction.client.channels.cache.get(config.log_channel_id);
-								let sent = channel.send({content:`${fetchedUser.user}, для Вас весть от Хугинна:`, embeds: [embed_adduser], components: [component_buttons]});
-
-								const collector = sent.createMessageComponentCollector({ componentType: ComponentType.Button, time: 15000 });
-
-								collector.on('collect', i => {
-									if (i.user.id === interaction.user.id) {
-										i.reply(`${i.user.id} clicked on the ${i.customId} button.`);
-									} else {
-										i.reply({ content: `These buttons aren't for you!`, ephemeral: true });
-									}
-								});
-								
-								collector.on('end', collected => {
-									console.log(`Collected ${collected.size} interactions.`);
-								});
+								channel.send({content:`${fetchedUser.user}, для Вас весть от Хугинна:`, embeds: [embed_adduser], components: [component_buttons]});
 							}
 						});
 					}
