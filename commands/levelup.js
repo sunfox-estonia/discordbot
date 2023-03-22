@@ -46,11 +46,8 @@ module.exports = {
 							en: 'An error occurred while retrieving user profile.',
 							et: 'Kasutaja profiili otsimisel on tekkinud viga.',
 							};
-						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
-						return;
+						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });						
 					} else {
-						console.log(user_profile);
-
 						checkAchievement(user_profile,target_achievement,function(error,achievement_data){
 							if (error) {
 								const locales = {
@@ -58,7 +55,6 @@ module.exports = {
 									et: 'Saavutuse andmete otsimisel on tekkinud viga.',
 									};
 								interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
-								return;
 							} else {		
 								addAchievement(user_profile, achievement_data,function(error){
 									if (error) {
@@ -67,7 +63,6 @@ module.exports = {
 											et: 'Kasutaja profiili uuendamisel on tekkinud viga.',
 											};
 										interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
-										return;
 									} else {										
 										var embed_achievement = {
 											title: fetchedUser.user.username + " получил новую ачивку!",
@@ -91,7 +86,7 @@ module.exports = {
 												text: "Викинги Вирумаа"
 											},
 										}
-
+										
 										updateLevel(user_profile, function(error,updated_profile){
 											if (error) {
 												const locales = {
