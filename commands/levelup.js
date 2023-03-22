@@ -169,7 +169,7 @@ checkAchievement = function(user_data, achievement_code, callback) {
 			}
 			// Check if achivement is already added for selected user
 			let sql3 = "SELECT count(*) AS rowscount FROM drd_usr_ach WHERE user_id = ? AND ach_id = ?;";
-			database.query(sql3, [user_data.id,result.id], (error3, check_added, fields) => {
+			database.query(sql3, [user_data.id,achievement_data.id], (error3, check_added, fields) => {
 				if (error3) {
 					callback("Ошибка в работе базы данных.",null);
 					return;
@@ -178,7 +178,6 @@ checkAchievement = function(user_data, achievement_code, callback) {
 					callback("Указанное достижение уже добавлено для выбранного пользователя.",null);
 					return;
 				}
-
 			});	
 			callback(null,achievement_data);				
 		});		
