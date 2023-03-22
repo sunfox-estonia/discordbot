@@ -96,8 +96,8 @@ module.exports = {
 													};
 												
 												channel.send({embeds: [embed_achievement]});
-												var embed_achievement = null;
 												interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
+												var embed_achievement = {};
 											} else {
 												var embed_levelup = {
 													title: fetchedUser.user.username + " получил новый уровень!",
@@ -122,9 +122,9 @@ module.exports = {
 													},
 												}
 												channel.send({embeds: [embed_achievement, embed_levelup]});
-												var embed_achievement = null; 
-												var embed_levelup = null;
 												interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
+												var embed_achievement = {}; 
+												var embed_levelup = {};
 											}
 										// updateLevel closed
 										});									
