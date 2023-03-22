@@ -90,17 +90,13 @@ module.exports = {
 										
 										updateLevel(user_profile, function(error,updated_profile){
 											if (error) {
-												console.log("No update level");
 												const locales = {
 													en: 'An error occurred while user pofile updating.',
 													et: 'Kasutaja profiili uuendamisel on tekkinud viga.',
 													};												
 												channel.send({embeds: [embed_achievement]});
 												interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
-												
 											} else {
-
-												console.log("Go update level");
 												var embed_levelup = {
 													title: fetchedUser.user.username + " получил новый уровень!",
 													color: 0x0099ff,			
@@ -123,7 +119,7 @@ module.exports = {
 														text: "Викинги Вирумаа"
 													},
 												}
-												channel.send({embeds: [embed_achievement, embed_levelup]});
+											//	channel.send({embeds: [embed_achievement, embed_levelup]});
 												interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
 											}
 										// updateLevel closed
