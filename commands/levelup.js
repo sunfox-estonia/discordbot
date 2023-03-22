@@ -184,7 +184,8 @@ checkAchievement = function(user_data, achievement_code, callback) {
 
 addAchievement = function(user_data, achievement_data, callback) {
 	// Add achivement for user
-	console.log(achievement_data);
+	console.log(user_data.id);
+	console.log(achievement_data.id);
 	let sql4 = "INSERT INTO drd_usr_ach (user_id, ach_id) VALUES (?,?);";
     database.query(sql4, [user_data.id,achievement_data.id], (error4, pingback) => {
         if (error4) {
