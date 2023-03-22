@@ -48,7 +48,7 @@ module.exports = {
 							};
 						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 					} else {
-c						console.log(user_profile);
+						console.log(user_profile);
 
 						checkAchievement(user_profile,target_achievement,function(error,achievement_data){
 							if (error) {
