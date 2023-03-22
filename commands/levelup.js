@@ -185,8 +185,6 @@ checkAchievement = function(user_data, achievement_code, callback) {
 
 addAchievement = function(user_data, achievement_data, callback) {
 	// Add achivement for user
-	console.log(user_data.uid);
-	console.log(achievement_data.code);
 	let sql4 = "INSERT INTO drd_usr_ach (user_id, ach_id) VALUES (?,?);";
     database.query(sql4, [user_data.uid,achievement_data.code], (error4, pingback) => {
         if (error4) {
@@ -217,6 +215,7 @@ updateLevel = function(user_data, callback) {
             callback("Ошибка в работе базы данных.",null);
             return;
     	}
+		console.log(results);
 		console.log("Needed count: " + results.needed_count + ", Done count: "+ results.done_count);
 		if (results[0].needed_count == results[1].done_count){
 			// Levelup in case of user has been done all available achievements
