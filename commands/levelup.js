@@ -63,7 +63,8 @@ module.exports = {
 											et: 'Kasutaja profiili uuendamisel on tekkinud viga.',
 											};
 										interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
-									} else {										
+									} else {			
+										
 										var embed_achievement = {
 											title: fetchedUser.user.username + " получил новую ачивку!",
 											color: 0x0099ff,			
@@ -126,13 +127,11 @@ module.exports = {
 											}
 										});									
 									}	
-								});
-								
+								});								
 							}	
 						});
 					}
 				});
-
 			}
 		// await interaction.guild.members.fetch closed
 		).catch(console.error);	
@@ -178,8 +177,8 @@ checkAchievement = function(user_data, achievement_code, callback) {
 					callback("Указанное достижение уже добавлено для выбранного пользователя.",null);
 					return;
 				}
-			});	
-			callback(null,achievement_fulldata[0]);				
+				callback(null,achievement_fulldata[0]);	
+			});						
 		});		
 // checkAchievement ended
 }
