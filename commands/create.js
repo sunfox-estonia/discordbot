@@ -68,7 +68,7 @@ module.exports = {
 							"min_length": 1,
 							"max_length": 500,
 							"required": true,
-							"placeholder": "Помещение Клуба (Tamme 17, Jõhvi vald)"
+							"value": "Помещение Клуба (Tamme 17, Jõhvi vald)"
 						}]
 					},
 					{
