@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+//const {} = require('discord.js');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
@@ -14,7 +14,7 @@ module.exports = {
     data: {
         name: 'profile_show'
     },
-    async execute(interaction, client) {
+    async execute(interaction) {
         var member_id = interaction.member.user.id;
         await interaction.guild.members.fetch(member_id).then(
             fetchedUser => {

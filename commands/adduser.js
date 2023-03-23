@@ -153,7 +153,7 @@ getProgress = function (user_id, user_level, callback) {
 }
 
 createProfile = function (user_id, callback) {
-	// Prepare MySQL request to retrieve user data	
+	// Prepare MySQL request to add new user data	
 	let sql4 = "INSERT INTO drd_users (uid, level, community) VALUES (?, 0, 'viruviking');"; 
 	// TODO: Remove community title when database migrates to SQLite  
 	database.query(sql4, [user_id], (error4, pingback) => {
