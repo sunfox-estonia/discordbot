@@ -27,6 +27,17 @@ module.exports = {
 
 		const data_event = interaction.options.getString('event_type');
 
-		await interaction.reply({ content: 'Secret answer.', ephemeral: true });
+		switch (data_event) {
+			case 'event':
+				
+				break;
+			case 'quest':
+				
+				break;
+			default:
+				break;
+		}
+
+		
 	},
 };
