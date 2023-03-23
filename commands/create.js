@@ -44,8 +44,11 @@ module.exports = {
 							"min_length": 1,
 							"max_length": 4000,
 							"required": true
-						},
-						{
+						}]
+					},
+					{
+						"type": 1,
+						"components": [{
 							"type": 4,
 							"custom_id": "event_datetime",
 							"label": "Дата проведения",
@@ -53,8 +56,11 @@ module.exports = {
 							"min_length": 1,
 							"max_length": 4000,
 							"required": true
-						},
-						{
+						}]
+					},
+					{
+						"type": 1,
+						"components": [{
 							"type": 4,
 							"custom_id": "event_location",
 							"label": "Место проведения",
@@ -62,16 +68,22 @@ module.exports = {
 							"min_length": 1,
 							"max_length": 4000,
 							"required": true
-						},
-						{
+						}]
+					},
+					{
+						"type": 1,
+						"components": [{
 							"type": 6,
 							"custom_id": "event_usergroup",
 							"label": "Целевая группа",
 							"required": true,
 							"min_values": 1,
 							"max_values": 1
-						},
-						{
+						}]
+					},
+					{
+						"type": 1,
+						"components": [{
 						  "type": 4,
 						  "custom_id": "event_description",
 						  "label": "Краткое описание",
@@ -80,8 +92,11 @@ module.exports = {
 						  "max_length": 4000,
 						  "placeholder": "John",
 						  "required": false
-						},
-						{
+						}]
+					},
+					{
+						"type": 1,
+						"components": [{
 							"type": 4,
 							"custom_id": "event_url",
 							"label": "URL с подробной информацией",
