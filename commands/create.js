@@ -32,7 +32,7 @@ module.exports = {
 			case 'event':
 				var modal_form = {
 					"title": "Создать мероприятие",
-					"custom_id": "create_event",
+					"custom_id": "event_run",
 					"components": [
 					{
 						"type": 1,
@@ -98,13 +98,64 @@ module.exports = {
 				  }
 				break;
 			case 'quest':
-				
+				var modal_form = {
+					"title": "Создать квест",
+					"custom_id": "quest_run",
+					"components": [
+					{
+						"type": 1,
+						"components": [{
+							"type": 4,
+							"custom_id": "quest_title",
+							"label": "Название квеста:",
+							"style": 1,
+							"min_length": 1,
+							"max_length": 500,
+							"required": true
+						}]
+					},
+					{
+						"type": 1,
+						"components": [{
+						  "type": 4,
+						  "custom_id": "quest_description",
+						  "label": "Краткое описание задания:",
+						  "style": 2,
+						  "min_length": 1,
+						  "max_length": 2000,
+						  "required": false
+						}]
+					},
+					{
+						"type": 1,
+						"components": [{
+							"type": 4,
+							"custom_id": "quest_datetime",
+							"label": "Срок выполнения:",
+							"style": 1,
+							"min_length": 1,
+							"max_length": 500,
+							"required": true
+						}]
+					},
+					{
+						"type": 1,
+						"components": [{
+							"type": 4,
+							"custom_id": "quest_reward",
+							"label": "Награда за выполнение:",
+							"style": 1,
+							"min_length": 1,
+							"max_length": 1000,
+							"required": false
+						}]
+					},]
+				  }
 				break;
 			default:
 				break;
 		}
 
-		await interaction.showModal(modal_form);
-		
+		await interaction.showModal(modal_form);		
 	},
 };
