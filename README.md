@@ -46,7 +46,7 @@ USE `sfx_drdbot`;
 
 DROP TABLE IF EXISTS `drd_levels`;
 CREATE TABLE `drd_levels` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `level` smallint(6) NOT NULL,
   `title` varchar(55) NOT NULL,
   `symbol` varchar(55) NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE `drd_levels` (
 
 DROP TABLE IF EXISTS `drd_achievements`;
 CREATE TABLE `drd_achievements` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `code` smallint(6) NOT NULL,
   `level` smallint(6) NOT NULL,
   `title` varchar(55) NOT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE `drd_achievements` (
 
 DROP TABLE IF EXISTS `drd_users`;
 CREATE TABLE `drd_users` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `uid` varchar(55) NOT NULL,
   `level` smallint(6) NOT NULL,
   `coins` smallint(3) NOT NULL DEFAULT '0',
@@ -75,10 +75,51 @@ CREATE TABLE `drd_users` (
 
 DROP TABLE IF EXISTS `drd_usr_ach`;
 CREATE TABLE `drd_usr_ach` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ach_id` varchar(55) NOT NULL,
-  `user_id` smallint(6) NOT NULL,
+  `user_id` varchar(55) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `events`;
+CREATE TABLE `events` (
+  `id` int(10) NOT NULL  AUTO_INCREMENT,
+  `event_title` varchar(500) NOT NULL,
+  `event_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `event_location` varchar(500) NOT NULL,
+  `event_description` varchar(2000) DEFAULT NULL,
+  `event_url` varchar(1000) DEFAULT NULL,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `quests`;
+CREATE TABLE `quests` (
+  `id` int(10) NOT NULL  AUTO_INCREMENT,
+  `quest_title` varchar(1000) NOT NULL,
+  `quest_description` varchar(2000) NOT NULL,
+  `quest_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `quest_reward` varchar(200) NOT NULL,
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `events_usr`;
+CREATE TABLE `events_usr` (
+  `id` int(10) NOT NULL  AUTO_INCREMENT,
+  `event_id` int(10) DEFAULT NULL,
+  `user_uid` varchar(55) NOT NULL,
+  `user_status` enum('0','1') NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `quests_usr`;
+CREATE TABLE `quests_usr` (
+  `id` int(10) NOT NULL  AUTO_INCREMENT,
+  `quest_id` int(10) NOT NULL,
+  `user_uid` varchar(55) NOT NULL,
+  `user_status` enum('0','1') NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 ```

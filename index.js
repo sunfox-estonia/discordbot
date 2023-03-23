@@ -57,4 +57,13 @@ for (const file of buttonsFiles) {
 	client.buttons.set(button.data.name, button);
 }
 
+client.modals = new Collection();
+const modalsPath = path.join(__dirname, 'modals');
+const modalsFiles = fs.readdirSync(modalsPath).filter(file => file.endsWith('.js'));
+for (const file of modalsFiles) {
+	const filePath = path.join(modalsPath, file);
+	const modal = require(filePath);
+	client.modals.set(modal.data.name, modal);
+}
+
 client.login(config.token);

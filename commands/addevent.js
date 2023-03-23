@@ -144,7 +144,7 @@ module.exports = {
 							"type": 4,
 							"custom_id": "quest_reward",
 							"label": "Награда за выполнение:",
-							"style": 1,
+							"style": 2,
 							"min_length": 1,
 							"max_length": 2000,
 							"required": true
