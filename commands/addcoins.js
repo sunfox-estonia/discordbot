@@ -60,7 +60,7 @@ module.exports = {
 						} else {
 
 							var embed_addcoins = {
-								title:fetchedUser.user.nickname ?? fetchedUser.user.username + " получил монеты!",
+								title:fetchedUser.nickname ?? fetchedUser.user.username + " получил монеты!",
 								description: "На аккаунт пользователя добавлено " + data_coins + " золотых.",
 								color: 0x0099ff,			
 								thumbnail: {
