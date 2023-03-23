@@ -73,12 +73,14 @@ module.exports = {
 					{
 						"type": 1,
 						"components": [{
-							"type": 6,
-							"custom_id": "event_usergroup",
-							"label": "Целевая группа",
-							"required": true,
-							"min_values": 1,
-							"max_values": 1
+						  "type": 4,
+						  "custom_id": "event_description",
+						  "label": "Краткое описание",
+						  "style": 2,
+						  "min_length": 1,
+						  "max_length": 4000,
+						  "placeholder": "John",
+						  "required": false
 						}]
 					},
 					{
