@@ -19,8 +19,8 @@ NodeJS приложение для управления сообществами
 ```bash
 git clone https://github.com/Viruviking/discordbot.git bot.discord
 cd bot.discord/
-npm init -y
 npm install
+git update-index --assume-unchanged config.json
 ```
 Далее скорректируйте файл config.json по шаблону:
 ```json

@@ -22,7 +22,7 @@ module.exports = {
                 }
             }
         } else if (interaction.isButton()) {
-            const button = client.buttons.get(interaction.customId);
+            const button = interaction.client.buttons.get(interaction.customId);
             if (!button) {
                 console.error(`No button interaction matching ${interaction.customId} was found.`);
                 return;
