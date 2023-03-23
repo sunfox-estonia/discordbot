@@ -31,35 +31,81 @@ module.exports = {
 		switch (data_event) {
 			case 'event':
 				var modal_form = {
-					"title": "My Cool Modal",
-					"custom_id": "cool_modal",
-					"components": [{
-					  "type": 1,
-					  "components": [{
-						"type": 4,
-						"custom_id": "name",
-						"label": "Name",
-						"style": 1,
-						"min_length": 1,
-						"max_length": 4000,
-						"placeholder": "John",
-						"required": true
-					  }]
+					"title": "Создать мероприятие",
+					"custom_id": "create_event",
+					"components": [
+					{
+						"type": 1,
+						"components": [{
+							"type": 4,
+							"custom_id": "event_title",
+							"label": "Название мероприятия",
+							"style": 1,
+							"min_length": 1,
+							"max_length": 4000,
+							"required": true
+						}]
+					},
+					{
+						"type": 1,
+						"components": [{
+							"type": 4,
+							"custom_id": "event_datetime",
+							"label": "Дата проведения",
+							"style": 1,
+							"min_length": 1,
+							"max_length": 4000,
+							"required": true
+						}]
+					},
+					{
+						"type": 1,
+						"components": [{
+							"type": 4,
+							"custom_id": "event_location",
+							"label": "Место проведения",
+							"style": 1,
+							"min_length": 1,
+							"max_length": 4000,
+							"required": true
+						}]
+					},
+					{
+						"type": 6,
+						"components": [{
+							"type": 4,
+							"custom_id": "event_usergroup",
+							"label": "Целевая группа",
+							"required": true,
+							"min_values": 1,
+							"max_values": 1
+						}]
 					},
 					{
 						"type": 1,
 						"components": [{
 						  "type": 4,
-						  "custom_id": "name1",
-						  "label": "Name 1",
-						  "style": 1,
+						  "custom_id": "event_description",
+						  "label": "Краткое описание",
+						  "style": 2,
 						  "min_length": 1,
 						  "max_length": 4000,
 						  "placeholder": "John",
-						  "required": true
+						  "required": false
 						}]
-					  },
-					]
+					},
+					{
+						"type": 1,
+						"components": [{
+							"type": 4,
+							"custom_id": "event_url",
+							"label": "URL с подробной информацией",
+							"style": 1,
+							"min_length": 1,
+							"max_length": 4000,
+							"required": false
+						}]
+					},]
 				  }
 				break;
 			case 'quest':
