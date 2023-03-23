@@ -89,8 +89,8 @@ module.exports = {
 										}
 									]
 								}
-								const channel = interaction.client.channels.cache.get(config.log_channel_id);
-								channel.send({content:`${fetchedUser.user}, для Вас весть от Хугинна:`, embeds: [embed_adduser], components: [component_buttons]});
+								const UserNotify = interaction.client.channels.cache.get(config.log_channel_id);
+								UserNotify.send({content:`${fetchedUser.user}, для Вас весть от Хугинна:`, embeds: [embed_adduser], components: [component_buttons]});
 							}
 						});
 					}

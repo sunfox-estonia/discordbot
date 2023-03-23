@@ -36,7 +36,7 @@ module.exports = {
 
 		const target_user = interaction.options.getUser('target_user');
 		const target_achievement = interaction.options.getString('achievement_code');
-		const channel = interaction.client.channels.cache.get(config.log_channel_id);
+		const UserNotify = interaction.client.channels.cache.get(config.log_channel_id);
 
 		await interaction.guild.members.fetch(target_user).then(
 			fetchedUser => {
@@ -86,7 +86,7 @@ module.exports = {
 												text: "Викинги Вирумаа"
 											},
 										}										
-										channel.send({content:`${fetchedUser.user}, для Вас весть от Хугинна:`, embeds: [embed_achievement]});
+										UserNotify.send({content:`${fetchedUser.user}, для Вас весть от Хугинна:`, embeds: [embed_achievement]});
 
 										updateLevel(user_profile, function(error,updated_profile){
 											if (error) {
@@ -119,7 +119,7 @@ module.exports = {
 													},
 												}
 												
-												channel.send({embeds: [embed_levelup]});
+												UserNotify.send({embeds: [embed_levelup]});
 												interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
 											}
 										// updateLevel closed
