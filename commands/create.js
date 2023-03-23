@@ -39,7 +39,7 @@ module.exports = {
 						"components": [{
 							"type": 4,
 							"custom_id": "event_title",
-							"label": "Название мероприятия",
+							"label": "Название мероприятия:",
 							"style": 1,
 							"min_length": 1,
 							"max_length": 500,
@@ -51,7 +51,7 @@ module.exports = {
 						"components": [{
 							"type": 4,
 							"custom_id": "event_datetime",
-							"label": "Дата проведения",
+							"label": "Дата проведения:",
 							"style": 1,
 							"min_length": 1,
 							"max_length": 500,
@@ -63,11 +63,12 @@ module.exports = {
 						"components": [{
 							"type": 4,
 							"custom_id": "event_location",
-							"label": "Место проведения",
+							"label": "Место проведения:",
 							"style": 1,
 							"min_length": 1,
 							"max_length": 500,
-							"required": true
+							"required": true,
+							"placeholder": "Помещение Клуба (Tamme 17, Jõhvi vald)"
 						}]
 					},
 					{
@@ -75,7 +76,7 @@ module.exports = {
 						"components": [{
 						  "type": 4,
 						  "custom_id": "event_description",
-						  "label": "Краткое описание",
+						  "label": "Краткое описание:",
 						  "style": 2,
 						  "min_length": 1,
 						  "max_length": 2000,
@@ -87,7 +88,7 @@ module.exports = {
 						"components": [{
 							"type": 4,
 							"custom_id": "event_url",
-							"label": "URL с подробной информацией",
+							"label": "URL с подробной информацией:",
 							"style": 1,
 							"min_length": 1,
 							"max_length": 1000,
