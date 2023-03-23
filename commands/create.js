@@ -84,17 +84,15 @@ module.exports = {
 					{
 						"type": 1,
 						"components": [{
-						  "type": 4,
-						  "custom_id": "event_description",
-						  "label": "Краткое описание",
-						  "style": 2,
-						  "min_length": 1,
-						  "max_length": 4000,
-						  "placeholder": "John",
-						  "required": false
+							"type": 4,
+							"custom_id": "event_url",
+							"label": "URL с подробной информацией",
+							"style": 1,
+							"min_length": 1,
+							"max_length": 4000,
+							"required": false
 						}]
-					},
-]
+					},]
 				  }
 				break;
 			case 'quest':
