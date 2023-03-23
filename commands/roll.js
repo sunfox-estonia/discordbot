@@ -4,7 +4,7 @@ const Roll20 = require('d20');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('roll')
-		.setDescription('Кинуть дайс, по умолчанию d6.')
+		.setDescription('Кинуть выбранный дайс.')
 		.addStringOption(option =>
 			option.setName('dice_type')
 				.setDescription('Тип дайса (d4, d6, d8, d12, d20)')
