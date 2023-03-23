@@ -70,7 +70,7 @@ module.exports = {
                                     },
                                 }
 
-                                interaction.reply({ embeds: [embed_profile] });
+                                interaction.reply({ embeds: [embed_profile], ephemeral: true });
                                 // else closed
                             }
                             // getProgress closed
