@@ -4,7 +4,7 @@ const config = require('../config.json');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
-		.setDescription('Показывает статус работы Бота, сервисов Sunfox.ee и БД.')
+		.setDescription('Показывает страницу справки по боту Huginn.')
 		.setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 
 		async execute(interaction) {

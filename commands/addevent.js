@@ -3,7 +3,7 @@ const config = require('../config.json');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('create')
+		.setName('addevent')
 		.setDescription('Создать Событие или Квест для участников сообщества.')
 		.addStringOption(option =>
 			option.setName('event_type')
