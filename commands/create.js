@@ -29,7 +29,37 @@ module.exports = {
 
 		switch (data_event) {
 			case 'event':
-				
+				var modal_form = {
+					"title": "My Cool Modal",
+					"custom_id": "cool_modal",
+					"components": [{
+					  "type": 1,
+					  "components": [{
+						"type": 4,
+						"custom_id": "name",
+						"label": "Name",
+						"style": 1,
+						"min_length": 1,
+						"max_length": 4000,
+						"placeholder": "John",
+						"required": true
+					  }]
+					},
+					{
+						"type": 1,
+						"components": [{
+						  "type": 4,
+						  "custom_id": "name1",
+						  "label": "Name 1",
+						  "style": 1,
+						  "min_length": 1,
+						  "max_length": 4000,
+						  "placeholder": "John",
+						  "required": true
+						}]
+					  },
+					]
+				  }
 				break;
 			case 'quest':
 				
@@ -38,6 +68,7 @@ module.exports = {
 				break;
 		}
 
+		await interaction.showModal(modal_form);
 		
 	},
 };
