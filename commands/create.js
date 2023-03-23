@@ -42,7 +42,7 @@ module.exports = {
 							"label": "Название мероприятия",
 							"style": 1,
 							"min_length": 1,
-							"max_length": 4000,
+							"max_length": 500,
 							"required": true
 						}]
 					},
@@ -54,7 +54,7 @@ module.exports = {
 							"label": "Дата проведения",
 							"style": 1,
 							"min_length": 1,
-							"max_length": 4000,
+							"max_length": 500,
 							"required": true
 						}]
 					},
@@ -66,7 +66,7 @@ module.exports = {
 							"label": "Место проведения",
 							"style": 1,
 							"min_length": 1,
-							"max_length": 4000,
+							"max_length": 500,
 							"required": true
 						}]
 					},
@@ -78,8 +78,7 @@ module.exports = {
 						  "label": "Краткое описание",
 						  "style": 2,
 						  "min_length": 1,
-						  "max_length": 4000,
-						  "placeholder": "John",
+						  "max_length": 2000,
 						  "required": false
 						}]
 					},
@@ -91,7 +90,7 @@ module.exports = {
 							"label": "URL с подробной информацией",
 							"style": 1,
 							"min_length": 1,
-							"max_length": 4000,
+							"max_length": 1000,
 							"required": false
 						}]
 					},]
