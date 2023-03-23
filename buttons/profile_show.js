@@ -60,7 +60,7 @@ module.exports = {
                                         url: "https://cdn.discordapp.com/avatars/" + fetchedUser.user.id + "/" + fetchedUser.user.avatar + ".png"
                                     },
                                     author: {
-                                        name: fetchedUser.nickname
+                                        name: fetchedUser.nickname ?? fetchedUser.user.username
                                     },
                                     fields: embed_progress,
                                     timestamp: new Date().toISOString(),
