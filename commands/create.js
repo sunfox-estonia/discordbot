@@ -67,8 +67,8 @@ module.exports = {
 							"style": 1,
 							"min_length": 1,
 							"max_length": 500,
-							"required": true,
-							"value": "Помещение Клуба (Tamme 17, Jõhvi vald)"
+							"value": "Помещение Клуба (Tamme 17, Jõhvi vald)",
+							"required": true							
 						}]
 					},
 					{
@@ -110,7 +110,7 @@ module.exports = {
 							"label": "Название квеста:",
 							"style": 1,
 							"min_length": 1,
-							"max_length": 500,
+							"max_length": 1000,
 							"required": true
 						}]
 					},
@@ -123,7 +123,7 @@ module.exports = {
 						  "style": 2,
 						  "min_length": 1,
 						  "max_length": 2000,
-						  "required": false
+						  "required": true
 						}]
 					},
 					{
@@ -146,8 +146,8 @@ module.exports = {
 							"label": "Награда за выполнение:",
 							"style": 1,
 							"min_length": 1,
-							"max_length": 1000,
-							"required": false
+							"max_length": 2000,
+							"required": true
 						}]
 					},]
 				  }
