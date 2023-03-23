@@ -4,20 +4,22 @@ const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const config = require('./config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
-    host: config.db_config.host,
-    user: config.db_config.dbuser,
-    password: config.db_config.dbpass,
-    database: config.db_config.dbname,
-    debug: false,
-    multipleStatements: true,
-  });
+	host: config.db_config.host,
+	user: config.db_config.dbuser,
+	password: config.db_config.dbpass,
+	database: config.db_config.dbname,
+	debug: false,
+	multipleStatements: true,
+});
 
-const client = new Client({ intents: [
-	GatewayIntentBits.Guilds,
-	GatewayIntentBits.GuildMessages,
-	GatewayIntentBits.MessageContent,
-	GatewayIntentBits.GuildMembers,
-] });
+const client = new Client({
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildMembers,
+	]
+});
 
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
@@ -43,6 +45,15 @@ for (const file of commandFiles) {
 	} else {
 		console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
 	}
+}
+
+client.buttons = new Collection();
+const buttonsPath = path.join(__dirname, 'buttons');
+const buttonsFiles = fs.readdirSync(buttonsPath).filter(file => file.endsWith('.js'));
+for (const file of buttonsFiles) {
+	const filePath = path.join(buttonsPath, file);
+	const button = require(filePath);
+	client.buttons.set(button.data.name, button);
 }
 
 client.login(config.token);
