@@ -71,6 +71,6 @@ module.exports = {
 				]
 			}
 
-			await interaction.reply({ content:`${fetchedUser.user}, для Вас весть от Хугинна:`, embeds: [embed_help], components: [component_buttons], ephemeral: true });
+			await interaction.reply({ content:`${interaction.member.nickname ?? interaction.member.user.username}, для Вас весть от Хугинна:`, embeds: [embed_help], components: [component_buttons], ephemeral: true });
 		},
 };
