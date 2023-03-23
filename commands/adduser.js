@@ -50,7 +50,7 @@ module.exports = {
 								};
 								interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 							} else {
-								interaction.reply({ content: 'Создан новый профиль пользователя для ' + fetchedUser.user.username, ephemeral: true });
+								interaction.reply({ content: 'Создан новый профиль пользователя для ' + fetchedUser.user.nickname ?? fetchedUser.user.username, ephemeral: true });
 
 								var embed_adduser = {
 									title: "Ваш профиль добавлен в Систему достижений!",
