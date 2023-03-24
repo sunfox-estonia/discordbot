@@ -37,7 +37,7 @@ module.exports = {
 		const data_event = interaction.options.getString('event_type');
 
 		if (data_event == 'event') {
-			checkProfileExists(function (error) {
+			checkEventExists(function (error) {
 				if (error) {
 					const locales = {
 						en: 'An error occurred while checking event already exists.',
