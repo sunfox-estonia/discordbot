@@ -29,7 +29,7 @@ module.exports = {
             if (error) {
                 const locales = {
                     en: 'An error occurred while creating event.',
-                    et: 'Uue sündmuse loomisek on tekkinud viga.',
+                    et: 'Uue sündmuse loomisel on tekkinud viga.',
                 };
                 interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
             } else {
