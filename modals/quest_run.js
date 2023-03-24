@@ -34,7 +34,6 @@ module.exports = {
             } else {
                 const embed_quest = {
                     title: quest_title,
-                    description: event_description,
                     color: 0x0099ff,
                     thumbnail: {
                         url: "https://r.snfx.ee/img/discord_bot/alert_scroll.png"
