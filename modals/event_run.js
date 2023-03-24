@@ -1,5 +1,5 @@
 //const {} = require('discord.js');
-const { Parse } = require('fecha');
+const { parse } = require('fecha');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
@@ -45,5 +45,5 @@ createEvent = function (title, datetime, location, description, url, callback) {
 }
 
 parseDate = function (data) {
-    return Parse(data, 'DD/MM/YYYY HH:mm');
+    return parse(data, 'DD/MM/YYYY HH:mm');
 }
