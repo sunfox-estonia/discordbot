@@ -46,7 +46,7 @@ module.exports = {
 						};
 						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 					} else {
-						getListEventRegistrations(event_data.id, function (error, registrations_list) {
+						getListEventRegistrations(event_data.id, function (error, event_reg_list) {
 							console.log(registrations_list);
 							if (error) {
 								const locales = {
@@ -60,8 +60,8 @@ module.exports = {
 								var accepted_count = 0;	
 								var declined_count = 0;	
 	
-								for (i = 0; i < registrations_list.length; i++) {
-									end_user = interaction.guild.members.cache.get(registrations_list[i].user_uid);
+								for (i = 0; i < event_reg_list.length; i++) {
+									end_user = interaction.guild.members.cache.get(event_reg_list[i].user_uid);
 									switch (registrations_list[i].user_status) {
 										case '1':
 											list_accepted = list_accepted + `${end_user}\r`;	
@@ -75,7 +75,8 @@ module.exports = {
 											break;
 									}
 								}
-	
+								console.log(list_accepted);
+								console.log("accepted_count = "+accepted_count);
 								if (accepted_count === 0) {
 									list_accepted = "*Список пуст*";
 								}
@@ -129,7 +130,7 @@ module.exports = {
 						};
 						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 					} else {
-						getListQuestRegistrations(quest_data.id, function (error, registrations_list) {
+						getListQuestRegistrations(quest_data.id, function (error, quest_reg_list) {
 							if (error) {
 								const locales = {
 									en: 'An error occurred while retrieving members list.',
@@ -141,8 +142,8 @@ module.exports = {
 								var list_accepted = '';
 								var accepted_count = 0;
 	
-								for (i = 0; i < registrations_list.length; i++) {
-									end_user = interaction.guild.members.cache.get(registrations_list[i].user_uid);
+								for (i = 0; i < quest_reg_list.length; i++) {
+									end_user = interaction.guild.members.cache.get(quest_reg_list[i].user_uid);
 									list_accepted = list_accepted + `${end_user}\r`;	
 									accepted_count = i;									
 									break;
@@ -213,7 +214,7 @@ getListEventRegistrations = function (event_id, callback) {
 				callback("Отсуствуют регистрации на мероприятия.",null);
 				return;
 			} else {
-				callback(null,result[0]);
+				callback(null,result);
 			}
 		});
 	}
