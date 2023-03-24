@@ -46,24 +46,35 @@ module.exports = {
 
 							var list_accepted = '';
 							var list_declined = '';
+							var accepted_count = 0;	
+							var declined_count = 0;	
 
 							console.log(registrations_list);
 
 							for (i = 0; i < registrations_list.length; i++) {
 								end_user = interaction.guild.members.cache.get(registrations_list[i].user_uid);
-								console.log(end_user);
 
 								switch (registrations_list[i].user_status) {
 									case '1':
-										var list_accepted = list_accepted + `${end_user}\r`;										
+										list_accepted = list_accepted + `${end_user}\r`;	
+										accepted_count = i;									
 										break;
 									case '0':
-										var list_declined = list_declined + `${end_user}\r`;										
+										list_declined = list_declined + `${end_user}\r`;	
+										declined_count = i;										
 										break;
 									default:
 										break;
 								}
 							}
+
+							if (accepted_count === 0) {
+								list_accepted = "*Список пуст*";
+							}
+							if (declined_count === 0) {
+								list_declined = "*Список пуст*";
+                            }
+
 							const embed_event = {
 								title: event_data.event_title,
 								color: 0x0099ff,
@@ -90,6 +101,10 @@ module.exports = {
 										name: "Не участвуют:",
 										value: list_declined,
 									},
+									{
+										name: "\u200b",
+										value: "\u200b"
+									},
 								],
 								timestamp: new Date().toISOString(),
 								footer: {
@@ -97,7 +112,7 @@ module.exports = {
 									text: "Викинги Вирумаа"
 								},
 							}
-							interaction.reply({ embeds: [embed_event], ephemeral: true });
+							interaction.reply({content: 'Вот список участников ближайшего мероприятия:', embeds: [embed_event], ephemeral: true });
 						}
 					});
 				}
