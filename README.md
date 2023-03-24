@@ -111,6 +111,7 @@ CREATE TABLE `events_usr` (
   `event_id` int(10) DEFAULT NULL,
   `user_uid` varchar(55) NOT NULL,
   `user_status` enum('0','1') NOT NULL DEFAULT '0',
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -120,6 +121,7 @@ CREATE TABLE `quests_usr` (
   `quest_id` int(10) NOT NULL,
   `user_uid` varchar(55) NOT NULL,
   `user_status` enum('0','1') NOT NULL DEFAULT '0',
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 ```
