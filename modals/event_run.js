@@ -34,7 +34,7 @@ module.exports = {
                 interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
             } else {
 
-                var embed_event = {
+                const embed_event = {
                     title: event_title,
                     description: event_description,
                     color: 0x0099ff,
@@ -63,7 +63,7 @@ module.exports = {
                         text: "Викинги Вирумаа"
                     },
                 }
-                var component_buttons = {
+                const component_buttons = {
                     "type": 1,
                     "components": [
                         {
