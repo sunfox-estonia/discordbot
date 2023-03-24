@@ -45,7 +45,7 @@ module.exports = {
                         },
                         {
                             name: "Срок исполнения",
-                            value: format(new Date(event_datetime_db), 'DD.MM.YYYY, HH:mm'),
+                            value: format(new Date(quest_datetime_db), 'DD.MM.YYYY, HH:mm'),
                         },
                         {
                             name: "Вознаграждение",
