@@ -108,7 +108,6 @@ hideTimer = function (data) {
     let dateEnd = new Date(data);
     let dateNow = new Date();
     let diff = (dateEnd - dateNow);
-    console.log(dateEnd +" - "+ dateNow +" = "+diff);
     return diff;
 }
 
