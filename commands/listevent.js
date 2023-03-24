@@ -74,8 +74,6 @@ module.exports = {
 											break;
 									}
 								}
-								console.log(list_accepted);
-								console.log("accepted_count = "+accepted_count);
 								if (accepted_count === 0) {
 									list_accepted = "*Список пуст*";
 								}
