@@ -56,7 +56,7 @@ module.exports = {
 
 checkQuestRegistrationAvailable = function (callback) {
 	// Prepare MySQL request check if there is opened-registration event	
-	let sql1 = "SELECT * FROM `quests` WHERE `event_date` > NOW() LIMIT 1;";
+	let sql1 = "SELECT * FROM `quests` WHERE `quest_date` > NOW() LIMIT 1;";
 	database.query(sql1, (error1, result, fields) => {
 		if (error1) {
 			callback("Ошибка в работе базы данных.",null);
