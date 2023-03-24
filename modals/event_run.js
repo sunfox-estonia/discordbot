@@ -91,9 +91,7 @@ module.exports = {
                     );
                 } 
 
-                let timeDifference = hideTimer(event_datetime_db);
-
-                UserNotify.send({ content: `<@&${config.event_notify_role_id}>, Хугинн принес весть о грядущем событии:`, embeds: [embed_event], components: [component_buttons] }).then(repliedMessage => {setTimeout(() => repliedMessage.delete(), timeDifference);});
+                UserNotify.send({ content: `<@&${config.event_notify_role_id}>, Хугинн принес весть о грядущем событии:`, embeds: [embed_event], components: [component_buttons] });
                 interaction.reply({ content: 'Event has been successfully created!', ephemeral: true });
             }
         });        
