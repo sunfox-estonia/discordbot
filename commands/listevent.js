@@ -161,13 +161,11 @@ module.exports = {
 									fields: [
 										{
 											name: "Дата завершения",
-										//	value: format(new Date(quest_data.quest_date), 'DD.MM.YYYY, HH:mm'),
-										value: "test",
+											value: format(new Date(quest_data.quest_date), 'DD.MM.YYYY, HH:mm'),
 										},
 										{
 											name: "Взяли задание:",
-										//	value: list_accepted,
-										value: "test",
+											value: list_accepted,
 										},
 										{
 											name: "\u200b",
