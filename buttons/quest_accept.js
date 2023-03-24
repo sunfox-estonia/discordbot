@@ -59,7 +59,7 @@ checkQuestRegistrationAvailable = function (callback) {
 	let sql1 = "SELECT * FROM `quests` WHERE `quest_date` > NOW() LIMIT 1;";
 	database.query(sql1, (error1, result, fields) => {
 		if (error1) {
-			callback("Ошибка в работе базы данных.",null);
+			callback("Ошибка в работе базы данных (checkQuestRegistrationAvailable).",null);
 			return;
 		} else if (result.length != 1) {
 			callback("Отсуствуют квесты с активной регистрацией.",null);
@@ -76,7 +76,7 @@ checkQuestAcceptedProfileExists = function (user_uid, callback) {
 	let sql2 = "SELECT * FROM drd_users WHERE uid = ?;";
 	database.query(sql2, [user_uid], (error2, results, fields) => {
 		if (error2) {
-			callback("Ошибка в работе базы данных.");
+			callback("Ошибка в работе базы данных (checkQuestAcceptedProfileExists).");
 			return;
 		} else if (results.length != 1) {
 			callback("— Этот квест не для тебя, дружок!");
@@ -94,7 +94,7 @@ addQuestRegistrationAccept = function(user_uid, event_id, callback) {
 	let sql3 = "INSERT INTO quests_usr (user_uid, quest_id, user_status) VALUES (?,?,'1');";
     database.query(sql3, [user_uid,event_id], (error3, pingback) => {
         if (error3) {
-            callback("Ошибка добавления регистрации на квест.");
+            callback("Ошибка добавления регистрации на квест (addQuestRegistrationAccept).");
             return;
         } else {
 			callback(null);
