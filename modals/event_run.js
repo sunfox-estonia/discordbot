@@ -45,5 +45,5 @@ createEvent = function (title, datetime, location, description, url, callback) {
 }
 
 parseDate = function (data) {
-    return Parse(data, 'DD/MM/YYYY HH:mm:ss');
+    return Parse(data, 'DD/MM/YYYY HH:mm');
 }
