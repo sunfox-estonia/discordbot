@@ -161,7 +161,7 @@ module.exports = {
 										fields: [
 											{
 												name: "Дата завершения",
-												value: format(new Date(quest_data.questt_date), 'DD.MM.YYYY, HH:mm'),
+												value: format(new Date(quest_data.quest_date), 'DD.MM.YYYY, HH:mm'),
 											},
 											{
 												name: "Взяли задание:",
