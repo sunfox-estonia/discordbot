@@ -24,7 +24,6 @@ module.exports = {
 			))
 		.setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 
-
 	async execute(interaction) {
 		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
 		if (hasAdminRole == false) {
@@ -36,7 +35,6 @@ module.exports = {
 		}
 
 		const data_event = interaction.options.getString('event_type');
-
 
 		if (data_event == 'event') {
 			checkProfileExists(function (error) {
@@ -217,9 +215,9 @@ checkEventExists = function (callback) {
 
 checkQuestExists = function (callback) {
 	// Prepare MySQL request check if there is opened-registration event	
-	let sql1 = "SELECT * FROM `quests` WHERE `quest_date` > NOW() LIMIT 1; ";
-	database.query(sql1, (error1, result, fields) => {
-		if (error1) {
+	let sql2 = "SELECT * FROM `quests` WHERE `quest_date` > NOW() LIMIT 1; ";
+	database.query(sql2, (error2, result, fields) => {
+		if (error2) {
 			callback("Ошибка в работе базы данных.");
 			return;
 		} else if (result.length != 0) {
