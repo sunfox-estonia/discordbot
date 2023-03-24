@@ -90,7 +90,10 @@ module.exports = {
                         }
                     );
                 } 
-                UserNotify.send({ content: `<@&${config.event_notify_role_id}>, Хугинн принес весть о грядущем событии:`, embeds: [embed_event], components: [component_buttons] });
+
+                let timeDifference = hideTimer(event_datetime_db);
+
+                UserNotify.send({ content: `<@&${config.event_notify_role_id}>, Хугинн принес весть о грядущем событии:`, embeds: [embed_event], components: [component_buttons] }).then(repliedMessage => {setTimeout(() => repliedMessage.delete(), timeDifference);});
                 interaction.reply({ content: 'Event has been successfully created!', ephemeral: true });
             }
         });        
@@ -114,4 +117,11 @@ createEvent = function (title, datetime, location, description, url, callback) {
 
 parseDate = function (data) {
     return parse(data, 'DD/MM/YYYY HH:mm');
+}
+
+hideTimer = function (data) {
+    let dateEnd = new Date(data);
+    let dateNow = new Date();
+    let diff = (dateEnd - dateNow);
+    return diff;
 }
