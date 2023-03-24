@@ -71,9 +71,11 @@ module.exports = {
 									title: (String.fromCodePoint(user_profile.symbol) + ' ' + user_profile.title),
 									description: user_profile.level + ' уровень | ' + user_profile.coins + ' золотых',
 									color: 0x0099ff,
+									thumbnail: {
+										url: "https://cdn.discordapp.com/avatars/" + fetchedUser.user.id + "/" + fetchedUser.user.avatar + ".png"
+									},
 									author: {
-										name: fetchedUser.nickname ?? fetchedUser.user.username,
-										icon_url: "https://cdn.discordapp.com/avatars/" + fetchedUser.user.id + "/" + fetchedUser.user.avatar + ".png"
+										name: fetchedUser.nickname ?? fetchedUser.user.username
 									},
 									fields: embed_progress,
 									timestamp: new Date().toISOString(),
