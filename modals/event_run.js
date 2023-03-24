@@ -22,10 +22,10 @@ module.exports = {
         const event_description = interaction.fields.getTextInputValue('event_description');
         const event_url = interaction.fields.getTextInputValue('event_url');
 
-        const event_datetime_db = new Date(parseDate(event_datetime)).toISOString();
+        const event_datetime_db = new Date(parseDate(event_datetime));
         const UserNotify = interaction.client.channels.cache.get(config.log_channel_id);
 
-        createEvent(event_title, event_datetime_db, event_location, event_description, event_url, (error) => {
+        createEvent(event_title, format(new Date(event_datetime_db), isoDateTime), event_location, event_description, event_url, (error) => {
             if (error) {
                 const locales = {
                     en: 'An error occurred while creating event.',
@@ -43,12 +43,8 @@ module.exports = {
                     },
                     fields: [
                         {
-                            name: "\u200b",
-                            value: "\u200b"
-                        },
-                        {
                             name: "Дата проведения",
-                            value: format(new Date(event_datetime_db), 'DD MMMM, hh:mm'),
+                            value: format(new Date(event_datetime_db), 'DD.MM.YYYY, hh:mm'),
                             inline: true
                         },
                         {
@@ -88,7 +84,7 @@ module.exports = {
                     component_buttons["components"].push(
                         {
                             type: 2,
-                            label: "Подробнее мероприятии",
+                            label: "Подробнее о мероприятии",
                             style: 5,
                             url: event_url
                         }
