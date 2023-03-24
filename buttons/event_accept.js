@@ -92,7 +92,7 @@ checkProfileExists = function (user_uid, callback) {
 addRegistration = function(used_uid, event_id, callback) {
 	// Add achivement for user
 	let sql2 = "INSERT INTO drd_usr_ach (user_id, ach_id, user_status) VALUES (?,?,'1');";
-    database.query(sql2, [used_uid,event_id, user_status], (error2, pingback) => {
+    database.query(sql2, [used_uid,event_id], (error2, pingback) => {
         if (error2) {
             callback("Ошибка добавления регистрации на мероприятие.");
             return;
