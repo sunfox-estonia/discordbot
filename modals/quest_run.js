@@ -33,7 +33,7 @@ module.exports = {
                 interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
             } else {
                 const embed_quest = {
-                    title: event_title,
+                    title: quest_title,
                     description: event_description,
                     color: 0x0099ff,
                     thumbnail: {
@@ -41,8 +41,16 @@ module.exports = {
                     },
                     fields: [
                         {
-                            name: "Дата завершения",
+                            name: "Суть задание",
+                            value: quest_description,
+                        },
+                        {
+                            name: "Срок исполнения",
                             value: format(new Date(event_datetime_db), 'DD.MM.YYYY, HH:mm'),
+                        },
+                        {
+                            name: "Вознаграждение",
+                            value: quest_reward,
                         },
                         {
                             name: "\u200b",
@@ -60,15 +68,9 @@ module.exports = {
                     components: [
                         {
                             type: 2,
-                            label: "Участвую",
+                            label: "Принять",
                             style: 3,
                             custom_id: "quest_accept"
-                        },
-                        {
-                            type: 2,
-                            label: "Не участвую",
-                            style: 4,
-                            custom_id: "quest_decline"
                         },
                         {
                             type: 2,
@@ -78,7 +80,7 @@ module.exports = {
                         },
                     ]
                 }
-                UserNotify.send({ content: `Опа, это новый квест от Хугинна:`, embeds: [embed_quest], components: [component_buttons] });
+                UserNotify.send({ content: `У меня есть для тебя задание, путник. И отличная награда!`, embeds: [embed_quest], components: [component_buttons] });
                 interaction.reply({ content: 'Quest has been successfully created!', ephemeral: true });
             }
         });        
