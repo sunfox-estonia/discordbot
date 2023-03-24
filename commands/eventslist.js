@@ -130,7 +130,7 @@ getRegistrations = function (event_id, callback) {
 				callback("Отсуствуют регистрации на мероприятия.",null);
 				return;
 			} else {
-				callback(null,result[0]);
+				callback(null,result);
 			}
 		});
 	}
