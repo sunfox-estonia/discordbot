@@ -81,7 +81,7 @@ module.exports = {
                     ]
                 }
                 if (event_url != '') {
-                    component_buttons.push(
+                    component_buttons["components"].push(
                         {
                             type: 2,
                             label: "Подробнее мероприятии",
