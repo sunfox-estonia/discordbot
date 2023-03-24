@@ -37,7 +37,7 @@ module.exports = {
 		const data_event = interaction.options.getString('event_type');
 
 		if (data_event == 'event') {
-			checkEventExists(function (error) {
+			checkActiveEventExists(function (error) {
 				if (error) {
 					const locales = {
 						en: 'An error occurred while checking event already exists.',
@@ -117,7 +117,7 @@ module.exports = {
 				}				
 			});
 		} else if (data_event == 'quest') {
-			checkQuestExists(function (error) {
+			checkActiveQuestExists(function (error) {
                 if (error) {
                     const locales = {
                         en: 'An error occurred while checking quest already exists.',
@@ -187,7 +187,7 @@ module.exports = {
 	},
 };
 
-checkEventExists = function (callback) {
+checkActiveEventExists = function (callback) {
 	// Prepare MySQL request check if there is opened-registration event	
 	let sql1 = "SELECT * FROM `events` WHERE `event_date` > NOW() LIMIT 1; ";
 	database.query(sql1, (error1, result, fields) => {
@@ -205,7 +205,7 @@ checkEventExists = function (callback) {
 	// checkEventExists closed
 }
 
-checkQuestExists = function (callback) {
+checkActiveQuestExists = function (callback) {
 	// Prepare MySQL request check if there is opened-registration event	
 	let sql2 = "SELECT * FROM `quests` WHERE `quest_date` > NOW() LIMIT 1; ";
 	database.query(sql2, (error2, result, fields) => {

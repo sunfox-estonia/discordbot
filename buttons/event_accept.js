@@ -18,7 +18,7 @@ module.exports = {
 
         const user_uid = interaction.user.id;
 
-        checkProfileExists(user_uid,function(error){
+        checkEventAcceptedProfileExists(user_uid,function(error){
             if (error) {
                 const locales = {
                     en: 'User profile does not exists.',
@@ -30,7 +30,7 @@ module.exports = {
                     if (error) {
                         const locales = {
                             en: 'Available event does not exists.',
-                            et: 'Registreerimisele kättesaavad sündmus ei eksisteeri.',
+                            et: 'Registreerimisele avatud sündmust ei eksisteeri.',
                             };
                         interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });						
                     } else { 
@@ -71,7 +71,7 @@ checkRegistrationAvailable = function (callback) {
 	// checkEventExists closed
 }
 
-checkProfileExists = function (user_uid, callback) {
+checkEventAcceptedProfileExists = function (user_uid, callback) {
 	// Prepare MySQL request check if user with the same uid already exists	
 	let sql2 = "SELECT * FROM drd_users WHERE uid = ?;";
 	database.query(sql2, [user_uid], (error2, results, fields) => {

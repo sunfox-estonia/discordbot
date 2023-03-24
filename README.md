@@ -25,12 +25,18 @@ git update-index --assume-unchanged config.json
 Далее скорректируйте файл config.json по шаблону:
 ```json
 {
-  "token": "[your Discord bot token here]",
-  "client_id": "[your Application ID here]",
-  "guild_id": "[your Discord Server ID here]",
-  "log_channel_id": "[read-only log channel ID here]",
-  "admin_roles": { [Moderator & Admin roles title here] },
-  "db_config": {"host":"localhost", "dbname":"[database title]", "dbuser":"[database username]", "dbpass":"[database user password]" }
+    "token": "your Discord bot token here",
+    "client_id": "your Application ID here",
+    "guild_id": "your Discord Server ID here",
+    "log_channel_id": "read-only log channel ID here",
+    "event_notify_role_id": "Role, which will be notified when an event created",
+    "admin_roles": "Moderator & Admin roles titles here",
+    "db_config": {
+        "host": "localhost",
+        "dbname": "database title",
+        "dbuser": "database username",
+        "dbpass": "database user password"
+    }
 }
 ```
 Выполните регистрацию команд бота. Для этого в директории бота выполните команду:
@@ -126,6 +132,10 @@ CREATE TABLE `quests_usr` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 ```
 Внимание! База данных не содержит материалов (ачивок и уровней системы достижений).
+
+## Настройка прав доступа на сайте Discord Developers
+
+На странице конфигурации приложения, в разделе Bot, в секции Privileged Gateway Intents включите функции Presence Intent, Server Members Intent  также Message Content Intent. Сохраните изменения.
 
 ## Запуск бота
 Для запуска бота выполните команду из рабочей директории:

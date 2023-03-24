@@ -1,14 +1,14 @@
 {
-    "token": "[your Discord bot token here]",
-    "client_id": "[your Application ID here]",
-    "guild_id": "[your Discord Server ID here]",
-    "log_channel_id": "[read-only log channel ID here]",
+    "token": "your Discord bot token here",
+    "client_id": "your Application ID here",
+    "guild_id": "your Discord Server ID here",
+    "log_channel_id": "read-only log channel ID here",
     "event_notify_role_id": "Role, which will be notified when an event created",
-    "admin_roles": "Moderator & Admin roles title here",
+    "admin_roles": "Moderator & Admin roles titles here",
     "db_config": {
         "host": "localhost",
-        "dbname": "[database title]",
-        "dbuser": "[database username]",
-        "dbpass": "[database user password]"
+        "dbname": "database title",
+        "dbuser": "database username",
+        "dbpass": "database user password"
     }
 }

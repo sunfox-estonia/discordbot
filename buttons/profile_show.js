@@ -18,7 +18,7 @@ module.exports = {
         var member_id = interaction.member.user.id;
         await interaction.guild.members.fetch(member_id).then(
             fetchedUser => {
-                getProfile(fetchedUser.user.id, function (error, user_profile) {
+                getHiddenProfile(fetchedUser.user.id, function (error, user_profile) {
                     if (error) {
                         const locales = {
                             en: 'An error occurred while retrieving user profile.',
@@ -26,7 +26,7 @@ module.exports = {
                         };
                         interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
                     } else {
-                        getProgress(fetchedUser.user.id, user_profile.level, function (error, user_progress) {
+                        getHiddenProgress(fetchedUser.user.id, user_profile.level, function (error, user_progress) {
                             if (error) {
                                 const locales = {
                                     en: 'An error occurred while retrieving user profile.',
@@ -87,7 +87,7 @@ module.exports = {
 }
 
 
-getProfile = function (user_id, callback) {
+getHiddenProfile = function (user_id, callback) {
     // Prepare MySQL request to retrieve user data	
     let sql1 = "SELECT drd_users.uid, drd_users.level, drd_users.coins, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE drd_users.uid = ? LIMIT 1;";
     database.query(sql1, [user_id], (error1, result_userdata, fields) => {
@@ -104,7 +104,7 @@ getProfile = function (user_id, callback) {
     // getProfile closed
 }
 
-getProgress = function (user_id, user_level, callback) {
+getHiddenProgress = function (user_id, user_level, callback) {
     // Prepare MySQL request to retrieve user achievements
     let sql2 = "SELECT drd_achievements.code, drd_achievements.title, drd_achievements.description, drd_usr_ach.date FROM drd_achievements LEFT JOIN drd_usr_ach ON drd_achievements.code = drd_usr_ach.ach_id AND drd_usr_ach.user_id = ? WHERE drd_achievements.level = ?;";
     database.query(sql2, [user_id, user_level], function (error2, result_levels, fields) {

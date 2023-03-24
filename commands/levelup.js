@@ -40,7 +40,7 @@ module.exports = {
 
 		await interaction.guild.members.fetch(target_user).then(
 			fetchedUser => {
-				getProfile(fetchedUser.user.id,function(error,user_profile){
+				getAchievementProfile(fetchedUser.user.id,function(error,user_profile){
 					if (error) {
 						const locales = {
 							en: 'An error occurred while retrieving user profile.',
@@ -140,7 +140,7 @@ module.exports = {
 	}
 };
 
-getProfile = function(user_id, callback) {
+getAchievementProfile = function(user_id, callback) {
 	// Prepare MySQL request to retrieve user profile and achievement data	
 	let sql1 = "SELECT drd_users.id, drd_users.uid, drd_users.level, drd_users.coins, drd_levels.title, drd_levels.symbol FROM drd_users LEFT JOIN drd_levels ON drd_users.level = drd_levels.level WHERE uid = ? LIMIT 1;";   
 	database.query(sql1, [user_id], (error1, results, fields) => {
