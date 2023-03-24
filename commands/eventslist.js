@@ -78,17 +78,13 @@ module.exports = {
 								fields: [
 									{
 										name: "Дата проведения",
-										value: format(new Date(event_data.event_date), 'DD.MM.YYYY, HH:mm'),
+										value: format(new Date(event_data.event_date), 'DD.MM.YYYY, HH:mm') + '\r',
 										inline: true
 									},
 									{
 										name: "Место проведения",
-										value: event_data.event_location,
+										value: event_data.event_location + '\r',
 										inline: true
-									},
-									{
-										name: "\u200b",
-										value: "\u200b"
 									},
 									{
 										name: "Участвуют в мероприятии:",
