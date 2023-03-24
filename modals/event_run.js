@@ -84,7 +84,6 @@ module.exports = {
                         }
                     );
                 } 
-
                 UserNotify.send({ content: `Хугинн принес весть о новом событии:`, embeds: [embed_event], components: [component_buttons] });
                 interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
             }
