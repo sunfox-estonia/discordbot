@@ -178,7 +178,7 @@ module.exports = {
 											text: "Викинги Вирумаа"
 										},
 									}
-									interaction.reply({content: 'Вот список участников квеста:', embeds: [embed_quest], ephemeral: true });
+									interaction.reply({content: 'Вот список участников последнего активного квеста:', embeds: [embed_quest], ephemeral: true });
 								}
 							});
 						}
