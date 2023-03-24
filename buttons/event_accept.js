@@ -26,7 +26,7 @@ module.exports = {
                     };
                 interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });						
             } else {
-                checkEventExists(function(error,event_data){
+                checkRegistrationAvailable(function(error,event_data){
                     if (error) {
                         const locales = {
                             en: 'Available event does not exists.',
@@ -54,9 +54,9 @@ module.exports = {
     }
 }
 
-checkEventExists = function (callback) {
+checkRegistrationAvailable = function (callback) {
 	// Prepare MySQL request check if there is opened-registration event	
-	let sql1 = "SELECT * FROM `events` WHERE `event_date` > NOW() LIMIT 1; ";
+	let sql1 = "SELECT * FROM `events` WHERE `event_date` > NOW() LIMIT 1;";
 	database.query(sql1, (error1, result, fields) => {
 		if (error1) {
 			callback("Ошибка в работе базы данных.",null);
