@@ -89,10 +89,10 @@ checkProfileExists = function (user_uid, callback) {
 	// checkProfileExists closed
 }
 
-addRegistration = function(used_uid, event_id, callback) {
+addRegistration = function(user_uid, event_id, callback) {
 	// Add achivement for user
-	let sql2 = "INSERT INTO drd_usr_ach (user_id, ach_id, user_status) VALUES (?,?,'1');";
-    database.query(sql2, [used_uid,event_id], (error2, pingback) => {
+	let sql2 = "INSERT INTO events_usr (user_uid, event_id, user_status) VALUES (?,?,'1');";
+    database.query(sql2, [user_uid,event_id], (error2, pingback) => {
         if (error2) {
             callback("Ошибка добавления регистрации на мероприятие.");
             return;
