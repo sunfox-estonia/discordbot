@@ -1,5 +1,14 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 const config = require('../config.json');
+const mysql = require('mysql');
+const database = mysql.createConnection({
+    host: config.db_config.host,
+    user: config.db_config.dbuser,
+    password: config.db_config.dbpass,
+    database: config.db_config.dbname,
+    debug: false,
+    multipleStatements: true,
+});
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -27,6 +36,32 @@ module.exports = {
 		}
 
 		const data_event = interaction.options.getString('event_type');
+
+
+		if (data_event == 'event') {
+			checkProfileExists(function (error) {
+				if (error) {
+					const locales = {
+						en: 'An error occurred while checking event already exists.',
+						et: 'Sündmuse loomisel on tekkinud viga.',
+					};
+					interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
+					return;
+				}
+			
+			});
+		} else if (data_event == 'quest') {
+			checkQuestExists(function (error) {
+                if (error) {
+                    const locales = {
+                        en: 'An error occurred while checking quest already exists.',
+                        et: 'Eesmärgi loomisel on tekkinud viga.',
+                    };
+                    interaction.reply({ content: locales[interaction.locale]?? error, ephemeral: true });
+                    return;
+                }
+            });
+		}
 
 		switch (data_event) {
 			case 'event':
@@ -161,3 +196,39 @@ module.exports = {
 		await interaction.showModal(modal_form);		
 	},
 };
+
+checkEventExists = function (callback) {
+	// Prepare MySQL request check if there is opened-registration event	
+	let sql1 = "SELECT * FROM `events` WHERE `event_date` > NOW() LIMIT 1; ";
+	database.query(sql1, (error1, result, fields) => {
+		if (error1) {
+			callback("Ошибка в работе базы данных.");
+			return;
+		} else if (result.length != 0) {
+			callback("Событие с активной регистрацией уже существует.");
+			return;
+		} else {
+			callback(null);
+			return;
+		}
+	});
+	// checkEventExists closed
+}
+
+checkQuestExists = function (callback) {
+	// Prepare MySQL request check if there is opened-registration event	
+	let sql1 = "SELECT * FROM `quests` WHERE `quest_date` > NOW() LIMIT 1; ";
+	database.query(sql1, (error1, result, fields) => {
+		if (error1) {
+			callback("Ошибка в работе базы данных.");
+			return;
+		} else if (result.length != 0) {
+			callback("Квест с активной регистрацией уже существует.");
+			return;
+		} else {
+			callback(null);
+			return;
+		}
+	});
+	// checkQuestExists closed
+}
