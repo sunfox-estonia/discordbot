@@ -64,11 +64,11 @@ module.exports = {
 									switch (event_reg_list[i].user_status) {
 										case '1':
 											list_accepted = list_accepted + `${end_user}\r`;	
-											accepted_count = i+1;									
+											accepted_count++;									
 											break;
 										case '0':
 											list_declined = list_declined + `${end_user}\r`;	
-											declined_count = i+1;										
+											declined_count++;										
 											break;
 										default:
 											break;
@@ -142,7 +142,7 @@ module.exports = {
 								for (i = 0; i < quest_reg_list.length; i++) {
 									end_user = interaction.guild.members.cache.get(quest_reg_list[i].user_uid);
 									list_accepted = list_accepted + `${end_user}\r`;	
-									accepted_count = i+1;									
+									accepted_count++;									
 									break;
 								}
 	
