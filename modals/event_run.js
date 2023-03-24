@@ -1,5 +1,5 @@
 //const {} = require('discord.js');
-const { parse } = require('fecha');
+const { parse, format } = require('fecha');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
@@ -44,7 +44,7 @@ module.exports = {
                     fields: [
                         {
                             name: "Дата проведения",
-                            value: event_datetime_db,
+                            value: format(new Date(event_datetime_db), 'DD MMMM, hh:mm'),
                             inline: true
                         },
                         {
