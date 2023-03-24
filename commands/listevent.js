@@ -156,12 +156,12 @@ module.exports = {
 									}
 		
 									const embed_quest = {
-										title: event_data.event_title,
+										title: quest_data.quest_title,
 										color: 0x0099ff,
 										fields: [
 											{
 												name: "Дата завершения",
-												value: format(new Date(event_data.event_date), 'DD.MM.YYYY, HH:mm'),
+												value: format(new Date(quest_data.questt_date), 'DD.MM.YYYY, HH:mm'),
 											},
 											{
 												name: "Взяли задание:",
