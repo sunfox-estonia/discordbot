@@ -73,9 +73,9 @@ checkEventExists = function (callback) {
 
 checkProfileExists = function (user_uid, callback) {
 	// Prepare MySQL request check if user with the same uid already exists	
-	let sql1 = "SELECT * FROM drd_users WHERE uid = ?;";
-	database.query(sql1, [user_uid], (error1, results, fields) => {
-		if (error1) {
+	let sql2 = "SELECT * FROM drd_users WHERE uid = ?;";
+	database.query(sql2, [user_uid], (error2, results, fields) => {
+		if (error2) {
 			callback("Ошибка в работе базы данных.");
 			return;
 		} else if (results.length != 1) {
@@ -91,9 +91,9 @@ checkProfileExists = function (user_uid, callback) {
 
 addRegistration = function(user_uid, event_id, callback) {
 	// Add achivement for user
-	let sql2 = "INSERT INTO events_usr (user_uid, event_id, user_status) VALUES (?,?,'1');";
-    database.query(sql2, [user_uid,event_id], (error2, pingback) => {
-        if (error2) {
+	let sql3 = "INSERT INTO events_usr (user_uid, event_id, user_status) VALUES (?,?,'1');";
+    database.query(sql3, [user_uid,event_id], (error3, pingback) => {
+        if (error3) {
             callback("Ошибка добавления регистрации на мероприятие.");
             return;
         } else {
