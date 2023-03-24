@@ -1,5 +1,5 @@
 //const {} = require('discord.js');
-const { Format } =  require('fecha.js');
+const { Parse } = require('fecha');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
