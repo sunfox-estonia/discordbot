@@ -15,7 +15,8 @@
     "discord.js": "*",
     "mysql.js": "*",
     "fs": "*",
-    "events": "*"
+    "events": "*",
+    "fecha": "*"
   },
   "repository": {
     "type": "git",

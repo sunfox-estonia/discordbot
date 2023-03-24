@@ -1,4 +1,5 @@
 //const {} = require('discord.js');
+const { Format } =  require('fecha.js');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
@@ -16,11 +17,14 @@ module.exports = {
     },
     async execute(interaction) {
         const event_title = interaction.fields.getTextInputValue('event_title');
-        const event_datetime = interaction.fields.getTextInputValue('event_datetime');
+        const event_datetime_text = interaction.fields.getTextInputValue('event_datetime');
         const event_location = interaction.fields.getTextInputValue('event_location');
         const event_description = interaction.fields.getTextInputValue('event_description');
         const event_url = interaction.fields.getTextInputValue('event_url');
 
+        const event_datetime = parseDate(event_datetime);
+
+        console.log("Event data: "+event_title+" - "+event_datetime+" - "+event_location);
         
     }
 }
@@ -40,6 +44,6 @@ createEvent = function (title, datetime, location, description, url, callback) {
 	// createEvent closed
 }
 
-formateDate = function (date) {
-    
+parseDate = function (data) {
+    return Parse(data, 'DD/MM/YYYY HH:mm:ss');
 }
