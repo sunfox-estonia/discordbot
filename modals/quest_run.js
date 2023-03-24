@@ -79,7 +79,10 @@ module.exports = {
                         },
                     ]
                 }
-                UserNotify.send({ content: `У меня есть для тебя задание, путник. И отличная награда!`, embeds: [embed_quest], components: [component_buttons] }).then(repliedMessage => {setTimeout(() => repliedMessage.delete(), 5000);});
+
+                let timeDifference = hideTimer(quest_datetime_db);
+
+                UserNotify.send({ content: `У меня есть для тебя задание, путник. И отличная награда!`, embeds: [embed_quest], components: [component_buttons] }).then(repliedMessage => {setTimeout(() => repliedMessage.delete(), timeDifference);});
                 interaction.reply({ content: 'Quest has been successfully created!', ephemeral: true });
             }
         });        
@@ -99,6 +102,13 @@ createQuest = function (title, description, date, reward, callback) {
 	    }
 	});
 	// createEvent closed
+}
+
+hideTimer = function (data) {
+    let dateEnd = new Date(data);
+    let dateNow = new Date();
+    let diff = (dateEnd - dateNow) / 1000;
+    return diff;
 }
 
 parseDate = function (data) {
