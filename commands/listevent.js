@@ -93,19 +93,16 @@ module.exports = {
 										},
 										{
 											name: "Место проведения",
-										//	value: event_data.event_location,
-										value: "test",
+											value: event_data.event_location,
 											inline: true
 										},
 										{
 											name: "Участвуют в мероприятии:",
-										//	value: list_accepted,
-										value: "test",
+											value: list_accepted,
 										},
 										{
 											name: "Не участвуют:",
-										//	value: list_declined,
-										value: "test",
+											value: list_declined,
 										},
 										{
 											name: "\u200b",
