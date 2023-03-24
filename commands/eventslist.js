@@ -35,7 +35,7 @@ module.exports = {
 					};
 					interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 				} else {
-					getRegistrations(function (error, registrations_list) {
+					getRegistrations(event_data.id, function (error, registrations_list) {
 						if (error) {
 							const locales = {
 								en: 'An error occurred while retrieving members list.',
