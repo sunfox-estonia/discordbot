@@ -61,7 +61,7 @@ module.exports = {
 	
 								for (i = 0; i < event_reg_list.length; i++) {
 									end_user = interaction.guild.members.cache.get(event_reg_list[i].user_uid);
-									switch (registrations_list[i].user_status) {
+									switch (event_reg_list[i].user_status) {
 										case '1':
 											list_accepted = list_accepted + `${end_user}\r`;	
 											accepted_count = i;									
