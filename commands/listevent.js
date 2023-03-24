@@ -196,7 +196,7 @@ getLastEvent = function (callback) {
 	let sql1 = "SELECT * FROM `events` ORDER BY `date_created` DESC LIMIT 1; ";
 	database.query(sql1, (error1, result, fields) => {
 		if (error1) {
-			callback("Ошибка в работе базы данных.",null);
+			callback("Ошибка в работе базы данных (getLastEvent).",null);
 			return;
 		} else if (result.length != 1) {
 			callback("Событие отсуствует в базе данных.",null);
@@ -213,7 +213,7 @@ getListEventRegistrations = function (event_id, callback) {
 		let sql2 = "SELECT `events_usr`.`user_uid`, `events_usr`.`user_status` FROM `events_usr` INNER JOIN (SELECT MAX(id) as id FROM `events_usr` GROUP BY `user_uid` ) last_updates ON last_updates.id = events_usr.id WHERE events_usr.event_id = ? ORDER BY `user_status` DESC;";
 		database.query(sql2, [event_id], (error2, result, fields) => {
 			if (error2) {
-				callback("Ошибка в работе базы данных.",null);
+				callback("Ошибка в работе базы данных (getListEventRegistrations).",null);
 				return;
 			} else if (result.length == 0) {
 				callback("Отсуствуют регистрации на мероприятия.",null);
@@ -229,7 +229,7 @@ getLastQuest = function (callback) {
 	let sql3 = "SELECT * FROM `quests` ORDER BY `date_created` DESC LIMIT 1; ";
 	database.query(sql3, (error3, result, fields) => {
 		if (error3) {
-			callback("Ошибка в работе базы данных.",null);
+			callback("Ошибка в работе базы данных (getLastQuest).",null);
 			return;
 		} else if (result.length != 1) {
 			callback("Квест отсуствует в базе данных.",null);
@@ -246,7 +246,7 @@ getListQuestRegistrations = function (quest_id, callback) {
 		let sql4 = "SELECT `quest_usr`.`user_uid`, `quest_usr`.`user_status` FROM `quest_usr` INNER JOIN (SELECT MAX(id) as id FROM `quest_usr` GROUP BY `user_uid`) last_updates ON last_updates.id = quest_usr.id WHERE quest_usr.quest_id = ? AND  WHERE quest_usr.user_status = '1' ORDER BY `user_status` DESC;";
 		database.query(sql4, [quest_id], (error4, result, fields) => {
 			if (error4) {
-				callback("Ошибка в работе базы данных.",null);
+				callback("Ошибка в работе базы данных (getListQuestRegistrations).",null);
 				return;
 			} else if (result.length == 0) {
 				callback("Отсуствуют регистрации на квест.",null);
