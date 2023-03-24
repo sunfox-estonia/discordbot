@@ -88,7 +88,6 @@ module.exports = {
 										{
 											name: "Дата проведения",
 											value: format(new Date(event_data.event_date), 'DD.MM.YYYY, HH:mm'),
-											value: "test",
 											inline: true
 										},
 										{
