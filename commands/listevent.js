@@ -243,7 +243,7 @@ getLastQuest = function (callback) {
 
 getListQuestRegistrations = function (quest_id, callback) {	
 		// Prepare MySQL request to get list of registred users	
-		let sql4 = "SELECT `quest_usr`.`user_uid`, `quest_usr`.`user_status` FROM `quest_usr` INNER JOIN (SELECT MAX(id) as id FROM `quest_usr` GROUP BY `user_uid`) last_updates ON last_updates.id = quest_usr.id WHERE quest_usr.quest_id = ? AND  WHERE quest_usr.user_status = '1' ORDER BY `user_status` DESC;";
+		let sql4 = "SELECT `quests_usr`.`user_uid`, `quests_usr`.`user_status` FROM `quests_usr` INNER JOIN (SELECT MAX(id) as id FROM `quests_usr` GROUP BY `user_uid`) last_updates ON last_updates.id = quests_usr.id WHERE quests_usr.quest_id = ? AND quests_usr.user_status = '1' ORDER BY `user_status` DESC; ";
 		database.query(sql4, [quest_id], (error4, result, fields) => {
 			if (error4) {
 				callback("Ошибка в работе базы данных (getListQuestRegistrations).",null);
