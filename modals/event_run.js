@@ -22,7 +22,7 @@ module.exports = {
         const event_description = interaction.fields.getTextInputValue('event_description');
         const event_url = interaction.fields.getTextInputValue('event_url');
 
-        const event_datetime = parseDate(event_datetime);
+        const event_datetime = parseDate(event_datetime_text);
 
         console.log("Event data: "+event_title+" - "+event_datetime+" - "+event_location);
         
