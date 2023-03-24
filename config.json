@@ -3,6 +3,7 @@
     "client_id": "[your Application ID here]",
     "guild_id": "[your Discord Server ID here]",
     "log_channel_id": "[read-only log channel ID here]",
+    "event_notify_role_id": "Role, which will be notified when an event created",
     "admin_roles": "Moderator & Admin roles title here",
     "db_config": {
         "host": "localhost",

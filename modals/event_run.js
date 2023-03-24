@@ -90,7 +90,7 @@ module.exports = {
                         }
                     );
                 } 
-                UserNotify.send({ content: `Хугинн принес весть о новом событии:`, embeds: [embed_event], components: [component_buttons] });
+                UserNotify.send({ content: `<@&${config.event_notify_role_id}>, Хугинн принес весть о грядущем событии:`, embeds: [embed_event], components: [component_buttons] });
                 interaction.reply({ content: 'Event has been successfully created!', ephemeral: true });
             }
         });        
