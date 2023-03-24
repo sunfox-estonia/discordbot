@@ -32,7 +32,7 @@ module.exports = {
                 };
                 interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
             } else {
-                const embed_event = {
+                const embed_quest = {
                     title: event_title,
                     description: event_description,
                     color: 0x0099ff,
@@ -56,29 +56,29 @@ module.exports = {
                     },
                 }
                 const component_buttons = {
-                    "type": 1,
-                    "components": [
+                    type: 1,
+                    components: [
                         {
-                            "type": 2,
-                            "label": "Участвую",
-                            "style": 3,
-                            "custom_id": "quest_accept"
+                            type: 2,
+                            label: "Участвую",
+                            style: 3,
+                            custom_id: "quest_accept"
                         },
                         {
-                            "type": 2,
-                            "label": "Не участвую",
-                            "style": 4,
-                            "custom_id": "quest_decline"
+                            type: 2,
+                            label: "Не участвую",
+                            style: 4,
+                            custom_id: "quest_decline"
                         },
                         {
-                            "type": 2,
-                            "label": "Как работают квесты?",
-                            "style": 5,
-                            "url": "https://wiki.sunfox.ee/public:services_bot_quests"
+                            type: 2,
+                            label: "Как работают квесты?",
+                            style: 5,
+                            url: "https://wiki.sunfox.ee/public:services_bot_quests"
                         },
                     ]
                 }
-                UserNotify.send({ content: `Опа, это новый квест от Хугинна:`, embeds: [embed_event], components: [component_buttons] });
+                UserNotify.send({ content: `Опа, это новый квест от Хугинна:`, embeds: [embed_quest], components: [component_buttons] });
                 interaction.reply({ content: 'Quest has been successfully created!', ephemeral: true });
             }
         });        

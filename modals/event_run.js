@@ -64,19 +64,19 @@ module.exports = {
                     },
                 }
                 const component_buttons = {
-                    "type": 1,
-                    "components": [
+                    type: 1,
+                    components: [
                         {
-                            "type": 2,
-                            "label": "Участвую",
-                            "style": 3,
-                            "custom_id": "event_accept"
+                            type: 2,
+                            label: "Участвую",
+                            style: 3,
+                            custom_id: "event_accept"
                         },
                         {
-                            "type": 2,
-                            "label": "Не участвую",
-                            "style": 4,
-                            "custom_id": "event_decline"
+                            type: 2,
+                            label: "Не участвую",
+                            style: 4,
+                            custom_id: "event_decline"
                         },
                     ]
                 }
