@@ -79,7 +79,7 @@ module.exports = {
                         },
                     ]
                 }
-                UserNotify.send({ content: `У меня есть для тебя задание, путник. И отличная награда!`, embeds: [embed_quest], components: [component_buttons] });
+                UserNotify.send({ content: `У меня есть для тебя задание, путник. И отличная награда!`, embeds: [embed_quest], components: [component_buttons] }).then(repliedMessage => {setTimeout(() => repliedMessage.delete(), 5000);});
                 interaction.reply({ content: 'Quest has been successfully created!', ephemeral: true });
             }
         });        
