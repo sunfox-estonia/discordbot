@@ -25,7 +25,7 @@ module.exports = {
         const event_datetime_db = new Date(parseDate(event_datetime));
         const UserNotify = interaction.client.channels.cache.get(config.log_channel_id);
 
-        createEvent(event_title, format(new Date(event_datetime_db), isoDateTime), event_location, event_description, event_url, (error) => {
+        createEvent(event_title, format(new Date(event_datetime_db), 'YYYY-MM-DD HH-mm-00'), event_location, event_description, event_url, (error) => {
             if (error) {
                 const locales = {
                     en: 'An error occurred while creating event.',
