@@ -50,12 +50,15 @@ module.exports = {
 							console.log(registrations_list);
 
 							for (i = 0; i < registrations_list.length; i++) {
+								end_user = interaction.guild.members.cache.get(registrations_list[i].user_uid);
+								console.log(end_user);
+
 								switch (registrations_list[i].user_status) {
 									case '1':
-										var list_accepted = list_accepted + `${registrations_list[i].user_uid}\r`;										
+										var list_accepted = list_accepted + `${end_user}\r`;										
 										break;
 									case '0':
-										var list_declined = list_declined + `${registrations_list[i].user_uid}\r`;										
+										var list_declined = list_declined + `${end_user}\r`;										
 										break;
 									default:
 										break;
