@@ -44,11 +44,17 @@ module.exports = {
                     fields: [
                         {
                             name: "Дата проведения",
-                            value: event_datetime_db
+                            value: event_datetime_db,
+                            inline: true
                         },
                         {
                             name: "Место проведения",
-                            value: event_location
+                            value: event_location,
+                            inline: true
+                        },
+                        {
+                            name: "\u200b",
+                            value: "\u200b"
                         }
                     ],
                     timestamp: new Date().toISOString(),
