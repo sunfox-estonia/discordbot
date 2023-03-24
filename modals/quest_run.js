@@ -1,4 +1,5 @@
 //const {} = require('discord.js');
+const { parse, format } = require('fecha');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
@@ -20,6 +21,85 @@ module.exports = {
         const quest_datetime = interaction.fields.getTextInputValue('quest_datetime');
         const quest_reward = interaction.fields.getTextInputValue('quest_reward');
 
-        
+        const quest_datetime_db = new Date(parseDate(quest_datetime));
+        const UserNotify = interaction.client.channels.cache.get(config.log_channel_id);
+
+        createQuest(quest_title, quest_description, format(new Date(quest_datetime_db), 'YYYY-MM-DD HH-mm-00'), quest_reward, (error) => {
+            if (error) {
+                const locales = {
+                    en: 'An error occurred while quest creating.',
+                    et: 'Eesmärgi loomisel on tekkinud viga.',
+                };
+                interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
+            } else {
+                const embed_event = {
+                    title: event_title,
+                    description: event_description,
+                    color: 0x0099ff,
+                    thumbnail: {
+                        url: "https://r.snfx.ee/img/discord_bot/alert_scroll.png"
+                    },
+                    fields: [
+                        {
+                            name: "Дата завершения",
+                            value: format(new Date(event_datetime_db), 'DD.MM.YYYY, HH:mm'),
+                        },
+                        {
+                            name: "\u200b",
+                            value: "\u200b"
+                        }
+                    ],
+                    timestamp: new Date().toISOString(),
+                    footer: {
+                        icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
+                        text: "Викинги Вирумаа"
+                    },
+                }
+                const component_buttons = {
+                    "type": 1,
+                    "components": [
+                        {
+                            "type": 2,
+                            "label": "Участвую",
+                            "style": 3,
+                            "custom_id": "quest_accept"
+                        },
+                        {
+                            "type": 2,
+                            "label": "Не участвую",
+                            "style": 4,
+                            "custom_id": "quest_decline"
+                        },
+                        {
+                            "type": 2,
+                            "label": "Как работают квесты?",
+                            "style": 5,
+                            "url": "https://wiki.sunfox.ee/public:services_bot_quests"
+                        },
+                    ]
+                }
+                UserNotify.send({ content: `Опа, это новый квест от Хугинна:`, embeds: [embed_event], components: [component_buttons] });
+                interaction.reply({ content: 'Quest has been successfully created!', ephemeral: true });
+            }
+        });        
     }
+}
+
+createQuest = function (title, description, date, reward, callback) {
+	// Prepare MySQL request to add a new event	
+	let sql1 = "INSERT INTO quests (quest_title, quest_description, quest_date, quest_reward) VALUES (?,?,?,?);"; 
+	// TODO: Remove community title when database migrates to SQLite  
+	database.query(sql1, [title, description, date, reward], (error4, pingback) => {
+	    if (error4) {
+	        callback("Ошибка добавления квеста в БД.");
+	        return;
+	    } else {
+			callback(null);
+	    }
+	});
+	// createEvent closed
+}
+
+parseDate = function (data) {
+    return parse(data, 'DD/MM/YYYY HH:mm');
 }
