@@ -43,6 +43,10 @@ module.exports = {
                     },
                     fields: [
                         {
+                            name: "\u200b",
+                            value: "\u200b"
+                        },
+                        {
                             name: "Дата проведения",
                             value: format(new Date(event_datetime_db), 'DD MMMM, hh:mm'),
                             inline: true
