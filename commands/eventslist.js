@@ -47,13 +47,15 @@ module.exports = {
 							var list_accepted = '';
 							var list_declined = '';
 
+							console.log(registrations_list);
+
 							for (i = 0; i < registrations_list.length; i++) {
 								switch (registrations_list[i].user_status) {
 									case '1':
-										var list_accepted = list_accepted + `${registrations_list[0].uid}\r`;										
+										var list_accepted = list_accepted + `${registrations_list[i].uid}\r`;										
 										break;
 									case '0':
-										var list_declined = list_declined + `${registrations_list[0].uid}\r`;										
+										var list_declined = list_declined + `${registrations_list[i].uid}\r`;										
 										break;
 									default:
 										break;
@@ -78,7 +80,7 @@ module.exports = {
 										value: "\u200b"
 									},
 									{
-										name: "Участвуют в мероприятии",
+										name: "Участвуют в мероприятии:",
 										value: list_accepted,
 									},
 									{
@@ -92,7 +94,7 @@ module.exports = {
 									text: "Викинги Вирумаа"
 								},
 							}
-							interaction.reply({ embeds: [embed_event] });
+							interaction.reply({ embeds: [embed_event], ephemeral: true });
 						}
 					});
 				}
