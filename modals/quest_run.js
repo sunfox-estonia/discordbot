@@ -82,7 +82,7 @@ module.exports = {
 
                 let timeDifference = hideTimer(quest_datetime_db);
 
-                UserNotify.send({ content: `У меня есть для тебя задание, путник. И отличная награда!`, embeds: [embed_quest], components: [component_buttons] });
+                UserNotify.send({ content: `— У меня есть для тебя задание, приключенец. И отличная награда!`, embeds: [embed_quest], components: [component_buttons] });
                 interaction.reply({ content: 'Quest has been successfully created!', ephemeral: true });
             }
         });        
