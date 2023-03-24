@@ -107,7 +107,7 @@ createQuest = function (title, description, date, reward, callback) {
 hideTimer = function (data) {
     let dateEnd = new Date(data);
     let dateNow = new Date();
-    let diff = (dateEnd - dateNow) / 1000;
+    let diff = (dateEnd - dateNow);
     console.log(dateEnd +" - "+ dateNow +" = "+diff);
     return diff;
 }
