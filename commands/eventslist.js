@@ -52,10 +52,10 @@ module.exports = {
 							for (i = 0; i < registrations_list.length; i++) {
 								switch (registrations_list[i].user_status) {
 									case '1':
-										var list_accepted = list_accepted + `${registrations_list[i].uid}\r`;										
+										var list_accepted = list_accepted + `${registrations_list[i].user_uid}\r`;										
 										break;
 									case '0':
-										var list_declined = list_declined + `${registrations_list[i].uid}\r`;										
+										var list_declined = list_declined + `${registrations_list[i].user_uid}\r`;										
 										break;
 									default:
 										break;
