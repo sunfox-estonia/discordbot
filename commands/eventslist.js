@@ -44,7 +44,6 @@ module.exports = {
 							interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 						} else {
 
-							var event_datetime =  new Date(parseDate(event_data.event_date));
 							var list_accepted = '';
 							var list_declined = '';
 
@@ -132,8 +131,4 @@ getRegistrations = function (event_id, callback) {
 				callback(null,result[0]);
 			}
 		});
-	}
-
-parseDate = function (data) {
-		return parse(data, 'DD/MM/YYYY HH:mm');
 	}
