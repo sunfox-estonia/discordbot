@@ -17,14 +17,79 @@ module.exports = {
     },
     async execute(interaction) {
         const event_title = interaction.fields.getTextInputValue('event_title');
-        const event_datetime_text = interaction.fields.getTextInputValue('event_datetime');
+        const event_datetime = interaction.fields.getTextInputValue('event_datetime');
         const event_location = interaction.fields.getTextInputValue('event_location');
         const event_description = interaction.fields.getTextInputValue('event_description');
         const event_url = interaction.fields.getTextInputValue('event_url');
 
-        const event_datetime = parseDate(event_datetime_text);
+        const event_datetime_db = new Date(parseDate(event_datetime)).toISOString();
+        const UserNotify = interaction.client.channels.cache.get(config.log_channel_id);
 
-        console.log("Event data: "+event_title+" - "+event_datetime+" - "+event_location);
+        createEvent(event_title, event_datetime_db, event_location, event_description, event_url, (error) => {
+            if (error) {
+                const locales = {
+                    en: 'An error occurred while creating event.',
+                    et: 'Uue sündmuse loomisek on tekkinud viga.',
+                };
+                interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
+            } else {
+
+                var embed_event = {
+                    title: event_title,
+                    description: event_description,
+                    color: 0x0099ff,
+                    thumbnail: {
+                        url: "https://r.snfx.ee/img/discord_bot/alert_note.png"
+                    },
+                    fields: [
+                        {
+                            name: "Дата проведения",
+                            value: event_datetime_db
+                        },
+                        {
+                            name: "Место проведения",
+                            value: event_location
+                        }
+                    ],
+                    timestamp: new Date().toISOString(),
+                    footer: {
+                        icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
+                        text: "Викинги Вирумаа"
+                    },
+                }
+
+                var component_buttons = {
+                    "type": 1,
+                    "components": [
+                        {
+                            "type": 2,
+                            "label": "Участвую",
+                            "style": 3,
+                            "custom_id": "event_accept"
+                        },
+                        {
+                            "type": 2,
+                            "label": "Не участвую",
+                            "style": 4,
+                            "custom_id": "event_decline"
+                        },
+                    ]
+                }
+                if (event_url != '') {
+                    component_buttons.push(
+                        {
+                            type: 2,
+                            label: "Подробнее мероприятии",
+                            style: 5,
+                            url: event_url
+                        }
+                    );
+                } 
+
+                UserNotify.send({ content: `Хугинн принес весть о новом событии:`, embeds: [embed_event], components: [component_buttons] });
+                interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
+            }
+        }
         
     }
 }

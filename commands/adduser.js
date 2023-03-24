@@ -73,19 +73,19 @@ module.exports = {
 								}
 
 								var component_buttons = {
-									"type": 1,
-									"components": [
+									type: 1,
+									components: [
 										{
-											"type": 2,
-											"label": "Смотреть профиль",
-											"style": 1,
-											"custom_id": "profile_show"
+											type: 2,
+											label: "Смотреть профиль",
+											style: 1,
+											custom_id: "profile_show"
 										},
 										{
-											"type": 2,
-											"label": "Подробнее о Системе достижений",
-											"style": 5,
-											"url": "https://vk.com/@viruviking-sistema-dostizhenii-vikingov-virumaa"
+											type: 2,
+											label: "Подробнее о Системе достижений",
+											style: 5,
+											url: "https://vk.com/@viruviking-sistema-dostizhenii-vikingov-virumaa"
 										}
 									]
 								}
