@@ -60,7 +60,7 @@ module.exports = {
 								var declined_count = 0;	
 	
 								for (i = 0; i < registrations_list.length; i++) {
-									end_user = interaction.guild.members.cache.get(registrations_list[i].user_uid);
+									end_user = registrations_list[i].user_uid; //interaction.guild.members.cache.get(registrations_list[i].user_uid);
 									switch (registrations_list[i].user_status) {
 										case '1':
 											list_accepted = list_accepted + `${end_user}\r`;	
