@@ -36,7 +36,7 @@ module.exports = {
                     } else { 
                         var event_id = event_data.id;
 
-                        addRegistration(user_uid, event_id ,function(error){
+                        addRegistrationAccept(user_uid, event_id ,function(error){
                             if (error) {
                                 const locales = {
                                     en: 'An error occurred during the registration',
@@ -89,7 +89,7 @@ checkProfileExists = function (user_uid, callback) {
 	// checkProfileExists closed
 }
 
-addRegistration = function(user_uid, event_id, callback) {
+addRegistrationAccept = function(user_uid, event_id, callback) {
 	// Add achivement for user
 	let sql3 = "INSERT INTO events_usr (user_uid, event_id, user_status) VALUES (?,?,'1');";
     database.query(sql3, [user_uid,event_id], (error3, pingback) => {
