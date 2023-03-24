@@ -65,7 +65,7 @@ module.exports = {
 								fields: [
 									{
 										name: "Дата проведения",
-										value: format(new Date(event_datetime), 'DD.MM.YYYY, HH:mm'),
+										value: format(new Date(event_data.event_date), 'DD.MM.YYYY, HH:mm'),
 										inline: true
 									},
 									{
