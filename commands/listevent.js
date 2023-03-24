@@ -60,7 +60,7 @@ module.exports = {
 								var declined_count = 0;	
 	
 								for (i = 0; i < registrations_list.length; i++) {
-									end_user = registrations_list[i].user_uid; //interaction.guild.members.cache.get(registrations_list[i].user_uid);
+									end_user = interaction.guild.members.cache.get(registrations_list[i].user_uid);
 									switch (registrations_list[i].user_status) {
 										case '1':
 											list_accepted = list_accepted + `${end_user}\r`;	
@@ -87,21 +87,25 @@ module.exports = {
 									fields: [
 										{
 											name: "Дата проведения",
-											value: format(new Date(event_data.event_date), 'DD.MM.YYYY, HH:mm'),
+										//	value: format(new Date(event_data.event_date), 'DD.MM.YYYY, HH:mm'),
+											value: "test",
 											inline: true
 										},
 										{
 											name: "Место проведения",
-											value: event_data.event_location,
+										//	value: event_data.event_location,
+										value: "test",
 											inline: true
 										},
 										{
 											name: "Участвуют в мероприятии:",
-											value: list_accepted,
+										//	value: list_accepted,
+										value: "test",
 										},
 										{
 											name: "Не участвуют:",
-											value: list_declined,
+										//	value: list_declined,
+										value: "test",
 										},
 										{
 											name: "\u200b",
@@ -120,7 +124,67 @@ module.exports = {
 					}
 				});
 			} else if (event_type == "quest") {
-				
+				getLastQuest(function (error, quest_data) {
+					if (error) {
+						const locales = {
+							en: 'An error occurred while retrieving quest data.',
+							et: 'Eesmärgi andmete otsimisel on tekkinud viga.',
+						};
+						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
+					} else {
+						getListQuestRegistrations(quest_data.id, function (error, registrations_list) {
+							if (error) {
+								const locales = {
+									en: 'An error occurred while retrieving members list.',
+									et: 'Osalejate nimekirja valmimisel on tekkinud viga.',
+								};
+								interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
+							} else {
+	
+								var list_accepted = '';
+								var accepted_count = 0;
+	
+								for (i = 0; i < registrations_list.length; i++) {
+									end_user = interaction.guild.members.cache.get(registrations_list[i].user_uid);
+									list_accepted = list_accepted + `${end_user}\r`;	
+									accepted_count = i;									
+									break;
+								}
+	
+								if (accepted_count === 0) {
+									list_accepted = "*Список пуст*";
+								}
+	
+								const embed_quest = {
+									title: quest_data.quest_title,
+									color: 0x0099ff,
+									fields: [
+										{
+											name: "Дата завершения",
+										//	value: format(new Date(quest_data.quest_date), 'DD.MM.YYYY, HH:mm'),
+										value: "test",
+										},
+										{
+											name: "Взяли задание:",
+										//	value: list_accepted,
+										value: "test",
+										},
+										{
+											name: "\u200b",
+											value: "\u200b"
+										},
+									],
+									timestamp: new Date().toISOString(),
+									footer: {
+										icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
+										text: "Викинги Вирумаа"
+									},
+								}
+								interaction.reply({content: 'Вот список участников последнего активного квеста:', embeds: [embed_quest], ephemeral: true });
+							}
+						});
+					}
+				});
 			}
 		}			
 
