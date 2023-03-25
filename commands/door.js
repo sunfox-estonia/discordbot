@@ -31,6 +31,6 @@ module.exports = {
 
         const UserNotify = interaction.client.channels.cache.get(config.log_channel_id);
 		UserNotify.send({ content: String.fromCodePoint('0x1F511') + ` <@&${config.event_notify_role_id}>, ${notification_text}` });
-        interaction.reply({ content: 'Door status has been successfully executed!', ephemeral: true });
+        interaction.reply({ content: 'Door status has been successfully changed!', ephemeral: true });
 	},
 };
