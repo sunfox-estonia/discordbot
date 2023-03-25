@@ -8,7 +8,7 @@ module.exports = {
 		.addStringOption(option =>
 			option.setName('dice_type')
 				.setDescription('Тип дайса (d4, d6, d8, d12, d20)')
-				.setRequired(true)
+				.setRequired(false)
 				.addChoices(
 					{ name: 'd4', value: 'd4' },
 					{ name: 'd6', value: 'd6' },

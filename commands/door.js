@@ -10,8 +10,8 @@ module.exports = {
 				.setDescription('Статус доступности.')
 				.setRequired(true)
 				.addChoices(
-					{ name: 'open', value: 'Открыт' },
-					{ name: 'close', value: 'Закрыт' }
+					{ name: 'Открыт', value: 'open' },
+					{ name: 'Закрыт', value: 'closed' }
 				))
         .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 
