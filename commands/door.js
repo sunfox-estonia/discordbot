@@ -20,10 +20,10 @@ module.exports = {
         
         switch (door_status) {
             case 'open':
-                var notification_text = String.fromCodePoint('0x1F511') + ' двери клуба открыты.';
+                var notification_text = ' двери клуба открыты.';
                 break;
             case 'close':
-                var notification_text = String.fromCodePoint('0x1F511') + ' двери клуба закрыты.';
+                var notification_text = ' двери клуба закрыты.';
                 break;
             default:
                 break;
