@@ -11,7 +11,7 @@ module.exports = {
 				.setRequired(true)
 				.addChoices(
 					{ name: 'Открыт', value: 'open' },
-					{ name: 'Закрыт', value: 'closed' }
+					{ name: 'Закрыт', value: 'close' }
 				))
         .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 
