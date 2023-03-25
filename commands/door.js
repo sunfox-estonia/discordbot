@@ -16,7 +16,7 @@ module.exports = {
         .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 
 	async execute(interaction) {
-        const door_status = interaction.options.getString('door_status');
+        var door_status = interaction.options.getString('door_status');
         
         switch (door_status) {
             case 'open':
