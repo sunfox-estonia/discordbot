@@ -148,7 +148,7 @@ getAchievementProfile = function(user_id, callback) {
 			callback("Ошибка в работе базы данных.",null);
 			return;
 		}
-		if (results[0].length != 1 || results[1].length != 1){
+		if (result_userdata.length == 0 || result_userdata.length > 1){
 			callback("Ошибка получения профиля пользователя.",null);
 			return;
 		}
