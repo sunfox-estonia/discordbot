@@ -19,18 +19,18 @@ module.exports = {
         
         switch (door_status) {
             case 'open':
-                var notification_text = (String.fromCodePoint('0x1F511') + ' Двери клуба открыты.');
+                var notification_text = String.fromCodePoint('0x1F511') + ' двери клуба открыты.';
                 break;
             case 'close':
-                var notification_text = (String.fromCodePoint('0x1F511') + ' Двери клуба закрыты.');
+                var notification_text = String.fromCodePoint('0x1F511') + ' двери клуба закрыты.';
                 break;
             default:
                 break;
         }
 
         const UserNotify = interaction.client.channels.cache.get(config.log_channel_id);
-		// UserNotify.send({ content: notification_text });
+		// UserNotify.send({ content: content: String.fromCodePoint('0x1F511') + ` <@&${config.event_notify_role_id}>, ${notification_text}` });
         // interaction.reply({ content: 'Command has been successfully executed!', ephemeral: true });
-        interaction.reply({ content: notification_text, ephemeral: true });
+        interaction.reply({ content: String.fromCodePoint('0x1F511') + ` ${notification_text}`, ephemeral: true });
 	},
 };
