@@ -79,7 +79,7 @@ checkEventAcceptedProfileExists = function (user_uid, callback) {
 			callback("Ошибка в работе базы данных.");
 			return;
 		} else if (results.length != 1) {
-			callback("Данный профиль не существует. Невозможно зарегистрироваться на мероприятие.");
+			callback("— Это событие не для тебя, путник! Проходи мимо...");
 			return;
 		} else {
 			callback(null);

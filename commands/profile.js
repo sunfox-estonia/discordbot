@@ -110,7 +110,7 @@ getProfile = function (user_id, callback) {
 			return;
 		}
 		if (result_userdata.length == 0 || result_userdata.length > 1) {
-			callback("Ошибка получения профиля пользователя.", null);
+			callback("— Мне нечего показать тебе, путник! Обратись к Координатору чтобы создать профиль.", null);
 			return;
 		}
 		callback(null, result_userdata[0]);

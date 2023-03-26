@@ -79,7 +79,7 @@ checkQuestAcceptedProfileExists = function (user_uid, callback) {
 			callback("Ошибка в работе базы данных (checkQuestAcceptedProfileExists).");
 			return;
 		} else if (results.length != 1) {
-			callback("— Этот квест не для тебя, дружок!");
+			callback("— Этот квест не для тебя, дружок! Проходи мимо...");
 			return;
 		} else {
 			callback(null);
