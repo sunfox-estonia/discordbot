@@ -89,7 +89,7 @@ module.exports = {
 				// else closed
 				}
 			// getProfile closed
-			});			
+			}).catch(console.error);			
 		// await interaction.guild.members.fetch closed
 		});
 	}
