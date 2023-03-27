@@ -40,7 +40,7 @@ module.exports = {
                     },
                     fields: [
                         {
-                            name: "Суть задание",
+                            name: "Суть задания",
                             value: quest_description,
                         },
                         {
