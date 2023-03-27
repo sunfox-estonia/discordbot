@@ -101,7 +101,6 @@ module.exports = {
 createEvent = function (title, datetime, location, description, url, callback) {
 	// Prepare MySQL request to add a new event	
 	let sql1 = "INSERT INTO events (event_title, event_date, event_location, event_description, event_url) VALUES (?,?,?,?,?);"; 
-	// TODO: Remove community title when database migrates to SQLite  
 	database.query(sql1, [title, datetime, location, description, url], (error4, pingback) => {
 	    if (error4) {
 	        callback("Ошибка добавления события в БД.");

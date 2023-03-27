@@ -90,7 +90,6 @@ module.exports = {
 createQuest = function (title, description, date, reward, callback) {
 	// Prepare MySQL request to add a new event	
 	let sql1 = "INSERT INTO quests (quest_title, quest_description, quest_date, quest_reward) VALUES (?,?,?,?);"; 
-	// TODO: Remove community title when database migrates to SQLite  
 	database.query(sql1, [title, description, date, reward], (error4, pingback) => {
 	    if (error4) {
 	        callback("Ошибка добавления квеста в БД.");
@@ -99,7 +98,7 @@ createQuest = function (title, description, date, reward, callback) {
 			callback(null);
 	    }
 	});
-	// createEvent closed
+	// createQuest closed
 }
 
 parseDate = function (data) {
