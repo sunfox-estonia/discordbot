@@ -80,7 +80,7 @@ module.exports = {
                     ]
                 }
 
-                UserNotify.send({ content: `— У меня есть для тебя задание, приключенец. И отличная награда!`, embeds: [embed_quest], components: [component_buttons] }).catch(console.error);
+                UserNotify.send({ content: "— У меня есть для тебя задание, приключенец. И отличная награда!", embeds: [embed_quest], components: [component_buttons] }).catch(console.error);
                 interaction.reply({ content: 'Quest has been successfully created!', ephemeral: true }).catch(console.error);
             }
         }).catch(console.error);        
