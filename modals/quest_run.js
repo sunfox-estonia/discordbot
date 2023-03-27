@@ -83,7 +83,7 @@ module.exports = {
                 UserNotify.send({ content: "— У меня есть для тебя задание, приключенец. И отличная награда!", embeds: [embed_quest], components: [component_buttons] });
                 interaction.reply({ content: 'Quest has been successfully created!', ephemeral: true });
             }
-        }).catch(console.error);        
+        });        
     }
 }
 
