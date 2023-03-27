@@ -96,8 +96,9 @@ module.exports = {
 													};											
 												interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 											} else {
+												let embed_username = fetchedUser.nickname ?? fetchedUser.user.username;
 												var embed_levelup = {
-													title: fetchedUser.nickname ?? fetchedUser.user.username  + " получил новый уровень!",
+													title: embed_username  + " получил новый уровень!",
 													color: 0x0099ff,			
 													thumbnail: {
 													url: "https://r.snfx.ee/img/discord_bot/alert_announcement.png"

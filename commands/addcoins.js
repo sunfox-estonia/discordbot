@@ -58,9 +58,9 @@ module.exports = {
 								};
 							interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 						} else {
-
+							let embed_username = fetchedUser.nickname ?? fetchedUser.user.username;
 							var embed_addcoins = {
-								title:fetchedUser.nickname ?? fetchedUser.user.username + " получил монеты!",
+								title: embed_username + " получил монеты!",
 								description: "На аккаунт пользователя добавлено " + data_coins + " золотых.",
 								color: 0x0099ff,			
 								thumbnail: {
