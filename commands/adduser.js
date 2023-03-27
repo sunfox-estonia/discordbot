@@ -93,10 +93,10 @@ module.exports = {
 								const UserNotify = interaction.client.channels.cache.get(config.log_channel_id);
 								UserNotify.send({ content: `${fetchedUser.user}, для Вас весть от Хугинна:`, embeds: [embed_adduser], components: [component_buttons] });
 							}
-						}).catch(console.error);
+						});
 					}
 					// checkProfileExists closed
-				}).catch(console.error);
+				});
 				// members.fetch closed
 			}).catch(console.error);
 	},

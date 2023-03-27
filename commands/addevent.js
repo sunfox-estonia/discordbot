@@ -115,7 +115,7 @@ module.exports = {
 					}					
 					interaction.showModal(modal_form);	
 				}				
-			}).catch(console.error);
+			});
 		} else if (data_event == 'quest') {
 			checkActiveQuestExists(function (error) {
                 if (error) {
@@ -182,7 +182,7 @@ module.exports = {
 					}
 					interaction.showModal(modal_form);	
 				}
-            }).catch(console.error);
+            });
 		}			
 	},
 };
