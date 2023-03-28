@@ -64,8 +64,9 @@ module.exports = {
 											};
 										interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 									} else {		
+										let embed_username = fetchedUser.nickname ?? fetchedUser.user.username;
 										var embed_achievement = {
-											title: fetchedUser.nickname ?? fetchedUser.user.username  + " получил новую ачивку!",
+											title: embed_username  + " получил новую ачивку!",
 											color: 0x0099ff,			
 											thumbnail: {
 											url: "https://r.snfx.ee/img/discord_bot/alert_scroll.png"
@@ -137,7 +138,7 @@ module.exports = {
 			// fetchedUser closed
 			}
 		// await interaction.guild.members.fetch closed
-		).catch(console.error);	
+		);	
 	}
 };
 
@@ -221,6 +222,7 @@ updateLevel = function(user_data, callback) {
     	} else {
 			var parsed_done_count = parseInt(results6[1][0].done_count);
 			var parsed_needed_count = parseInt(results6[0][0].needed_count);
+			console.log("Update Level? Achievements: "+parsed_done_count+"/"+parsed_done_count);
 			if (parsed_done_count === parsed_needed_count){
 				// Levelup in case of user has been done all available achievements
 				let lvl_sum = user_data.level + 1;
