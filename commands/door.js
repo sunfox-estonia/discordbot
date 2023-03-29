@@ -22,7 +22,6 @@ module.exports = {
             case 'open':
                 var notification_text = ' двери клуба открыты.';
                 var notification_color = '0x1F7E2';
-
                 break;
             case 'close':
                 var notification_text = ' двери клуба закрыты.';
