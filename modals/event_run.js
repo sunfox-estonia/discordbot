@@ -115,10 +115,3 @@ createEvent = function (title, datetime, location, description, url, callback) {
 parseDate = function (data) {
     return parse(data, 'DD/MM/YYYY HH:mm');
 }
-
-hideTimer = function (data) {
-    let dateEnd = new Date(data);
-    let dateNow = new Date();
-    let diff = (dateEnd - dateNow);
-    return diff;
-}
