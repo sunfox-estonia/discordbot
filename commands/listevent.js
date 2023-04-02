@@ -140,11 +140,9 @@ module.exports = {
 								var accepted_count = 0;
 	
 								for (i = 0; i < quest_reg_list.length; i++) {
-									console.log(quest_reg_list[i].user_uid);
 									end_user = interaction.guild.members.cache.get(quest_reg_list[i].user_uid);
 									list_accepted = list_accepted + `${end_user}\r`;	
 									accepted_count++;									
-									break;
 								}
 	
 								if (accepted_count === 0) {
