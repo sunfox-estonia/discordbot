@@ -128,6 +128,7 @@ module.exports = {
 						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 					} else {
 						getListQuestRegistrations(quest_data.id, function (error, quest_reg_list) {
+							console.log(quest_reg_list);
 							if (error) {
 								const locales = {
 									en: 'An error occurred while retrieving members list.',
