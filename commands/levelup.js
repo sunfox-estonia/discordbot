@@ -214,7 +214,7 @@ addAchievement = function(user_data, achievement_data, callback) {
 
 updateLevel = function(user_data, callback) {
 	// Get available and done achievement count
-	let sql6 = "SELECT count(*) AS needed_count FROM drd_achievements WHERE level = ?; SELECT count(*) AS done_count FROM drd_usr_ach LEFT JOIN drd_achievements ON drd_usr_ach.ach_id = drd_achievements.code AND drd_achievements.level = ? WHERE drd_usr_ach.user_id = ?;"
+	let sql6 = "SELECT count(*) AS needed_count FROM drd_achievements WHERE level = ?; SELECT count(*) AS done_count FROM drd_usr_ach LEFT JOIN drd_achievements ON drd_usr_ach.ach_id = drd_achievements.code WHERE drd_achievements.level = ? AND drd_usr_ach.user_id = ?;"
 	database.query(sql6, [user_data.level,user_data.level,user_data.uid], (error6, results6, fields) => {
 		if (error6) {
             callback("Ошибка в работе базы данных.",null);
@@ -226,7 +226,7 @@ updateLevel = function(user_data, callback) {
 			if (parsed_done_count === parsed_needed_count){
 				// Levelup in case of user has been done all available achievements
 				let lvl_sum = user_data.level + 1;
-				let sql7 = "UPDATE drd_users SET level =? WHERE uid =?;"; 
+				let sql7 = "UPDATE drd_users SET level =? WHERE uid =?;";
 				database.query(sql7, [lvl_sum,user_data.uid], (error7, pingback) => {
 					if (error7) {
 						callback("Ошибка обновления профиля пользователя.",null);
