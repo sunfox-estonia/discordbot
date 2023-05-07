@@ -15,9 +15,9 @@ module.exports = {
                 })
 				.setRequired(true)
 				.addChoices(
-					{ name: 'slup', value: 'Шлюп' },
-					{ name: 'brig', value: 'Бригантина' },
-					{ name: 'galley', value: 'Галеон' }
+					{ name: 'Шлюп', value: 'slup' },
+					{ name: 'Бригантина', value: 'brig' },
+					{ name: 'Галеон', value: 'galley' }
 				))
         .addStringOption(option =>
             option.setName('task')
@@ -40,10 +40,10 @@ module.exports = {
                 })
                 .setRequired(false)
                 .addChoices(
-                    { name: '0', value: 'сразу' },
-                    { name: '15', value: '15 min' },
-                    { name: '30', value: '30 min' },
-                    { name: '60', value: 'ближайший час' }
+                    { name: 'Сразу', value: '0' },
+                    { name: '15 min', value: '15' },
+                    { name: '30 min', value: '30' },
+                    { name: 'Ближайший час', value: '60' }
                 )),
 
     async execute(interaction) {
