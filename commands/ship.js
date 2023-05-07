@@ -57,10 +57,11 @@ module.exports = {
 
         // Send invite to specified channel
         const ShipNotify = interaction.client.channels.cache.get('1104517743279087676');
+        var member_id = interaction.member.user.id;
 
         await interaction.guild.members.fetch(member_id).then(
             fetchedUser => {
-                confirmed = console.log(fetchedUser);
+                console.log(fetchedUser);
 			}
 		
         // await interaction.guild.members.fetch closed
