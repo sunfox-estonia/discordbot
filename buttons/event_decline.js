@@ -21,14 +21,14 @@ module.exports = {
         checkEventDeclinedProfileExists(user_uid,function(error){
             if (error) {
                 const locales = {
-                    en: 'User profile does not exists.'
+                    "en-US": 'User profile does not exists.'
                     };
                 interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });						
             } else {
                 checkRegistrationAvailable(function(error,event_data){
                     if (error) {
                         const locales = {
-                            en: 'Available event does not exists.'
+                            "en-US": 'Available event does not exists.'
                             };
                         interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });						
                     } else { 
@@ -37,7 +37,7 @@ module.exports = {
                         addRegistrationDecline(user_uid, event_id ,function(error){
                             if (error) {
                                 const locales = {
-                                    en: 'An error occurred during the registration'
+                                    "en-US": 'An error occurred during the registration'
                                     };
                                 interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });						
                             } else {

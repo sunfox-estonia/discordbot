@@ -36,14 +36,14 @@ module.exports = {
 				getProfile(fetchedUser.user.id, function (error, user_profile) {
 					if (error) {
 						const locales = {
-							en: 'An error occurred while retrieving user profile.'
+							"en-US": 'An error occurred while retrieving user profile.'
 						};
 						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 					} else {
 						getProgress(fetchedUser.user.id, user_profile.level, function (error, user_progress) {
 							if (error) {
 								const locales = {
-									en: 'An error occurred while retrieving user profile.'
+									"en-US": 'An error occurred while retrieving user profile.'
 								};
 								interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 							} else {

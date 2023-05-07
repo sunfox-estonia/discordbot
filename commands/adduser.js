@@ -24,7 +24,7 @@ module.exports = {
 		const hasAdminRole = interaction.member.roles.cache.some(r => JSON.stringify(config.admin_roles).includes(r.name))
 		if (hasAdminRole == false) {
 			const locales = {
-				en: 'You do not have permission to execute this command!'
+				"en-US": 'You do not have permission to execute this command!'
 			};
 			await interaction.reply(locales[interaction.locale] ?? 'У вас недостаточно прав для выполнения этой команды!');
 		}
@@ -36,14 +36,14 @@ module.exports = {
 				checkProfileExists(fetchedUser.user.id, function (error) {
 					if (error) {
 						const locales = {
-							en: 'An error occurred while checking user profile exists.'
+							"en-US": 'An error occurred while checking user profile exists.'
 						};
 						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 					} else {
 						createProfile(fetchedUser.user.id, function (error) {
 							if (error) {
 								const locales = {
-									en: 'An error occurred while creating new user profile.'
+									"en-US": 'An error occurred while creating new user profile.'
 								};
 								interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 							} else {

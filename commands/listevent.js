@@ -29,7 +29,7 @@ module.exports = {
 			const hasAdminRole = interaction.member.roles.cache.some(r => JSON.stringify(config.admin_roles).includes(r.name))
 			if (hasAdminRole == false) {
 				const locales = {
-					en: 'You do not have permission to execute this command!'
+					"en-US": 'You do not have permission to execute this command!'
 				};
 				await interaction.reply(locales[interaction.locale] ?? 'У вас недостаточно прав для выполнения этой команды!');
 			}
@@ -40,14 +40,14 @@ module.exports = {
 				getLastEvent(function (error, event_data) {
 					if (error) {
 						const locales = {
-							en: 'An error occurred while retrieving event data.'
+							"en-US": 'An error occurred while retrieving event data.'
 						};
 						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 					} else {
 						getListEventRegistrations(event_data.id, function (error, event_reg_list) {
 							if (error) {
 								const locales = {
-									en: 'An error occurred while retrieving members list.'
+									"en-US": 'An error occurred while retrieving members list.'
 								};
 								interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 							} else {	

@@ -28,7 +28,7 @@ module.exports = {
 		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
 		if (hasAdminRole == false) {
 			const locales = {
-				en: 'You do not have permission to execute this command!'
+				"en-US": 'You do not have permission to execute this command!'
 				};
 			await interaction.reply(locales[interaction.locale] ?? 'У вас недостаточно прав для выполнения этой команды!');
 		}
@@ -39,7 +39,7 @@ module.exports = {
 			checkActiveEventExists(function (error) {
 				if (error) {
 					const locales = {
-						en: 'An error occurred while checking event already exists.'
+						"en-US": 'An error occurred while checking event already exists.'
 					};
 					interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 				} else {
@@ -118,7 +118,7 @@ module.exports = {
 			checkActiveQuestExists(function (error) {
                 if (error) {
                     const locales = {
-                        en: 'An error occurred while checking quest already exists.'
+                        "en-US": 'An error occurred while checking quest already exists.'
                     };
                     interaction.reply({ content: locales[interaction.locale]?? error, ephemeral: true });
                 } else {	

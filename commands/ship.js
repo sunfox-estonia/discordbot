@@ -49,7 +49,7 @@ module.exports = {
         const hasCaptainRole = interaction.member.roles.cache.has("1104521026584457216")
 		if (hasCaptainRole == false) {
 			const locales = {
-				en: 'You do not have permission to execute this command!',
+				"en-US": 'You do not have permission to execute this command!',
 			};
 			await interaction.reply(locales[interaction.locale] ?? 'У вас недостаточно прав для выполнения этой команды!');
 		}
