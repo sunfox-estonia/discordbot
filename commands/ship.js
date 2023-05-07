@@ -22,6 +22,7 @@ module.exports = {
         .addStringOption(option =>
             option.setName('task')
                 .setDescription('Цель путешествия')
+                .setRequired(true)
                 .setMaxLength(500))
         .addChannelOption(option =>
             option.setName('channel')
@@ -37,7 +38,7 @@ module.exports = {
                 .setDescriptionLocalizations({
                     "en-US": 'Session starts in...',
                 })
-                .setRequired(true)
+                .setRequired(false)
                 .addChoices(
                     { name: '0', value: 'сразу' },
                     { name: '15', value: '15 min' },
