@@ -5,13 +5,13 @@ module.exports = {
 		.setName('ship')
 		.setDescription('Пригласить в Sea of Thieves')
         .setDescriptionLocalizations({
-            en: 'Invite to play Sea of Thieves',
+            "en-US": 'Invite to play Sea of Thieves'
         })
 		.addStringOption(option =>
 			option.setName('ship')
 				.setDescription('Тип корабля')
                 .setDescriptionLocalizations({
-                    en: 'Ship type',
+                    "en-US": 'Ship type',
                 })
 				.setRequired(true)
 				.addChoices(
@@ -28,14 +28,14 @@ module.exports = {
                 .setDescription('Канал')
                 .setRequired(true)
                 .setDescriptionLocalizations({
-                    en: 'Voice channel',
+                    "en-US": 'Voice channel',
                 })
                 .addChannelTypes(ChannelType.GuildText))
         .addStringOption(option =>
             option.setName('time')
                 .setDescription('Старт сессии через...')
                 .setDescriptionLocalizations({
-                    en: 'Session starts in...',
+                    "en-US": 'Session starts in...',
                 })
                 .setRequired(true)
                 .addChoices(
