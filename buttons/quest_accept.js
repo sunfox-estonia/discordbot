@@ -21,16 +21,14 @@ module.exports = {
         checkQuestAcceptedProfileExists(user_uid,function(error){
             if (error) {
                 const locales = {
-                    en: 'User profile does not exists.',
-                    et: 'Kasutaja profiil ei eksisteeri.',
+                    en: 'User profile does not exists.'
                     };
                 interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });						
             } else {
                 checkQuestRegistrationAvailable(function(error,event_data){
                     if (error) {
                         const locales = {
-                            en: 'Available event does not exists.',
-                            et: 'Registreerimisele avatud sündmust ei eksisteeri.',
+                            en: 'Available event does not exists.'
                             };
                         interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });						
                     } else { 
@@ -39,8 +37,7 @@ module.exports = {
                         addQuestRegistrationAccept(user_uid, event_id ,function(error){
                             if (error) {
                                 const locales = {
-                                    en: 'An error occurred during the registration',
-                                    et: 'Registreerimisel on tekkinud viga.',
+                                    en: 'An error occurred during the registration'
                                     };
                                 interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });						
                             } else {

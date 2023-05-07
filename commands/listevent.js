@@ -29,8 +29,7 @@ module.exports = {
 			const hasAdminRole = interaction.member.roles.cache.some(r => JSON.stringify(config.admin_roles).includes(r.name))
 			if (hasAdminRole == false) {
 				const locales = {
-					en: 'You do not have permission to execute this command!',
-					et: 'Te ei saa seda skripti käivitada!',
+					en: 'You do not have permission to execute this command!'
 				};
 				await interaction.reply(locales[interaction.locale] ?? 'У вас недостаточно прав для выполнения этой команды!');
 			}
@@ -41,16 +40,14 @@ module.exports = {
 				getLastEvent(function (error, event_data) {
 					if (error) {
 						const locales = {
-							en: 'An error occurred while retrieving event data.',
-							et: 'Sündmuse andmete otsimisel on tekkinud viga.',
+							en: 'An error occurred while retrieving event data.'
 						};
 						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 					} else {
 						getListEventRegistrations(event_data.id, function (error, event_reg_list) {
 							if (error) {
 								const locales = {
-									en: 'An error occurred while retrieving members list.',
-									et: 'Osalejate nimekirja valmimisel on tekkinud viga.',
+									en: 'An error occurred while retrieving members list.'
 								};
 								interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 							} else {	
@@ -122,16 +119,14 @@ module.exports = {
 				getLastQuest(function (error, quest_data) {
 					if (error) {
 						const locales = {
-							en: 'An error occurred while retrieving quest data.',
-							et: 'Eesmärgi andmete otsimisel on tekkinud viga.',
+							en: 'An error occurred while retrieving quest data.'
 						};
 						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 					} else {
 						getListQuestRegistrations(quest_data.id, function (error, quest_reg_list) {
 							if (error) {
 								const locales = {
-									en: 'An error occurred while retrieving members list.',
-									et: 'Osalejate nimekirja valmimisel on tekkinud viga.',
+									en: 'An error occurred while retrieving members list.'
 								};
 								interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 							} else {

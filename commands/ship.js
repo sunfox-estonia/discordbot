@@ -6,14 +6,12 @@ module.exports = {
 		.setDescription('Пригласить в Sea of Thieves')
         .setDescriptionLocalizations({
             en: 'Invite to play Sea of Thieves',
-            et: 'Kutsun mängida Sea of Thieves',
         })
 		.addStringOption(option =>
 			option.setName('ship')
 				.setDescription('Тип корабля')
                 .setDescriptionLocalizations({
                     en: 'Ship type',
-                    et: 'Laeva tüüp',
                 })
 				.setRequired(true)
 				.addChoices(
@@ -31,7 +29,6 @@ module.exports = {
                 .setRequired(true)
                 .setDescriptionLocalizations({
                     en: 'Voice channel',
-                    et: 'Häälekanal',
                 })
                 .addChannelTypes(ChannelType.GuildText))
         .addStringOption(option =>
@@ -39,7 +36,6 @@ module.exports = {
                 .setDescription('Старт сессии через...')
                 .setDescriptionLocalizations({
                     en: 'Session starts in...',
-                    et: 'Seanss algab...',
                 })
                 .setRequired(true)
                 .addChoices(
@@ -54,7 +50,6 @@ module.exports = {
 		if (hasCaptainRole == false) {
 			const locales = {
 				en: 'You do not have permission to execute this command!',
-				et: 'Te ei saa seda skripti käivitada!',
 			};
 			await interaction.reply(locales[interaction.locale] ?? 'У вас недостаточно прав для выполнения этой команды!');
 		}

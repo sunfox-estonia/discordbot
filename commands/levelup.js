@@ -28,8 +28,7 @@ module.exports = {
 		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
 		if (hasAdminRole == false) {
 			const locales = {
-				en: 'You do not have permission to execute this command!',
-				et: 'Te ei saa sellist skripti käivitada!',
+				en: 'You do not have permission to execute this command!'
 				};
 			await interaction.reply(locales[interaction.locale] ?? 'У вас недостаточно прав для выполнения этой команды!');
 		}		
@@ -44,23 +43,20 @@ module.exports = {
 					if (error) {
 						const locales = {
 							en: 'An error occurred while retrieving user profile.',
-							et: 'Kasutaja profiili otsimisel on tekkinud viga.',
 							};
 						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });						
 					} else {
 						checkAchievement(user_profile,target_achievement,function(error,achievement_data){
 							if (error) {
 								const locales = {
-									en: 'An error occurred while retrieving achievement data.',
-									et: 'Saavutuse andmete otsimisel on tekkinud viga.',
+									en: 'An error occurred while retrieving achievement data.'
 									};
 								interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 							} else {		
 								addAchievement(user_profile, achievement_data,function(error){
 									if (error) {
 										const locales = {
-											en: 'An error occurred while user pofile updating.',
-											et: 'Kasutaja profiili uuendamisel on tekkinud viga.',
+											en: 'An error occurred while user pofile updating.'
 											};
 										interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 									} else {		
@@ -92,8 +88,7 @@ module.exports = {
 										updateLevel(user_profile, function(error,updated_profile){
 											if (error) {
 												const locales = {
-													en: 'An error occurred while user pofile updating.',
-													et: 'Kasutaja profiili uuendamisel on tekkinud viga.',
+													en: 'An error occurred while user pofile updating.'
 													};											
 												interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
 											} else {
