@@ -28,9 +28,9 @@ module.exports = {
                 .setDescription('Канал')
                 .setRequired(true)
                 .setDescriptionLocalizations({
-                    "en-US": 'Voice channel',
+                    "en-US": 'Voice channel'
                 })
-                .addChannelTypes(ChannelType.GUILD_VOICE)
+                .addChannelTypes(ChannelType.GUILD_VOICE))
         .addStringOption(option =>
             option.setName('time')
                 .setDescription('Старт сессии через...')
