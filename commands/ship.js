@@ -207,9 +207,9 @@ module.exports = {
                         }
 
 
-                        interaction.reply({ embeds: [invite_embed] }).then(repliedMessage => {
-                            setTimeout(() => repliedMessage.delete(), 1200000);
-                          });
+                    ShipNotify.send({ embeds: [invite_embed] }).then(repliedMessage => {
+                        setTimeout(() => repliedMessage.delete(), 1200000);
+                        });
 
                 }           
             // await interaction.guild.members.fetch closed
