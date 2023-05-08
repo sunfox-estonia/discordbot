@@ -13,6 +13,7 @@ module.exports = {
 	async execute(interaction) {
 
 		const data_hide = interaction.options.getString('private') ?? false;
+		console.log(data_hide);
 
 		var crd = ['2','3','3','5','6','7','8','9','10','A','J','K','Q'];
         var clr = ['C','D','H','S'];
