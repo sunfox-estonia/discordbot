@@ -198,9 +198,7 @@ module.exports = {
                               name: "Цель плавания",
                               value: text_mission_description,
                               inline: true
-                            }
-                          ],
-                          fields: [
+                            },
                             {
                               name: "Голосовой канал",
                               value: "<#"+ship_channel+">",
