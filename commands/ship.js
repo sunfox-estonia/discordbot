@@ -188,7 +188,7 @@ module.exports = {
                           author: {
                             name: fetchedUser.nickname ?? fetchedUser.user.username + " собирает команду:",
                             url: "https://discordapp.com",
-                            icon_url: "https://cdn.discordapp.com/avatars/"+fetchedUser.+"/"+fetchedUser.+".jpeg"
+                            icon_url: "https://cdn.discordapp.com/avatars/"+fetchedUser.sdfsfd+"/"+fetchedUser.sdfsdf+".jpeg"
                           },
                           fields: [
                             {
