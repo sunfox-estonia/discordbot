@@ -75,7 +75,7 @@ module.exports = {
 
             const ship_type = interaction.options.getString('ship');
             const ship_task = interaction.options.getString('task');
-            const ship_channel = interaction.options.getString('channel');
+            const ship_channel = interaction.options.getChannel('channel');
             const ship_time = interaction.options.getString('time');
 
             await interaction.guild.members.fetch(member_id).then(
