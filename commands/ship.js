@@ -80,8 +80,6 @@ module.exports = {
 
             await interaction.guild.members.fetch(member_id).then(
                 fetchedUser => {
-
-                    console.log(fetchedUser.user);
                        
                     var today = new Date();
                     var coeff = 1000 * 60 * 5;
@@ -189,7 +187,7 @@ module.exports = {
                           author: {
                             name: fetchedUser.nickname ?? fetchedUser.user.username + " собирает команду:",
                             url: "https://discordapp.com",
-                            icon_url: "https://cdn.discordapp.com/avatars/"+fetchedUser.sdfsfd+"/"+fetchedUser.sdfsdf+".jpeg"
+                            icon_url: "https://cdn.discordapp.com/avatars/"+fetchedUser.user.id+"/"+fetchedUser.user.avatar+".jpeg"
                           },
                           fields: [
                             {
@@ -205,17 +203,19 @@ module.exports = {
                           ]
                         }
 
-                        var component_buttons = {
-                            type: 1,
-                            components: [
-                                {
-                                    type: 2,
-                                    label: "Смотреть профиль",
-                                    style: 1,
-                                    custom_id: "profile_show"
-                                }
-                            ]
-                        }
+                        // var component_buttons = {
+                        //     type: 1,
+                        //     components: [
+                        //         {
+                        //             type: 2,
+                        //             label: "Смотреть профиль",
+                        //             style: 1,
+                        //             custom_id: "profile_show"
+                        //         }
+                        //     ]
+                        // }
+
+                        interaction.reply({ embeds: [invite_embed] });
 
                 }           
             // await interaction.guild.members.fetch closed
