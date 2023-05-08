@@ -209,17 +209,6 @@ module.exports = {
                             }
                           ]
                         }
-                    var component_buttons = {
-                        type: 1,
-                        components: [
-                            {
-                                type: 2,
-                                label: "Присоедениться",
-                                style: 5,
-                                url: "https://discord.com/channels/364866543701590040/"+ship_channel
-                            }
-                        ]
-                    }
                     
                     ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                         setTimeout(() => repliedMessage.delete(), 1200000);
