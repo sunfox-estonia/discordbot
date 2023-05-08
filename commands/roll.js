@@ -23,7 +23,7 @@ module.exports = {
 
 	async execute(interaction) {
 		const data_dice = interaction.options.getString('dice_type') ?? 'd6';
-		const data_hide = interaction.options.getString('private') ?? false;
+		const data_hide = interaction.options.getBoolean('private') ?? false;
 		let p = data_dice.match(/(\d{0,1})[d](\d{1,2})/g);
 		result = Roll20.verboseRoll(p[0]);  
 		var img =  data_dice + '-' + result + '.png';
