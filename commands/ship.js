@@ -1,5 +1,9 @@
 const { SlashCommandBuilder, ChannelType  } = require('discord.js');
 
+/**
+ * /ship command is a special command for Glitterbeard Brothers to create invites for Sea of Thieves session.
+ */
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('ship')
