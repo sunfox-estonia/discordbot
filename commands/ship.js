@@ -109,6 +109,7 @@ module.exports = {
                             var session_start_text = "в следующем часе.";
                             break;       
                         default:
+                            var session_start_text = "сразу.";
                             break;
                     }
 
