@@ -81,7 +81,7 @@ module.exports = {
             await interaction.guild.members.fetch(member_id).then(
                 fetchedUser => {
 
-                    console.log(fetchedUser);
+                    console.log(fetchedUser.user);
                        
                     var today = new Date();
                     var coeff = 1000 * 60 * 5;
