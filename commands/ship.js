@@ -199,7 +199,7 @@ module.exports = {
                               inline: true
                             },
                             {
-                              name: "Цель плавания",
+                              name: "Миссия",
                               value: text_mission_description,
                               inline: true
                             },
@@ -209,12 +209,22 @@ module.exports = {
                             }
                           ]
                         }
-
+                    var component_buttons = {
+                        type: 1,
+                        components: [
+                            {
+                                type: 2,
+                                label: "Присоедениться",
+                                style: 5,
+                                url: "https://discord.com/channels/364866543701590040/"+ship_channel
+                            }
+                        ]
+                    }
                     
-                    ShipNotify.send({ embeds: [invite_embed] }).then(repliedMessage => {
+                    ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                         setTimeout(() => repliedMessage.delete(), 1200000);
                         });
-                    interaction.reply({ content: 'Invite has been sucessfulle created!', ephemeral: true });
+                    interaction.reply({ content: 'Invite has been sucessfully created!', ephemeral: true });
 
                 }           
             // await interaction.guild.members.fetch closed
