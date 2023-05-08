@@ -83,7 +83,140 @@ module.exports = {
 
                     console.log(fetchedUser.user.id);
                        
-                }
+                    var today = new Date();
+                    var coeff = 1000 * 60 * 5;
+
+                    switch (ship_time) {
+                        case "0":
+                            var session_start_text = "сразу.";
+                            break;
+                        case "15":
+                            var minutes = 15;
+                            var prep_time = new Date(today.getTime() + minutes * 60000);
+                            var run_time = new Date(Math.round(prep_time.getTime() / coeff) * coeff);
+                            var session_start_text = "через 15 минут.";
+                            break;       
+                        case "30":
+                            var minutes = 30;
+                            var prep_time = new Date(today.getTime() + minutes * 60000);
+                            var run_time = new Date(Math.round(prep_time.getTime() / coeff) * coeff);
+                            var session_start_text = "через полчаса.";
+                            break;
+                        case "60":
+                            today.setHours(today.getHours() + 1);
+                            today.setMinutes(0);
+                            today.setSeconds(0);
+                            var session_start_text = "в следующем часе.";
+                            break;       
+                        default:
+                            break;
+                    }
+
+                    switch (ship_type) {
+                        case "slup":
+                            var text_ship_type = "Шлюп";
+                            var img_ship_type = "slup_";                            
+                            break;
+                        case "brig":
+                            var text_ship_type = "Бригантина";
+                            var img_ship_type = "brig_";                            
+                            break;
+                        case "galley":
+                            var text_ship_type = "Галеон";
+                            var img_ship_type = "galley_";                            
+                            break;
+                        default:
+                            break;
+                    }
+
+                    switch (ship_task) {
+                        case "tales":
+                            var text_mission_description = "Tall Tales";
+                            var img_ship_mission = img_ship_type + "tales";                            
+                            break;
+                        case "tales_sparrow":
+                            var text_mission_description = "Tall Tales - Джек Воробей";
+                            var img_ship_mission = img_ship_type + "tales_sparrow";                            
+                            break;
+                        case "farm_gh":
+                            var text_mission_description = "Фарм - Златодержцы";
+                            var img_ship_mission = img_ship_type + "farm_gh";                            
+                            break;
+                        case "farm_souls":
+                            var text_mission_description = "Фарм - Орден Душ";
+                            var img_ship_mission = img_ship_type + "farm_souls";                            
+                            break;
+                        case "farm_merch":
+                            var text_mission_description = "Фарм - Торговый Союз";
+                            var img_ship_mission = img_ship_type + "farm_merch";                            
+                            break;
+                        case "farm_hunt":
+                            var text_mission_description = "Фарм - Братство охотников";
+                            var img_ship_mission = img_ship_type + "farm_hunt";                            
+                            break;
+                        case "farm_athena":
+                            var text_mission_description = "Фарм - Сокровище Афины";
+                            var img_ship_mission = img_ship_type + "farm_athena";                            
+                            break;
+                        case "farm_reaper":
+                            var text_mission_description = "Фарм - Жнецы Костей";
+                            var img_ship_mission = img_ship_type + "farm_reaper";                            
+                            break;
+                        case "pvp_world":
+                            var text_mission_description = "PvP - Открытый мир";
+                            var img_ship_mission = img_ship_type + "pvp_world";                            
+                            break;
+                        case "pvp_matchmaking":
+                            var text_mission_description = "PvP - Подбор оппонентов";
+                            var img_ship_mission = img_ship_type + "pvp_matchmaking";                            
+                            break;
+                        default:
+                            break;
+                    }
+
+                    var invite_embed = {
+                          description: "Начало сессии - " + session_start_text,
+                          color: 0xdd6282,
+                          timestamp: new Date().toISOString(),
+                          footer: {
+                            icon_url: "https://r.snfx.ee/img/gb/gb_bottom_icon.png",
+                            text: "Glitterberad Brothers"
+                          },
+                          thumbnail: {
+                            url: "https://r.snfx.ee/img/gb/"+img_ship_mission+".png",
+                          },
+                          author: {
+                            name: fetchedUser.nickname ?? fetchedUser.user.username + " собирает команду:",
+                            url: "https://discordapp.com",
+                            icon_url: "https://cdn.discordapp.com/avatars/"+fetchedUser.sdfsfd+"/"+fetchedUser.sdfsdf+".jpeg"
+                          },
+                          fields: [
+                            {
+                              name: "Корабль",
+                              value: text_ship_type,
+                              inline: true
+                            },
+                            {
+                              name: "Цель плавания",
+                              value: text_mission_description,
+                              inline: true
+                            }
+                          ]
+                        }
+
+                        var component_buttons = {
+                            type: 1,
+                            components: [
+                                {
+                                    type: 2,
+                                    label: "Смотреть профиль",
+                                    style: 1,
+                                    custom_id: "profile_show"
+                                }
+                            ]
+                        }
+
+                }           
             // await interaction.guild.members.fetch closed
             ).catch(console.error);
         }
