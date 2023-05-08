@@ -179,14 +179,13 @@ module.exports = {
                           timestamp: new Date().toISOString(),
                           footer: {
                             icon_url: "https://r.snfx.ee/img/gb/gb_bottom_icon.png",
-                            text: "Glitterberad Brothers"
+                            text: "Glitterbeard Brothers"
                           },
                           thumbnail: {
                             url: "https://r.snfx.ee/img/gb/"+img_ship_mission+".png",
                           },
                           author: {
-                            name: fetchedUser.nickname ?? fetchedUser.user.username + " собирает команду:",
-                            url: "https://discordapp.com",
+                            name: fetchedUser.nickname ?? fetchedUser.user.username + " собирает команду.",
                             icon_url: "https://cdn.discordapp.com/avatars/"+fetchedUser.user.id+"/"+fetchedUser.user.avatar+".jpeg"
                           },
                           fields: [
@@ -200,22 +199,19 @@ module.exports = {
                               value: text_mission_description,
                               inline: true
                             }
+                          ],
+                          fields: [
+                            {
+                              name: "Голосовой канал",
+                              value: "<#"+ship_channel+">",
+                            }
                           ]
                         }
 
-                        // var component_buttons = {
-                        //     type: 1,
-                        //     components: [
-                        //         {
-                        //             type: 2,
-                        //             label: "Смотреть профиль",
-                        //             style: 1,
-                        //             custom_id: "profile_show"
-                        //         }
-                        //     ]
-                        // }
 
-                        interaction.reply({ embeds: [invite_embed] });
+                        interaction.reply({ embeds: [invite_embed] }).then(repliedMessage => {
+                            setTimeout(() => repliedMessage.delete(), 1200000);
+                          });
 
                 }           
             // await interaction.guild.members.fetch closed
