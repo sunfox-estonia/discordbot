@@ -206,10 +206,11 @@ module.exports = {
                           ]
                         }
 
-
+                    
                     ShipNotify.send({ embeds: [invite_embed] }).then(repliedMessage => {
                         setTimeout(() => repliedMessage.delete(), 1200000);
                         });
+                    interaction.reply({ content: 'Invite has been sucessfulle created!', ephemeral: true });
 
                 }           
             // await interaction.guild.members.fetch closed
