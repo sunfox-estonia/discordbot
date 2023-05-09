@@ -203,7 +203,7 @@ module.exports = {
                               value: text_mission_description,
                             },
                             {
-                              name: "Заходить в голосовой канал:",
+                              name: "Заходи в голосовой канал:",
                               value: "<#"+ship_channel+">",
                             }
                           ]
