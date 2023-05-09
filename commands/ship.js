@@ -200,11 +200,15 @@ module.exports = {
                             },
                             {
                               name: "Миссия:",
-                              value: text_mission_description+"\n\n",
+                              value: text_mission_description,
+                            },
+                            {
+                              name: "\u200b",
+                              value: "**Голосовой канал:**"                              
                             },
                             {
                               name: "<#"+ship_channel+">",
-                              value: "\u200b"
+                              value: "\u200b"                              
                             }
                           ]
                         }
