@@ -196,16 +196,14 @@ module.exports = {
                             {
                               name: "Корабль",
                               value: text_ship_type,
-                              inline: true
                             },
                             {
                               name: "Миссия",
-                              value: text_mission_description,
-                              inline: true
+                              value: text_mission_description + "\r\n\r\n",
                             },
                             {
-                              name: "Голосовой канал",
-                              value: "<#"+ship_channel+">",
+                              name: "<#"+ship_channel+">",
+                              value: "\u2063",
                             }
                           ]
                         }
