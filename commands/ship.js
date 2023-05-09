@@ -209,6 +209,10 @@ module.exports = {
                             {
                               name: "<#"+ship_channel+">",
                               value: "\u200b"                              
+                            },
+                            {
+                                name: "<#"+ship_channel+">",
+                                value: "\u200b"                              
                             }
                           ]
                         }
