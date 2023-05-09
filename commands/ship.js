@@ -194,16 +194,16 @@ module.exports = {
                           },
                           fields: [
                             {
-                              name: "Корабль",
+                              name: "Корабль:",
                               value: text_ship_type,
                             },
                             {
-                              name: "Миссия",
-                              value: text_mission_description + "\r\n\r\n",
+                              name: "Миссия:",
+                              value: text_mission_description,
                             },
                             {
-                              name: "<#"+ship_channel+">",
-                              value: "\u2063",
+                              name: "Заходить в голосовой канал:",
+                              value: "<#"+ship_channel+">",
                             }
                           ]
                         }
