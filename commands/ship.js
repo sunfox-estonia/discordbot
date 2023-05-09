@@ -204,15 +204,11 @@ module.exports = {
                             },
                             {
                               name: "\u200b",
-                              value: "**Голосовой канал:**"                              
+                              value: "__**Голосовой канал:**__"                              
                             },
                             {
                               name: "<#"+ship_channel+">",
                               value: "\u200b"                              
-                            },
-                            {
-                                name: "<#"+ship_channel+">",
-                                value: "\u200b"                              
                             }
                           ]
                         }
