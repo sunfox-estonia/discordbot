@@ -66,7 +66,7 @@ module.exports = {
                 )),
 
     async execute(interaction) {
-        const hasCaptainRole = interaction.member.roles.cache.has("1104521026584457216")
+        const hasCaptainRole = interaction.member.roles.cache.has("1039215669943742475")
 		if (hasCaptainRole == false) {
 			const locales = {
 				"en-US": 'You do not have permission to execute this command!',
