@@ -26,9 +26,9 @@ module.exports = {
 				))
             .addStringOption(option =>
                 option.setName('task')
-                    .setDescription('Тип корабля')
+                    .setDescription('Миссия')
                     .setDescriptionLocalizations({
-                        "en-US": 'Ship type',
+                        "en-US": 'Mission type',
                     })
                     .setRequired(true)
                     .addChoices(
@@ -85,7 +85,9 @@ module.exports = {
 
             await interaction.guild.members.fetch(member_id).then(
                 fetchedUser => {
-                       
+
+                    var ship_user = fetchedUser.nickname ?? fetchedUser.user.username;
+                    
                     var today = new Date();
                     var coeff = 1000 * 60 * 5;
 
@@ -190,7 +192,7 @@ module.exports = {
                             url: "https://r.snfx.ee/img/gb/"+img_ship_mission+".png",
                           },
                           author: {
-                            name: fetchedUser.nickname ?? fetchedUser.user.username + " собирает команду.",
+                            name: ship_user + " собирает команду.",
                             icon_url: "https://cdn.discordapp.com/avatars/"+fetchedUser.user.id+"/"+fetchedUser.user.avatar+".jpeg"
                           },
                           fields: [
