@@ -1,14 +1,14 @@
 {
   "name": "Sunfox.ee Discord Bot",
   "version": "1.1.0",
-  "description": "NodeJS приложение для управления сообществами Sunfox Team. Бот создавался под определенный чат, и к сожалению, не является универсальным. Однако, Вы можете создать бота для своего сообщества на его основе.",
+  "description": "NodeJS приложение для управления сообществами Sunfox Communities. Бот создавался под определенный чат, и к сожалению, не является универсальным. Однако, Вы можете создать бота для своего сообщества на его основе.",
   "main": "index.js",
   "scripts": {
     "bot.start": "node index.js",
     "bot.install": "node deploy-commands.js"
   },
   "keywords": [],
-  "author": "Sunfox Team NGO",
+  "author": "Sunfox Communities NGO",
   "license": "GNU",
   "dependencies": {
     "d20": "*",

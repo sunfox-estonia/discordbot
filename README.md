@@ -136,7 +136,7 @@ CREATE TABLE `quests_usr` (
 
 ## Настройка прав доступа на сайте Discord Developers
 
-На странице конфигурации приложения, в разделе Bot, в секции Privileged Gateway Intents включите функции Presence Intent, Server Members Intent  также Message Content Intent. Сохраните изменения.
+На странице конфигурации приложения, в разделе Bot, в секции Privileged Gateway Intents включите функции Presence Intent, Server Members Intent также Message Content Intent. Сохраните изменения.
 
 ## Запуск бота
 Для запуска бота выполните команду из рабочей директории:

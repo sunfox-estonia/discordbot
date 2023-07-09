@@ -1,8 +1,8 @@
 const { SlashCommandBuilder, ChannelType  } = require('discord.js');
 
 /**
- * Ship command is a special command for Glitterbeard Brothers to create invites for Sea of Thieves session.
- * Command can be runned only by users with the Captain role.
+ * Ship command is a special command for Glitterbeard Sailors to create invites for the Sea of Thieves play session.
+ * Command can be runned only by users with the Glitterbeard Sailors role.
  */
 
 module.exports = {
