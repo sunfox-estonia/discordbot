@@ -216,7 +216,7 @@ module.exports = {
                         }
                     
                     ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
-                        setTimeout(() => repliedMessage.delete(), 60000);
+                        setTimeout(() => repliedMessage.delete(), 300000);
                         });
                     interaction.reply({ content: 'Invite has been sucessfully created!', ephemeral: true });
 
