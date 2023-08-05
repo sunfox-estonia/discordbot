@@ -85,7 +85,7 @@ module.exports = {
                                         interaction.reply({embeds: [invite_embed], components: [component_buttons]  });
                                                                             
                                     } else {
-                                        interaction.reply({ content: '— Вот Твоя ссылка-приглашение для совместной игры в *'+SteamApp.name+'*: '+BofrostUri, ephemeral: true });
+                                        interaction.reply({ content: '— Вот Твоя ссылка-приглашение для совместной игры в **'+SteamApp.name+'**: '+BofrostUri, ephemeral: true });
                                     }  
                                 });   
                             } else {
