@@ -48,7 +48,7 @@ module.exports = {
 
                         if(SteamUser.gameID !== undefined){
                             // Get Steam application data
-                            steam.getGameDetails(SteamUser.AppID).then(SteamApp => {
+                            steam.getGameDetails(SteamUser.gameID).then(SteamApp => {
                                 console.log(SteamApp);
 
                             
