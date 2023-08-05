@@ -44,6 +44,9 @@ module.exports = {
 		await interaction.guild.members.fetch(target_user).then(
 			fetchedUser => {
 				existsBifrost(fetchedUser.user.id,function(error,profile_count){
+
+                    console.log(">> PROFILE COUNT: "+profile_count);
+
 					if (error || profile_count != 0) {
 						const locales = {
 							"en-US": 'An error occurred while creating/updating Bifröst profile.',
