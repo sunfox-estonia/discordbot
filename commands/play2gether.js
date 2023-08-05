@@ -54,7 +54,7 @@ module.exports = {
                                     if (url_only === false) {
                                         var invite_embed = {
                                             //description: "",
-                                            color: 0xdd6282,
+                                            color: 0x0099ff,
                                             timestamp: new Date().toISOString(),
                                             footer: {
                                                 icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
@@ -62,7 +62,13 @@ module.exports = {
                                             },
                                             image: {
                                                 url: SteamApp.header_image
-                                            },                            
+                                            },    
+                                            fields: [
+                                                {
+                                                  name: "Присоединяйся к игре!",
+                                                  value: "Обрати внимание: чтобы играть вместе с" + embed_author + ", Тебе необходимо добавить его в список друзей в Steam. Сделать это можно также на странице по ссылке."
+                                                }
+                                            ],                  
                                             author: {
                                                 name: embed_author + " приглашает поиграть в "+SteamApp.name+".",
                                                 icon_url: "https://cdn.discordapp.com/avatars/"+fetchedUser.user.id+"/"+fetchedUser.user.avatar+".jpeg"
