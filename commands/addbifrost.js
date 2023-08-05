@@ -27,6 +27,7 @@ module.exports = {
             .setDescription('Идентификатор Xbox')
             .setRequired(false))
         .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
+        
 	async execute(interaction) {
 		const hasAdminRole = interaction.member.roles.cache.some(r=>JSON.stringify(config.admin_roles).includes(r.name))
 		if (hasAdminRole == false) {
@@ -42,7 +43,7 @@ module.exports = {
 
 		await interaction.guild.members.fetch(target_user).then(
 			fetchedUser => {
-				/*existsBifrost(fetchedUser.user.id,function(error,profile_count){
+				existsBifrost(fetchedUser.user.id,function(error,profile_count){
 					if (error || profile_count != 0) {
 						const locales = {
 							"en-US": 'An error occurred while creating/updating Bifröst profile.',
@@ -67,11 +68,11 @@ module.exports = {
                                     };
                                 interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
                             } else {
-                                // Add role */
+                                // Add role 
                                 const role_id = config.bifrost_config.roleid;
                                 const get_role_by_id = interaction.guild.roles.cache.find(role => role.id === role_id);
                                 console.log(get_role_by_id);
-                                /*
+                                
                                 fetchedUser.roles.add(get_role_by_id);
 
                                 interaction.reply({ content: 'Bifröst profile has been successfully created!', ephemeral: true });
@@ -79,22 +80,10 @@ module.exports = {
                         });
                     }
                 });
-                */
             }
         );
 	},
 };
-
-addBifrost = function(data_id, data_steamid, data_xboxid, callback) {
-	let sql1 = "INSERT INTO drd_bifrost (user_uid, steam_id, xbox_id) VALUES (?,?,?);";
-    database.query(sql1, [data_id,data_steamid,data_xboxid], (error1, pingback) => {
-        if (error1) {
-            callback("Ошибка добавления профиля пользователя Bifröst.");
-            return;
-        }
-    }); 
-// addBifrost ended
-}
 
 addBifrost = function(data_id, data_steamid, data_xboxid, callback) {
 	let sql1 = "INSERT INTO drd_bifrost (user_uid, steam_id, xbox_id) VALUES (?,?,?);";
