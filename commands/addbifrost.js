@@ -35,7 +35,7 @@ module.exports = {
 				"en-US": 'You do not have permission to execute this command!'
 			};
 			await interaction.reply(locales[interaction.locale] ?? 'У вас недостаточно прав для выполнения этой команды!');
-		}
+		} else {
 
         const target_user = interaction.options.getUser('target_user');
 		const target_steamid = interaction.options.getString('steam_id');
@@ -82,6 +82,7 @@ module.exports = {
                 });
             }
         );
+        }
 	},
 };
 

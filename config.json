@@ -12,6 +12,7 @@
         "dbpass": "database user password"
     },
     "bifrost_config": {
-        "roleid": "Your bifrost role_id here"
+        "roleid": "Your bifrost role_id here",
+        "token_steam": "Your Steam token here"
     }
 }
