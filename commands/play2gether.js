@@ -42,7 +42,6 @@ module.exports = {
                         };
                         interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
                     } else {
-                        console.log(member_data);
                         // Get user data activity from Steam
                         steam.getUserSummary(member_data.steam_id).then(SteamUser => {
                             // Check if user is playing something or not
@@ -61,12 +60,12 @@ module.exports = {
                                                 icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
                                                 text: "Викинги Вирумаа"
                                             },
-                                            thumbnail: {
-                                            url: SteamApp.capsule_image,
-                                            },
+                                            image: {
+                                                url: SteamApp.capsule_image
+                                            },                            
                                             author: {
-                                            name: embed_author + " приглашает поиграть в "+SteamApp.name+".",
-                                            icon_url: "https://cdn.discordapp.com/avatars/"+fetchedUser.user.id+"/"+fetchedUser.user.avatar+".jpeg"
+                                                name: embed_author + " приглашает поиграть в "+SteamApp.name+".",
+                                                icon_url: "https://cdn.discordapp.com/avatars/"+fetchedUser.user.id+"/"+fetchedUser.user.avatar+".jpeg"
                                             }
                                         }
 
