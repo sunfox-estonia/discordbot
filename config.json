@@ -10,5 +10,8 @@
         "dbname": "database title",
         "dbuser": "database username",
         "dbpass": "database user password"
+    },
+    "bifrost_config": {
+        "roleid": "Your bifrost role_id here"
     }
 }

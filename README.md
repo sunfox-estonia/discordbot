@@ -38,6 +38,9 @@ git update-index --assume-unchanged config.json
         "dbuser": "database username",
         "dbpass": "database user password"
     }
+    "bifrost_config": {
+        "roleid": "Your bifrost role_id here"
+    }
 }
 ```
 Выполните регистрацию команд бота. Для этого в директории бота выполните команду:
@@ -128,6 +131,16 @@ CREATE TABLE `quests_usr` (
   `quest_id` int(10) NOT NULL,
   `user_uid` varchar(55) NOT NULL,
   `user_status` enum('0','1') NOT NULL DEFAULT '0',
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `drd_bifrost`;
+CREATE TABLE `drd_bifrost` (
+  `id` int(10) NOT NULL  AUTO_INCREMENT,
+  `user_uid` varchar(55) NOT NULL,
+  `steam_id` varchar(55) DEFAULT NULL,
+  `xbox_id` varchar(55) DEFAULT NULL,
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
