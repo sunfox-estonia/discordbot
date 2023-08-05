@@ -91,7 +91,9 @@ addBifrost = function(data_id, data_steamid, data_xboxid, callback) {
         if (error1) {
             callback("Ошибка добавления профиля пользователя Bifröst.");
             return;
-        }
+	    } else {
+			callback(null);
+	    }
     }); 
 // addBifrost ended
 }
@@ -102,7 +104,9 @@ updateBifrost = function(data_id, data_steamid, data_xboxid, callback) {
         if (error2) {
             callback("Ошибка обновления профиля пользователя Bifröst.");
             return;
-        }
+	    } else {
+			callback(null);
+	    }
     }); 
 // updateBifrost ended
 }
