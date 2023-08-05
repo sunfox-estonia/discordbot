@@ -68,12 +68,8 @@ module.exports = {
                                     };
                                 interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
                             } else {
-                                console.log("Added to DB");
-                                // Add role 
                                 const role_id = config.bifrost_config.roleid;
                                 const get_role_by_id = interaction.guild.roles.cache.find(role => role.id === role_id);
-                                console.log(get_role_by_id);
-                                
                                 fetchedUser.roles.add(get_role_by_id);
                                 interaction.reply({ content: 'Bifröst profile has been successfully created!', ephemeral: true });
                             }

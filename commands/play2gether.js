@@ -40,6 +40,7 @@ module.exports = {
                     };
                     interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });
                 } else {
+                    console.log(member_data);
                     // Get user data activity from Steam
                     steam.getUserSummary(member_data.steam_id).then(SteamUser => {
                         // Check if user is playing something or not
