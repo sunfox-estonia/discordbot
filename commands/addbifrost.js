@@ -47,12 +47,12 @@ module.exports = {
 
                     console.log(">> PROFILE COUNT: "+profile_count);
 
-					if (error || profile_count != "0") {
+					if (error || profile_count > 1) {
 						const locales = {
 							"en-US": 'An error occurred while creating/updating Bifröst profile.',
 							};
 						interaction.reply({ content: locales[interaction.locale] ?? error, ephemeral: true });						
-					}else if (profile_count == "0"){
+					}else if (profile_count == 0){
                         updateBifrost(fetchedUser.user.id, target_steamid, target_xboxid, function(error){
                             if (error) {
                                 const locales = {
