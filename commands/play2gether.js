@@ -33,7 +33,7 @@ module.exports = {
             const member_id = interaction.member.user.id;
 
             // Get user Steam and Xbox id from database
-            getBifrostProfile(member_id, function (error, member_data) {
+            getBifrost(member_id, function (error, member_data) {
                 if (error) {
                     const locales = {
                         "en-US": 'An error occurred while retrieving user profile.'
@@ -74,7 +74,7 @@ module.exports = {
     },
 };
 
-getBifrostProfile = function(user_id, callback) {
+getBifrost = function(user_id, callback) {
 	let sql1 = "SELECT user_uid, steam_id, xbox_id FROM drd_bifrost WHERE user_uid = ? LIMIT 1;";   
 	database.query(sql1, [user_id], (error1, result_userdata, fields) => {
 		if (error1) {
