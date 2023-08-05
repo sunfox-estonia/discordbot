@@ -46,27 +46,27 @@ module.exports = {
                         // Check if user is playing something or not
                         console.log(SteamUser);
 
-                        // if(SteamUser.gameid){
-                        //     // Get Steam application data
-                        //     steam.getGameDetails(SteamUser.AppID).then(SteamApp => {
-                        //         console.log(SteamApp);
+                        if(SteamUser.gameID !== undefined){
+                            // Get Steam application data
+                            steam.getGameDetails(SteamUser.AppID).then(SteamApp => {
+                                console.log(SteamApp);
 
                             
             
-                        //         // Generate Bofrost invite URI
-                        //         const BofrostUri = 'https://bifrost.snfx.ee/steam/'+SteamApp.gameid+'/'+SteamUser.userid;
-                        //         // Show embed component or just URI
-                        //         if (url_only === false) {
+                                // // Generate Bofrost invite URI
+                                // const BofrostUri = 'https://bifrost.snfx.ee/steam/'+SteamApp.gameid+'/'+SteamUser.userid;
+                                // // Show embed component or just URI
+                                // if (url_only === false) {
 
                                                                         
-                        //         } else {
-                        //             interaction.reply({ content: 'Вот Твоя ссылка-приглашение для совестной игры в '+SteamApp.gameid+':\n'+BofrostUri, ephemeral: true });
-                        //         }  
-                        //     });   
-                        // } else {
-                        //     // Show error - no application to invite
-                        //     interaction.reply({ content: 'Извини, не могу создать приглашение! Убедись что находишься в игровом лобби и попробуй еще раз.', ephemeral: true });
-                        // }                        
+                                // } else {
+                                //     interaction.reply({ content: 'Вот Твоя ссылка-приглашение для совестной игры в '+SteamApp.gameid+':\n'+BofrostUri, ephemeral: true });
+                                // }  
+                            });   
+                        } else {
+                            // Show error - no application to invite
+                            interaction.reply({ content: '— Извини, не могу создать приглашение! Убедись что находишься в игровом лобби и попробуй еще раз.', ephemeral: true });
+                        }                        
                     });
                 }
             });         
