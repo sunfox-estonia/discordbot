@@ -74,7 +74,6 @@ module.exports = {
                                 console.log(get_role_by_id);
                                 
                                 fetchedUser.roles.add(get_role_by_id);
-
                                 interaction.reply({ content: 'Bifröst profile has been successfully created!', ephemeral: true });
                             }
                         });
@@ -114,7 +113,8 @@ existsBifrost = function (data_id, callback) {
 			callback("Ошибка в работе базы данных.",null);
 			return;
 		} else {
-            callback(null,check_added[0].rowscount);	
+            callback(null,check_added[0].rowscount);
+            return;
 		}
 	});
 	// existsBifrost closed
