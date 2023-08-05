@@ -61,7 +61,7 @@ module.exports = {
                                                 text: "Викинги Вирумаа"
                                             },
                                             image: {
-                                                url: SteamApp.capsule_image
+                                                url: SteamApp.header_image
                                             },                            
                                             author: {
                                                 name: embed_author + " приглашает поиграть в "+SteamApp.name+".",
