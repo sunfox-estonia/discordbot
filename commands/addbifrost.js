@@ -99,7 +99,7 @@ addBifrost = function(data_id, data_steamid, data_xboxid, callback) {
 }
 
 updateBifrost = function(data_id, data_steamid, data_xboxid, callback) {
-	let sql2 = "UPDATE drd_users SET steam_id = ?, xbox_id = ? WHERE user_uid = ?;"; 
+	let sql2 = "UPDATE drd_bifrost SET steam_id = ?, xbox_id = ? WHERE user_uid = ?;"; 
     database.query(sql2, [data_steamid,data_xboxid,data_id], (error2, pingback) => {
         if (error2) {
             callback("Ошибка обновления профиля пользователя Bifröst.");
