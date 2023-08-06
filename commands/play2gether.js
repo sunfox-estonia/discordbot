@@ -73,7 +73,7 @@ module.exports = {
                                                 }
                                             ],                  
                                             author: {
-                                                name: embed_author + " приглашает поиграть в "+SteamApp.name+".",
+                                                name: embed_author + " приглашает поиграть\nв "+SteamApp.name+".",
                                                 icon_url: "https://cdn.discordapp.com/avatars/"+fetchedUser.user.id+"/"+fetchedUser.user.avatar+".jpeg"
                                             }
                                         }
