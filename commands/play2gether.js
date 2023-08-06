@@ -60,6 +60,9 @@ module.exports = {
                                                 icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
                                                 text: "Викинги Вирумаа"
                                             },
+                                            thumbnail: {
+                                                url: "https://r.snfx.ee/img/discord_bot/alert_playtogether.png"
+                                                },
                                             image: {
                                                 url: SteamApp.header_image
                                             },    
