@@ -99,34 +99,7 @@ module.exports = {
             await interaction.guild.members.fetch(member_id).then(
                 fetchedUser => {
 
-                    // Get Bifrost DB profile
-                    getBifrost(member_id, function (error, member_data) {
-                        if (error) {				
-
-                        } else {
-                            // Get achievements for Sea of Thieves
-                            steam.getUserAchievements(member_data.steam_id, "1172620").then(UserAchievements => {
-                                commendations2check = ['219','220','221','222'];
-                                PrepareComedations = [];
-
-                                let i = 0;
-                                while (i < commendations2check.length) {
-                                    var getOne = getAchievemntStatusByCode(UserAchievements.achievements,commendations2check[i]);
-                                    var AchievementToPush = new Object();
-                                    AchievementToPush.id = commendations2check[i];
-                                    AchievementToPush.status = getOne[0]['achieved'];
-                                    console.log(AchievementToPush);
-                                    PrepareComedations.push(AchievementToPush);
-                                    i++;
-                                }
-
-                               console.log(PrepareComedations);
-
-
-                                
-                            });
-                        }
-                    });
+                    // Set config before invite running
 
                     var ship_user = fetchedUser.nickname ?? fetchedUser.user.username;
                     
@@ -227,44 +200,85 @@ module.exports = {
                     }
 
                     var invite_embed = {
-                          description: "Начало сессии - " + session_start_text,
-                          color: 0xdd6282,
-                          timestamp: new Date().toISOString(),
-                          footer: {
-                            icon_url: "https://r.snfx.ee/img/gb/gb_bottom_icon.png",
-                            text: "Glitterbeard Brothers"
+                        description: "Начало сессии - " + session_start_text,
+                        color: 0xdd6282,
+                        timestamp: new Date().toISOString(),
+                        footer: {
+                          icon_url: "https://r.snfx.ee/img/gb/gb_bottom_icon.png",
+                          text: "Glitterbeard Brothers"
+                        },
+                        thumbnail: {
+                          url: "https://r.snfx.ee/img/gb/"+img_ship_mission+".png",
+                        },
+                        author: {
+                          name: ship_user + " собирает команду.",
+                          icon_url: "https://cdn.discordapp.com/avatars/"+fetchedUser.user.id+"/"+fetchedUser.user.avatar+".jpeg"
+                        },
+                        fields: [
+                          {
+                            name: "Корабль:",
+                            value: text_ship_type,
                           },
-                          thumbnail: {
-                            url: "https://r.snfx.ee/img/gb/"+img_ship_mission+".png",
+                          {
+                            name: "Миссия:",
+                            value: text_mission_description,
                           },
-                          author: {
-                            name: ship_user + " собирает команду.",
-                            icon_url: "https://cdn.discordapp.com/avatars/"+fetchedUser.user.id+"/"+fetchedUser.user.avatar+".jpeg"
+                          {
+                            name: "\u200b",
+                            value: "**Добавляйся в голосовой канал:**"                              
                           },
-                          fields: [
-                            {
-                              name: "Корабль:",
-                              value: text_ship_type,
-                            },
-                            {
-                              name: "Миссия:",
-                              value: text_mission_description,
-                            },
-                            {
-                              name: "\u200b",
-                              value: "**Добавляйся в голосовой канал:**"                              
-                            },
-                            {
-                              name: "<#"+ship_channel+">",
-                              value: "\u200b"                              
-                            }
-                          ]
+                          {
+                            name: "<#"+ship_channel+">",
+                            value: "\u200b"                              
+                          }
+                        ]
+                    }
+
+
+                    // Get Bifrost DB profile
+                    getBifrost(member_id, function (error, member_data) {                        
+                        if (error) {		
+                        // If there is no profile available		
+
+                        ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                            setTimeout(() => repliedMessage.delete(), 600000);
+                            });
+                        interaction.reply({ content: 'Invite has been sucessfully created!', ephemeral: true });
+
+                        } else {
+                        // If profile is available
+
+                            // Get specified achievements for Sea of Thieves
+                            steam.getUserAchievements(member_data.steam_id, "1172620").then(UserAchievements => {
+                                commendations2check = ['219','220','221','222'];
+                                PrepareComedations = [];
+
+                                let i = 0;
+                                while (i < commendations2check.length) {
+                                    var getOne = getAchievemntStatusByCode(UserAchievements.achievements,commendations2check[i]);
+                                    var AchievementToPush = new Object();
+                                    AchievementToPush.id = commendations2check[i];
+                                    AchievementToPush.status = getOne[0]['achieved'];
+                                    PrepareComedations.push(AchievementToPush);
+                                    i++;
+                                }     
+                                
+                                                           
+                                ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                                    setTimeout(() => repliedMessage.delete(), 600000);
+                                    });
+                                interaction.reply({ content: 'Invite has been sucessfully created!', ephemeral: true });
+
+
+                            });
                         }
+                    });
+
                     
-                    ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
-                        setTimeout(() => repliedMessage.delete(), 600000);
-                        });
-                    interaction.reply({ content: 'Invite has been sucessfully created!', ephemeral: true });
+
+                  
+                    
+
 
                 }           
             // await interaction.guild.members.fetch closed
