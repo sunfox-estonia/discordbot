@@ -178,11 +178,11 @@ module.exports = {
                             break;
                         case "pvp_servants":
                             var text_mission_description = "PvP - Слуги Пламени";
-                            var img_ship_mission = img_ship_type + "pvp_matchmaking";                            
+                            var img_ship_mission = img_ship_type + "pvp_servants";                            
                             break;
                         case "pvp_guardians":
                             var text_mission_description = "PvP - Хранители Сокровищ";
-                            var img_ship_mission = img_ship_type + "pvp_matchmaking";                            
+                            var img_ship_mission = img_ship_type + "pvp_guardians";                            
                             break;
                         default:
                             break;
