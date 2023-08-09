@@ -27,7 +27,7 @@ module.exports = {
 			const locales = {
 				"en-US": 'You do not have permission to execute this command!'
 			};
-			await interaction.reply(locales[interaction.locale] ?? 'У вас недостаточно прав для выполнения этой команды!');
+			await interaction.reply(locales[interaction.locale] ?? '**Команду могут запустить только пользователи с ролью «Биврёст».**\nДля получения подключите свои профили Steam и Xbox в Steam. После этого обратитесь к любому из Координаторов для получения роли.');
 		}  else {
             const url_only = interaction.options.getBoolean('link') ?? false;
             const member_id = interaction.member.user.id;

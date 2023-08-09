@@ -1,5 +1,14 @@
 const { SlashCommandBuilder, ChannelType  } = require('discord.js');
 const config = require('../config.json');
+const mysql = require('mysql');
+const database = mysql.createConnection({
+	host: config.db_config.host,
+	user: config.db_config.dbuser,
+	password: config.db_config.dbpass,
+	database: config.db_config.dbname,
+	debug: false,
+	multipleStatements: true,
+});
 const SteamAPI = require('steamapi');
 const steam = new SteamAPI(config.bifrost_config.token_steam);
 
@@ -79,7 +88,7 @@ module.exports = {
 		} else {
 
             // Send invite to specified channel
-            const ShipNotify = interaction.client.channels.cache.get('1104517743279087676');
+            const ShipNotify = interaction.client.channels.cache.get('1046788143917047838');
             var member_id = interaction.member.user.id;
 
             const ship_type = interaction.options.getString('ship');
@@ -89,6 +98,18 @@ module.exports = {
 
             await interaction.guild.members.fetch(member_id).then(
                 fetchedUser => {
+
+                    // Get Bifrost DB profile
+                    getBifrost(member_id, function (error, member_data) {
+                        if (error) {				
+
+                        } else {
+                            // Get achievements for Sea of Thieves
+                            steam.getUserAchievements(member_data.steam_id, "1172620").then(SteamUser => {
+                                console.log(SteamUser)
+                            });
+                        }
+                    });
 
                     var ship_user = fetchedUser.nickname ?? fetchedUser.user.username;
                     
@@ -234,3 +255,18 @@ module.exports = {
         }
 	},
 };
+
+getBifrost = function(user_id, callback) {
+	let sql1 = "SELECT user_uid, steam_id, xbox_id FROM drd_bifrost WHERE user_uid = ? LIMIT 1;";   
+	database.query(sql1, [user_id], (error1, result_userdata, fields) => {
+		if (error1) {
+			callback("Ошибка в работе базы данных.",null);
+			return;
+		}
+		if (result_userdata.length == 0 || result_userdata.length > 1){
+			callback("Ошибка получения профиля пользователя.",null);
+			return;
+		}
+		callback(null,result_userdata[0]);
+	});
+}
