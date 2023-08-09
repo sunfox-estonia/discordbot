@@ -105,7 +105,7 @@ module.exports = {
 
                         } else {
                             // Get achievements for Sea of Thieves
-                            steam.getUserAchievements(member_data.steam_id, "1172620").then(SteamUser => {
+                            steam.getUserStats(member_data.steam_id, "1172620").then(SteamUser => {
                                 console.log(SteamUser);
                             });
                         }
