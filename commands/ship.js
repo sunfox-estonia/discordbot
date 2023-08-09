@@ -114,7 +114,7 @@ module.exports = {
                                     var getOne = getAchievemntStatusByCode(UserAchievements.achievements,commendations2check[i]);
                                     var AchievementToPush = new Object();
                                     AchievementToPush.id = commendations2check[i];
-                                    AchievementToPush.status = getOne[0].status;
+                                    AchievementToPush.status = getOne[0].achieved;
                                     console.log(AchievementToPush);
                                     PrepareComedations.push(AchievementToPush);
                                     i++;
