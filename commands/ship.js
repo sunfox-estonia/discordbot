@@ -112,8 +112,10 @@ module.exports = {
                                 let i = 0;
                                 while (i < commendations2check.length) {
                                     var AchievementToPush = new Object();
-                                    AchievementToPush["id"] = commendations2check[i];
-                                    AchievementToPush["status"] = getOne[0].status;
+                                    AchievementToPush.id = commendations2check[i];
+                                    AchievementToPush.status = getOne[0].status;
+
+                                    console.log(AchievementToPush);
                                     PrepareComedations.push(AchievementToPush);
                                     i++;
                                 }
