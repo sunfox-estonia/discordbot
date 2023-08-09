@@ -111,7 +111,7 @@ module.exports = {
 
                                 let i = 0;
                                 while (i < commendations2check.length) {
-                                    var getOne = getAchievemntStatusByCode(getUserAchievements.achievements,commendations2check[i]);
+                                    var getOne = getAchievemntStatusByCode(UserAchievements.achievements,commendations2check[i]);
                                     ComedationsStatus[commendations2check[i]] = getOne.achieved;  
                                     i++;
                                 }
