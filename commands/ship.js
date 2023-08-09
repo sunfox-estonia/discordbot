@@ -109,10 +109,11 @@ module.exports = {
                                 commendations2check = ['219','220','221','222'];
                                 ComedationsStatus = [];
 
-
+                                let i = 0;
                                 while (i < commendations2check.length) {
                                     var getOne = getAchievemntStatusByCode(getUserAchievements.achievements,commendations2check[i]);
-                                    ComedationsStatus[commendations2check[i]] = getOne.achieved;  i++;
+                                    ComedationsStatus[commendations2check[i]] = getOne.achieved;  
+                                    i++;
                                 }
 
                                 console.log(ComedationsStatus);
