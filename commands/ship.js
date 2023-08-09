@@ -106,10 +106,10 @@ module.exports = {
                         } else {
                             // Get achievements for Sea of Thieves
                             steam.getUserAchievements(member_data.steam_id, "1172620").then(UserAchievements => {
-                                var data219 = getAchievemntStatusByCode(UserAchievements,'219');
-                                var data220 = getAchievemntStatusByCode(UserAchievements,'220');
-                                var data221 = getAchievemntStatusByCode(UserAchievements,'221');
-                                var data222 = getAchievemntStatusByCode(UserAchievements,'222');
+                                var data219 = getAchievemntStatusByCode(UserAchievements.achievements,'219');
+                                var data220 = getAchievemntStatusByCode(UserAchievements.achievements,'220');
+                                var data221 = getAchievemntStatusByCode(UserAchievements.achievements,'221');
+                                var data222 = getAchievemntStatusByCode(UserAchievements.achievements,'222');
                                 var check219 = data219[0].achieved;
                                 var check220 = data220[0].achieved;
                                 var check221 = data221[0].achieved;
@@ -119,6 +119,8 @@ module.exports = {
                                 console.log('220 = '+check220);
                                 console.log('221 = '+check221);
                                 console.log('222 = '+check222);
+
+
                                 
                             });
                         }
