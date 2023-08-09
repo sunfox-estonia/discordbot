@@ -106,9 +106,20 @@ module.exports = {
                         } else {
                             // Get achievements for Sea of Thieves
                             steam.getUserAchievements(member_data.steam_id, "1172620").then(UserAchievements => {
-                                console.log(UserAchievements.achievements);
+                                var data219 = getAchievemntStatusByCode(UserAchievements,'219');
+                                var data220 = getAchievemntStatusByCode(UserAchievements,'220');
+                                var data221 = getAchievemntStatusByCode(UserAchievements,'221');
+                                var data222 = getAchievemntStatusByCode(UserAchievements,'222');
+                                var check219 = data219[0].achieved;
+                                var check220 = data220[0].achieved;
+                                var check221 = data221[0].achieved;
+                                var check222 = data222[0].achieved;
 
-                                console.log($.UserAchievements[?('219' in @.achievements.*.api)].achieved);
+                                console.log('219 = '+check219);
+                                console.log('220 = '+check220);
+                                console.log('221 = '+check221);
+                                console.log('222 = '+check222);
+                                
                             });
                         }
                     });
@@ -272,3 +283,11 @@ getBifrost = function(user_id, callback) {
 		callback(null,result_userdata[0]);
 	});
 }
+
+
+function getAchievemntStatusByCode(comedations,code) {
+    return comedations.filter(
+        function(comedations){ return comedations.api == code }
+    );
+  }
+  
