@@ -1,4 +1,6 @@
 const { SlashCommandBuilder, ChannelType  } = require('discord.js');
+const SteamAPI = require('steamapi');
+const steam = new SteamAPI(config.bifrost_config.token_steam);
 
 /**
  * Ship command is a special command for Glitterbeard Sailors to create invites for the Sea of Thieves play session.
@@ -41,7 +43,8 @@ module.exports = {
                         { name: 'Farm - Athena', value: 'farm_athena' },
                         { name: 'Farm - Reapers', value: 'farm_reaper' },
                         { name: 'PVP - Open world', value: 'pvp_world' },
-                        { name: 'PVP - Matchmaking', value: 'pvp_matchmaking' },
+                        { name: 'PVP - Слуги Пламени', value: 'pvp_servants' },
+                        { name: 'PVP - Хранители Сокровищ', value: 'pvp_guardians' },
                     ))
         .addChannelOption(option =>
             option.setName('channel')
@@ -66,8 +69,8 @@ module.exports = {
                 )),
 
     async execute(interaction) {
-        const hasCaptainRole = interaction.member.roles.cache.has("1039215669943742475")
-		if (hasCaptainRole == false) {
+        const hasSailorRole = interaction.member.roles.cache.has("1039215669943742475")
+		if (hasSailorRole == false) {
 			const locales = {
 				"en-US": 'You do not have permission to execute this command!',
 			};
@@ -172,8 +175,12 @@ module.exports = {
                             var text_mission_description = "PvP - Открытый мир";
                             var img_ship_mission = img_ship_type + "pvp_world";                            
                             break;
-                        case "pvp_matchmaking":
-                            var text_mission_description = "PvP - Подбор оппонентов";
+                        case "pvp_servants":
+                            var text_mission_description = "PvP - Слуги Пламени";
+                            var img_ship_mission = img_ship_type + "pvp_matchmaking";                            
+                            break;
+                        case "pvp_guardians":
+                            var text_mission_description = "PvP - Хранители Сокровищ";
                             var img_ship_mission = img_ship_type + "pvp_matchmaking";                            
                             break;
                         default:
