@@ -106,23 +106,16 @@ module.exports = {
                         } else {
                             // Get achievements for Sea of Thieves
                             steam.getUserAchievements(member_data.steam_id, "1172620").then(UserAchievements => {
+                                commendations2check = ['219','220','221','222'];
+                                ComedationsStatus = [];
 
-                                console.log(UserAchievements.achievements);
 
-                                
-                                var data219 = getAchievemntStatusByCode(UserAchievements.achievements,'219');
-                                var data220 = getAchievemntStatusByCode(UserAchievements.achievements,'220');
-                                var data221 = getAchievemntStatusByCode(UserAchievements.achievements,'221');
-                                var data222 = getAchievemntStatusByCode(UserAchievements.achievements,'222');
-                                var check219 = data219[0].achieved;
-                                var check220 = data220[0].achieved;
-                                var check221 = data221[0].achieved;
-                                var check222 = data222[0].achieved;
+                                while (i < commendations2check.length) {
+                                    var getOne = getAchievemntStatusByCode(getUserAchievements.achievements,commendations2check[i]);
+                                    ComedationsStatus[commendations2check[i]] = getOne.achieved;  i++;
+                                }
 
-                                console.log('219 = '+check219);
-                                console.log('220 = '+check220);
-                                console.log('221 = '+check221);
-                                console.log('222 = '+check222);
+                                console.log(ComedationsStatus);
 
 
                                 
