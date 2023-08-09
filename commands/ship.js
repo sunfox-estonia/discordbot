@@ -112,13 +112,13 @@ module.exports = {
                                 let i = 0;
                                 while (i < commendations2check.length) {
                                     var getOne = getAchievemntStatusByCode(UserAchievements.achievements,commendations2check[i]);
-                                    console.log(commendations2check[i]);
 
-                                    ComedationsStatus[commendations2check[i]] = getOne.achieved;  
+
+                                    ComedationsStatus[commendations2check[i]['status']] = getOne.achieved;  
                                     i++;
                                 }
 
-                               // console.log(JSON.stringify(ComedationsStatus));
+                               console.log(JSON.stringify(ComedationsStatus));
 
 
                                 
