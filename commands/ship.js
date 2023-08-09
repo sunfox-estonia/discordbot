@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, ChannelType  } = require('discord.js');
+const config = require('../config.json');
 const SteamAPI = require('steamapi');
 const steam = new SteamAPI(config.bifrost_config.token_steam);
 
