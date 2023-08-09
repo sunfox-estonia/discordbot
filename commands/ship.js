@@ -116,7 +116,7 @@ module.exports = {
                                     i++;
                                 }
 
-                                console.log(ComedationsStatus);
+                                console.log(JSON.stringify(ComedationsStatus));
 
 
                                 
