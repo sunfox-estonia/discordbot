@@ -107,20 +107,20 @@ module.exports = {
                             // Get achievements for Sea of Thieves
                             steam.getUserAchievements(member_data.steam_id, "1172620").then(UserAchievements => {
                                 commendations2check = ['219','220','221','222'];
-                                PrepareComedations = new Object();
+                                PrepareComedations = [];
 
                                 let i = 0;
                                 while (i < commendations2check.length) {
+                                    var getOne = getAchievemntStatusByCode(UserAchievements.achievements,commendations2check[i]);
                                     var AchievementToPush = new Object();
                                     AchievementToPush.id = commendations2check[i];
                                     AchievementToPush.status = getOne[0].status;
-
                                     console.log(AchievementToPush);
                                     PrepareComedations.push(AchievementToPush);
                                     i++;
                                 }
 
-                                console.log(PrepareComedations);
+                               console.log(PrepareComedations);
 
 
                                 
