@@ -112,8 +112,8 @@ module.exports = {
                                 let i = 0;
                                 while (i < commendations2check.length) {
                                     var getOne = getAchievemntStatusByCode(UserAchievements.achievements,commendations2check[i]);
-                                    PrepareComedations[i]['id'] = commendations2check[i];
-                                    PrepareComedations[i]['status'] = getOne[0].status;
+                                    PrepareComedations[i].id = commendations2check[i];
+                                    PrepareComedations[i].status = getOne[0].status;
                                     i++;
                                 }
 
