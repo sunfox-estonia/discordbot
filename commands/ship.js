@@ -285,7 +285,7 @@ module.exports = {
                                 var BadgesImage = "pvp_profile_" + Badges + ".png";
 
                                 if (ship_task == "pvp_servants" || ship_task == "pvp_guardians"){
-                                    invite_embed.setImage('https://r.snfx.ee/img/gb/pvp_profile_' + BadgesImage);
+                                    invite_embed.setImage('https://r.snfx.ee/img/gb/' + BadgesImage);
                                     invite_embed.addFields(
                                         { name: '\u200b', value: '**Достижения в режиме PvP:**' }
                                     )
