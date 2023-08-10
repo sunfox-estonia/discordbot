@@ -254,7 +254,7 @@ module.exports = {
                                 var Badges = "";
 
                                 let i = 0;
-                                while (i < commendations2check.length) {
+                                while (i < CommendationsList.length) {
                                     var getOne = getAchievemntStatusByCode(UserAchievements.achievements,CommendationsList[i]);
                                     let getOneStatus = getOne[0]['achieved'];
                                     if(getOneStatus == true){
