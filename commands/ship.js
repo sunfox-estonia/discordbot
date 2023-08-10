@@ -210,7 +210,7 @@ module.exports = {
                         {name: "\u200b",value: "**Добавляйся в голосовой канал:**"},
                         {name: "<#"+ship_channel+">",value: "\u200b"}
                     )
-                    .setTimestamp(new Date().toISOString())
+                    .setTimestamp()
                     .setFooter({icon_url: "https://r.snfx.ee/img/gb/gb_bottom_icon.png", text: "Glitterbeard Brothers"});
 
                     /*
