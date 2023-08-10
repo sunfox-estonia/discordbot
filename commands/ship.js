@@ -267,28 +267,30 @@ module.exports = {
 
                             // Get specified achievements for Sea of Thieves
                             steam.getUserAchievements(member_data.steam_id, "1172620").then(UserAchievements => {
-                                CommendationsList = ['219','220','221','222'];
-                                var Badges = "";
+                                if(UserAchievements.steamID !== undefined){
+                                    CommendationsList = ['219','220','221','222'];
+                                    var Badges = "";
 
-                                let i = 0;
-                                while (i < CommendationsList.length) {
-                                    var getOne = getAchievemntStatusByCode(UserAchievements.achievements,CommendationsList[i]);
-                                    let getOneStatus = getOne[0]['achieved'];
-                                    if(getOneStatus == true){
-                                        Badges += "1";
-                                    }else{
-                                        Badges += "0";
+                                    let i = 0;
+                                    while (i < CommendationsList.length) {
+                                        var getOne = getAchievemntStatusByCode(UserAchievements.achievements,CommendationsList[i]);
+                                        let getOneStatus = getOne[0]['achieved'];
+                                        if(getOneStatus == true){
+                                            Badges += "1";
+                                        }else{
+                                            Badges += "0";
+                                        }
+                                        i++;
                                     }
-                                    i++;
-                                }
 
-                                var BadgesImage = "pvp_profile_" + Badges + ".png";
+                                    var BadgesImage = "pvp_profile_" + Badges + ".png";
 
-                                if (ship_task == "pvp_servants" || ship_task == "pvp_guardians"){
-                                    invite_embed.setImage('https://r.snfx.ee/img/gb/' + BadgesImage);
-                                    invite_embed.addFields(
-                                        { name: '\u200b', value: '**Достижения ' + ship_user + ' в режиме PvP:**' }
-                                    )
+                                    if (ship_task == "pvp_servants" || ship_task == "pvp_guardians"){
+                                        invite_embed.setImage('https://r.snfx.ee/img/gb/' + BadgesImage);
+                                        invite_embed.addFields(
+                                            { name: '\u200b', value: '**Достижения ' + ship_user + ' в режиме PvP:**' }
+                                        )
+                                    }
                                 }
                                                                                
                                 ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
