@@ -199,6 +199,23 @@ module.exports = {
                             break;
                     }
 
+                    var invite_embed = new EmbedBuilder()
+                    .setColor(0xdd6282)
+                    .setAuthor({ name: ship_user + " собирает команду.", iconURL: "https://cdn.discordapp.com/avatars/"+fetchedUser.user.id+"/"+fetchedUser.user.avatar+".jpeg" })
+                    .setDescription("Начало сессии - " + session_start_text)
+                    .setThumbnail("https://r.snfx.ee/img/gb/"+img_ship_mission+".png")
+                    .addFields(
+                        {name: "Корабль:", value: text_ship_type},
+                        {name: "Миссия:",value: text_mission_description},
+                        {name: "\u200b",value: "**Добавляйся в голосовой канал:**"},
+                        {name: "<#"+ship_channel+">",value: "\u200b"}
+                    )
+                    .setTimestamp(new Date().toISOString())
+                    .setFooter({icon_url: "https://r.snfx.ee/img/gb/gb_bottom_icon.png", text: "Glitterbeard Brothers"});
+
+                    /*
+                    Embed old version
+
                     var invite_embed = {
                         description: "Начало сессии - " + session_start_text,
                         color: 0xdd6282,
@@ -233,7 +250,7 @@ module.exports = {
                           }
                         ]
                     }
-
+                    */
 
                     // Get Bifrost DB profile
                     getBifrost(member_id, function (error, member_data) {                        
@@ -266,12 +283,22 @@ module.exports = {
                                 }
 
                                 var BadgesImage = "pvp_profile_" + Badges + ".png";
-                                console.log(BadgesImage);
+
+                                if (ship_task == "pvp_servants" || ship_task == "pvp_guardians"){
+                                    invite_embed.setImage('https://r.snfx.ee/img/gb/pvp_profile_' + BadgesImage);
+                                    invite_embed.addFields(
+                                        { name: '\u200b', value: '**Достижения в режиме PvP:**' }
+                                    )
+                                }
+
+
+
+                                console.log(invite_embed);
                                                                                
                                /* ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                     setTimeout(() => repliedMessage.delete(), 600000);
                                     }); */
-                                interaction.reply({ content: 'Invite has been sucessfully created!', ephemeral: true });
+                                interaction.reply({ content: 'Invite has been successfully created!', ephemeral: true });
                             });
                         }
                     });                 
