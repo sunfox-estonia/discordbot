@@ -257,9 +257,9 @@ module.exports = {
                         if (error) {		
                         // If there is no profile available		
 
-                       /* ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                       ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                             setTimeout(() => repliedMessage.delete(), 600000);
-                            }); */
+                            });
                         interaction.reply({ content: 'Invite has been sucessfully created!', ephemeral: true });
 
                         } else {
@@ -287,17 +287,13 @@ module.exports = {
                                 if (ship_task == "pvp_servants" || ship_task == "pvp_guardians"){
                                     invite_embed.setImage('https://r.snfx.ee/img/gb/' + BadgesImage);
                                     invite_embed.addFields(
-                                        { name: '\u200b', value: '**Достижения в режиме PvP:**' }
+                                        { name: '\u200b', value: '**Достижения ' + ship_user + ' в режиме PvP:**' }
                                     )
                                 }
-
-
-
-                                console.log(invite_embed);
                                                                                
-                               /* ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                                ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                     setTimeout(() => repliedMessage.delete(), 600000);
-                                    }); */
+                                    });
                                 interaction.reply({ content: 'Invite has been successfully created!', ephemeral: true });
                             });
                         }
