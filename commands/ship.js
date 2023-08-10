@@ -88,7 +88,7 @@ module.exports = {
 		} else {
 
             // Send invite to specified channel
-            const ShipNotify = interaction.client.channels.cache.get('1104517743279087676');
+            const ShipNotify = interaction.client.channels.cache.get('1046788143917047838');
             var member_id = interaction.member.user.id;
 
             const ship_type = interaction.options.getString('ship');
@@ -250,18 +250,23 @@ module.exports = {
 
                             // Get specified achievements for Sea of Thieves
                             steam.getUserAchievements(member_data.steam_id, "1172620").then(UserAchievements => {
-                                commendations2check = ['219','220','221','222'];
-                                PrepareComedations = [];
+                                CommendationsList = ['219','220','221','222'];
+                                var Badges = "";
 
                                 let i = 0;
                                 while (i < commendations2check.length) {
-                                    var getOne = getAchievemntStatusByCode(UserAchievements.achievements,commendations2check[i]);
-                                    var AchievementToPush = new Object();
-                                    AchievementToPush.id = commendations2check[i];
-                                    AchievementToPush.status = getOne[0]['achieved'];
-                                    PrepareComedations.push(AchievementToPush);
+                                    var getOne = getAchievemntStatusByCode(UserAchievements.achievements,CommendationsList[i]);
+                                    let getOneStatus = getOne[0]['achieved'];
+                                    if(getOneStatus == true){
+                                        Badges += "1";
+                                    }else{
+                                        Badges += "0";
+                                    }
                                     i++;
                                 }
+
+                                var BadgesImage = "pvp_profile_" + Badges + ".png";
+                                console.log(BadgesImage);
                                                                                
                                 ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                     setTimeout(() => repliedMessage.delete(), 600000);
