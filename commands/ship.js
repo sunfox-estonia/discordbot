@@ -261,25 +261,15 @@ module.exports = {
                                     AchievementToPush.status = getOne[0]['achieved'];
                                     PrepareComedations.push(AchievementToPush);
                                     i++;
-                                }     
-                                
-                                                           
+                                }
+                                                                               
                                 ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                     setTimeout(() => repliedMessage.delete(), 600000);
                                     });
                                 interaction.reply({ content: 'Invite has been sucessfully created!', ephemeral: true });
-
-
                             });
                         }
-                    });
-
-                    
-
-                  
-                    
-
-
+                    });                 
                 }           
             // await interaction.guild.members.fetch closed
             ).catch(console.error);
