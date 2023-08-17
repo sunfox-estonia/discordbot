@@ -266,7 +266,7 @@ module.exports = {
                         // If profile is available
 
                             // Get specified achievements for Sea of Thieves
-                            steam.getUserAchievements("76561199151221599", "1172620").then(UserAchievements => { // member_data.steam_id
+                            steam.getUserAchievements("member_data.steam_id", "1172620").then(UserAchievements => {
                                 if(UserAchievements.steamID !== undefined){
                                     CommendationsList = ['219','220','221','222'];
                                     var Badges = "";
