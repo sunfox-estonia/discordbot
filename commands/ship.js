@@ -291,19 +291,19 @@ module.exports = {
                                             { name: '\u200b', value: '**Достижения ' + ship_user + ' в режиме PvP:**' }
                                         )
                                     }
-                                    console.log("Steam profile is ok"); 
                                 }
                                                                       
-                                //ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
-                                //    setTimeout(() => repliedMessage.delete(), 600000);
-                                 //   });
-                               // interaction.reply({ content: 'Invite has been successfully created!', ephemeral: true });
-                                // TODO: Do not return erro if profile is hidden.
+                                ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                                   setTimeout(() => repliedMessage.delete(), 600000);
+                                   });
+                                interaction.reply({ content: 'Invite has been successfully created!', ephemeral: true });
 
                             })
                             .catch(error => {
-                                // Return if profile is hidden
-                                console.log("Steam profile is hidden");
+                                ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                                    setTimeout(() => repliedMessage.delete(), 600000);
+                                    });
+                                 interaction.reply({ content: 'Invite has been successfully created!', ephemeral: true });
                             });
                         }
                     });                 
