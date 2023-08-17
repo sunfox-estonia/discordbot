@@ -266,7 +266,7 @@ module.exports = {
                         // If profile is available
 
                             // Get specified achievements for Sea of Thieves
-                            steam.getUserAchievements(member_data.steam_id, "1172620").then(UserAchievements => {
+                            steam.getUserAchievements("76561199151221599", "1172620").then(UserAchievements => { // member_data.steam_id
                                 if(UserAchievements.steamID !== undefined){
                                     CommendationsList = ['219','220','221','222'];
                                     var Badges = "";
@@ -292,11 +292,17 @@ module.exports = {
                                         )
                                     }
                                 }
-                                                                               
-                                ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
-                                    setTimeout(() => repliedMessage.delete(), 600000);
-                                    });
-                                interaction.reply({ content: 'Invite has been successfully created!', ephemeral: true });
+                                console.log("Steam profile is ok");                                       
+                                //ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                                //    setTimeout(() => repliedMessage.delete(), 600000);
+                                 //   });
+                               // interaction.reply({ content: 'Invite has been successfully created!', ephemeral: true });
+                                // TODO: Do not return erro if profile is hidden.
+
+                            })
+                            .catch(error => {
+                                // Return if profile is hidden
+                                console.log("Steam profile is hidden");
                             });
                         }
                     });                 
