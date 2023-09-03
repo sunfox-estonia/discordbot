@@ -16,10 +16,16 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('play2gether')
 		.setDescription('Пригласить в игровое лобби.')
+        .setDescriptionLocalizations({
+            "en-US": 'Invite to the game lobby.'
+        })
 		.addBooleanOption(option =>
 			option.setName('link')
 				.setRequired(false)
-				.setDescription('Показать только ссылку-приглашение в приватном сообщении.')),
+				.setDescription('Показать только ссылку-приглашение в приватном сообщении.')
+                .setDescriptionLocalizations({
+                    "en-US": 'Show only link to invite in a private message.'
+                })),
 
     async execute(interaction) {
 		const hasBifrostRole = interaction.member.roles.cache.some(r => r.id === config.bifrost_config.roleid)

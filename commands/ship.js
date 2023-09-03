@@ -32,9 +32,9 @@ module.exports = {
                 })
 				.setRequired(true)
 				.addChoices(
-					{ name: 'Шлюп', value: 'slup' },
-					{ name: 'Бригантина', value: 'brig' },
-					{ name: 'Галеон', value: 'galley' }
+					{ name: 'Шлюп | Sloop', value: 'slup' },
+					{ name: 'Бригантина | Brigantine', value: 'brig' },
+					{ name: 'Галеон | Galleon', value: 'galley' }
 				))
             .addStringOption(option =>
                 option.setName('task')
@@ -46,15 +46,15 @@ module.exports = {
                     .addChoices(
                         { name: 'Tall Tales', value: 'tales' },
                         { name: 'Tall Tales - Jack Sparrow', value: 'tales_sparrow' },
-                        { name: 'Farm - Златодержцы', value: 'farm_gh' },
-                        { name: 'Farm - Орден душ', value: 'farm_souls' },
-                        { name: 'Farm - Торговый союз', value: 'farm_merch' },
+                        { name: 'Farm - Златодержцы | Goldhoarders', value: 'farm_gh' },
+                        { name: 'Farm - Орден душ | Order of Souls', value: 'farm_souls' },
+                        { name: 'Farm - Торговый союз | Merchant Alliance', value: 'farm_merch' },
                         { name: 'Farm - Охотники', value: 'farm_hunt' },
                         { name: 'Farm - Athena', value: 'farm_athena' },
                         { name: 'Farm - Reapers', value: 'farm_reaper' },
                         { name: 'PVP - Open world', value: 'pvp_world' },
-                        { name: 'PVP - Слуги Пламени', value: 'pvp_servants' },
-                        { name: 'PVP - Хранители Сокровищ', value: 'pvp_guardians' },
+                        { name: 'PVP - Слуги Пламени | Servants of the Flame', value: 'pvp_servants' },
+                        { name: 'PVP - Хранители Сокровищ | Guardians of Fortune', value: 'pvp_guardians' },
                     ))
         .addChannelOption(option =>
             option.setName('channel')
@@ -72,10 +72,10 @@ module.exports = {
                 })
                 .setRequired(false)
                 .addChoices(
-                    { name: 'Сразу', value: '0' },
-                    { name: '15 мин.', value: '15' },
-                    { name: '30 мин.', value: '30' },
-                    { name: 'Следующий час', value: '60' }
+                    { name: 'Сразу | Now', value: '0' },
+                    { name: '15 мин. | in 15 min.', value: '15' },
+                    { name: '30 мин. | in 30 min.', value: '30' },
+                    { name: 'Следующий час | Next hour', value: '60' }
                 )),
 
     async execute(interaction) {
