@@ -88,7 +88,7 @@ module.exports = {
 		} else {
 
             // Send invite to specified channel
-            const ShipNotify = interaction.client.channels.cache.get('1104517743279087676');
+            const ShipNotify = interaction.client.channels.cache.get('1046788143917047838'); // Ships channel 1104517743279087676
             var member_id = interaction.member.user.id;
 
             const ship_type = interaction.options.getString('ship');
@@ -265,6 +265,11 @@ module.exports = {
                         } else {
                         // If profile is available
 
+                            steam.getGameAchievements("1172620").then(GameAchievements => {
+                                console.log(GameAchievements);
+                            });
+                            
+                            /*
                             // Get specified achievements for Sea of Thieves
                             steam.getUserAchievements(member_data.steam_id, "1172620").then(UserAchievements => {
                                 if(UserAchievements.steamID !== undefined){
@@ -305,6 +310,7 @@ module.exports = {
                                     });
                                  interaction.reply({ content: 'Invite has been successfully created!', ephemeral: true });
                             });
+                            */
                         }
                     });                 
                 }           
