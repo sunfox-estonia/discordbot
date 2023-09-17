@@ -213,6 +213,10 @@ module.exports = {
                     .setTimestamp()
                     .setFooter({icon_url: "https://r.snfx.ee/img/gb/gb_bottom_icon.png", text: "Glitterbeard Brothers"});
 
+                    steam.getGameDetails("1172620").then(GameDetails => {
+                        console.log(GameDetails);
+                    });
+
                     /*
                     Embed old version
 
@@ -265,10 +269,8 @@ module.exports = {
                         } else {
                         // If profile is available
 
-                            steam.getGameAchievements("1172620").then(GameAchievements => {
-                                console.log(GameAchievements);
-                            });
-                            
+
+
                             /*
                             // Get specified achievements for Sea of Thieves
                             steam.getUserAchievements(member_data.steam_id, "1172620").then(UserAchievements => {
