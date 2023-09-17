@@ -214,7 +214,7 @@ module.exports = {
                     .setFooter({icon_url: "https://r.snfx.ee/img/gb/gb_bottom_icon.png", text: "Glitterbeard Brothers"});
 
                     steam.getGameDetails("1172620").then(GameDetails => {
-                        console.log(GameDetails);
+                        console.log(GameDetails.achievements);
                     });
 
                     /*
