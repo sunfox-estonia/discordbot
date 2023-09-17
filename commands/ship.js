@@ -213,10 +213,6 @@ module.exports = {
                     .setTimestamp()
                     .setFooter({icon_url: "https://r.snfx.ee/img/gb/gb_bottom_icon.png", text: "Glitterbeard Brothers"});
 
-                    steam.getGameDetails("1172620").then(GameDetails => {
-                        console.log(GameDetails.achievements);
-                    });
-
                     /*
                     Embed old version
 
@@ -260,22 +256,20 @@ module.exports = {
                     getBifrost(member_id, function (error, member_data) {                        
                         if (error) {		
                         // If there is no profile available		
-                        /*
+                        
                         ShipNotify.send({content: `<@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                             setTimeout(() => repliedMessage.delete(), 600000);
                             });
                         interaction.reply({ content: 'Invite has been sucessfully created!', ephemeral: true });
-                        */
+                        
                         } else {
-                        // If profile is available
-
-
-
-                            /*
+                        // If profile is available   
+                            // Here you can see full achievements list:
+                            // http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v0002/?key=APIKEY&appid=1172620&l=english&format=json                         
                             // Get specified achievements for Sea of Thieves
                             steam.getUserAchievements(member_data.steam_id, "1172620").then(UserAchievements => {
                                 if(UserAchievements.steamID !== undefined){
-                                    CommendationsList = ['219','220','221','222'];
+                                    CommendationsList = ['220','219','221','222'];
                                     var Badges = "";
 
                                     let i = 0;
@@ -312,7 +306,7 @@ module.exports = {
                                     });
                                  interaction.reply({ content: 'Invite has been successfully created!', ephemeral: true });
                             });
-                            */
+                            
                         }
                     });                 
                 }           
