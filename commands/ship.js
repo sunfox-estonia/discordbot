@@ -88,7 +88,7 @@ module.exports = {
 		} else {
 
             // Send invite to specified channel
-            const ShipNotify = interaction.client.channels.cache.get('1046788143917047838'); // Ships channel 1104517743279087676
+            const ShipNotify = interaction.client.channels.cache.get('1104517743279087676'); // Ships channel 1104517743279087676
             var member_id = interaction.member.user.id;
 
             const ship_type = interaction.options.getString('ship');
