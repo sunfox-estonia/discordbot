@@ -252,7 +252,7 @@ module.exports = {
                         if (error) {
                             // If there is no profile available		
 
-                            ShipNotify.send({ content: `<@1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                            ShipNotify.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                 setTimeout(() => repliedMessage.delete(), 600000);
                             });
                             interaction.reply({ content: 'Invite has been sucessfully created!', ephemeral: true });
@@ -289,14 +289,14 @@ module.exports = {
                                     }
                                 }
 
-                                ShipNotify.send({ content: `<@1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                                ShipNotify.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                     setTimeout(() => repliedMessage.delete(), 600000);
                                 });
                                 interaction.reply({ content: 'Invite has been successfully created!', ephemeral: true });
 
                             })
                                 .catch(error => {
-                                    ShipNotify.send({ content: `<@1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                                    ShipNotify.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                         setTimeout(() => repliedMessage.delete(), 600000);
                                     });
                                     interaction.reply({ content: 'Invite has been successfully created!', ephemeral: true });
