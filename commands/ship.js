@@ -154,6 +154,10 @@ module.exports = {
                             var text_mission_description = "Tall Tales - Джек Воробей";
                             var img_ship_mission = img_ship_type + "tales_sparrow";
                             break;
+                        case "farm_guild":
+                            var text_mission_description = "Фарм - Гильдия";
+                            var img_ship_mission = img_ship_type + "farm_guild";
+                            break;
                         case "farm_gh":
                             var text_mission_description = "Фарм - Златодержцы";
                             var img_ship_mission = img_ship_type + "farm_gh";
