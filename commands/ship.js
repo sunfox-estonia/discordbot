@@ -46,6 +46,7 @@ module.exports = {
                 .addChoices(
                     { name: 'Tall Tales', value: 'tales' },
                     { name: 'Tall Tales - Jack Sparrow', value: 'tales_sparrow' },
+                    { name: 'Farm - Гильдия | Guild', value: 'farm_guild' },
                     { name: 'Farm - Златодержцы | Goldhoarders', value: 'farm_gh' },
                     { name: 'Farm - Орден душ | Order of Souls', value: 'farm_souls' },
                     { name: 'Farm - Торговый союз | Merchant Alliance', value: 'farm_merch' },
