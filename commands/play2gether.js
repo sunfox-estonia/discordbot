@@ -89,7 +89,7 @@ module.exports = {
                                             components: [
                                                 {
                                                     type: 2,
-                                                    label: "Присоедениться к лобби",
+                                                    label: "Присоединиться к лобби",
                                                     style: 5,
                                                     url: BofrostUri
                                                 }
