@@ -34,6 +34,6 @@ module.exports = {
                 break;
         }
         var inviteUrl = landingUrl + invite.code;
-		interaction.reply({content: '— Вот Твоя ссылка-приглашение на сервер: '+inviteUrl, ephemeral: true });	
+		interaction.reply({content: '— Вот ссылка-приглашение на сервер: '+inviteUrl, ephemeral: true });	
 	},
 };
