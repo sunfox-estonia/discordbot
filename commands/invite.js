@@ -20,7 +20,7 @@ module.exports = {
 
         let invite = await interaction.channel.createInvite(
         {
-            maxAge: 60 * 60000, // in minutes, should be less than or equal to 2592000
+            maxAge: 1 * 24 * 3600000, // 3600000 milliseconds = 1 hour
             maxUses: 1 // maximum times it can be used
         }
         ).catch(console.log);
