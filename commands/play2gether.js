@@ -63,8 +63,8 @@ module.exports = {
                                             color: 0x0099ff,
                                             timestamp: new Date().toISOString(),
                                             footer: {
-                                                icon_url: "https://sunfox.ee/resources/img/discord_bot/vv_sq_logo.png",
-                                                text: "Викинги Вирумаа"
+                                                icon_url: "https://r.snfx.ee/img/discord_bot/fox_sq_logo.png",
+                                                text: "Sunfox.ee Discord Server"
                                             },
                                             thumbnail: {
                                                 url: "https://r.snfx.ee/img/discord_bot/alert_playtogether.png"

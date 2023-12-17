@@ -211,7 +211,10 @@ module.exports = {
                             { name: "<#" + ship_channel + ">", value: "\u200b" }
                         )
                         .setTimestamp()
-                        .setFooter({ icon_url: "https://r.snfx.ee/img/gb/gb_bottom_icon.png", text: "Glitterbeard Brothers" });
+                        .setFooter({ 
+                            icon_url: "https://r.snfx.ee/img/discord_bot/fox_sq_logo.png",
+                            text: "Sunfox.ee Discord Server"
+                         });
 
                     /*
                     Embed old version
