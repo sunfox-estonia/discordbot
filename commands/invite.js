@@ -9,7 +9,6 @@ module.exports = {
 				.setDescription('Лендинг с правилами сервера')
 				.setRequired(false)
 				.addChoices(
-					{ name: 'Общие правила', value: 'common' },
 					{ name: 'Glitterbeard Sailors', value: 'glitterbeard' }
         ))
         .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
@@ -33,7 +32,7 @@ module.exports = {
                 var landingUrl = baseUrl;
                 break;
         }
-        var inviteUrl = landingUrl + invite.code;
+        var inviteUrl = landingUrl + 'invite/' + invite.code;
 		interaction.reply({content: '— Вот ссылка-приглашение на сервер: '+inviteUrl, ephemeral: true });	
 	},
 };
