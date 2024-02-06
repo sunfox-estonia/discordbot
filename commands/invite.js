@@ -9,7 +9,8 @@ module.exports = {
 				.setDescription('Лендинг с правилами сервера')
 				.setRequired(false)
 				.addChoices(
-					{ name: 'Glitterbeard Sailors', value: 'glitterbeard' }
+					{ name: 'Glitterbeard Sailors', value: 'glitterbeard' },
+                    { name: 'Virumaa Viikingid', value: 'viruviking' }
         ))
         .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 
@@ -19,20 +20,22 @@ module.exports = {
 
         let invite = await interaction.channel.createInvite(
         {
-            maxAge: 1800000, // 30 minutes
+            maxAge: 7200, // 2h
             maxUses: 1 // maximum times it can be used
         }
         ).catch(console.log);
         switch (landing) {
             case 'glitterbeard':
-                var landingUrl = baseUrl + 'glitterbeards' + '/';
+                var landingUrl = baseUrl + 'gs' + '/';
                 break;
-        
+            case 'glitterbeard':
+                var landingUrl = baseUrl + 'vv' + '/';
+                break;
             default:
                 var landingUrl = baseUrl;
                 break;
         }
-        var inviteUrl = landingUrl + 'invite/' + invite.code;
+        var inviteUrl = landingUrl + 'i/' + invite.code;
 		interaction.reply({content: '— Вот ссылка-приглашение на сервер: '+inviteUrl, ephemeral: true });	
 	},
 };
