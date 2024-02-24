@@ -76,7 +76,7 @@ module.exports = {
                         { name: '15 мин. | in 15 min.', value: '15' },
                         { name: '30 мин. | in 30 min.', value: '30' },
                         { name: 'Следующий час | Next hour', value: '60' }
-                    )),
+                    ))
     )
 	.addSubcommand(subcommand =>
 		subcommand
@@ -136,7 +136,7 @@ module.exports = {
                         { name: '15 мин. | in 15 min.', value: '15' },
                         { name: '30 мин. | in 30 min.', value: '30' },
                         { name: 'Следующий час | Next hour', value: '60' }
-                    )),
+                    ))
     ),
 
 async execute(interaction) {
