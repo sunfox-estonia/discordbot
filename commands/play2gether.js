@@ -31,7 +31,7 @@ module.exports = {
     })
 	.addSubcommand(subcommand =>
 		subcommand
-			.setName('SELECT')
+			.setName('CHOOSE')
 			.setDescription('Выбрать из списка | Select from the list')
             .addStringOption(option =>
                 option.setName('game')
