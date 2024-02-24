@@ -41,20 +41,20 @@ module.exports = {
                     })
                     .setRequired(false)
                     .addChoices(
-						{ name: "Battlefield 1", value: "1238840" },
-						{ name: "Dead by Daylight", value: "381210" },
-						{ name: "Deep Rock Galactic", value: "548430" },
-						{ name: "Dota 2", value: "570" },
-						{ name: "Elite Dangerous", value: "359320" },
-						{ name: "Euro Truck Simulator 2", value: "227300" },
-						{ name: "Halo Infinite", value: "1240440" },
-						{ name: "Lethal Company", value: "1966720" },
-						{ name: "MORDHAU", value: "629760" },
-						{ name: "PAYDAY 2", value: "218620" },
-						{ name: "Rust", value: "252490" },
-						{ name: "Terraria", value: "105600" },
-						{ name: "theHunter: Call of the Wild", value: "518790" },
-						{ name: "Valheim", value: "892970" }
+						{ name: 'Battlefield 1', value: '1238840' },
+						{ name: 'Dead by Daylight', value: '381210' },
+						{ name: 'Deep Rock Galactic', value: '548430' },
+						{ name: 'Dota 2', value: '570' },
+						{ name: 'Elite Dangerous', value: '359320' },
+						{ name: 'Euro Truck Simulator 2', value: '227300' },
+						{ name: 'Halo Infinite', value: '1240440' },
+						{ name: 'Lethal Company', value: '1966720' },
+						{ name: 'MORDHAU', value: '629760' },
+						{ name: 'PAYDAY 2', value: '218620' },
+						{ name: 'Rust', value: '252490' },
+						{ name: 'Terraria', value: '105600' },
+						{ name: 'theHunter: Call of the Wild', value: '518790' },
+						{ name: 'Valheim', value: '892970' }
 					))
             .addChannelOption(option =>
                 option.setName('channel')
