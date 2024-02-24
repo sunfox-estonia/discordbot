@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ChannelType, EmbedBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { SlashCommandBuilder, ChannelType, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
@@ -396,10 +396,13 @@ async execute(interaction) {
                                 * Get app connected achievements from DB
                                 */
 
-                                const component_buttons = new ButtonBuilder()
+                                const button_join = new ButtonBuilder()
                                     .setLabel('Присоединиться к лобби')
                                     .setURL(BifrostUri)
                                     .setStyle(ButtonStyle.Link);
+
+                                const component_buttons = new ActionRowBuilder()
+                                    .addComponents(button_join);
     
                                 NotificationsChannel.send({ embeds: [invite_embed], components: [component_buttons] }).then(repliedMessage => {
                                     setTimeout(() => repliedMessage.delete(), 600000);
