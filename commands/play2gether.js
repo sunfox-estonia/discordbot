@@ -238,7 +238,7 @@ async execute(interaction) {
                     var invite_embed = new EmbedBuilder()
                         .setColor(0x0099ff)
                         .setAuthor({ name: ship_user + " собирает команду.", iconURL: "https://cdn.discordapp.com/avatars/" + DiscordUser.user.id + "/" + DiscordUser.user.avatar + ".jpeg" })
-                        .setDescription("Начало сессии - " + time_to_go)
+                        .setDescription("Начало сессии - <t:" + time_to_go + ":R>")
                         .setThumbnail("https://r.snfx.ee/img/gb/" + img_ship_mission + ".png")
                         .addFields(
                             { name: "Корабль:", value: text_ship_type },
@@ -336,7 +336,7 @@ async execute(interaction) {
                             var invite_embed = new EmbedBuilder()
                                 .setColor(0x0099ff)
                                 .setAuthor({ name: play2_user + " приглашает поиграть\nв "+SteamApp.name+".", iconURL: "https://cdn.discordapp.com/avatars/" + DiscordUser.user.id + "/" + DiscordUser.user.avatar + ".jpeg" })
-                                .setDescription("Начало сессии - " + time_to_go)
+                                .setDescription("Начало сессии - <t:" + time_to_go + ":R>")
                                 .setThumbnail("https://r.snfx.ee/img/discord_bot/alert_playtogether.png")
                                 .setImage(SteamApp.header_image)
                                 .addFields(
@@ -378,7 +378,7 @@ async execute(interaction) {
                                 var invite_embed = new EmbedBuilder()
                                     .setColor(0x0099ff)
                                     .setAuthor({ name: play2_user + " приглашает поиграть\nв "+SteamApp.name+".", iconURL: "https://cdn.discordapp.com/avatars/" + DiscordUser.user.id + "/" + DiscordUser.user.avatar + ".jpeg" })
-                                    .setDescription("Начало сессии - " + time_to_go)
+                                    .setDescription("Начало сессии - <t:" + time_to_go + ":R>")
                                     .setThumbnail("https://r.snfx.ee/img/discord_bot/alert_playtogether.png")
                                     .setImage(SteamApp.header_image)
                                     .addFields(
