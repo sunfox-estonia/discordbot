@@ -102,7 +102,7 @@ module.exports = {
                     })
                     .setRequired(true)
                     .addChoices(
-                        { name: 'Сбор рейда', value: 'guild_raid' },
+                        { name: 'Сбор рейда | Run a raid', value: 'raid' },
                         { name: 'Tall Tales', value: 'tales' },
                         { name: 'Tall Tales - Jack Sparrow', value: 'tales_sparrow' },
                         { name: 'Farm - Гильдия | Guild', value: 'farm_guild' },
@@ -175,6 +175,10 @@ async execute(interaction) {
                 }
 
                 switch (ship_task) {
+                    case "raid":
+                        var text_mission_description = "Сбор рейда";
+                        var img_ship_mission = img_ship_type + "raid";
+                        break;
                     case "tales":
                         var text_mission_description = "Tall Tales";
                         var img_ship_mission = img_ship_type + "tales";
