@@ -39,7 +39,7 @@ module.exports = {
                     .setDescriptionLocalizations({
                         "en-US": 'Game name',
                     })
-                    .setRequired(false)
+                    .setRequired(true)
                     .addChoices(
 						{ name: 'Battlefield 1', value: '1238840' },
 						{ name: 'Dead by Daylight', value: '381210' },
@@ -144,7 +144,8 @@ async execute(interaction) {
         const ShipsNotificationsChannel = interaction.client.channels.cache.get('1104517743279087676');
         const BotLogChannel = interaction.client.channels.cache.get('1195089293757137056');
         const party_channel = interaction.options.getChannel('channel');
-        const party_time = interaction.options.getString('time');
+        const party_time = ( interaction.options.getString('time') !== undefined ) ? interaction.options.getString('time') : "0";
+
         /*
          * SEA OF THIEVES play togeter invite
          */
