@@ -264,13 +264,11 @@ async execute(interaction) {
 
                             BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - Sea of Thieves`});
                         } else {
-                            console.log(steam_data.steam_id);
                             // If profile is available   
                             // Here you can see full achievements list:
                             // http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v0002/?key=APIKEY&appid=1172620&l=english&format=json                         
                             // Get specified achievements for Sea of Thieves
                             steam.getUserAchievements(steam_data.steam_id, "1172620").then(UserAchievements => {
-                                console.log(UserAchievements);
 
                                 if (UserAchievements.steamID !== undefined) {
                                     CommendationsList = ['220', '219', '221', '222'];
@@ -289,6 +287,7 @@ async execute(interaction) {
                                     }
 
                                     var BadgesImage = "pvp_profile_" + Badges + ".png";
+                                    console.log(BadgesImage);
 
                                     if (ship_task == "pvp_servants" || ship_task == "pvp_guardians") {
                                         invite_embed.setImage('https://r.snfx.ee/img/gb/' + BadgesImage);
@@ -301,7 +300,7 @@ async execute(interaction) {
                                 ShipsNotificationsChannel.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                     setTimeout(() => repliedMessage.delete(), 600000);
                                 });
-                                //interaction.reply({ content: '— Приглашение успешно создано!', ephemeral: true });
+                                interaction.reply({ content: '— Приглашение успешно создано!', ephemeral: true });
                                 BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - Sea of Thieves`});
 
                             })
