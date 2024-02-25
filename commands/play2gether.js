@@ -31,7 +31,7 @@ module.exports = {
     })
 	.addSubcommand(subcommand =>
 		subcommand
-			.setName('game')
+			.setName('GAME')
 			.setDescription('Выбрать из списка | Select from the list')
             .addStringOption(option =>
                 option.setName('game')
@@ -80,7 +80,7 @@ module.exports = {
     )
 	.addSubcommand(subcommand =>
 		subcommand
-			.setName('sot')
+			.setName('SOT')
 			.setDescription('Sea of Thieves')
             .addStringOption(option =>
                 option.setName('ship')
