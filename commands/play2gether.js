@@ -102,6 +102,7 @@ module.exports = {
                     })
                     .setRequired(true)
                     .addChoices(
+                        { name: 'Сбор рейда | Gathering raid', value: 'raid' },
                         { name: 'Tall Tales', value: 'tales' },
                         { name: 'Tall Tales - Jack Sparrow', value: 'tales_sparrow' },
                         { name: 'Farm - Гильдия | Guild', value: 'farm_guild' },
@@ -174,6 +175,10 @@ async execute(interaction) {
                 }
 
                 switch (ship_task) {
+                    case "raid":
+                        var text_mission_description = "Сбор рейда";
+                        var img_ship_mission = "raid";
+                        break;
                     case "tales":
                         var text_mission_description = "Tall Tales";
                         var img_ship_mission = img_ship_type + "tales";
@@ -230,81 +235,107 @@ async execute(interaction) {
                     var ship_user = DiscordUser.nickname ?? DiscordUser.user.username;
                     var time_to_go = fetchTimestamp(party_time);
 
-                    var invite_embed = new EmbedBuilder()
-                        .setColor(0x0099ff)
-                        .setAuthor({ name: ship_user + " собирает команду.", iconURL: "https://cdn.discordapp.com/avatars/" + DiscordUser.user.id + "/" + DiscordUser.user.avatar + ".jpeg" })
-                        .setDescription("Начало сессии - <t:" + time_to_go + ":R>")
-                        .setThumbnail("https://r.snfx.ee/img/gb/" + img_ship_mission + ".png")
-                        .addFields(
-                            { name: "Корабль:", value: text_ship_type },
-                            { name: "Миссия:", value: text_mission_description },
-                            { name: "\u200b", value: "**Добавляйся в голосовой канал:**" },
-                            { name: "<#" + party_channel + ">", value: "\u200b" }
-                        )
-                        .setTimestamp()
-                        .setFooter({ 
-                            icon_url: "https://r.snfx.ee/img/discord_bot/fox_sq_logo.png",
-							text: "Sunfox.ee Discord Server"
-                        });
-                    /*
-                    * Get Steam profile to show achievements in PVP
-                    */ 
-                    getBifrost(interaction.member.user.id, function (error, steam_data) {
-                        if (error) {
-                            // If there is no Steam profile available		
-                            ShipsNotificationsChannel.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                    if (ship_task === 'raid') {
+                        var invite_embed = new EmbedBuilder()
+                            .setColor(0x0099ff)
+                            .setAuthor({ name: ship_user + " собирает рейд.", iconURL: "https://cdn.discordapp.com/avatars/" + DiscordUser.user.id + "/" + DiscordUser.user.avatar + ".jpeg" })
+                            .setDescription("Начало сессии - <t:" + time_to_go + ":R>")
+                            .setThumbnail("https://r.snfx.ee/img/gb/" + img_ship_mission + ".png")
+                            .addFields(
+                                { name: "Присоединяйся к рейду!", value: "Для участия в рейде Тебе потребуется приложение **FleetCreator**, а также установленный и настроенный **VPN**. Участникам сообщества Sunfox.ee бесплатно предоставляется безопасный VPN-сервис: обратись к Хранителям для получения более подробной информации.\n[Установить и настроить FleetCreator](https://wiki.sunfox.ee/glitterbeard:fleetcreator)\n[Установить и настроить VPN](https://wiki.sunfox.ee/glitterbeard:vpn)" },
+                                { name: "Корабль:", value: text_ship_type },
+                                { name: "\u200b", value: "**Добавляйся в голосовой канал:**" },
+                                { name: "<#" + party_channel + ">", value: "\u200b" }
+                            )
+                            .setTimestamp()
+                            .setFooter({ 
+                                icon_url: "https://r.snfx.ee/img/discord_bot/fox_sq_logo.png",
+                                text: "Sunfox.ee Discord Server"
+                            });
+
+                            ShipsNotificationsChannel.send({ content: `<@&1157948075499868180>, начинается сбор рейда:`, embeds: [invite_embed] }).then(repliedMessage => {
                                 setTimeout(() => repliedMessage.delete(), 600000);
                             });
-                            interaction.reply({ content: '— Приглашение успешно создано!', ephemeral: true });
+                            interaction.reply({ content: '— Приглашение на сбо рейда успешно создано!', ephemeral: true });
 
-                            BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - Sea of Thieves`});
-                        } else {
-                            // If profile is available   
-                            // Here you can see full achievements list:
-                            // http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v0002/?key=APIKEY&appid=1172620&l=english&format=json                         
-                            // Get specified achievements for Sea of Thieves
-                            steam.getUserAchievements(steam_data.steam_id, "1172620").then(UserAchievements => {
-
-                                if (UserAchievements.steamID !== undefined) {
-                                    CommendationsList = ['220', '219', '221', '222'];
-                                    var Badges = "";
-
-                                    let i = 0;
-                                    while (i < CommendationsList.length) {
-                                        var getOne = getAchievementStatusByCode(UserAchievements.achievements, CommendationsList[i]);
-                                        let getOneStatus = getOne[0]['achieved'];
-                                        if (getOneStatus == true) {
-                                            Badges += "1";
-                                        } else {
-                                            Badges += "0";
-                                        }
-                                        i++;
-                                    }
-
-                                    var BadgesImage = "pvp_profile_" + Badges + ".png";
-
-                                    if (ship_task == "pvp_servants" || ship_task == "pvp_guardians") {
-                                        invite_embed.setImage('https://r.snfx.ee/img/gb/' + BadgesImage);
-                                        invite_embed.addFields(
-                                            { name: '\u200b', value: '**Достижения ' + ship_user + ' в режиме PvP:**' }
-                                        )
-                                    }
-                                }
-
+                            BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - RAID in Sea of Thieves`});
+                    } else {
+                        var invite_embed = new EmbedBuilder()
+                            .setColor(0x0099ff)
+                            .setAuthor({ name: ship_user + " собирает команду.", iconURL: "https://cdn.discordapp.com/avatars/" + DiscordUser.user.id + "/" + DiscordUser.user.avatar + ".jpeg" })
+                            .setDescription("Начало сессии - <t:" + time_to_go + ":R>")
+                            .setThumbnail("https://r.snfx.ee/img/gb/" + img_ship_mission + ".png")
+                            .addFields(
+                                { name: "Корабль:", value: text_ship_type },
+                                { name: "Миссия:", value: text_mission_description },
+                                { name: "\u200b", value: "**Добавляйся в голосовой канал:**" },
+                                { name: "<#" + party_channel + ">", value: "\u200b" }
+                            )
+                            .setTimestamp()
+                            .setFooter({ 
+                                icon_url: "https://r.snfx.ee/img/discord_bot/fox_sq_logo.png",
+                                text: "Sunfox.ee Discord Server"
+                            });
+                        /*
+                        * Get Steam profile to show achievements in PVP
+                        */ 
+                        getBifrost(interaction.member.user.id, function (error, steam_data) {
+                            if (error) {
+                                // If there is no Steam profile available		
                                 ShipsNotificationsChannel.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                     setTimeout(() => repliedMessage.delete(), 600000);
                                 });
                                 interaction.reply({ content: '— Приглашение успешно создано!', ephemeral: true });
-                                BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - Sea of Thieves`});
 
-                            })
-                            .catch(error => {
-                                BotLogChannel.send({ content: `ERROR: Can't get Steam data for user <@` + DiscordUser.user.id + `> - Sea of Thieves` });
-                                interaction.reply({ content: `Не могу получить данные твоего аккаунта Steam. Хранители уведомлены о проблеме и свяжутся с тобой позже.`, ephemeral: true });
-                            });
-                        }
-                    });
+                                BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - Sea of Thieves`});
+                            } else {
+                                // If profile is available   
+                                // Here you can see full achievements list:
+                                // http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v0002/?key=APIKEY&appid=1172620&l=english&format=json                         
+                                // Get specified achievements for Sea of Thieves
+                                steam.getUserAchievements(steam_data.steam_id, "1172620").then(UserAchievements => {
+
+                                    if (UserAchievements.steamID !== undefined) {
+                                        CommendationsList = ['220', '219', '221', '222'];
+                                        var Badges = "";
+
+                                        let i = 0;
+                                        while (i < CommendationsList.length) {
+                                            var getOne = getAchievementStatusByCode(UserAchievements.achievements, CommendationsList[i]);
+                                            let getOneStatus = getOne[0]['achieved'];
+                                            if (getOneStatus == true) {
+                                                Badges += "1";
+                                            } else {
+                                                Badges += "0";
+                                            }
+                                            i++;
+                                        }
+
+                                        var BadgesImage = "pvp_profile_" + Badges + ".png";
+
+                                        if (ship_task == "pvp_servants" || ship_task == "pvp_guardians") {
+                                            invite_embed.setImage('https://r.snfx.ee/img/gb/' + BadgesImage);
+                                            invite_embed.addFields(
+                                                { name: '\u200b', value: '**Достижения ' + ship_user + ' в режиме PvP:**' }
+                                            )
+                                        }
+                                    }
+
+                                    ShipsNotificationsChannel.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                                        setTimeout(() => repliedMessage.delete(), 600000);
+                                    });
+                                    interaction.reply({ content: '— Приглашение успешно создано!', ephemeral: true });
+                                    BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - Sea of Thieves`});
+
+                                })
+                                .catch(error => {
+                                    BotLogChannel.send({ content: `ERROR: Can't get Steam data for user <@` + DiscordUser.user.id + `> - Sea of Thieves` });
+                                    interaction.reply({ content: `Не могу получить данные твоего аккаунта Steam. Хранители уведомлены о проблеме и свяжутся с тобой позже.`, ephemeral: true });
+                                });
+                            }
+                        });
                     // Get Steam profile END
+                    }
                 });
             } else {
                 const locales = {
