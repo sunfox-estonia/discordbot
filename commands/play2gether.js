@@ -175,10 +175,6 @@ async execute(interaction) {
                 }
 
                 switch (ship_task) {
-                    case "raid":
-                        var text_mission_description = "Сбор рейда";
-                        var img_ship_mission = img_ship_type + "raid";
-                        break;
                     case "tales":
                         var text_mission_description = "Tall Tales";
                         var img_ship_mission = img_ship_type + "tales";
