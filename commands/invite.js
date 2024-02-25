@@ -1,5 +1,8 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
-
+/* Instant invites creation.
+ * Only those users who is available to mention everyone 
+ * on the server, can create an invite.
+ */
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('invite')
@@ -12,7 +15,7 @@ module.exports = {
 					{ name: 'Glitterbeard Sailors', value: 'glitterbeard' },
                     { name: 'Virumaa Viikingid', value: 'viruviking' }
         ))
-        .setDefaultMemberPermissions(PermissionFlagsBits.CreateInstantInvite),
+        .setDefaultMemberPermissions(PermissionFlagsBits.MentionEveryone),
 
 	async execute(interaction) {
         var landing = interaction.options.getString('landing');
