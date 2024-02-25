@@ -31,7 +31,7 @@ module.exports = {
     })
 	.addSubcommand(subcommand =>
 		subcommand
-			.setName('GAME')
+			.setName('game')
 			.setDescription('Выбрать из списка | Select from the list')
             .addStringOption(option =>
                 option.setName('game')
@@ -80,7 +80,7 @@ module.exports = {
     )
 	.addSubcommand(subcommand =>
 		subcommand
-			.setName('SOT')
+			.setName('sot')
 			.setDescription('Sea of Thieves')
             .addStringOption(option =>
                 option.setName('ship')
@@ -149,7 +149,7 @@ async execute(interaction) {
         /*
          * SEA OF THIEVES play togeter invite
          */
-		if (interaction.options.getSubcommand() === 'SOT') {
+		if (interaction.options.getSubcommand() === 'sot') {
             // SOT-specific role check
             const hasSailorRole = interaction.member.roles.cache.has("1039215669943742475");
 			const hasGlitterbeardRole = interaction.member.roles.cache.has("1104521026584457216");
