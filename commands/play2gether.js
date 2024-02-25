@@ -102,7 +102,6 @@ module.exports = {
                     })
                     .setRequired(true)
                     .addChoices(
-                        { name: 'Сбор рейда | Run a raid', value: 'raid' },
                         { name: 'Tall Tales', value: 'tales' },
                         { name: 'Tall Tales - Jack Sparrow', value: 'tales_sparrow' },
                         { name: 'Farm - Гильдия | Guild', value: 'farm_guild' },
