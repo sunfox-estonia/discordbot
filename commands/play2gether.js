@@ -444,7 +444,7 @@ fetchTimestamp = function (interval) {
             var unix_time = moment().add(30, 'minutes').format('X');
             break;
         case '60':
-            var unix_time = moment().endOf('hour').fromNow().format("X");
+            var unix_time = moment().endOf('hour').format("X");
             break;
         default:
             var unix_time = moment().format("X");
