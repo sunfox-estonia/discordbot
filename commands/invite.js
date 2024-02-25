@@ -12,7 +12,7 @@ module.exports = {
 					{ name: 'Glitterbeard Sailors', value: 'glitterbeard' },
                     { name: 'Virumaa Viikingid', value: 'viruviking' }
         ))
-        .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
+        .setDefaultMemberPermissions(PermissionFlagsBits.CreateInstantInvite),
 
 	async execute(interaction) {
         var landing = interaction.options.getString('landing');
