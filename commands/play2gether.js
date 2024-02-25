@@ -242,7 +242,7 @@ async execute(interaction) {
                             .setDescription("Начало сессии - <t:" + time_to_go + ":R>")
                             .setThumbnail("https://r.snfx.ee/img/gb/" + img_ship_mission + ".png")
                             .addFields(
-                                { name: "Присоединяйся к рейду!", value: "Для участия в рейде Тебе потребуется приложение **FleetCreator**, а также установленный и настроенный **VPN**. Участникам сообщества Sunfox.ee бесплатно предоставляется безопасный VPN-сервис: обратись к Хранителям для получения более подробной информации.\n[Установить и настроить FleetCreator](https://wiki.sunfox.ee/glitterbeard:fleetcreator)\n[Установить и настроить VPN](https://wiki.sunfox.ee/glitterbeard:vpn)" },
+                                { name: "Присоединяйся к рейду!", value: "Для участия в рейде Тебе потребуется приложение **FleetCreator**, а также установленный и настроенный **VPN**. Участникам сообщества Sunfox.ee бесплатно предоставляется безопасный VPN-сервис: обратись к Хранителям для получения более подробной информации.\n\n[Установить и настроить FleetCreator](https://wiki.sunfox.ee/glitterbeard:fleetcreator)\n[Установить и настроить VPN](https://wiki.sunfox.ee/glitterbeard:vpn)" },
                                 { name: "Корабль:", value: text_ship_type },
                                 { name: "\u200b", value: "**Добавляйся в голосовой канал:**" },
                                 { name: "<#" + party_channel + ">", value: "\u200b" }
@@ -256,7 +256,7 @@ async execute(interaction) {
                             ShipsNotificationsChannel.send({ content: `<@&1157948075499868180>, начинается сбор рейда:`, embeds: [invite_embed] }).then(repliedMessage => {
                                 setTimeout(() => repliedMessage.delete(), 600000);
                             });
-                            interaction.reply({ content: '— Приглашение на сбо рейда успешно создано!', ephemeral: true });
+                            interaction.reply({ content: '— Приглашение на сбор рейда создано!', ephemeral: true });
 
                             BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - RAID in Sea of Thieves`});
                     } else {
@@ -285,7 +285,7 @@ async execute(interaction) {
                                 ShipsNotificationsChannel.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                     setTimeout(() => repliedMessage.delete(), 600000);
                                 });
-                                interaction.reply({ content: '— Приглашение успешно создано!', ephemeral: true });
+                                interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
 
                                 BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - Sea of Thieves`});
                             } else {
@@ -324,7 +324,7 @@ async execute(interaction) {
                                     ShipsNotificationsChannel.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                         setTimeout(() => repliedMessage.delete(), 600000);
                                     });
-                                    interaction.reply({ content: '— Приглашение успешно создано!', ephemeral: true });
+                                    interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
                                     BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - Sea of Thieves`});
 
                                 })
@@ -379,7 +379,7 @@ async execute(interaction) {
                             NotificationsChannel.send({ embeds: [invite_embed] }).then(repliedMessage => {
                                 setTimeout(() => repliedMessage.delete(), 600000);
                             });
-                            interaction.reply({ content: '— Приглашение успешно создано!', ephemeral: true });
+                            interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
 
                             BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> creates a play2gether invite - ` + SteamApp.name });
                         });
@@ -433,7 +433,7 @@ async execute(interaction) {
                                 NotificationsChannel.send({ embeds: [invite_embed], components: [component_buttons] }).then(repliedMessage => {
                                     setTimeout(() => repliedMessage.delete(), 600000);
                                 });
-                                interaction.reply({ content: '— Приглашение успешно создано!', ephemeral: true });
+                                interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
 
                                 BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> creates a play2gether invite - ` + SteamApp.name });
                             });
