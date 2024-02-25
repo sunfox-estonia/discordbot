@@ -276,7 +276,7 @@ async execute(interaction) {
 
                                     let i = 0;
                                     while (i < CommendationsList.length) {
-                                        var getOne = getAchievemntStatusByCode(UserAchievements.achievements, CommendationsList[i]);
+                                        var getOne = getAchievementStatusByCode(UserAchievements.achievements, CommendationsList[i]);
                                         let getOneStatus = getOne[0]['achieved'];
                                         if (getOneStatus == true) {
                                             Badges += "1";
@@ -451,4 +451,10 @@ fetchTimestamp = function (interval) {
             break;
     }
     return unix_time;
+}
+
+function getAchievementStatusByCode(comedations, code) {
+    return comedations.filter(
+        function (comedations) { return comedations.api == code }
+    );
 }
