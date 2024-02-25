@@ -270,6 +270,8 @@ async execute(interaction) {
                             // http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v0002/?key=APIKEY&appid=1172620&l=english&format=json                         
                             // Get specified achievements for Sea of Thieves
                             steam.getUserAchievements(steam_data.steam_id, "1172620").then(UserAchievements => {
+                                console.log(UserAchievements);
+
                                 if (UserAchievements.steamID !== undefined) {
                                     CommendationsList = ['220', '219', '221', '222'];
                                     var Badges = "";
