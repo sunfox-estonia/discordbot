@@ -32,7 +32,7 @@ module.exports = {
 	.addSubcommand(subcommand =>
 		subcommand
 			.setName('game')
-			.setDescription('Выбрать игру из списка | Select from the list')
+			.setDescription('Выбрать игру из списка | Select game from the list')
             .addStringOption(option =>
                 option.setName('game')
                     .setDescription('Наименование игры')
