@@ -264,7 +264,7 @@ async execute(interaction) {
 
                             BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - Sea of Thieves`});
                         } else {
-                            console.log(steam_data);
+                            console.log(steam_data.steam_id);
                             // If profile is available   
                             // Here you can see full achievements list:
                             // http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v0002/?key=APIKEY&appid=1172620&l=english&format=json                         
