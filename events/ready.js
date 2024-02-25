@@ -21,7 +21,7 @@ module.exports = {
             console.log('Connected to the MySQL server database '+ config.db_config.dbname +'@'+ config.db_config.host +'.');
           });
           console.log(`Logged in Discord as ${client.user.tag}!`);
-          const BotLogChannel = interaction.client.channels.cache.get('1195089293757137056');
+          const BotLogChannel = client.channels.cache.get('1195089293757137056');
           BotLogChannel.send({ content: `Bot has been successfully restarted!` });
 	},
 };
