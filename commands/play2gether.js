@@ -254,7 +254,7 @@ async execute(interaction) {
                     /*
                     * Get Steam profile to show achievements in PVP
                     */ 
-                    getBifrost(DiscordUser.user.id, function (error, steam_data) {
+                    getBifrost(interaction.member.user.id, function (error, steam_data) {
                         if (error) {
                             // If there is no Steam profile available		
                             ShipsNotificationsChannel.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
@@ -263,7 +263,6 @@ async execute(interaction) {
                             interaction.reply({ content: '— Приглашение успешно создано!', ephemeral: true });
 
                             BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - Sea of Thieves`});
-
                         } else {
                             // If profile is available   
                             // Here you can see full achievements list:
@@ -328,7 +327,7 @@ async execute(interaction) {
                 const time_to_go = fetchTimestamp(party_time);
                 const steam_app_id = interaction.options.getString('game');
 
-                getBifrost(DiscordUser.user.id, function (error, steam_data) {
+                getBifrost(interaction.member.user.id, function (error, steam_data) {
                     if (error) {
                         // If there is no Steam profile available		
 
