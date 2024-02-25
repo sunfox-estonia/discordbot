@@ -301,7 +301,7 @@ async execute(interaction) {
                                 ShipsNotificationsChannel.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                     setTimeout(() => repliedMessage.delete(), 600000);
                                 });
-                                interaction.reply({ content: '— Приглашение успешно создано!', ephemeral: true });
+                                //interaction.reply({ content: '— Приглашение успешно создано!', ephemeral: true });
                                 BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - Sea of Thieves`});
 
                             })
