@@ -2,12 +2,12 @@ const { SlashCommandBuilder, ChannelType, EmbedBuilder, ButtonBuilder, ButtonSty
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
-    host: config.db_config.host,
-    user: config.db_config.dbuser,
-    password: config.db_config.dbpass,
-    database: config.db_config.dbname,
-    debug: false,
-    multipleStatements: true,
+	host: config.db_config.host,
+	user: config.db_config.dbuser,
+	password: config.db_config.dbpass,
+	database: config.db_config.dbname,
+	debug: false,
+	multipleStatements: true,
 });
 const moment = require('moment');
 const SteamAPI = require('steamapi');
@@ -254,7 +254,7 @@ async execute(interaction) {
                     /*
                     * Get Steam profile to show achievements in PVP
                     */ 
-                    getBifrost(interaction.member.user.id, function (error, steam_data) {
+                    getBifrost(DiscordUser.user.id, function (error, steam_data) {
                         if (error) {
                             // If there is no Steam profile available		
                             ShipsNotificationsChannel.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
@@ -328,7 +328,7 @@ async execute(interaction) {
                 const time_to_go = fetchTimestamp(party_time);
                 const steam_app_id = interaction.options.getString('game');
 
-                getBifrost(interaction.member.user.id, function (error, steam_data) {
+                getBifrost(DiscordUser.user.id, function (error, steam_data) {
                     if (error) {
                         // If there is no Steam profile available		
 
@@ -422,7 +422,7 @@ async execute(interaction) {
 
 getBifrost = function (user_id, callback) {
     let sql1 = "SELECT user_uid, steam_id, xbox_id FROM drd_bifrost WHERE user_uid = ? LIMIT 1;";
-    database.query(sql1, [user_id], (error1, result_userdata, fields) => {
+    database.query(sql1, [user_id], (error1, result_userdata) => {
         if (error1) {
             callback("Ошибка в работе базы данных.", null);
             return;

@@ -28,7 +28,7 @@ module.exports = {
             case 'glitterbeard':
                 var landingUrl = baseUrl + 'gs' + '/';
                 break;
-            case 'glitterbeard':
+            case 'viruviking':
                 var landingUrl = baseUrl + 'vv' + '/';
                 break;
             default:
