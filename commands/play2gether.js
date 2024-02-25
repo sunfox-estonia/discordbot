@@ -274,6 +274,9 @@ async execute(interaction) {
                                     CommendationsList = ['220', '219', '221', '222'];
                                     var Badges = "";
 
+                                    console.log(UserAchievements.steamID);
+                                    
+
                                     let i = 0;
                                     while (i < CommendationsList.length) {
                                         var getOne = getAchievemntStatusByCode(UserAchievements.achievements, CommendationsList[i]);
@@ -287,7 +290,6 @@ async execute(interaction) {
                                     }
 
                                     var BadgesImage = "pvp_profile_" + Badges + ".png";
-                                    console.log(BadgesImage);
 
                                     if (ship_task == "pvp_servants" || ship_task == "pvp_guardians") {
                                         invite_embed.setImage('https://r.snfx.ee/img/gb/' + BadgesImage);
