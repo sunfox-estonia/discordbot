@@ -335,7 +335,7 @@ async execute(interaction) {
                                     });
                                     interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
     
-                                    BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - Sea of Thieves`});
+                                    BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - Sea of Thieves, but Steam achievements has not been fetched!`});
                                 });
                             }
                         });
