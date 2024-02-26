@@ -242,7 +242,8 @@ async execute(interaction) {
                             .setDescription("Начало сессии - <t:" + time_to_go + ":R>")
                             .setThumbnail("https://r.snfx.ee/img/gb/" + img_ship_mission + ".png")
                             .addFields(
-                                { name: "Присоединяйся к рейду!", value: "Для участия в рейде Тебе потребуется приложение **FleetCreator**, а также установленный и настроенный **VPN**. Участникам сообщества Sunfox.ee бесплатно предоставляется безопасный VPN-сервис: обратись к Хранителям для получения более подробной информации.\n\n[Установить и настроить FleetCreator](https://wiki.sunfox.ee/glitterbeard:fleetcreator)\n[Установить и настроить VPN](https://wiki.sunfox.ee/glitterbeard:vpn)\n" },
+                                { name: "Присоединяйся к рейду!", value: "Для участия в рейде Тебе потребуется приложение **FleetCreator**, а также установленный и настроенный **VPN**. Участникам сообщества Sunfox.ee бесплатно предоставляется безопасный VPN-сервис: обратись к Хранителям для получения более подробной информации." },
+								{ name: "Подготовка к рейду:", value: "[Установить и настроить FleetCreator](https://wiki.sunfox.ee/glitterbeard:fleetcreator)\n[Установить и настроить VPN](https://wiki.sunfox.ee/glitterbeard:vpn)" },
                                 { name: "Корабль:", value: text_ship_type },
                                 { name: "\u200b", value: "**Добавляйся в голосовой канал:**" },
                                 { name: "<#" + party_channel + ">", value: "\u200b" }
@@ -329,8 +330,12 @@ async execute(interaction) {
 
                                 })
                                 .catch(error => {
-                                    BotLogChannel.send({ content: `ERROR: Can't get Steam data for user <@` + DiscordUser.user.id + `> - Sea of Thieves` });
-                                    interaction.reply({ content: `Не могу получить данные твоего аккаунта Steam. Хранители уведомлены о проблеме и свяжутся с тобой позже.`, ephemeral: true });
+                                    ShipsNotificationsChannel.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                                        setTimeout(() => repliedMessage.delete(), 600000);
+                                    });
+                                    interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
+    
+                                    BotLogChannel.send({ content: `<@` + DiscordUser.user.id + `> has been created a play2gether invite - Sea of Thieves`});
                                 });
                             }
                         });
