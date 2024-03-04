@@ -151,9 +151,8 @@ async execute(interaction) {
          */
 		if (interaction.options.getSubcommand() === 'sot') {
             // SOT-specific role check
-            const hasSailorRole = interaction.member.roles.cache.has("1039215669943742475");
 			const hasGlitterbeardRole = interaction.member.roles.cache.has("1104521026584457216");
-            if (hasSailorRole == true || hasGlitterbeardRole == true) {
+            if (hasGlitterbeardRole == true) {
                 const ship_type = interaction.options.getString('ship');
                 const ship_task = interaction.options.getString('task');
 
@@ -254,7 +253,7 @@ async execute(interaction) {
                                 text: "Sunfox.ee Discord Server"
                             });
 
-                            ShipsNotificationsChannel.send({ content: `<@&1157948075499868180>, начинается сбор рейда:`, embeds: [invite_embed] }).then(repliedMessage => {
+                            ShipsNotificationsChannel.send({ content: `<@&1104521026584457216>, начинается сбор рейда:`, embeds: [invite_embed] }).then(repliedMessage => {
                                 setTimeout(() => repliedMessage.delete(), 600000);
                             });
                             interaction.reply({ content: '— Приглашение на сбор рейда создано!', ephemeral: true });
@@ -283,7 +282,7 @@ async execute(interaction) {
                         getBifrost(interaction.member.user.id, function (error, steam_data) {
                             if (error) {
                                 // If there is no Steam profile available		
-                                ShipsNotificationsChannel.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                                ShipsNotificationsChannel.send({ content: `<@&1104521026584457216>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                     setTimeout(() => repliedMessage.delete(), 600000);
                                 });
                                 interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
@@ -322,7 +321,7 @@ async execute(interaction) {
                                         }
                                     }
 
-                                    ShipsNotificationsChannel.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                                    ShipsNotificationsChannel.send({ content: `<@&1104521026584457216>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                         setTimeout(() => repliedMessage.delete(), 600000);
                                     });
                                     interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
@@ -330,7 +329,7 @@ async execute(interaction) {
 
                                 })
                                 .catch(error => {
-                                    ShipsNotificationsChannel.send({ content: `<@&1104521026584457216> и <@&1039215669943742475>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                                    ShipsNotificationsChannel.send({ content: `<@&1104521026584457216>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                         setTimeout(() => repliedMessage.delete(), 600000);
                                     });
                                     interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
