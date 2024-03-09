@@ -27,14 +27,15 @@ module.exports = {
         // Step 1. Get the event role ID from the Database
         let sql1 = "SELECT discord_role_id FROM events_roles WHERE discord_event_id = ?";
         database.query(sql1, [discord_event_id], (error1, role_data) => {
-            if (error1) {
-                console.log(error1);
-            } else {
-                var role_id = role_data[0];
-                // Step 2. Assign the role to the user
-                meeting.guild.members.cache.get(discord_uid).roles.add(role_id);
-                BotLogChannel.send({ content: `AUTOMATION: Role "Событие: ${meeting.name}" assigned to ${user.tag}.` });
-            }
+            console.log(role_data);
+            // if (error1) {
+            //     console.log(error1);
+            // } else {
+            //     var role_id = role_data[0];
+            //     // Step 2. Assign the role to the user
+            //     meeting.guild.members.cache.get(discord_uid).roles.add(role_id);
+            //     BotLogChannel.send({ content: `AUTOMATION: Role "Событие: ${meeting.name}" assigned to ${user.tag}.` });
+            // }
         });
 
     }
