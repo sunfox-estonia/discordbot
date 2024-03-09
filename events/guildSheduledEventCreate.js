@@ -20,8 +20,8 @@ const database = mysql.createConnection({
 module.exports = {
     name: Events.guildScheduledEventCreate,
     async execute(event) {
-        const NotificationsChannel = event.guild.channels.cache.get(config.log_channels.notifictions);
-        const BotLogChannel = event.guild.channels.cache.get(config.log_channels.log);
+        const NotificationsChannel = interaction.client.channels.cache.get('621398274452094976');
+        const BotLogChannel = interaction.client.channels.cache.get('1195089293757137056');
         var discord_event_id = event.id;
         var discord_event_name = event.name;
         var discord_event_url = event.url;
@@ -30,8 +30,7 @@ module.exports = {
         // Step 1. Create a new role for the event
         event.guild.roles.create({
             data: {
-                name: event_role_name,
-                color: config.colors.eventRole
+                name: event_role_name
             }
         }).then(role => {
             // Step 2. Add the role ID to the Database

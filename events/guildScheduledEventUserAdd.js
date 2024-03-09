@@ -20,7 +20,8 @@ const database = mysql.createConnection({
 module.exports = {
     name: Events.guildScheduledEventUserAdd,
     async execute(meeting, user) {
-        const BotLogChannel = meeting.guild.channels.cache.get(config.log_channels.log);
+
+        const BotLogChannel = interaction.client.channels.cache.get('1195089293757137056');
         var discord_event_id = meeting.id;
         var discord_uid = user.id;
 
