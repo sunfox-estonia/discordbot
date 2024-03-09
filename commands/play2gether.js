@@ -56,6 +56,7 @@ module.exports = {
 						{ name: 'Terraria', value: '105600' },
 						{ name: 'theHunter: Call of the Wild', value: '518790' },
 						{ name: 'Valheim', value: '892970' }
+					))
             .addChannelOption(option =>
                 option.setName('channel')
                     .setDescription('Канал')
