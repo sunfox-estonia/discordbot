@@ -51,11 +51,11 @@ module.exports = {
 						{ name: 'Lethal Company', value: '1966720' },
 						{ name: 'MORDHAU', value: '629760' },
 						{ name: 'PAYDAY 2', value: '218620' },
+                        { name: 'Phasmophobia', value: '739630' },
 						{ name: 'Rust', value: '252490' },
 						{ name: 'Terraria', value: '105600' },
 						{ name: 'theHunter: Call of the Wild', value: '518790' },
 						{ name: 'Valheim', value: '892970' }
-					))
             .addChannelOption(option =>
                 option.setName('channel')
                     .setDescription('Канал')

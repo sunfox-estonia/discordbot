@@ -20,11 +20,9 @@ const database = mysql.createConnection({
 module.exports = {
     name: Events.GuildScheduledEventCreate,
     async execute(event) {
-        const NotificationsChannel = event.guild.channels.cache.get('621398274452094976');
         const BotLogChannel = event.guild.channels.cache.get('1195089293757137056');
         var discord_event_id = event.id;
         var discord_event_name = event.name;
-        var discord_event_url = event.url;
         var event_role_name = "Участники события: " + discord_event_name;
 
         // Step 1. Create a new role for the event

@@ -23,10 +23,6 @@ module.exports = {
         const BotLogChannel = meeting.guild.channels.cache.get('1195089293757137056');
         var discord_event_id = meeting.id;
         var discord_uid = user.id;
-
-        console.log(meeting);
-
-        // Step 1. Get the event role ID from the Database
         let sql1 = "SELECT discord_role_id FROM events_roles WHERE discord_event_id = ?";
         database.query(sql1, [discord_event_id], (error1, role_data, fields) => {
             if (error1) {
