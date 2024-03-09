@@ -31,7 +31,7 @@ module.exports = {
         // Step 1. Create a new role for the event
         await event.guild.roles.create({
             name: event_role_name,
-            color: 'BLUE'
+            color: 0x99aab5
         }).then(role => {
             // Step 2. Add the role ID to the Database
             console.log(role);
