@@ -35,15 +35,29 @@ module.exports = {
         // Step 1. Create a new role for the event
         await event.guild.roles.create({
             name: event_role_name,
-            color: '#99aab5',
             reason: 'Temporary Event-related role. Should be deleted after the event.'
-        }).catch(err => {
-            var NewRole = event.guild.roles.cache.find(role => role.name == event_role_name);
-            // console.log("NEW METHOD");
-    
+        }).then( NewRole => {
             console.log(NewRole);
-        });
+
+            // Step 2. Add the role ID to the Database
 
 
+            // console.log(role.id);
+            // let sql1 = "INSERT INTO events_roles (discord_event_id, discord_role_id) VALUES (?, ?)";
+            // database.query(sql1, [discord_event_id, role.id], (error1, pingback) => {
+            //     if (error1) {
+            //         console.log(error1);
+            //     } else {
+            //         BotLogChannel.send({ content: `AUTOMATION: Role ${event_role_name} created for event ${discord_event_name}` });
+            //         NotificationsChannel.send({ content: `${discord_event_url}` });
+            //         callback(null);
+            //     }
+            // })
+        }).catch(err => console.log(err));
+
+        // var NewRole = event.guild.roles.cache.find(role => role.name == event_role_name);
+        // console.log("NEW METHOD");
+
+        // console.log(NewRole);
     }
 }
