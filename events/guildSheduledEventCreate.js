@@ -33,7 +33,7 @@ module.exports = {
 
         
         // Step 1. Create a new role for the event
-        event.guild.roles.create({
+        await event.guild.roles.create({
             name: event_role_name,
             color: '#99aab5',
             reason: 'Temporary Event-related role. Should be deleted after the event.'
