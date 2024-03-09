@@ -33,10 +33,16 @@ module.exports = {
 
         
         // Step 1. Create a new role for the event
-        await event.guild.roles.create({
+        event.guild.roles.create({
             name: event_role_name,
             reason: 'Temporary Event-related role. Should be deleted after the event.'
-        }).then(
+        }).then( role => {
+            var NewRole = event.guild.roles.cache.find(role => role.name == event_role_name);
+            // console.log("NEW METHOD");
+    
+            console.log(NewRole);
+            
+        }
             // Step 2. Add the role ID to the Database
 
 
@@ -53,9 +59,6 @@ module.exports = {
             // })
         ).catch(err => console.log(err));
 
-        // var NewRole = event.guild.roles.cache.find(role => role.name == event_role_name);
-        // console.log("NEW METHOD");
 
-        // console.log(NewRole);
     }
 }
