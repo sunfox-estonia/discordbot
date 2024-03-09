@@ -39,7 +39,7 @@ module.exports = {
                     console.log(error1);
                 } else {
                     BotLogChannel.send({ content: `AUTOMATION: Role **${event_role_name}** created for event ${discord_event_name}` });
-                    NotificationsChannel.send({ content: `${discord_event_url}` });
+                    //NotificationsChannel.send({ content: `${discord_event_url}` });
                 }
             })
         }).catch(err => console.log(err));
