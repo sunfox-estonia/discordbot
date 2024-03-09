@@ -28,8 +28,18 @@ module.exports = {
 
         // Step 1. Get the event role ID from the Database
         let sql1 = "SELECT discord_role_id FROM events_roles WHERE discord_event_id = ?";
-        database.query(sql1, [discord_event_id], (error1, role_data) => {
-            console.log(role_data);
+        database.query(sql1, [discord_event_id], (error1, role_data, fields) => {
+            if (error1) {
+                callback("Database error.", null);
+                return;
+            }
+            if (role_data.length == 0 || role_data.length > 1) {
+                BotLogChannel.send({ content: `[AUTOMATION] ERROR: Can't retrieve role data for event id: ${discord_event_id}` });
+                return;
+            }
+            console.log(role_data[0]);
+
+
             // if (error1) {
             //     console.log(error1);
             // } else {
