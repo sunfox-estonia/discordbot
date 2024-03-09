@@ -20,8 +20,8 @@ const database = mysql.createConnection({
 module.exports = {
     name: Events.GuildScheduledEventCreate,
     async execute(event) {
-        const NotificationsChannel = interaction.client.channels.cache.get('621398274452094976');
-        const BotLogChannel = interaction.client.channels.cache.get('1195089293757137056');
+        const NotificationsChannel = event.guild.channels.cache.get('621398274452094976');
+        const BotLogChannel = event.guild.channels.cache.get('1195089293757137056');
         var discord_event_id = event.id;
         var discord_event_name = event.name;
         var discord_event_url = event.url;
