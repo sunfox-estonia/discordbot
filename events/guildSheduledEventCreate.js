@@ -21,6 +21,7 @@ module.exports = {
     name: Events.GuildScheduledEventCreate,
     async execute(event) {
         const BotLogChannel = event.guild.channels.cache.get('1195089293757137056');
+        const NotificationsChannel = interaction.client.channels.cache.get('621398274452094976');
         var discord_event_id = event.id;
         var discord_event_name = event.name;
         var event_role_name = "Участники события: " + discord_event_name;
