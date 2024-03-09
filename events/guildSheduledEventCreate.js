@@ -33,14 +33,14 @@ module.exports = {
 
         
         // Step 1. Create a new role for the event
-        event.guild.roles.create({
+        await event.guild.roles.create({
             data: {
                 name: event_role_name
             },
             reason: 'Temporary Event-related role. Should be deleted after the event.',
-        }) 
-            .then(role => console.log(role.id))
-            .catch(err => console.log(err));
+        }).then(
+            // Step 2. Add the role ID to the Database
+
 
             // console.log(role.id);
             // let sql1 = "INSERT INTO events_roles (discord_event_id, discord_role_id) VALUES (?, ?)";
@@ -53,6 +53,10 @@ module.exports = {
             //         callback(null);
             //     }
             // })
-        // }).catch(err => console.log(err));
+        ).catch(err => console.log(err));
+
+        NewRole = event.guild.roles.cache.find(role => role.name == event_role_name);
+
+        console.log(NewRole.id);
     }
 }
