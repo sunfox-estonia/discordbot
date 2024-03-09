@@ -32,22 +32,14 @@ module.exports = {
             if (error1) {
                 callback("Database error.", null);
                 return;
-            }
-            if (role_data.length == 0 || role_data.length > 1) {
+            } else if (role_data.length == 0 || role_data.length > 1) {
                 BotLogChannel.send({ content: `[AUTOMATION] ERROR: Can't retrieve role data for event id: ${discord_event_id}` });
                 return;
+            } else {
+                var RoleId = role_data[0]['discord_role_id'];
+                meeting.guild.members.cache.get(discord_uid).roles.add(RoleId);
+                BotLogChannel.send({ content: `[AUTOMATION] Role "Событие: ${meeting.name}" assigned to ${user.tag}.` });
             }
-            console.log(role_data[0]);
-
-
-            // if (error1) {
-            //     console.log(error1);
-            // } else {
-            //     var role_id = role_data[0];
-            //     // Step 2. Assign the role to the user
-            //     meeting.guild.members.cache.get(discord_uid).roles.add(role_id);
-            //     BotLogChannel.send({ content: `AUTOMATION: Role "Событие: ${meeting.name}" assigned to ${user.tag}.` });
-            // }
         });
 
     }
