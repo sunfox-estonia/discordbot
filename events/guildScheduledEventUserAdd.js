@@ -34,7 +34,7 @@ module.exports = {
             } else {
                 var RoleId = role_data[0]['discord_role_id'];
                 meeting.guild.members.cache.get(discord_uid).roles.add(RoleId);
-                BotLogChannel.send({ content: `[AUTOMATION] Role "Событие: ${meeting.name}" assigned to ${user}.` });
+                BotLogChannel.send({ content: `[AUTOMATION] Role **"Событие: ${meeting.name}"** assigned to ${user}.` });
             }
         });
 
