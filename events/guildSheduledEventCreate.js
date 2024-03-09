@@ -27,11 +27,10 @@ module.exports = {
         var discord_event_url = event.url;
         var event_role_name = "Событие: " + discord_event_name;
 
+        console.log
         // Step 1. Create a new role for the event
         event.guild.roles.create({
-            data: {
-                name: event_role_name
-            }
+            name: event_role_name
         }).then(role => {
             // Step 2. Add the role ID to the Database
             let sql1 = "INSERT INTO events_roles (discord_event_id, discord_role_id) VALUES (?, ?)";
