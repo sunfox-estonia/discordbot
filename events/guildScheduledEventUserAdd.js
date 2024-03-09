@@ -21,7 +21,7 @@ module.exports = {
     name: Events.GuildScheduledEventUserAdd,
     async execute(meeting, user) {
         const BotLogChannel = meeting.guild.channels.cache.get('1195089293757137056');
-        const NotificationsChannel = interaction.client.channels.cache.get('621398274452094976');
+        const NotificationsChannel = meeting.guild.channels.cache.get('621398274452094976');
         var discord_event_id = meeting.id;
         var discord_uid = user.id;
         let sql1 = "SELECT discord_role_id FROM events_roles WHERE discord_event_id = ?";
