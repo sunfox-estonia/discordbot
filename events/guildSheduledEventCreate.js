@@ -18,7 +18,7 @@ const database = mysql.createConnection({
  */
 
 module.exports = {
-    name: Events.guildScheduledEventCreate,
+    name: Events.GuildScheduledEventCreate,
     async execute(event) {
         const NotificationsChannel = interaction.client.channels.cache.get('621398274452094976');
         const BotLogChannel = interaction.client.channels.cache.get('1195089293757137056');
