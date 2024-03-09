@@ -38,8 +38,8 @@ module.exports = {
             reason: 'Temporary Event-related role. Should be deleted after the event.',
         }).then( NewRole => {
             // Step 2. Add the role ID to the Database
-            let roleId = NewRole.id;
-            console.log(roleId);
+            //let roleId = NewRole.id;
+            console.log(NewRole);
 
             // console.log(role.id);
             // let sql1 = "INSERT INTO events_roles (discord_event_id, discord_role_id) VALUES (?, ?)";
