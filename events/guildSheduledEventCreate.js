@@ -24,6 +24,7 @@ module.exports = {
         const NotificationsChannel =event.guild.channels.cache.get('621398274452094976');
         var discord_event_id = event.id;
         var discord_event_name = event.name;
+        var discord_event_url = event.url;
         var event_role_name = "Участники события: " + discord_event_name;
 
         // Step 1. Create a new role for the event
