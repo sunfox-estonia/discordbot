@@ -36,9 +36,9 @@ module.exports = {
         await event.guild.roles.create({
             name: event_role_name,
             reason: 'Temporary Event-related role. Should be deleted after the event.',
-        }).then(role => {
+        }).then( NewRole => {
             // Step 2. Add the role ID to the Database
-            let roleId = role.id;
+            let roleId = NewRole.id;
             console.log(roleId);
 
             // console.log(role.id);
