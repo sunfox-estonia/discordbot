@@ -26,15 +26,15 @@ module.exports = {
         var discord_event_name = event.name;
         var discord_event_url = event.url;
         var event_role_name = "Участники события: " + discord_event_name;
-        console.log(event.guild.roles);
         
         // Step 1. Create a new role for the event
         await event.guild.roles.create({
             name: event_role_name,
-            color: '#99aab5'
+            reason: 'Temporary Event related role'
         }).then(role => {
             // Step 2. Add the role ID to the Database
-            console.log(role);
+
+            console.log(role.id);
             let sql1 = "INSERT INTO events_roles (discord_event_id, discord_role_id) VALUES (?, ?)";
             database.query(sql1, [discord_event_id, role.id], (error1, pingback) => {
                 if (error1) {
@@ -45,6 +45,6 @@ module.exports = {
                     callback(null);
                 }
             })
-        });
+        }).catch(err => console.log(err));
     }
 }
