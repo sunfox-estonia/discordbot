@@ -53,9 +53,9 @@ module.exports = {
             // })
         ).catch(err => console.log(err));
 
-        var NewRole = event.guild.roles.cache.find(role => role.name == event_role_name);
-        console.log("NEW METHOD");
+        // var NewRole = event.guild.roles.cache.find(role => role.name == event_role_name);
+        // console.log("NEW METHOD");
 
-        console.log(NewRole);
+        // console.log(NewRole);
     }
 }
