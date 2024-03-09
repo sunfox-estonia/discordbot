@@ -26,11 +26,12 @@ module.exports = {
         var discord_event_name = event.name;
         var discord_event_url = event.url;
         var event_role_name = "Событие: " + discord_event_name;
-        console.log(event.guild);
+        console.log(event.guild.roles);
         
         // Step 1. Create a new role for the event
         await event.guild.roles.create({
-            name: event_role_name
+            name: event_role_name,
+            color: 'BLUE'
         }).then(role => {
             // Step 2. Add the role ID to the Database
             console.log(role);
