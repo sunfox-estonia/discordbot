@@ -18,6 +18,7 @@ module.exports = {
         .setDefaultMemberPermissions(PermissionFlagsBits.MentionEveryone),
 
 	async execute(interaction) {
+        const BotLogChannel = interaction.client.channels.cache.get('1195089293757137056');
         var landing = interaction.options.getString('landing');
         var baseUrl = 'https://welcome.sunfox.ee/';
 
@@ -39,6 +40,7 @@ module.exports = {
                 break;
         }
         var inviteUrl = landingUrl + 'i/' + invite.code;
-		interaction.reply({content: '— Вот ссылка-приглашение на сервер: '+inviteUrl, ephemeral: true });	
+		interaction.reply({content: '— Вот ссылка-приглашение на сервер: '+inviteUrl, ephemeral: true });
+        BotLogChannel.send({ content: `[INVITE] CREATE: An a new **/invite** has been created by: ${interaction.user.tag}.\n- Landing: ${landing}\n- Code: ${invite.code}`});
 	},
 };
