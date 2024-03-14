@@ -232,8 +232,8 @@ async execute(interaction) {
                 }
 
                 await interaction.guild.members.fetch(interaction.member.user.id).then( DiscordUser => {
-                    var ship_user = DiscordUser.nickname ?? DiscordUser.user.username;
-                    var time_to_go = fetchTimestamp(party_time);
+                    const ship_user = DiscordUser.nickname ?? DiscordUser.user.username;
+                    const time_to_go = fetchTimestamp(party_time);
 
                     if (ship_task === 'raid') {
                         var invite_embed = new EmbedBuilder()
@@ -327,7 +327,6 @@ async execute(interaction) {
                                     });
                                     interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
                                     BotLogChannel.send({ content: `[PLAY2] SOT: <@` + DiscordUser.user.id + `> has been created a **play2gether** invite.`});
-
                                 })
                                 .catch(error => {
                                     ShipsNotificationsChannel.send({ content: `<@&1104521026584457216>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
@@ -359,7 +358,7 @@ async execute(interaction) {
                 const time_to_go = fetchTimestamp(party_time);
                 const steam_app_id = interaction.options.getString('game');
 
-                getBifrost(interaction.member.user.id, function (error, steam_data) {
+                getBifrost(DiscordUser.user.id, function (error, steam_data) {
                     if (error) {
                         // If there is no Steam profile available		
 
@@ -427,12 +426,12 @@ async execute(interaction) {
                                 * Get app connected achievements from DB
                                 */
 
-                                const button_join = new ButtonBuilder()
+                                var button_join = new ButtonBuilder()
                                     .setLabel('Присоединиться к лобби')
                                     .setURL(BifrostUri)
                                     .setStyle(ButtonStyle.Link);
 
-                                const component_buttons = new ActionRowBuilder()
+                                var component_buttons = new ActionRowBuilder()
                                     .addComponents(button_join);
     
                                 NotificationsChannel.send({ embeds: [invite_embed], components: [component_buttons] }).then(repliedMessage => {
