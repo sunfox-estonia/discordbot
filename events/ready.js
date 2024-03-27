@@ -42,7 +42,7 @@ module.exports = {
 
           // Step 2. Create a new embed message with buttons
           var play2_intro_embed = new EmbedBuilder()
-          .setColor(0x70022c)
+          .setColor(0xF28C0F)
           .setTitle( "— Будем играть вместе!" )
           .setDescription("Приглашай участников сообщества в кооперативные игры с помощью команды /play2gether. Доступно два режима использования команды: отдельный для экипажей Sea of Thieves, и для других игр.")
           .setImage("https://r.snfx.ee/img/discord_bot/help/play2gether.gif")
@@ -58,19 +58,19 @@ module.exports = {
           });
 
           var buttons_play2_predefined_1 = new ButtonBuilder()
-          .setLabel('PVP - Слуги Пламени (Оранжевый)')
+          .setLabel('PVP - Слуги Пламени')
           .setCustomId('play2_predefine_1')
           .setEmoji("<:ship_brig:1155489530900660294>")
           .setStyle(ButtonStyle.Secondary);
 
           var buttons_play2_predefine_2 = new ButtonBuilder()
-          .setLabel('PVP - Открытый мир (Оранжевый)')
+          .setLabel('PVP - Открытый мир')
           .setCustomId('play2_predefine_2')
           .setEmoji("<:ship_sloop:1155489536349057095>")
           .setStyle(ButtonStyle.Secondary);
 
           var buttons_play2_predefine_3 = new ButtonBuilder()
-          .setLabel('Farm - Гильдия (Оранжевый)')
+          .setLabel('Farm - Гильдия')
           .setCustomId('play2_predefine_3')
           .setEmoji("<:ship_brig:1155489530900660294>")
           .setStyle(ButtonStyle.Secondary);

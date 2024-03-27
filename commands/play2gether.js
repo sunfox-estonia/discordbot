@@ -236,7 +236,7 @@ async execute(interaction) {
 
                     if (ship_task === 'raid') {
                         var invite_embed = new EmbedBuilder()
-                            .setColor(0x70022c)
+                            .setColor(0xF28C0F)
                             .setAuthor({ name: ship_user + " собирает рейд.", iconURL: "https://cdn.discordapp.com/avatars/" + DiscordUser.user.id + "/" + DiscordUser.user.avatar + ".jpeg" })
                             .setDescription("Начало сессии - <t:" + time_to_go + ":R>")
                             .setThumbnail("https://r.snfx.ee/img/gb/" + img_ship_mission + ".png")
@@ -261,7 +261,7 @@ async execute(interaction) {
                             BotLogChannel.send({ content: `[PLAY2] SOT RAID: <@` + DiscordUser.user.id + `> has been created a **/play2gether** invite` });
                     } else {
                         var invite_embed = new EmbedBuilder()
-                            .setColor(0x70022c)
+                            .setColor(0xF28C0F)
                             .setAuthor({ name: ship_user + " собирает команду.", iconURL: "https://cdn.discordapp.com/avatars/" + DiscordUser.user.id + "/" + DiscordUser.user.avatar + ".jpeg" })
                             .setDescription("Начало сессии - <t:" + time_to_go + ":R>")
                             .setThumbnail("https://r.snfx.ee/img/gb/" + img_ship_mission + ".png")
@@ -363,7 +363,7 @@ async execute(interaction) {
 
                         steam.getGameDetails(steam_app_id).then(SteamApp => {      
                             var invite_embed = new EmbedBuilder()
-                                .setColor(0x70022c)
+                                .setColor(0xF28C0F)
                                 .setAuthor({ name: play2_user + " приглашает поиграть\nв "+SteamApp.name+".", iconURL: "https://cdn.discordapp.com/avatars/" + DiscordUser.user.id + "/" + DiscordUser.user.avatar + ".jpeg" })
                                 .setDescription("Начало сессии - <t:" + time_to_go + ":R>")
                                 .setThumbnail("https://r.snfx.ee/img/discord_bot/alert_playtogether.png")
@@ -405,7 +405,7 @@ async execute(interaction) {
                             steam.getGameDetails(steam_app_id).then(SteamApp => {      
                                 const BifrostUri = 'https://bifrost.snfx.ee/steam/'+SteamApp.steam_appid+'/'+SteamUser.steamID;
                                 var invite_embed = new EmbedBuilder()
-                                    .setColor(0x70022c)
+                                    .setColor(0xF28C0F)
                                     .setAuthor({ name: play2_user + " приглашает поиграть\nв "+SteamApp.name+".", iconURL: "https://cdn.discordapp.com/avatars/" + DiscordUser.user.id + "/" + DiscordUser.user.avatar + ".jpeg" })
                                     .setDescription("Начало сессии - <t:" + time_to_go + ":R>")
                                     .setThumbnail("https://r.snfx.ee/img/discord_bot/alert_playtogether.png")
