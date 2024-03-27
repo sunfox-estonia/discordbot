@@ -1,4 +1,4 @@
-const { ChannelType, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
+const { EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
