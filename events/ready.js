@@ -44,19 +44,19 @@ module.exports = {
           var play2_intro_embed = new EmbedBuilder()
           .setColor(0xF28C0F)
           .setTitle( "— Будем играть вместе!" )
-          .setDescription("Приглашай участников сообщества в кооперативные игры с помощью команды /play2gether. Доступно два режима использования команды: отдельный для экипажей Sea of Thieves, и для других игр.")
+          .setDescription("Приглашай участников сообщества в кооперативные игры с помощью команды `/play2gether`. Доступно два режима использования команды: отдельный для экипажей Sea of Thieves, и для других игр.")
           .setImage("https://r.snfx.ee/img/discord_bot/help/play2gether.gif")
           .addFields(
               { name: "/play2gehter sot", value: "Выбери цель путешествия, тип судна и голосовой чат для общения с экипажем. После отправки команды, пираты Гильдии получат уведомление, и по возможности присоединятся к Тебе." },
               { name: "/play2gehter game", value: "Выбери игру из списка и голосовой чат для общения с командой. Участники сервера смогут подключиться к игровому лобби, воспользовавшись сгенерированной ссылкой-приглашением." },
-              { name: "\u200b", value: "Используй команду /play2gether как показано ниже, либо воспользуйся кнопками для быстрого создания лобби по шаблону." },
+              { name: "\u200b", value: "Используй команду `/play2gether` как показано ниже, либо воспользуйся кнопками для быстрого создания лобби по шаблону." },
           )
-          .setTimestamp()
           .setFooter({ 
             icon_url: "https://r.snfx.ee/img/favicon/favicon-16x16.png",
             text: "Sunfox.ee Discord Server"
           });
 
+          // SoT Predefine buttons
           var buttons_play2_predefined_1 = new ButtonBuilder()
           .setLabel('PVP - Слуги Пламени')
           .setCustomId('play2_predefine_1')
@@ -75,9 +75,33 @@ module.exports = {
           .setEmoji("<:ship_brig:1155489530900660294>")
           .setStyle(ButtonStyle.Secondary);
 
-          var play2_intro_buttons = new ActionRowBuilder()
-              .addComponents(buttons_play2_predefined_1, buttons_play2_predefine_2, buttons_play2_predefine_3);
+          // Other games Predefine buttons
+          var buttons_play2_predefine_4 = new ButtonBuilder()
+          .setLabel('Deep Rock Galactic')
+          .setCustomId('play2_predefine_4')
+          .setStyle(ButtonStyle.Secondary);
 
-          Play2Channel.send({ embeds: [play2_intro_embed], components: [play2_intro_buttons] });
+          var buttons_play2_predefine_5 = new ButtonBuilder()
+          .setLabel('Lethal Company')
+          .setCustomId('play2_predefine_5')
+          .setStyle(ButtonStyle.Secondary);
+
+          var buttons_play2_predefine_6 = new ButtonBuilder()
+          .setLabel('Dota 2')
+          .setCustomId('play2_predefine_6')
+          .setStyle(ButtonStyle.Secondary);
+
+          var buttons_play2_predefine_7 = new ButtonBuilder()
+          .setLabel('RUST')
+          .setCustomId('play2_predefine_7')
+          .setStyle(ButtonStyle.Secondary);
+
+          var play2_buttons_row_1 = new ActionRowBuilder()
+              .addComponents(buttons_play2_predefine_2, buttons_play2_predefined_1, buttons_play2_predefine_3);
+
+          var play2_buttons_row_2 = new ActionRowBuilder()
+              .addComponents(buttons_play2_predefine_4, buttons_play2_predefine_5, buttons_play2_predefine_6, buttons_play2_predefine_7);
+
+          Play2Channel.send({ embeds: [play2_intro_embed], components: [play2_buttons_row_1, play2_buttons_row_2] });
 	},
 };
