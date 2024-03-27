@@ -141,8 +141,7 @@ module.exports = {
     ),
 
 async execute(interaction) {
-        const NotificationsChannel = interaction.client.channels.cache.get('621398274452094976');
-        const ShipsNotificationsChannel = interaction.client.channels.cache.get('1104517743279087676');
+        const Play2Channel = interaction.client.channels.cache.get('1221929886726488094');
         const BotLogChannel = interaction.client.channels.cache.get('1195089293757137056');
         const party_channel = interaction.options.getChannel('channel');
         const party_time = ( interaction.options.getString('time') !== undefined ) ? interaction.options.getString('time') : "0";
@@ -254,12 +253,12 @@ async execute(interaction) {
                                 text: "Sunfox.ee Discord Server"
                             });
 
-                            ShipsNotificationsChannel.send({ content: `<@&1104521026584457216>, начинается сбор рейда:`, embeds: [invite_embed] }).then(repliedMessage => {
+                            Play2Channel.send({ content: `<@&1104521026584457216>, начинается сбор рейда:`, embeds: [invite_embed] }).then(repliedMessage => {
                                 setTimeout(() => repliedMessage.delete(), 600000);
                             });
                             interaction.reply({ content: '— Приглашение на сбор рейда создано!', ephemeral: true });
 
-                            BotLogChannel.send({ content: `[PLAY2] SOT RAID: <@` + DiscordUser.user.id + `> has been created a **play2gether** invite` });
+                            BotLogChannel.send({ content: `[PLAY2] SOT RAID: <@` + DiscordUser.user.id + `> has been created a **/play2gether** invite` });
                     } else {
                         var invite_embed = new EmbedBuilder()
                             .setColor(0x0099ff)
@@ -283,12 +282,12 @@ async execute(interaction) {
                         getBifrost(interaction.member.user.id, function (error, steam_data) {
                             if (error) {
                                 // If there is no Steam profile available		
-                                ShipsNotificationsChannel.send({ content: `<@&1104521026584457216>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                                Play2Channel.send({ content: `<@&1104521026584457216>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                     setTimeout(() => repliedMessage.delete(), 600000);
                                 });
                                 interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
 
-                                BotLogChannel.send({ content: `[PLAY2] SOT: <@` + DiscordUser.user.id + `> has been created a **play2gether** invite`});
+                                BotLogChannel.send({ content: `[PLAY2] SOT: <@` + DiscordUser.user.id + `> has been created a **/play2gether sot** invite`});
                             } else {
                                 // If profile is available   
                                 // Here you can see full achievements list:
@@ -322,19 +321,19 @@ async execute(interaction) {
                                         }
                                     }
 
-                                    ShipsNotificationsChannel.send({ content: `<@&1104521026584457216>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                                    Play2Channel.send({ content: `<@&1104521026584457216>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                         setTimeout(() => repliedMessage.delete(), 600000);
                                     });
                                     interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
-                                    BotLogChannel.send({ content: `[PLAY2] SOT: <@` + DiscordUser.user.id + `> has been created a **play2gether** invite.`});
+                                    BotLogChannel.send({ content: `[PLAY2] SOT: <@` + DiscordUser.user.id + `> has been created a **/play2gether sot** invite.`});
                                 })
                                 .catch(error => {
-                                    ShipsNotificationsChannel.send({ content: `<@&1104521026584457216>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
+                                    Play2Channel.send({ content: `<@&1104521026584457216>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                                         setTimeout(() => repliedMessage.delete(), 600000);
                                     });
                                     interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
     
-                                    BotLogChannel.send({ content: `[PLAY2] SOT: <@` + DiscordUser.user.id + `> has been created a **play2gether invite**, but Steam achievements has not been fetched.`});
+                                    BotLogChannel.send({ content: `[PLAY2] SOT: <@` + DiscordUser.user.id + `> has been created a **/play2gether sot** invite, but Steam achievements has not been fetched.`});
                                 });
                             }
                         });
@@ -380,12 +379,12 @@ async execute(interaction) {
 									text: "Sunfox.ee Discord Server"
                                 });
 
-                            NotificationsChannel.send({ embeds: [invite_embed] }).then(repliedMessage => {
+                            Play2Channel.send({ embeds: [invite_embed] }).then(repliedMessage => {
                                 setTimeout(() => repliedMessage.delete(), 600000);
                             });
                             interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
 
-                            BotLogChannel.send({ content: `[PLAY2] <@` + DiscordUser.user.id + `> creates a **play2gether** invite - ` + SteamApp.name });
+                            BotLogChannel.send({ content: `[PLAY2] <@` + DiscordUser.user.id + `> creates a **/play2gether game** invite - ` + SteamApp.name });
                         });
                     } else {
                         steam.getUserSummary(steam_data.steam_id).then(SteamUser => {
@@ -434,12 +433,12 @@ async execute(interaction) {
                                 var component_buttons = new ActionRowBuilder()
                                     .addComponents(button_join);
     
-                                NotificationsChannel.send({ embeds: [invite_embed], components: [component_buttons] }).then(repliedMessage => {
+                                Play2Channel.send({ embeds: [invite_embed], components: [component_buttons] }).then(repliedMessage => {
                                     setTimeout(() => repliedMessage.delete(), 600000);
                                 });
                                 interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
 
-                                BotLogChannel.send({ content: `[PLAY2] <@` + DiscordUser.user.id + `> creates a play2gether invite - ` + SteamApp.name });
+                                BotLogChannel.send({ content: `[PLAY2] <@` + DiscordUser.user.id + `> creates a **/play2gether game** invite - ` + SteamApp.name });
                             });
 
                         });
