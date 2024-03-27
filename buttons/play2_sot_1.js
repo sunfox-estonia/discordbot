@@ -77,7 +77,7 @@ module.exports = {
                                         let i = 0;
                                         while (i < CommendationsList.length) {
                                             var getOne = getAchievementStatusByCode(UserAchievements.achievements, CommendationsList[i]);
-                                            console.log(getOne);
+                                            
                                             let getOneStatus = getOne[0]['achieved'];
                                             if (getOneStatus == true) {
                                                 Badges += "1";
@@ -88,6 +88,7 @@ module.exports = {
                                         }
 
                                         var BadgesImage = "pvp_profile_" + Badges + ".png";
+                                        console.log(BadgesImage);
 
                                         if (ship_task == "pvp_servants" || ship_task == "pvp_guardians") {
                                             invite_embed.setImage('https://r.snfx.ee/img/gb/' + BadgesImage);
