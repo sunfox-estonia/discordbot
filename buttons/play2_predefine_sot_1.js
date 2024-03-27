@@ -17,7 +17,7 @@ const steam = new SteamAPI(config.bifrost_config.token_steam);
 
 module.exports = {
     data: {
-        name: 'profile_show'
+        name: 'play2_predefine_sot_1'
     },
     async execute(interaction) {
         var member_id = interaction.member.user.id;
