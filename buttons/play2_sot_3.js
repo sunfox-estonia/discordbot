@@ -18,6 +18,6 @@ module.exports = {
         name: 'play2_sot_3'
     },
     async execute(interaction) {
-        console.log("Button: /play2_sot_2 has been pressed.");
+
     }
 };
