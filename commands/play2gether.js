@@ -482,7 +482,7 @@ fetchTimestamp = function (interval) {
     return unix_time;
 }
 
-function getAchievementStatusByCode(comedations, code) {
+getAchievementStatusByCode = function (comedations, code) {
     return comedations.filter(
         function (comedations) { return comedations.api == code }
     );
