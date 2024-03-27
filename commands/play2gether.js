@@ -249,7 +249,7 @@ async execute(interaction) {
                             )
                             .setTimestamp()
                             .setFooter({ 
-                                icon_url: "https://r.snfx.ee/img/favicon/favicon-16x16.png",
+                                icon_url: "https://r.snfx.ee/img/discord_bot/fox_sq_logo.jpg",
                                 text: "Sunfox.ee Discord Server"
                             });
 
@@ -273,7 +273,7 @@ async execute(interaction) {
                             )
                             .setTimestamp()
                             .setFooter({ 
-                                icon_url: "https://r.snfx.ee/img/favicon/favicon-16x16.png",
+                                icon_url: "https://r.snfx.ee/img/discord_bot/fox_sq_logo.jpg",
                                 text: "Sunfox.ee Discord Server"
                             });
                         /*
@@ -375,7 +375,7 @@ async execute(interaction) {
                                 )
                                 .setTimestamp()
                                 .setFooter({ 
-									icon_url: "https://r.snfx.ee/img/favicon/favicon-16x16.png",
+									icon_url: "https://r.snfx.ee/img/discord_bot/fox_sq_logo.jpg",
 									text: "Sunfox.ee Discord Server"
                                 });
 
@@ -417,7 +417,7 @@ async execute(interaction) {
                                     )
                                     .setTimestamp()
                                     .setFooter({ 
-										icon_url: "https://r.snfx.ee/img/favicon/favicon-16x16.png",
+										icon_url: "https://r.snfx.ee/img/discord_bot/fox_sq_logo.jpg",
 										text: "Sunfox.ee Discord Server"
                                     });
 

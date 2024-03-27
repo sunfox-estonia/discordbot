@@ -52,7 +52,7 @@ module.exports = {
               { name: "\u200b", value: "Используй команду `/play2gether` как показано ниже, либо воспользуйся кнопками для быстрого создания лобби по шаблону." },
           )
           .setFooter({ 
-            icon_url: "https://r.snfx.ee/img/favicon/favicon-16x16.png",
+            icon_url: "https://r.snfx.ee/img/discord_bot/fox_sq_logo.jpg",
             text: "Sunfox.ee Discord Server"
           });
 
