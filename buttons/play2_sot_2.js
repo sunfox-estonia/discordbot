@@ -43,7 +43,6 @@ module.exports = {
                     Play2Channel.send({ content: `<@&1104521026584457216>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
                         setTimeout(() => repliedMessage.delete(), 600000);
                     });
-                    interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
                     BotLogChannel.send({ content: `[PLAY2] BUTTON: <@` + DiscordUser.user.id + `> has been created a **/play2gether sot** invite.`});
                 } else {
                     const locales = {

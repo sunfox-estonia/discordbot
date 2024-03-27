@@ -55,7 +55,6 @@ module.exports = {
                             Play2Channel.send({ embeds: [invite_embed] }).then(repliedMessage => {
                                 setTimeout(() => repliedMessage.delete(), 600000);
                             });
-                            interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
 
                             BotLogChannel.send({ content: `[PLAY2] <@` + DiscordUser.user.id + `> creates a **/play2gether game** invite - ` + SteamApp.name });
                         });
@@ -109,7 +108,6 @@ module.exports = {
                                 Play2Channel.send({ embeds: [invite_embed], components: [component_buttons] }).then(repliedMessage => {
                                     setTimeout(() => repliedMessage.delete(), 600000);
                                 });
-                                interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
 
                                 BotLogChannel.send({ content: `[PLAY2] BUTTON <@` + DiscordUser.user.id + `> creates a **/play2gether game** invite - ` + SteamApp.name });
                             });
