@@ -88,14 +88,11 @@ module.exports = {
                                         }
 
                                         var BadgesImage = "pvp_profile_" + Badges + ".png";
-                                        console.log(BadgesImage);
 
-                                        if (ship_task == "pvp_servants" || ship_task == "pvp_guardians") {
-                                            invite_embed.setImage('https://r.snfx.ee/img/gb/' + BadgesImage);
-                                            invite_embed.addFields(
-                                                { name: '\u200b', value: '**Достижения ' + ship_user + ' в режиме PvP:**' }
-                                            )
-                                        }
+                                        invite_embed.setImage('https://r.snfx.ee/img/gb/' + BadgesImage);
+                                        invite_embed.addFields(
+                                            { name: '\u200b', value: '**Достижения ' + ship_user + ' в режиме PvP:**' }
+                                        )
                                     }
 
                                     Play2Channel.send({ content: `<@&1104521026584457216>, присоединяйтесь к путешествию:`, embeds: [invite_embed] }).then(repliedMessage => {
