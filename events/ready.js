@@ -35,6 +35,7 @@ module.exports = {
             do {
               fetched = await Play2Channel.fetchMessages({limit: 100});
               Play2Channel.bulkDelete(fetched);
+              console.log(fetch.size);
             }
             while(fetched.size >= 1);
           }
