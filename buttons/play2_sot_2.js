@@ -1,4 +1,4 @@
-const { ChannelType, EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
+const { EmbedBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 const config = require('../config.json');
 const mysql = require('mysql');
 const database = mysql.createConnection({
@@ -13,10 +13,11 @@ const moment = require('moment');
 const SteamAPI = require('steamapi');
 const steam = new SteamAPI(config.bifrost_config.token_steam);
 
-
-
 module.exports = {
     data: {
         name: 'play2_sot_2'
     },
+    async execute(interaction) {
+        console.log("Button: /play2_sot_3 has been pressed.");
+    }
 };
