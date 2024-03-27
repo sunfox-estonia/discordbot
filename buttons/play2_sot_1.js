@@ -123,3 +123,24 @@ module.exports = {
         );
     }
 };
+
+getBifrost = function (user_id, callback) {
+    let sql1 = "SELECT user_uid, steam_id, xbox_id FROM drd_bifrost WHERE user_uid = ? LIMIT 1;";
+    database.query(sql1, [user_id], (error1, result_userdata) => {
+        if (error1) {
+            callback("Ошибка в работе базы данных.", null);
+            return;
+        }
+        if (result_userdata.length == 0 || result_userdata.length > 1) {
+            callback("Ошибка получения профиля пользователя.", null);
+            return;
+        }
+        callback(null, result_userdata[0]);
+    });
+}
+
+function getAchievementStatusByCode(comedations, code) {
+    return comedations.filter(
+        function (comedations) { return comedations.api == code }
+    );
+}
