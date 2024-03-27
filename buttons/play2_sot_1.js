@@ -77,6 +77,7 @@ module.exports = {
                                         let i = 0;
                                         while (i < CommendationsList.length) {
                                             var getOne = getAchievementStatusByCode(UserAchievements.achievements, CommendationsList[i]);
+                                            console.log(getOne);
                                             let getOneStatus = getOne[0]['achieved'];
                                             if (getOneStatus == true) {
                                                 Badges += "1";
