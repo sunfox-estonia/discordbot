@@ -59,41 +59,41 @@ module.exports = {
           // SoT Predefine buttons
           var play2_predefined_11 = new ButtonBuilder()
           .setLabel('PVP - Слуги Пламени')
-          .setCustomId('play2_predefine_sot_1')
+          .setCustomId('play2_sot_1')
           .setEmoji("<:ship_brig:1155489530900660294>")
           .setStyle(ButtonStyle.Secondary);
 
           var play2_predefined_12 = new ButtonBuilder()
           .setLabel('PVP - Открытый мир')
-          .setCustomId('play2_predefine_sot_2')
+          .setCustomId('play2_sot_2')
           .setEmoji("<:ship_sloop:1155489536349057095>")
           .setStyle(ButtonStyle.Secondary);
 
           var play2_predefined_13 = new ButtonBuilder()
           .setLabel('Farm - Гильдия')
-          .setCustomId('play2_predefine_sot_3')
+          .setCustomId('play2_sot_3')
           .setEmoji("<:ship_brig:1155489530900660294>")
           .setStyle(ButtonStyle.Secondary);
 
           // Other games Predefine buttons
           var play2_predefined_21 = new ButtonBuilder()
           .setLabel('Deep Rock Galactic')
-          .setCustomId('play2_predefine_game_548430')
+          .setCustomId('play2_game_548430')
           .setStyle(ButtonStyle.Secondary);
 
           var play2_predefined_22 = new ButtonBuilder()
           .setLabel('Lethal Company')
-          .setCustomId('play2_predefine_game_1966720')
+          .setCustomId('play2_game_1966720')
           .setStyle(ButtonStyle.Secondary);
 
           var play2_predefined_23 = new ButtonBuilder()
           .setLabel('Dota 2')
-          .setCustomId('play2_predefine_game_570')
+          .setCustomId('play2_game_570')
           .setStyle(ButtonStyle.Secondary);
 
           var play2_predefined_24 = new ButtonBuilder()
           .setLabel('RUST')
-          .setCustomId('play2_predefine_game_252490')
+          .setCustomId('play2_game_252490')
           .setStyle(ButtonStyle.Secondary);
 
           var play2_buttons_row_1 = new ActionRowBuilder()
