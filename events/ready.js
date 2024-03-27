@@ -30,12 +30,14 @@ module.exports = {
            * and create a new embed message with the information  
            * about the play2gether command usage
            */
-          let fetched;
-          do {
-            fetched = Play2Channel.fetchMessages({limit: 100});
-            message.channel.bulkDelete(fetched);
+          async () => {
+            let fetched;
+            do {
+              fetched = await Play2Channel.fetchMessages({limit: 100});
+              message.channel.bulkDelete(fetched);
+            }
+            while(fetched.size >= 1);
           }
-          while(fetched.size >= 1);
 
 
 
