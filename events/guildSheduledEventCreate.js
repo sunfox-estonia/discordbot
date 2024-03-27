@@ -25,7 +25,7 @@ module.exports = {
         var discord_event_id = event.id;
         var discord_event_name = event.name;
         var discord_event_url = event.url;
-        var event_role_name = "Участники события: " + discord_event_name;
+        var event_role_name = `Участники события: ${discord_event_name}`;
 
         // Step 1. Create a new role for the event
         await event.guild.roles.create({
