@@ -13,8 +13,6 @@ const moment = require('moment');
 const SteamAPI = require('steamapi');
 const steam = new SteamAPI(config.bifrost_config.token_steam);
 
-
-
 module.exports = {
     data: {
         name: 'play2_sot_1'
@@ -57,14 +55,14 @@ module.exports = {
                         setTimeout(() => repliedMessage.delete(), 600000);
                     });
                     interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
-                    BotLogChannel.send({ content: `[PLAY2] SOT: <@` + DiscordUser.user.id + `> has been created a **/play2gether sot** invite.`});
+                    BotLogChannel.send({ content: `[PLAY2] BUTTON: <@` + DiscordUser.user.id + `> has been created a **/play2gether sot** invite.`});
                 } else {
                     const locales = {
                         "en-US": 'You do not have permission to execute this command!',
                     };
                     interaction.reply(locales[interaction.locale] ?? 'У вас недостаточно прав для выполнения этой команды!');
     
-                    BotLogChannel.send({ content: `[PLAY2] ERROR: <@` + DiscordUser.user.id + `> can't create a **/play2gether sot** invite without permission.`});
+                    BotLogChannel.send({ content: `[PLAY2] BUTTON ERROR: <@` + DiscordUser.user.id + `> can't create a **/play2gether sot** invite without permission.`});
                 }
             });
     }

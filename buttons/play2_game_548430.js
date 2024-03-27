@@ -28,6 +28,7 @@ module.exports = {
                 const party_channel = interaction.client.channels.cache.get('1185539805522694164');
                 const play2_user = DiscordUser.nickname ?? DiscordUser.user.username;
                 const steam_app_id = '548430';
+                const time_to_go = moment().format("X");
 
                 getBifrost(DiscordUser.user.id, function (error, steam_data) {
                     if (error) {
@@ -110,7 +111,7 @@ module.exports = {
                                 });
                                 interaction.reply({ content: '— Приглашение создано!', ephemeral: true });
 
-                                BotLogChannel.send({ content: `[PLAY2] <@` + DiscordUser.user.id + `> creates a **/play2gether game** invite - ` + SteamApp.name });
+                                BotLogChannel.send({ content: `[PLAY2] BUTTON <@` + DiscordUser.user.id + `> creates a **/play2gether game** invite - ` + SteamApp.name });
                             });
 
                         });
