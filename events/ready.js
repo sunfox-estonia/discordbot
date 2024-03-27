@@ -30,18 +30,12 @@ module.exports = {
            * and create a new embed message with the information  
            * about the play2gether command usage
            */
+          if (!Play2Channel) return console.log('Channel not found');
 
-          let fetched;
-          do {
-            fetched = Play2Channel.messages.fetchMessages({limit: 100});
-            Play2Channel.bulkDelete(fetched);
+          Play2Channel.messages.fetch({ limit: 99 }).then(messages => {
+            Play2Channel.bulkDelete(messages);
             console.log("Clear messages in the Play2gether channel");
-            console.log(fetched);
-          }
-          while(fetched.size >= 1);
-
-
-
+          });
 
 
 	},
