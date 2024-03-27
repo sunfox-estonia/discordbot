@@ -1,23 +1,13 @@
 const { EmbedBuilder } = require('discord.js');
 const config = require('../config.json');
-const mysql = require('mysql');
-const database = mysql.createConnection({
-    host: config.db_config.host,
-    user: config.db_config.dbuser,
-    password: config.db_config.dbpass,
-    database: config.db_config.dbname,
-    debug: false,
-    multipleStatements: true,
-});
 const moment = require('moment');
-const SteamAPI = require('steamapi');
-const steam = new SteamAPI(config.bifrost_config.token_steam);
 
 module.exports = {
     data: {
         name: 'play2_sot_1'
     },
     async execute(interaction) {
+        console.log("Button: /play2_sot_1 has been pressed.");
         var member_id = interaction.member.user.id;
         await interaction.guild.members.fetch(member_id).then(
             DiscordUser => {
@@ -67,18 +57,3 @@ module.exports = {
             });
     }
 };
-
-getBifrost = function (user_id, callback) {
-    let sql1 = "SELECT user_uid, steam_id, xbox_id FROM drd_bifrost WHERE user_uid = ? LIMIT 1;";
-    database.query(sql1, [user_id], (error1, result_userdata) => {
-        if (error1) {
-            callback("Ошибка в работе базы данных.", null);
-            return;
-        }
-        if (result_userdata.length == 0 || result_userdata.length > 1) {
-            callback("Ошибка получения профиля пользователя.", null);
-            return;
-        }
-        callback(null, result_userdata[0]);
-    });
-}
